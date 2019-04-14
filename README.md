@@ -3,7 +3,7 @@
 The aim of the system is to assist doctors and nursing staff, to better manage their day to day operations 
 with the use of the hospital system. 
 
-##What will it do
+## What will it do
 
 - As a doctor/nurse, the user will be able to create and manage patients, their appointments, visits and medication
   dispensory
