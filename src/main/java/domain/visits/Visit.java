@@ -3,8 +3,6 @@ package domain.visits;
 import domain.patients.Patient;
 import domain.employee.Doctor;
 import domain.employee.Nurse;
-import domain.hospital.MedicalTool;
-import domain.hospital.Medication;
 
 import java.util.List;
 

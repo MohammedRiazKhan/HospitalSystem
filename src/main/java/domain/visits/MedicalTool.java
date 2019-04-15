@@ -1,4 +1,4 @@
-package domain.hospital;
+package domain.visits;
 
 public class MedicalTool {
 }
