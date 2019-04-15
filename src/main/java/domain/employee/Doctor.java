@@ -1,4 +1,6 @@
-package domain;
+package domain.employee;
+
+import domain.patients.Patient;
 
 import java.util.List;
 

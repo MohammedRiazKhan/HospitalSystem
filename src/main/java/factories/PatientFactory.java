@@ -1,7 +1,7 @@
 package factories;
 
-import domain.Doctor;
-import domain.Patient;
+import domain.employee.Doctor;
+import domain.patients.Patient;
 
 import static utility.IDGenerator.genId;
 

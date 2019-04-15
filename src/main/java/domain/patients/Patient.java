@@ -1,6 +1,6 @@
-package domain;
+package domain.patients;
 
-import java.util.List;
+import domain.employee.Doctor;
 
 public class Patient {
 

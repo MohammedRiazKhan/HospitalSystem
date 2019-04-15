@@ -10,3 +10,6 @@ with the use of the hospital system.
 - Will be able to store patients records and retrieve them when needed.
 - Be able to generate Patient reports
 - Allow team members Doctors and Nurses who are caring for a patient to have up to date information on their patients.
+
+
+<img src="uml.png" />
