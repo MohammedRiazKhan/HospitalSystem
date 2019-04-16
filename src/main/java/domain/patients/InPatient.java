@@ -11,6 +11,7 @@ public class InPatient extends Patient{
 
     }
 
+
     private InPatient(InPatientBuilder builder){
         super(builder);
         this.daysStayed = builder.daysStayed;

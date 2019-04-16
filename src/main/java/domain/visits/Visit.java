@@ -16,6 +16,7 @@ public class Visit {
     private List<Medication> medication;
     private List<MedicalTool> tools;
 
+
     public Visit(){
 
     }

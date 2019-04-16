@@ -7,12 +7,17 @@ public class Equipment {
     private String desc;
     private int quantity;
 
+
     public Equipment(){
 
     }
 
     public Equipment(EquipmentBuilder builder){
 
+        this.equipmentId = builder.equipmentId;
+        this.name = builder.name;
+        this.desc = builder.desc;
+        this.quantity = builder.quantity;
     }
 
 

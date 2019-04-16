@@ -6,10 +6,17 @@ public class Administration extends Employee{
 
    private String accessLevel;
 
-   private Administration(AdminBuilder builder){
+
+    public Administration() {
+
+    }
+
+    private Administration(AdminBuilder builder){
        super(builder);
        this.accessLevel = builder.accessLevel;
    }
+
+
 
    public static class AdminBuilder extends Employee.Builder{
 

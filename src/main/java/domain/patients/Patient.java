@@ -12,6 +12,9 @@ public abstract class Patient {
     private int age;
     private Doctor doctor;
 
+
+
+
     public Patient(){
 
     }

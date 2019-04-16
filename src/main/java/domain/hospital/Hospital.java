@@ -8,6 +8,7 @@ public class Hospital {
     private int hospitalId;
     private String hospitalName;
 
+
     public Hospital(){
 
     }

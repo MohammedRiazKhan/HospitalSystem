@@ -8,6 +8,7 @@ public class Report {
     private String dateRange;
     private Patient patient;
 
+
     public Report(){
 
     }
