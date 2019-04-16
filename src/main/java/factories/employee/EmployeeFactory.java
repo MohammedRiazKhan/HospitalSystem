@@ -1,4 +1,7 @@
-package factories;
+package factories.employee;
 
 public class EmployeeFactory {
+
+
+
 }

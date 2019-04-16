@@ -2,12 +2,46 @@ package domain.employee;
 
 import java.util.List;
 
-public class Nurse {
+public class Nurse extends Employee{
 
-    private int nurseId;
-    private String firstName;
-    private String lastName;
-    private String title;
-    private String identityNumber;
+    private String type;
+
+    public Nurse(){
+
+    }
+
+    private Nurse(NurseBuilder builder){
+        super(builder);
+        this.type = builder.type;
+
+    }
+
+    public static class NurseBuilder extends Employee.Builder{
+
+
+        private String type;
+
+        public NurseBuilder(){
+            super();
+        }
+
+        public NurseBuilder type(String type){
+            this.type = type;
+            return this;
+        }
+
+        @Override
+        public Employee build(){
+            return new Nurse(this);
+        }
+
+        @Override
+        public String toString() {
+            return "NurseBuilder{" +
+                    "type='" + type + '\'' +
+                    "} " + super.toString();
+        }
+    }
+
 
 }

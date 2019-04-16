@@ -1,4 +1,4 @@
-package factories;
+package factories.patients;
 
 import domain.employee.Doctor;
 import domain.patients.Patient;

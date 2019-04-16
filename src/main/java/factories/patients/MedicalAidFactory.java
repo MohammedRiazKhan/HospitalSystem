@@ -1,4 +1,4 @@
-package factories;
+package factories.patients;
 
 public class MedicalAidFactory {
 }

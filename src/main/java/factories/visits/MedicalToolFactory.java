@@ -1,4 +1,4 @@
-package factories;
+package factories.visits;
 
 public class MedicalToolFactory {
 }
