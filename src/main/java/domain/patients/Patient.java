@@ -2,7 +2,7 @@ package domain.patients;
 
 import domain.employee.Doctor;
 
-public class Patient {
+public abstract class Patient {
 
     private int patientId;
     private String firstName;
@@ -12,11 +12,11 @@ public class Patient {
     private int age;
     private Doctor doctor;
 
-    private Patient(){
+    public Patient(){
 
     }
 
-    private Patient(Builder builder){
+    protected Patient(Builder builder){
 
         this.patientId = builder.patientId;
         this.firstName = builder.firstName;
@@ -84,7 +84,7 @@ public class Patient {
         this.doctor = doctor;
     }
 
-    public static class Builder{
+    public static abstract class Builder{
 
         private int patientId;
         private String firstName;
@@ -137,9 +137,7 @@ public class Patient {
             return this;
         }
 
-        public Patient build(){
-            return new Patient(this);
-        }
+        public abstract Patient build();
 
         @Override
         public String toString() {

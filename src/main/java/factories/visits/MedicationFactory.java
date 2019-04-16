@@ -1,4 +1,4 @@
-package factories.patients;
+package factories.visits;
 
 public class MedicationFactory {
 }
