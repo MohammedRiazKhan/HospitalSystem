@@ -21,4 +21,7 @@ public class InPatientFactory {
                 .build();
     }
 
+
+
+
 }
