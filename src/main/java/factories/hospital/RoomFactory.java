@@ -11,7 +11,11 @@ public class RoomFactory {
     public static Room getRoom(int roomId, List<Equipment> equipment) {
         return (Room) new Room.RoomBuilder()
                 .roomId(IDGenerator.genId())
+                .equipment(equipment)
                 .build();
     }
+
+
+
 
 }

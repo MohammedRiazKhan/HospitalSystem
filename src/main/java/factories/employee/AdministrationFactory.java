@@ -6,11 +6,12 @@ import utility.IDGenerator;
 
 public class AdministrationFactory {
 
-    public static Administration getAdministration(int employeeId, String firstName, String lastName, String identityNumber, String jobTitle, String dateOfEmployment, String accessLevel) {
+    public static Administration getAdministration() {
         return (Administration) new Administration.AdminBuilder()
-                .accessLevel(accessLevel)
+                .accessLevel("1")
                 .build();
     }
+
 
 
 

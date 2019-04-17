@@ -1,0 +1,12 @@
+package factories.employee;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class GeneralPracticionerFactoryTest {
+
+    @Test
+    public void getGeneralPracticioner() {
+    }
+}

@@ -11,7 +11,12 @@ public class DepartmentFactory {
 
     public static Department getDepartment(int departmentId, int hospitalId, List<Ward> wards, List<Room> rooms) {
         return (Department) new Department.DepartmentBuilder()
+                .departmentId(IDGenerator.genId())
+                .hospitalId(hospitalId)
+                .wards(wards)
+                .rooms(rooms)
                 .build();
     }
+
 
 }

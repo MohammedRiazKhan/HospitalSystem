@@ -1,5 +1,6 @@
-package factories;
+package factories.appointment;
 
+import domain.appoinments.Appointment;
 import domain.employee.Doctor;
 import domain.patients.InPatient;
 import domain.patients.Meal;
@@ -13,32 +14,28 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PatientFactoryTest {
+import static org.junit.Assert.*;
 
+public class AppointmentFactoryTest {
 
     @Test
-    public void getPatient() {
+    public void getAppointment() {
 
-        String firstName = "Riaz";
-        String lastName = "Khan";
-        String telephone = "0762828630";
-        String identityNumber = "1234564897";
-        int age = 23;
 
-        List<Patient> p = new ArrayList<Patient>();
+        ArrayList list = new ArrayList();
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Mohammed", "Khan", "Renal", p);
+        Doctor doc = DoctorFactory.getDoctor(1, "Moh", "Khan", "Renal", list);
 
 
         List<Meal> m = new ArrayList<>();
         List<String> d = new ArrayList<>();
 
-
         InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, doc, d, m);
 
-        Assert.assertNotNull(patient.getPatientId());
+        Appointment appointment = AppointmentFactory.getAppointment
+                (1, "17-04-2018", patient);
 
-
+        Assert.assertNotNull(appointment.getAppointmentId());
 
 
     }

@@ -11,6 +11,9 @@ public class Ward {
 
     public Ward(WardBuilder builder){
 
+        this.wardId = builder.wardId;
+        this.wardCode = builder.wardCode;
+
     }
 
     public int getWardId() {

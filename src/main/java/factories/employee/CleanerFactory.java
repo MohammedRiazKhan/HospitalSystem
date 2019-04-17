@@ -1,13 +1,16 @@
 package factories.employee;
 
 import domain.employee.Cleaner;
+import utility.IDGenerator;
 
 public class CleanerFactory {
 
-    public static Cleaner getCleaner(int employeeId, String firstName, String lastName, String identityNumber, String jobTitle, String dateOfEmployment, int[] rooms) {
+    public static Cleaner getCleaner() {
         return (Cleaner) new Cleaner.CleanerBuilder()
-                .rooms(rooms)
+                .employeeId(IDGenerator.genId())
                 .build();
     }
+
+
 
 }
