@@ -1,4 +1,4 @@
-package repositories;
+package repositories.patients;
 
 import domain.employee.Doctor;
 import domain.patients.Patient;

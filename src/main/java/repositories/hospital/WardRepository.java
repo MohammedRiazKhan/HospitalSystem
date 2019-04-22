@@ -15,7 +15,7 @@ public class WardRepository implements Repository<Ward> {
         wards = new HashSet<>();
     }
 
-    public WardRepository getWards() {
+    public static WardRepository getWards() {
         if(repository == null){
             return new WardRepository();
         }

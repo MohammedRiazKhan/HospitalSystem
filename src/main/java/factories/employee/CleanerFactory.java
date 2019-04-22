@@ -8,6 +8,7 @@ public class CleanerFactory {
     public static Cleaner getCleaner() {
         return (Cleaner) new Cleaner.CleanerBuilder()
                 .employeeId(IDGenerator.genId())
+                .jobTitle("Cleaner")
                 .build();
     }
 

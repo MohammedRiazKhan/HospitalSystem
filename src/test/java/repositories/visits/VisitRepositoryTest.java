@@ -1,5 +1,8 @@
 package repositories.visits;
 
+import domain.visits.Visit;
+import factories.visits.VisitFactory;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,23 +10,74 @@ import static org.junit.Assert.*;
 
 public class VisitRepositoryTest {
 
+    VisitRepository visitRepository;
+
     @Before
     public void setUp() throws Exception {
+
+        visitRepository = VisitRepository.getRepository();
+
     }
 
     @Test
     public void create() {
+
+        Visit visit = VisitFactory.getVisit(1, "Today", null, null, null, null, null);
+
+        visitRepository.create(visit);
+
+        Assert.assertNotNull(visitRepository.getAll());
+
     }
 
     @Test
     public void read() {
+
+        Visit visit = VisitFactory.getVisit(1, "Today", null, null, null, null, null);
+
+        visitRepository.create(visit);
+
+        Assert.assertNotNull(visitRepository.getAll());
+
+        Visit visit1 = visitRepository.find(visit.getVisitId());
+
+        Assert.assertEquals(visit, visit1);
+
     }
 
     @Test
     public void update() {
+
+        Visit visit = VisitFactory.getVisit(1, "Today", null, null, null, null, null);
+
+        visitRepository.create(visit);
+
+        Assert.assertNotNull(visitRepository.getAll());
+
+        Visit visitUpdate = VisitFactory.getVisit(1, "sdf", null, null, null, null, null);
+        visitUpdate.setVisitId(visit.getVisitId());
+        visitRepository.update(visitUpdate);
+
+        Visit updated = visitRepository.find(visitUpdate.getVisitId());
+
+        Assert.assertEquals(visitUpdate, updated);
+
     }
 
     @Test
     public void delete() {
+
+        Visit visit = VisitFactory.getVisit(1, "Today", null, null, null, null, null);
+
+        visitRepository.create(visit);
+
+        Assert.assertNotNull(visitRepository.getAll());
+
+        visitRepository.delete(visit);
+
+        Visit notThere = visitRepository.find(visit.getVisitId());
+
+        Assert.assertNull(notThere);
+
     }
 }

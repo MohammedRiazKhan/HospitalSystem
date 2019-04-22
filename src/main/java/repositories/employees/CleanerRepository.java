@@ -11,7 +11,7 @@ public class CleanerRepository implements Repository<Cleaner> {
     private static CleanerRepository cleanerRepository = null;
     private Set<Cleaner> cleaners;
 
-    public CleanerRepository(){
+    private CleanerRepository(){
         cleaners = new HashSet<>();
     }
 
@@ -37,7 +37,7 @@ public class CleanerRepository implements Repository<Cleaner> {
     }
 
     @Override
-    public Cleaner read(int id) {
+    public Cleaner read(final int id) {
         return find(id);
     }
 

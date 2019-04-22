@@ -9,6 +9,7 @@ public class AdministrationFactory {
     public static Administration getAdministration() {
         return (Administration) new Administration.AdminBuilder()
                 .accessLevel("1")
+                .employeeId(IDGenerator.genId())
                 .build();
     }
 
