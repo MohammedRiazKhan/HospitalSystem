@@ -22,7 +22,7 @@ public class PatientFactoryTest {
 
         List<Patient> p = new ArrayList<>();
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Mohammed", "Khan", "Renal", p);
+        Doctor doc = DoctorFactory.getDoctor("Dr", "Mohammed", "Renal");
 
         List<Meal> daysStayed = new ArrayList<>();
         List<String> meals = new ArrayList<>();
@@ -34,9 +34,7 @@ public class PatientFactoryTest {
                 "1234568",
                 "0000213546546",
                 23,
-                doc,
-                meals,
-                daysStayed
+                doc
         );
 
 

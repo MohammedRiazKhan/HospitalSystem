@@ -5,7 +5,6 @@ import domain.patients.Patient;
 
 import static utility.IDGenerator.genId;
 
-
 public class PatientFactory {
 
 

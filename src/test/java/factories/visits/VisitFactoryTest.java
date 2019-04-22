@@ -34,7 +34,7 @@ public class VisitFactoryTest {
 
         List<Patient> p = new ArrayList<Patient>();
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Mohammed", "Khan", "Renal", p);
+        Doctor doc = DoctorFactory.getDoctor( "Mohammed", "Khan", "Renal");
 
 
         List<Meal> m = new ArrayList<>();
@@ -46,7 +46,7 @@ public class VisitFactoryTest {
         List<MedicalTool> tools = new ArrayList<>();
 
 
-        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, doc, d, m);
+        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, doc);
 
         Nurse docN = NurseFactory.getNurse(1, "Mohammed", "Khan", "Renal", "asd", "das", "afds");
 

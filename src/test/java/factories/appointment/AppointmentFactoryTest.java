@@ -24,13 +24,13 @@ public class AppointmentFactoryTest {
 
         ArrayList list = new ArrayList();
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Moh", "Khan", "Renal", list);
+        Doctor doc = DoctorFactory.getDoctor("Moh", "Khan", "Renal");
 
 
         List<Meal> m = new ArrayList<>();
         List<String> d = new ArrayList<>();
 
-        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, doc, d, m);
+        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, doc);
 
         Appointment appointment = AppointmentFactory.getAppointment
                 (1, "17-04-2018", patient);

@@ -27,14 +27,14 @@ public class PatientFactoryTest {
 
         List<Patient> p = new ArrayList<Patient>();
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Mohammed", "Khan", "Renal", p);
+        Doctor doc = DoctorFactory.getDoctor( "Mohammed", "Khan", "Renal");
 
 
         List<Meal> m = new ArrayList<>();
         List<String> d = new ArrayList<>();
 
 
-        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, doc, d, m);
+        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, doc);
 
         Assert.assertNotNull(patient.getPatientId());
 
