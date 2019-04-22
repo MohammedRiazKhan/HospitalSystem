@@ -6,12 +6,12 @@ import repositories.Repository;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PatientRepository implements Repository<Patient> {
+public class OutPatientRepository implements Repository<Patient> {
 
     private static PatientRepository repository = null;
     private Set<Patient> patients;
 
-    public PatientRepository(){
+    private OutPatientRepository(){
         patients = new HashSet<>();
     }
 
@@ -23,6 +23,8 @@ public class PatientRepository implements Repository<Patient> {
         return repository;
     }
 
+
+
     @Override
     public void create(Patient patient) {
         patients.add(patient);
@@ -31,12 +33,12 @@ public class PatientRepository implements Repository<Patient> {
     @Override
     public void update(Patient patient) {
 
-       Patient patientFound = find(patient.getPatientId());
+        Patient patientFound = find(patient.getPatientId());
 
-       if(patients.contains(patientFound)){
-           patients.remove(patientFound);
-           patients.add(patient);
-       }
+        if(patients.contains(patientFound)){
+            patients.remove(patientFound);
+            patients.add(patient);
+        }
 
     }
 
@@ -62,6 +64,4 @@ public class PatientRepository implements Repository<Patient> {
     }
 
 
-
 }
-

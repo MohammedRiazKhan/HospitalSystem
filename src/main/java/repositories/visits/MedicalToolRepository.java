@@ -1,20 +1,19 @@
-package repositories.patients;
+package repositories.visits;
 
 import domain.visits.MedicalTool;
 import repositories.Repository;
-import repositories.visits.MedicalToolRepository;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class AccountRepository implements Repository<MedicalTool> {
+public class MedicalToolRepository implements Repository<MedicalTool> {
 
     private static MedicalToolRepository repository = null;
     private Set<MedicalTool> medicalTools;
 
 
 
-    public AccountRepository()
+    public MedicalToolRepository()
     {
         medicalTools = new HashSet<>();
     }
@@ -65,6 +64,7 @@ public class AccountRepository implements Repository<MedicalTool> {
     public Set<MedicalTool> getAll() {
         return medicalTools;
     }
+
 
 
 }
