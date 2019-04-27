@@ -1,7 +1,7 @@
 package repositories.Impl;
 
 import domain.appoinments.Appointment;
-import repositories.AppointmentRepository;
+import repositories.appointment.AppointmentRepository;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,8 +29,9 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
     }
 
     @Override
-    public void create(Appointment appointment) {
+    public Appointment create(Appointment appointment) {
         appointments.add(appointment);
+        return appointment;
     }
 
     @Override
@@ -48,7 +49,7 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
     }
 
     @Override
-    public void update(Appointment appointment) {
+    public Appointment update(Appointment appointment) {
 
         Appointment appointmentFound = find(appointment.getAppointmentId());
 
@@ -56,6 +57,7 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
             appointments.remove(appointmentFound);
             appointments.add(appointment);
         }
+        return appointmentFound;
     }
 
     @Override

@@ -31,9 +31,10 @@ public class DoctorRepositoryImpl implements DoctorRepository {
     }
 
     @Override
-    public void create(Doctor doctor) {
+    public Doctor create(Doctor doctor) {
 
         doctors.add(doctor);
+        return doctor;
     }
 
     @Override
@@ -49,7 +50,7 @@ public class DoctorRepositoryImpl implements DoctorRepository {
     }
 
     @Override
-    public void update(Doctor doctor) {
+    public Doctor update(Doctor doctor) {
 
         Doctor docFound = find(doctor.getEmployeeId());
 
@@ -58,6 +59,7 @@ public class DoctorRepositoryImpl implements DoctorRepository {
             doctors.add(doctor);
         }
 
+        return docFound;
     }
 
     @Override

@@ -29,10 +29,11 @@ public class CleanerRepositoryImpl implements CleanerRepository{
     }
 
     @Override
-    public void create(Cleaner cleaner) {
+    public Cleaner create(Cleaner cleaner) {
 
         cleaners.add(cleaner);
 
+        return cleaner;
     }
 
     @Override
@@ -49,7 +50,7 @@ public class CleanerRepositoryImpl implements CleanerRepository{
     }
 
     @Override
-    public void update(Cleaner cleaner) {
+    public Cleaner update(Cleaner cleaner) {
 
         Cleaner cleaner1 = find(cleaner.getEmployeeId());
 
@@ -60,6 +61,7 @@ public class CleanerRepositoryImpl implements CleanerRepository{
 
         }
 
+        return cleaner1;
     }
 
     @Override

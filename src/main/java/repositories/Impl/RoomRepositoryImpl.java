@@ -27,10 +27,11 @@ public class RoomRepositoryImpl implements RoomRepository{
     }
 
     @Override
-    public void create(Room room) {
+    public Room create(Room room) {
 
         rooms.add(room);
 
+        return room;
     }
 
     @Override
@@ -46,7 +47,7 @@ public class RoomRepositoryImpl implements RoomRepository{
     }
 
     @Override
-    public void update(Room room) {
+    public Room update(Room room) {
 
         Room room1 = find(room.getRoomId());
         if(rooms.contains(room1)){
@@ -54,6 +55,7 @@ public class RoomRepositoryImpl implements RoomRepository{
             rooms.add(room);
         }
 
+        return room1;
     }
 
     @Override

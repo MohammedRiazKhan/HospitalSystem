@@ -2,7 +2,6 @@ package repositories.Impl;
 
 import domain.patients.Patient;
 import repositories.patients.OutPatientRepository;
-import repositories.patients.PatientRepository;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,12 +26,13 @@ public class OutPatientRepositoryImpl implements OutPatientRepository {
 
 
     @Override
-    public void create(Patient patient) {
+    public Patient create(Patient patient) {
         patients.add(patient);
+        return patient;
     }
 
     @Override
-    public void update(Patient patient) {
+    public Patient update(Patient patient) {
 
         Patient patientFound = find(patient.getPatientId());
 
@@ -41,6 +41,7 @@ public class OutPatientRepositoryImpl implements OutPatientRepository {
             patients.add(patient);
         }
 
+        return patientFound;
     }
 
     @Override

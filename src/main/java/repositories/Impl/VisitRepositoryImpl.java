@@ -27,10 +27,11 @@ public class VisitRepositoryImpl implements VisitRepository {
     }
 
     @Override
-    public void create(Visit visit) {
+    public Visit create(Visit visit) {
 
         visits.add(visit);
 
+        return visit;
     }
 
     @Override
@@ -47,7 +48,7 @@ public class VisitRepositoryImpl implements VisitRepository {
     }
 
     @Override
-    public void update(Visit visit) {
+    public Visit update(Visit visit) {
 
         Visit visit1 = find(visit.getVisitId());
         if(visits.contains(visit1)){
@@ -55,6 +56,7 @@ public class VisitRepositoryImpl implements VisitRepository {
             visits.add(visit);
         }
 
+        return visit1;
     }
 
     @Override

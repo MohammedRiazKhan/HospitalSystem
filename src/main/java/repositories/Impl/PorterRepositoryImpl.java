@@ -29,10 +29,11 @@ public class PorterRepositoryImpl implements PorterRepository {
     }
 
     @Override
-    public void create(Porter porter) {
+    public Porter create(Porter porter) {
 
         porters.add(porter);
 
+        return porter;
     }
 
     @Override
@@ -49,7 +50,7 @@ public class PorterRepositoryImpl implements PorterRepository {
     }
 
     @Override
-    public void update(Porter porter) {
+    public Porter update(Porter porter) {
 
         Porter porter1 = find(porter.getEmployeeId());
 
@@ -58,6 +59,7 @@ public class PorterRepositoryImpl implements PorterRepository {
             porters.add(porter);
         }
 
+        return porter1;
     }
 
     @Override

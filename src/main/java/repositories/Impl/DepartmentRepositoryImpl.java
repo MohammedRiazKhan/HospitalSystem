@@ -30,10 +30,11 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
     }
 
     @Override
-    public void create(Department department) {
+    public Department create(Department department) {
 
         departments.add(department);
 
+        return department;
     }
 
     @Override
@@ -50,7 +51,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
     }
 
     @Override
-    public void update(Department department) {
+    public Department update(Department department) {
 
         Department department1 = find(department.getDepartmentId());
 
@@ -59,6 +60,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
             departments.add(department);
         }
 
+        return department1;
     }
 
     @Override

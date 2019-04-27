@@ -1,6 +1,7 @@
-package repositories;
+package repositories.appointment;
 
 import domain.appoinments.Appointment;
+import repositories.Repository;
 
 import java.util.HashSet;
 import java.util.Set;

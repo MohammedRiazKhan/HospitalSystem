@@ -28,10 +28,11 @@ public class MedicationRepositoryImpl implements MedicationRepository {
     }
 
     @Override
-    public void create(Medication medication1) {
+    public Medication create(Medication medication1) {
 
         medication.add(medication1);
 
+        return medication1;
     }
 
     @Override
@@ -48,7 +49,7 @@ public class MedicationRepositoryImpl implements MedicationRepository {
     }
 
     @Override
-    public void update(Medication medication1) {
+    public Medication update(Medication medication1) {
 
         Medication medication2 = find(medication1.getMedicationId());
         if (medication.contains(medication2)) {
@@ -58,6 +59,7 @@ public class MedicationRepositoryImpl implements MedicationRepository {
 
         }
 
+        return medication2;
     }
 
 

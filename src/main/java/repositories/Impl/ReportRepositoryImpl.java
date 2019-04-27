@@ -28,10 +28,11 @@ public class ReportRepositoryImpl implements ReportRepository {
     }
 
     @Override
-    public void create(Report report) {
+    public Report create(Report report) {
 
         reports.add(report);
 
+        return report;
     }
 
     @Override
@@ -49,13 +50,14 @@ public class ReportRepositoryImpl implements ReportRepository {
     }
 
     @Override
-    public void update(Report report) {
+    public Report update(Report report) {
 
         Report report1 = find(report.getReportId());
         if(reports.contains(report1)){
             reports.remove(report1);
             reports.add(report);
         }
+        return report1;
     }
 
     @Override

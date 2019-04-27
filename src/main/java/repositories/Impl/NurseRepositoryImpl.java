@@ -29,10 +29,11 @@ public class NurseRepositoryImpl implements NurseRepository {
     }
 
     @Override
-    public void create(Nurse nurse) {
+    public Nurse create(Nurse nurse) {
 
         nurses.add(nurse);
 
+        return nurse;
     }
 
     @Override
@@ -50,7 +51,7 @@ public class NurseRepositoryImpl implements NurseRepository {
     }
 
     @Override
-    public void update(Nurse nurse) {
+    public Nurse update(Nurse nurse) {
 
         Nurse nurse1 = find(nurse.getEmployeeId());
 
@@ -59,6 +60,7 @@ public class NurseRepositoryImpl implements NurseRepository {
             nurses.add(nurse);
         }
 
+        return nurse1;
     }
 
     @Override

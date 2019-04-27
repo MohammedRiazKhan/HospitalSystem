@@ -29,10 +29,11 @@ public class HospitalRepositoryImpl implements HospitalRepository {
     }
 
     @Override
-    public void create(Hospital hospital) {
+    public Hospital create(Hospital hospital) {
 
         hospitals.add(hospital);
 
+        return hospital;
     }
 
     @Override
@@ -47,7 +48,7 @@ public class HospitalRepositoryImpl implements HospitalRepository {
     }
 
     @Override
-    public void update(Hospital hospital) {
+    public Hospital update(Hospital hospital) {
 
 
         Hospital hospital1 = find(hospital.getHospitalId());
@@ -55,6 +56,7 @@ public class HospitalRepositoryImpl implements HospitalRepository {
             hospitals.remove(hospital1);
             hospitals.add(hospital);
         }
+        return hospital1;
     }
 
     @Override

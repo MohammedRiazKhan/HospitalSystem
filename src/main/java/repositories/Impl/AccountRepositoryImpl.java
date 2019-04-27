@@ -2,7 +2,6 @@ package repositories.Impl;
 
 import domain.visits.MedicalTool;
 import repositories.patients.AccountRepository;
-import repositories.visits.MedicalToolRepository;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -31,10 +30,11 @@ public class AccountRepositoryImpl implements AccountRepository {
     }
 
     @Override
-    public void create(MedicalTool medicalTool) {
+    public MedicalTool create(MedicalTool medicalTool) {
 
         medicalTools.add(medicalTool);
 
+        return medicalTool;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class AccountRepositoryImpl implements AccountRepository {
     }
 
     @Override
-    public void update(MedicalTool medicalTool) {
+    public MedicalTool update(MedicalTool medicalTool) {
 
         MedicalTool medicalTool1 = find(medicalTool.getToolId());
         if(medicalTools.contains(medicalTool1)){
@@ -58,6 +58,7 @@ public class AccountRepositoryImpl implements AccountRepository {
             medicalTools.add(medicalTool);
         }
 
+        return medicalTool1;
     }
 
     @Override

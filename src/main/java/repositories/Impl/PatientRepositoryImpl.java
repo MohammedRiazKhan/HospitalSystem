@@ -25,12 +25,13 @@ public class PatientRepositoryImpl implements PatientRepository{
 
 
     @Override
-    public void create(Patient patient) {
+    public Patient create(Patient patient) {
         patients.add(patient);
+        return patient;
     }
 
     @Override
-    public void update(Patient patient) {
+    public Patient update(Patient patient) {
 
         Patient patientFound = find(patient.getPatientId());
 
@@ -39,6 +40,7 @@ public class PatientRepositoryImpl implements PatientRepository{
             patients.add(patient);
         }
 
+        return patientFound;
     }
 
     @Override

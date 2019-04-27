@@ -30,10 +30,11 @@ public class PharmacistRepositoryImpl implements PharmacistRepository {
     }
 
     @Override
-    public void create(Pharmacist pharmacist) {
+    public Pharmacist create(Pharmacist pharmacist) {
 
         pharmacists.add(pharmacist);
 
+        return pharmacist;
     }
 
     @Override
@@ -49,7 +50,7 @@ public class PharmacistRepositoryImpl implements PharmacistRepository {
     }
 
     @Override
-    public void update(Pharmacist pharmacist) {
+    public Pharmacist update(Pharmacist pharmacist) {
 
         Pharmacist pharmacist1 = find(pharmacist.getEmployeeId());
 
@@ -58,6 +59,7 @@ public class PharmacistRepositoryImpl implements PharmacistRepository {
             pharmacists.add(pharmacist);
         }
 
+        return pharmacist1;
     }
 
     @Override

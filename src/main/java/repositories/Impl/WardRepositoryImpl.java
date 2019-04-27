@@ -27,10 +27,11 @@ public class WardRepositoryImpl implements WardRepository {
     }
 
     @Override
-    public void create(Ward ward) {
+    public Ward create(Ward ward) {
 
         wards.add(ward);
 
+        return ward;
     }
 
     @Override
@@ -46,7 +47,7 @@ public class WardRepositoryImpl implements WardRepository {
     }
 
     @Override
-    public void update(Ward ward) {
+    public Ward update(Ward ward) {
 
         Ward ward1 = find(ward.getWardId());
         if(wards.contains(ward1)){
@@ -54,6 +55,7 @@ public class WardRepositoryImpl implements WardRepository {
             wards.add(ward);
         }
 
+        return ward1;
     }
 
     @Override

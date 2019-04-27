@@ -30,10 +30,11 @@ public class AdministrationRepositoryImpl implements AdministrationRepository {
     }
 
     @Override
-    public void create(Administration administration) {
+    public Administration create(Administration administration) {
 
         administrationStaff.add(administration);
 
+        return administration;
     }
 
     @Override
@@ -51,7 +52,7 @@ public class AdministrationRepositoryImpl implements AdministrationRepository {
     }
 
     @Override
-    public void update(Administration administration) {
+    public Administration update(Administration administration) {
 
         Administration administration1 = find(administration.getEmployeeId());
 
@@ -60,6 +61,7 @@ public class AdministrationRepositoryImpl implements AdministrationRepository {
             administrationStaff.add(administration);
         }
 
+        return administration1;
     }
 
     @Override

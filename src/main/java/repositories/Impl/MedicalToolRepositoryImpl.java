@@ -30,10 +30,11 @@ public class MedicalToolRepositoryImpl implements MedicalToolRepository{
     }
 
     @Override
-    public void create(MedicalTool medicalTool) {
+    public MedicalTool create(MedicalTool medicalTool) {
 
         medicalTools.add(medicalTool);
 
+        return medicalTool;
     }
 
     @Override
@@ -50,7 +51,7 @@ public class MedicalToolRepositoryImpl implements MedicalToolRepository{
     }
 
     @Override
-    public void update(MedicalTool medicalTool) {
+    public MedicalTool update(MedicalTool medicalTool) {
 
         MedicalTool medicalTool1 = find(medicalTool.getToolId());
         if(medicalTools.contains(medicalTool1)){
@@ -58,6 +59,7 @@ public class MedicalToolRepositoryImpl implements MedicalToolRepository{
             medicalTools.add(medicalTool);
         }
 
+        return medicalTool1;
     }
 
     @Override
