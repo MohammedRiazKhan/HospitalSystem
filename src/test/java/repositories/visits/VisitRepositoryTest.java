@@ -5,17 +5,18 @@ import factories.visits.VisitFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.VisitRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class VisitRepositoryTest {
 
-    VisitRepository visitRepository;
+    VisitRepositoryImpl visitRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        visitRepository = VisitRepository.getRepository();
+        visitRepository = VisitRepositoryImpl.getRepository();
 
     }
 
@@ -73,7 +74,7 @@ public class VisitRepositoryTest {
 
         Assert.assertNotNull(visitRepository.getAll());
 
-        visitRepository.delete(visit);
+        visitRepository.delete(visit.getVisitId());
 
         Visit notThere = visitRepository.find(visit.getVisitId());
 

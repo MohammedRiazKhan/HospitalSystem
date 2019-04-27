@@ -5,18 +5,19 @@ import factories.employee.PharmacistFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.PharmacistRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class PharmacistRepositoryTest {
 
 
-    PharmacistRepository pharmacistRepository;
+    PharmacistRepositoryImpl pharmacistRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        pharmacistRepository = PharmacistRepository.getRepository();
+        pharmacistRepository = PharmacistRepositoryImpl.getRepository();
 
     }
 
@@ -64,7 +65,7 @@ public class PharmacistRepositoryTest {
         update.setEmployeeId(pharmacist.getEmployeeId());
         pharmacistRepository.update(update);
 
-        Pharmacist updated = pharmacistRepository.find(update.getEmployeeId());
+        Pharmacist updated = pharmacistRepository.read(update.getEmployeeId());
 
         Assert.assertEquals(update, updated);
 
@@ -80,9 +81,9 @@ public class PharmacistRepositoryTest {
 
         Assert.assertNotNull(pharmacistRepository.getAll());
 
-        pharmacistRepository.delete(pharmacist);
+        pharmacistRepository.delete(pharmacist.getEmployeeId());
 
-        Pharmacist notThere = pharmacistRepository.find(pharmacist.getEmployeeId());
+        Pharmacist notThere = pharmacistRepository.read(pharmacist.getEmployeeId());
 
         Assert.assertNull(notThere);
 

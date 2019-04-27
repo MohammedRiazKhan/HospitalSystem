@@ -5,18 +5,19 @@ import factories.appointment.AppointmentFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.AppointmentRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class AppointmentRepositoryTest {
 
 
-    AppointmentRepository appointmentRepository;
+    AppointmentRepositoryImpl appointmentRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        appointmentRepository = AppointmentRepository.getAppointmentRepository();
+        appointmentRepository = AppointmentRepositoryImpl.getAppointmentRepository();
 
     }
 
@@ -70,12 +71,11 @@ public class AppointmentRepositoryTest {
 
         Assert.assertNotNull(appointmentRepository.getAll());
 
-        appointmentRepository.delete(appointment);
+        appointmentRepository.delete(appointment.getAppointmentId());
 
         Appointment notThereBro = appointmentRepository.find(appointment.getAppointmentId());
 
         Assert.assertNull(notThereBro);
-
 
     }
 }

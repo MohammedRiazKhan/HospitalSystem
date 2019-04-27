@@ -5,18 +5,19 @@ import factories.hospital.HospitalFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.HospitalRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class HospitalRepositoryTest {
 
 
-    HospitalRepository hospitalRepository;
+    HospitalRepositoryImpl hospitalRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        hospitalRepository = HospitalRepository.getRepository();
+        hospitalRepository = HospitalRepositoryImpl.getRepository();
 
     }
 
@@ -79,7 +80,7 @@ public class HospitalRepositoryTest {
 
         Assert.assertNotNull(hospitalRepository.getAll());
 
-        hospitalRepository.delete(hospital);
+        hospitalRepository.delete(hospital.getHospitalId());
 
         Hospital notThere = hospitalRepository.find(hospital.getHospitalId());
 

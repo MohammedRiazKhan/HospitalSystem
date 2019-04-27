@@ -5,18 +5,19 @@ import factories.employee.DoctorFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.DoctorRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class DoctorRepositoryTest {
 
 
-    DoctorRepository doctorRepository;
+    DoctorRepositoryImpl doctorRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        doctorRepository = DoctorRepository.getDoctorRepository();
+        doctorRepository = DoctorRepositoryImpl.getDoctorRepository();
 
     }
 
@@ -36,7 +37,7 @@ public class DoctorRepositoryTest {
         Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
         doctorRepository.create(doc);
 
-        Doctor fromSet = doctorRepository.find(doc.getEmployeeId());
+        Doctor fromSet = doctorRepository.read(doc.getEmployeeId());
 
         Assert.assertEquals(doc, fromSet);
 
@@ -56,7 +57,7 @@ public class DoctorRepositoryTest {
         doctorRepository.update(doctor);
 
         //get doc
-        Doctor fromSet = doctorRepository.find(doctor.getEmployeeId());
+        Doctor fromSet = doctorRepository.read(doctor.getEmployeeId());
 
         Assert.assertEquals(doctor, fromSet);
 
@@ -70,9 +71,9 @@ public class DoctorRepositoryTest {
 
         Assert.assertNotNull(doctorRepository.getAll());
 
-        doctorRepository.delete(doc);
+        doctorRepository.delete(doc.getEmployeeId());
 
-        Doctor docTor = doctorRepository.find(doc.getEmployeeId());
+        Doctor docTor = doctorRepository.read(doc.getEmployeeId());
 
         Assert.assertNull(docTor);
 

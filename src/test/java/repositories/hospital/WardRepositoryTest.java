@@ -5,18 +5,19 @@ import factories.hospital.WardFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.WardRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class WardRepositoryTest {
 
 
-    WardRepository wardRepository;
+    WardRepositoryImpl wardRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        wardRepository = WardRepository.getWards();
+        wardRepository = WardRepositoryImpl.getWards();
     }
 
     @Test
@@ -69,7 +70,7 @@ public class WardRepositoryTest {
 
         Assert.assertNotNull(wardRepository.getAll());
 
-        wardRepository.delete(ward);
+        wardRepository.delete(ward.getWardId());
 
         Ward ward1 = wardRepository.find(ward.getWardId());
 

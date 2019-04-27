@@ -5,18 +5,19 @@ import factories.patients.ReportFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.ReportRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class ReportRepositoryTest {
 
 
-    ReportRepository reportitory;
+    ReportRepositoryImpl reportitory;
 
     @Before
     public void setUp() throws Exception {
 
-        reportitory = ReportRepository.getReportRepository();
+        reportitory = ReportRepositoryImpl.getReportRepository();
 
     }
 
@@ -69,7 +70,7 @@ public class ReportRepositoryTest {
         reportitory.create(report);
         Assert.assertNotNull(reportitory.getAll());
 
-        reportitory.delete(report);
+        reportitory.delete(report.getReportId());
 
         Report report1 = reportitory.find(report.getReportId());
 

@@ -5,18 +5,19 @@ import factories.employee.PorterFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.PorterRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class PorterRepositoryTest {
 
 
-    PorterRepository porterRepository;
+    PorterRepositoryImpl porterRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        porterRepository = PorterRepository.getRepository();
+        porterRepository = PorterRepositoryImpl.getRepository();
     }
 
     @Test
@@ -37,7 +38,7 @@ public class PorterRepositoryTest {
 
         Assert.assertNotNull(porterRepository.getAll());
 
-        Porter porter1 = porterRepository.find(porter.getEmployeeId());
+        Porter porter1 = porterRepository.read(porter.getEmployeeId());
 
         Assert.assertEquals(porter, porter1);
 
@@ -56,7 +57,7 @@ public class PorterRepositoryTest {
         porter1.setEmployeeId(porter.getEmployeeId());
         porterRepository.update(porter1);
 
-        Porter porter2 = porterRepository.find(porter1.getEmployeeId());
+        Porter porter2 = porterRepository.read(porter1.getEmployeeId());
 
         Assert.assertEquals(porter1, porter2);
 
@@ -70,9 +71,9 @@ public class PorterRepositoryTest {
 
         Assert.assertNotNull(porterRepository.getAll());
 
-        porterRepository.delete(porter);
+        porterRepository.delete(porter.getEmployeeId());
 
-        Porter notInSet = porterRepository.find(porter.getEmployeeId());
+        Porter notInSet = porterRepository.read(porter.getEmployeeId());
 
         Assert.assertNull(notInSet);
 

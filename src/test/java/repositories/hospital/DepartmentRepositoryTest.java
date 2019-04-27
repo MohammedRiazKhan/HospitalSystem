@@ -5,17 +5,18 @@ import factories.hospital.DepartmentFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.DepartmentRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class DepartmentRepositoryTest {
 
-    DepartmentRepository departmentRepository;
+    DepartmentRepositoryImpl departmentRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        departmentRepository = DepartmentRepository.getRepository();
+        departmentRepository = DepartmentRepositoryImpl.getRepository();
 
     }
 
@@ -70,7 +71,7 @@ public class DepartmentRepositoryTest {
 
         Assert.assertNotNull(departmentRepository.getAll());
 
-        departmentRepository.delete(department);
+        departmentRepository.delete(department.getDepartmentId());
 
         Department dep = departmentRepository.find(department.getDepartmentId());
 

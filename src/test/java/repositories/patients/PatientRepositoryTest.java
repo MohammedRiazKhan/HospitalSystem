@@ -7,15 +7,16 @@ import factories.patients.InPatientFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.PatientRepositoryImpl;
 import repositories.patients.PatientRepository;
 
 public class PatientRepositoryTest {
 
-    PatientRepository patientRepository;
+    PatientRepositoryImpl patientRepository;
 
     @Before
     public void setUp() throws Exception {
-        patientRepository = PatientRepository.getRepository();
+        patientRepository = PatientRepositoryImpl.getRepository();
     }
 
 
@@ -89,7 +90,7 @@ public class PatientRepositoryTest {
         Assert.assertNotNull(patientRepository.getAll());
 
         //deleting the patient
-        patientRepository.delete(patient);
+        patientRepository.delete(patient.getPatientId());
 
         //checking if object is in set
         Patient patientInSet = patientRepository.find(patient.getPatientId());

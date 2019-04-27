@@ -5,18 +5,19 @@ import factories.employee.NurseFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.NurseRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class NurseRepositoryTest {
 
 
-    NurseRepository nurseRepository;
+    NurseRepositoryImpl nurseRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        nurseRepository = NurseRepository.getRepository();
+        nurseRepository = NurseRepositoryImpl.getRepository();
 
     }
 
@@ -40,7 +41,7 @@ public class NurseRepositoryTest {
 
         Assert.assertNotNull(nurseRepository.getAll());
 
-        Nurse fromSet = nurseRepository.find(nurse.getEmployeeId());
+        Nurse fromSet = nurseRepository.read(nurse.getEmployeeId());
 
         Assert.assertEquals(nurse, fromSet);
 
@@ -71,7 +72,7 @@ public class NurseRepositoryTest {
 
         Assert.assertNotNull(nurseRepository.getAll());
 
-        nurseRepository.delete(nurse);
+        nurseRepository.delete(nurse.getEmployeeId());
 
         Nurse nurseJackieClone = nurseRepository.find(nurse.getEmployeeId());
 

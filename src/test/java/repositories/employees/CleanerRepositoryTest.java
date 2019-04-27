@@ -5,18 +5,19 @@ import factories.employee.CleanerFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.CleanerRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class CleanerRepositoryTest {
 
 
-    CleanerRepository cleanerRepository;
+    CleanerRepositoryImpl cleanerRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        cleanerRepository = CleanerRepository.getCleanerRepository();
+        cleanerRepository = CleanerRepositoryImpl.getCleanerRepository();
 
     }
 
@@ -80,7 +81,7 @@ public class CleanerRepositoryTest {
         Assert.assertNotNull(cleanerRepository.getAll());
 
         //delete
-        cleanerRepository.delete(cleaner);
+        cleanerRepository.delete(cleaner.getEmployeeId());
 
         //try to get it
         Cleaner notThere = cleanerRepository.find(cleaner.getEmployeeId());

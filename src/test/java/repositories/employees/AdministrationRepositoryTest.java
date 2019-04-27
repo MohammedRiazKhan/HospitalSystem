@@ -5,17 +5,18 @@ import factories.employee.AdministrationFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.AdministrationRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class AdministrationRepositoryTest {
 
-    AdministrationRepository administrationRepository;
+    AdministrationRepositoryImpl administrationRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        administrationRepository = AdministrationRepository.getAdministrationRepository();
+        administrationRepository = AdministrationRepositoryImpl.getAdministrationRepository();
 
     }
 
@@ -56,7 +57,7 @@ public class AdministrationRepositoryTest {
         administrationRepository.update(adminUpdate);
 
         //get the updated version
-        Administration updatedVersion = administrationRepository.find(adminUpdate.getEmployeeId());
+        Administration updatedVersion = administrationRepository.read(adminUpdate.getEmployeeId());
 
         Assert.assertEquals(adminUpdate, updatedVersion);
 
@@ -72,7 +73,7 @@ public class AdministrationRepositoryTest {
         //checks that its not empty
         Assert.assertNotNull(administrationRepository.getAll());
 
-        administrationRepository.delete(admin);
+        administrationRepository.delete(admin.getEmployeeId());
 
         //check if its deleted
         Administration updatedVersion = administrationRepository.find(admin.getEmployeeId());

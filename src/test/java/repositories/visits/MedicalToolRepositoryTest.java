@@ -6,17 +6,18 @@ import factories.visits.MedicationFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.MedicationRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class MedicalToolRepositoryTest {
 
-    MedicationRepository medicationRepository;
+    MedicationRepositoryImpl medicationRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        medicationRepository = MedicationRepository.getRepository();
+        medicationRepository = MedicationRepositoryImpl.getRepository();
 
     }
 
@@ -72,7 +73,7 @@ public class MedicalToolRepositoryTest {
 
         Assert.assertNotNull(medicationRepository.getAll());
 
-        medicationRepository.delete(medication);
+        medicationRepository.delete(medication.getMedicationId());
 
         Medication medic = medicationRepository.find(medication.getMedicationId());
 

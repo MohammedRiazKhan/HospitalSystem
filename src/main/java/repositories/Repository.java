@@ -1,22 +1,13 @@
 package repositories;
 
-import java.util.Set;
-
-public interface Repository<T> {
-
-    T find(int id);
+public interface  Repository<T, ID> {
 
     void create(T t);
 
-    T read(final int id);
+    T read(ID id);
 
     void update(T t);
 
-    void delete(T t);
-
-    Set<T> getAll();
-
-
-
+    void delete(ID id);
 
 }

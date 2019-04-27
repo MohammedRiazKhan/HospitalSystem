@@ -5,18 +5,19 @@ import factories.hospital.RoomFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.Impl.RoomRepositoryImpl;
 
 import static org.junit.Assert.*;
 
 public class RoomRepositoryTest {
 
 
-    RoomRepository roomRepository;
+    RoomRepositoryImpl roomRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        roomRepository = RoomRepository.getRoomRepository();
+        roomRepository = RoomRepositoryImpl.getRoomRepository();
 
     }
 
@@ -73,7 +74,7 @@ public class RoomRepositoryTest {
 
         Assert.assertNotNull(roomRepository.getAll());
 
-        roomRepository.delete(room);
+        roomRepository.delete(room.getRoomId());
 
         Room room1 = roomRepository.find(room.getRoomId());
 
