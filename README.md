@@ -1,4 +1,4 @@
-# me.mohammedriaz.HospitalSystem
+# HospitalSystem
 
 The aim of the system with which I am solving this me.mohammedriaz.domain, is to assist doctors as well as nursing staff, 
 to better manage their day to day operations with the use of a hospital system. 
