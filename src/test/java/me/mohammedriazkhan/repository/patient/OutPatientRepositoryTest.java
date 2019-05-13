@@ -7,7 +7,7 @@ import me.mohammedriazkhan.factory.patient.InPatientFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import me.mohammedriazkhan.repository.Impl.PatientRepositoryImpl;
+import me.mohammedriazkhan.repository.patient.impl.PatientRepositoryImpl;
 
 public class OutPatientRepositoryTest {
 

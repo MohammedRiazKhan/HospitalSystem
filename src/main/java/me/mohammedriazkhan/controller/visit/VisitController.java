@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.controller.visit;
 
 import me.mohammedriazkhan.domain.visit.Visit;
-import me.mohammedriazkhan.service.Impl.VisitServiceImpl;
+import me.mohammedriazkhan.service.visit.impl.VisitServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

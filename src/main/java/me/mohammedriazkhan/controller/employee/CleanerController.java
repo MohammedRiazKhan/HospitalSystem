@@ -2,7 +2,7 @@ package me.mohammedriazkhan.controller.employee;
 
 import me.mohammedriazkhan.domain.employee.Cleaner;
 import me.mohammedriazkhan.factory.employee.CleanerFactory;
-import me.mohammedriazkhan.service.Impl.CleanerServiceImpl;
+import me.mohammedriazkhan.service.employee.impl.CleanerServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

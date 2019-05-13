@@ -5,7 +5,7 @@ import me.mohammedriazkhan.factory.patient.ReportFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import me.mohammedriazkhan.repository.Impl.ReportRepositoryImpl;
+import me.mohammedriazkhan.repository.patient.impl.ReportRepositoryImpl;
 
 public class ReportRepositoryTest {
 

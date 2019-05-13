@@ -5,7 +5,7 @@ import me.mohammedriazkhan.factory.hospital.RoomFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import me.mohammedriazkhan.service.Impl.RoomServiceImpl;
+import me.mohammedriazkhan.service.hospital.impl.RoomServiceImpl;
 
 public class RoomServiceImplTest {
 

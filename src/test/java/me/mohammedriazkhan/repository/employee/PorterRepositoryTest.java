@@ -5,7 +5,7 @@ import me.mohammedriazkhan.factory.employee.PorterFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import me.mohammedriazkhan.repository.Impl.PorterRepositoryImpl;
+import me.mohammedriazkhan.repository.employee.impl.PorterRepositoryImpl;
 
 public class PorterRepositoryTest {
 

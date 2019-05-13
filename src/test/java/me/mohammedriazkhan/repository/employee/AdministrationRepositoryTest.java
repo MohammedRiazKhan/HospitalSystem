@@ -5,7 +5,7 @@ import me.mohammedriazkhan.factory.employee.AdministrationFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import me.mohammedriazkhan.repository.Impl.AdministrationRepositoryImpl;
+import me.mohammedriazkhan.repository.employee.impl.AdministrationRepositoryImpl;
 
 public class AdministrationRepositoryTest {
 

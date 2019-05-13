@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.controller.appointment;
 
 import me.mohammedriazkhan.domain.appoinment.Appointment;
-import me.mohammedriazkhan.service.Impl.AppointmentServiceImpl;
+import me.mohammedriazkhan.service.appointment.impl.AppointmentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

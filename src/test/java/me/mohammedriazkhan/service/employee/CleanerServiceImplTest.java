@@ -5,7 +5,7 @@ import me.mohammedriazkhan.factory.employee.CleanerFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import me.mohammedriazkhan.service.Impl.CleanerServiceImpl;
+import me.mohammedriazkhan.service.employee.impl.CleanerServiceImpl;
 
 public class CleanerServiceImplTest {
 

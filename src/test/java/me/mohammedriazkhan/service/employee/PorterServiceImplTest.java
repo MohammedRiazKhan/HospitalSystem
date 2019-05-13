@@ -5,7 +5,7 @@ import me.mohammedriazkhan.factory.employee.PorterFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import me.mohammedriazkhan.service.Impl.PorterServiceImpl;
+import me.mohammedriazkhan.service.employee.impl.PorterServiceImpl;
 
 public class PorterServiceImplTest {
     PorterServiceImpl porterService;

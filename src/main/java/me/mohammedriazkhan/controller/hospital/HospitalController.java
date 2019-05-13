@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.controller.hospital;
 
 import me.mohammedriazkhan.domain.hospital.Hospital;
-import me.mohammedriazkhan.service.Impl.HospitalServiceImpl;
+import me.mohammedriazkhan.service.hospital.impl.HospitalServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

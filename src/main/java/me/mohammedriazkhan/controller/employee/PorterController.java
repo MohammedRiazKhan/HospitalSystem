@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.controller.employee;
 
 import me.mohammedriazkhan.domain.employee.Porter;
-import me.mohammedriazkhan.service.Impl.PorterServiceImpl;
+import me.mohammedriazkhan.service.employee.impl.PorterServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

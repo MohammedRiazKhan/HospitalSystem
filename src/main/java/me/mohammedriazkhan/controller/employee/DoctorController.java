@@ -3,7 +3,7 @@ package me.mohammedriazkhan.controller.employee;
 import me.mohammedriazkhan.domain.employee.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import me.mohammedriazkhan.service.Impl.DoctorServiceImpl;
+import me.mohammedriazkhan.service.employee.impl.DoctorServiceImpl;
 
 import java.util.Set;
 

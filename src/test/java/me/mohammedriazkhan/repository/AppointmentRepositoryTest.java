@@ -5,7 +5,7 @@ import me.mohammedriazkhan.factory.appointment.AppointmentFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import me.mohammedriazkhan.repository.Impl.AppointmentRepositoryImpl;
+import me.mohammedriazkhan.repository.appointment.impl.AppointmentRepositoryImpl;
 
 public class AppointmentRepositoryTest {
 

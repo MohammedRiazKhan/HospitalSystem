@@ -5,7 +5,7 @@ import me.mohammedriazkhan.factory.employee.AdministrationFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import me.mohammedriazkhan.service.Impl.AdministrationServiceImpl;
+import me.mohammedriazkhan.service.employee.impl.AdministrationServiceImpl;
 
 public class AdministrationServiceImplTest {
 

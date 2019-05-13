@@ -5,7 +5,7 @@ import me.mohammedriazkhan.factory.patient.ReportFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import me.mohammedriazkhan.service.Impl.ReportServiceImpl;
+import me.mohammedriazkhan.service.patient.impl.ReportServiceImpl;
 
 public class ReportServiceImplTest {
 

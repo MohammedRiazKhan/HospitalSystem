@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.controller.visit;
 
 import me.mohammedriazkhan.domain.visit.MedicalTool;
-import me.mohammedriazkhan.service.Impl.MedicalToolServiceImpl;
+import me.mohammedriazkhan.service.visit.impl.MedicalToolServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

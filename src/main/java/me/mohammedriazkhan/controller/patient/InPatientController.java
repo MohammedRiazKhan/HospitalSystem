@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.controller.patient;
 
 import me.mohammedriazkhan.domain.patient.InPatient;
-import me.mohammedriazkhan.service.Impl.InPatientServiceImpl;
+import me.mohammedriazkhan.service.patient.impl.InPatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

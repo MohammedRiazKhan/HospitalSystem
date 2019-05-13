@@ -5,7 +5,7 @@ import me.mohammedriazkhan.factory.visit.MedicationFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import me.mohammedriazkhan.repository.Impl.MedicationRepositoryImpl;
+import me.mohammedriazkhan.repository.visit.impl.MedicationRepositoryImpl;
 
 public class MedicationRepositoryTest {
 

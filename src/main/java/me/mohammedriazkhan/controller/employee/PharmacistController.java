@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.controller.employee;
 
 import me.mohammedriazkhan.domain.employee.Pharmacist;
-import me.mohammedriazkhan.service.Impl.PharmacistServiceImpl;
+import me.mohammedriazkhan.service.employee.impl.PharmacistServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
