@@ -1,5 +1,7 @@
 package me.mohammedriazkhan.domain.employee;
 
+import java.util.Arrays;
+
 public class Porter extends Employee{
 
     private int[] accessKeys;
@@ -40,6 +42,23 @@ public class Porter extends Employee{
         @Override
         public Employee build() {
             return new Porter(this);
+        }
+
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            PorterBuilder that = (PorterBuilder) o;
+
+            return Arrays.equals(accessKeys, that.accessKeys);
+
+        }
+
+        @Override
+        public int hashCode() {
+            return Arrays.hashCode(accessKeys);
         }
 
         @Override

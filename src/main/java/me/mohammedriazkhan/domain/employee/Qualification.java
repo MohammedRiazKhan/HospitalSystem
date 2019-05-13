@@ -99,6 +99,31 @@ public class Qualification {
                     ", duration='" + duration + '\'' +
                     '}';
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            QualificationBuilder that = (QualificationBuilder) o;
+
+            if (qualificationId != that.qualificationId) return false;
+            if (qualificationName != null ? !qualificationName.equals(that.qualificationName) : that.qualificationName != null)
+                return false;
+            if (instituteName != null ? !instituteName.equals(that.instituteName) : that.instituteName != null)
+                return false;
+            return duration != null ? duration.equals(that.duration) : that.duration == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = qualificationId;
+            result = 31 * result + (qualificationName != null ? qualificationName.hashCode() : 0);
+            result = 31 * result + (instituteName != null ? instituteName.hashCode() : 0);
+            result = 31 * result + (duration != null ? duration.hashCode() : 0);
+            return result;
+        }
     }
 
 }

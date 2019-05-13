@@ -50,6 +50,25 @@ public class Room {
                     "roomId=" + roomId +
                     '}';
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            RoomBuilder that = (RoomBuilder) o;
+
+            if (roomId != that.roomId) return false;
+            return equipment != null ? equipment.equals(that.equipment) : that.equipment == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = roomId;
+            result = 31 * result + (equipment != null ? equipment.hashCode() : 0);
+            return result;
+        }
     }
 
 

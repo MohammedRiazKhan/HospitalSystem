@@ -41,6 +41,22 @@ public class Administration extends Employee{
                    "accessLevel='" + accessLevel + '\'' +
                    "} " + super.toString();
        }
+
+       @Override
+       public boolean equals(Object o) {
+           if (this == o) return true;
+           if (o == null || getClass() != o.getClass()) return false;
+
+           AdminBuilder that = (AdminBuilder) o;
+
+           return accessLevel != null ? accessLevel.equals(that.accessLevel) : that.accessLevel == null;
+
+       }
+
+       @Override
+       public int hashCode() {
+           return accessLevel != null ? accessLevel.hashCode() : 0;
+       }
    }
 
     public String getAccessLevel() {

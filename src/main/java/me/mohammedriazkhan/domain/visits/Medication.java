@@ -90,6 +90,30 @@ public class Medication {
                     ", dose=" + dose +
                     '}';
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            MedicationBuilder that = (MedicationBuilder) o;
+
+            if (medicationId != that.medicationId) return false;
+            if (dose != that.dose) return false;
+            if (medicineName != null ? !medicineName.equals(that.medicineName) : that.medicineName != null)
+                return false;
+            return description != null ? description.equals(that.description) : that.description == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = medicationId;
+            result = 31 * result + (medicineName != null ? medicineName.hashCode() : 0);
+            result = 31 * result + (description != null ? description.hashCode() : 0);
+            result = 31 * result + dose;
+            return result;
+        }
     }
 
 }

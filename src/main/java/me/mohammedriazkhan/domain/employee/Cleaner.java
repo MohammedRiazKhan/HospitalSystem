@@ -44,8 +44,24 @@ public class Cleaner extends Employee{
         }
 
         @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            CleanerBuilder that = (CleanerBuilder) o;
+
+            return Arrays.equals(rooms, that.rooms);
+
+        }
+
+        @Override
+        public int hashCode() {
+            return Arrays.hashCode(rooms);
+        }
+
+        @Override
         public Employee build() {
-            return null;
+            return new Cleaner(this);
         }
     }
 

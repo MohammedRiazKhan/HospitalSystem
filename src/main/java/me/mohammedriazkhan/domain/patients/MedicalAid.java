@@ -41,6 +41,22 @@ public class MedicalAid extends Account{
         }
 
         @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            MedicalAidBuilder that = (MedicalAidBuilder) o;
+
+            return medicalAidNo == that.medicalAidNo;
+
+        }
+
+        @Override
+        public int hashCode() {
+            return medicalAidNo;
+        }
+
+        @Override
         public Account build() {
             return new MedicalAid(this);
         }

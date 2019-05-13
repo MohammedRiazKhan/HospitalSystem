@@ -39,6 +39,25 @@ public class Specialist extends Doctor{
                     "school='" + school + '\'' +
                     "} " + super.toString();
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            if (!super.equals(o)) return false;
+
+            SpecialistBuilder that = (SpecialistBuilder) o;
+
+            return school != null ? school.equals(that.school) : that.school == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = super.hashCode();
+            result = 31 * result + (school != null ? school.hashCode() : 0);
+            return result;
+        }
     }
 
     public String getSchool() {

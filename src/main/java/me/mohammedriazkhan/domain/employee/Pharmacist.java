@@ -40,6 +40,22 @@ public class Pharmacist extends Employee{
                     "medic=" + Arrays.toString(medic) +
                     "} " + super.toString();
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            PharmacistBuilder that = (PharmacistBuilder) o;
+
+            return Arrays.equals(medic, that.medic);
+
+        }
+
+        @Override
+        public int hashCode() {
+            return Arrays.hashCode(medic);
+        }
     }
 
     public int[] getMedic() {

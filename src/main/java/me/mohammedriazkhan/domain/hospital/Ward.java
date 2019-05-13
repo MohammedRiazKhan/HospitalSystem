@@ -59,6 +59,25 @@ public class Ward {
                     ", wardCode='" + wardCode + '\'' +
                     '}';
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            WardBuilder that = (WardBuilder) o;
+
+            if (wardId != that.wardId) return false;
+            return wardCode != null ? wardCode.equals(that.wardCode) : that.wardCode == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = wardId;
+            result = 31 * result + (wardCode != null ? wardCode.hashCode() : 0);
+            return result;
+        }
     }
 
 }

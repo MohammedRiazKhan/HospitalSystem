@@ -50,6 +50,22 @@ public class OutPatient extends Patient{
                     "appointment=" + appointment +
                     "} " + super.toString();
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            OutPatientBuilder that = (OutPatientBuilder) o;
+
+            return appointment != null ? appointment.equals(that.appointment) : that.appointment == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            return appointment != null ? appointment.hashCode() : 0;
+        }
     }
 
 }

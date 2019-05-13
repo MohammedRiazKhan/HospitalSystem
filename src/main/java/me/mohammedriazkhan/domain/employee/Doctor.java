@@ -73,5 +73,25 @@ public class Doctor extends Employee{
                     ", patients=" + patients +
                     "} " + super.toString();
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            DoctorBuilder that = (DoctorBuilder) o;
+
+            if (specialisation != null ? !specialisation.equals(that.specialisation) : that.specialisation != null)
+                return false;
+            return patients != null ? patients.equals(that.patients) : that.patients == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = specialisation != null ? specialisation.hashCode() : 0;
+            result = 31 * result + (patients != null ? patients.hashCode() : 0);
+            return result;
+        }
     }
 }

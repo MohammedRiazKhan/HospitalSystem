@@ -39,6 +39,22 @@ public class Nurse extends Employee{
                     "type='" + type + '\'' +
                     "} " + super.toString();
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            NurseBuilder that = (NurseBuilder) o;
+
+            return type != null ? type.equals(that.type) : that.type == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            return type != null ? type.hashCode() : 0;
+        }
     }
 
 

@@ -96,6 +96,29 @@ public class Department {
                     ", rooms=" + rooms +
                     '}';
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            DepartmentBuilder that = (DepartmentBuilder) o;
+
+            if (departmentId != that.departmentId) return false;
+            if (hospitalId != that.hospitalId) return false;
+            if (wards != null ? !wards.equals(that.wards) : that.wards != null) return false;
+            return rooms != null ? rooms.equals(that.rooms) : that.rooms == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = departmentId;
+            result = 31 * result + hospitalId;
+            result = 31 * result + (wards != null ? wards.hashCode() : 0);
+            result = 31 * result + (rooms != null ? rooms.hashCode() : 0);
+            return result;
+        }
     }
 
 }

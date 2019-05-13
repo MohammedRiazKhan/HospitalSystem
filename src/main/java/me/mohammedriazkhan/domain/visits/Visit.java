@@ -149,6 +149,35 @@ public class Visit {
                     ", tools=" + tools +
                     '}';
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            VisitBuilder that = (VisitBuilder) o;
+
+            if (visitId != that.visitId) return false;
+            if (visitDate != null ? !visitDate.equals(that.visitDate) : that.visitDate != null) return false;
+            if (patient != null ? !patient.equals(that.patient) : that.patient != null) return false;
+            if (doctor != null ? !doctor.equals(that.doctor) : that.doctor != null) return false;
+            if (nurse != null ? !nurse.equals(that.nurse) : that.nurse != null) return false;
+            if (medication != null ? !medication.equals(that.medication) : that.medication != null) return false;
+            return tools != null ? tools.equals(that.tools) : that.tools == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = visitId;
+            result = 31 * result + (visitDate != null ? visitDate.hashCode() : 0);
+            result = 31 * result + (patient != null ? patient.hashCode() : 0);
+            result = 31 * result + (doctor != null ? doctor.hashCode() : 0);
+            result = 31 * result + (nurse != null ? nurse.hashCode() : 0);
+            result = 31 * result + (medication != null ? medication.hashCode() : 0);
+            result = 31 * result + (tools != null ? tools.hashCode() : 0);
+            return result;
+        }
     }
 
 }

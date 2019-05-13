@@ -110,6 +110,31 @@ public class Report {
                     ", patient=" + patient +
                     '}';
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            ReportBuilder that = (ReportBuilder) o;
+
+            if (reportId != that.reportId) return false;
+            if (title != null ? !title.equals(that.title) : that.title != null) return false;
+            if (description != null ? !description.equals(that.description) : that.description != null) return false;
+            if (dateRange != null ? !dateRange.equals(that.dateRange) : that.dateRange != null) return false;
+            return patient != null ? patient.equals(that.patient) : that.patient == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = reportId;
+            result = 31 * result + (title != null ? title.hashCode() : 0);
+            result = 31 * result + (description != null ? description.hashCode() : 0);
+            result = 31 * result + (dateRange != null ? dateRange.hashCode() : 0);
+            result = 31 * result + (patient != null ? patient.hashCode() : 0);
+            return result;
+        }
     }
 
 }

@@ -111,6 +111,31 @@ public class Meal {
                     ", patient=" + patient +
                     '}';
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            MealBuilder that = (MealBuilder) o;
+
+            if (mealId != that.mealId) return false;
+            if (breakfast != null ? !breakfast.equals(that.breakfast) : that.breakfast != null) return false;
+            if (lunch != null ? !lunch.equals(that.lunch) : that.lunch != null) return false;
+            if (supper != null ? !supper.equals(that.supper) : that.supper != null) return false;
+            return patient != null ? patient.equals(that.patient) : that.patient == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = mealId;
+            result = 31 * result + (breakfast != null ? breakfast.hashCode() : 0);
+            result = 31 * result + (lunch != null ? lunch.hashCode() : 0);
+            result = 31 * result + (supper != null ? supper.hashCode() : 0);
+            result = 31 * result + (patient != null ? patient.hashCode() : 0);
+            return result;
+        }
     }
 
 }

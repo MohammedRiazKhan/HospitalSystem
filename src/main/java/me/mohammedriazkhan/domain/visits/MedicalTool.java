@@ -82,6 +82,27 @@ public class MedicalTool {
                     ", toolCost='" + toolCost + '\'' +
                     '}';
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            MedicalToolBuilder that = (MedicalToolBuilder) o;
+
+            if (toolId != that.toolId) return false;
+            if (toolName != null ? !toolName.equals(that.toolName) : that.toolName != null) return false;
+            return toolCost != null ? toolCost.equals(that.toolCost) : that.toolCost == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = toolId;
+            result = 31 * result + (toolName != null ? toolName.hashCode() : 0);
+            result = 31 * result + (toolCost != null ? toolCost.hashCode() : 0);
+            return result;
+        }
     }
 
 }

@@ -41,6 +41,23 @@ public class Cash extends Account{
         }
 
         @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            CashBuilder that = (CashBuilder) o;
+
+            return Double.compare(that.cashAmount, cashAmount) == 0;
+
+        }
+
+        @Override
+        public int hashCode() {
+            long temp = Double.doubleToLongBits(cashAmount);
+            return (int) (temp ^ (temp >>> 32));
+        }
+
+        @Override
         public Account build() {
             return new Cash(this);
         }

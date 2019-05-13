@@ -84,6 +84,27 @@ public class Hospital {
                     ", hospitalName='" + hospitalName + '\'' +
                     '}';
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            HospitalBuilder that = (HospitalBuilder) o;
+
+            if (hospitalId != that.hospitalId) return false;
+            if (departments != null ? !departments.equals(that.departments) : that.departments != null) return false;
+            return hospitalName != null ? hospitalName.equals(that.hospitalName) : that.hospitalName == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = departments != null ? departments.hashCode() : 0;
+            result = 31 * result + hospitalId;
+            result = 31 * result + (hospitalName != null ? hospitalName.hashCode() : 0);
+            return result;
+        }
     }
 
 }

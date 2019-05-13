@@ -81,6 +81,27 @@ public class Appointment {
                     ", patient=" + patient +
                     '}';
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            AppointmentBuilder that = (AppointmentBuilder) o;
+
+            if (appointmentId != that.appointmentId) return false;
+            if (bookingDate != null ? !bookingDate.equals(that.bookingDate) : that.bookingDate != null) return false;
+            return patient != null ? patient.equals(that.patient) : that.patient == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = appointmentId;
+            result = 31 * result + (bookingDate != null ? bookingDate.hashCode() : 0);
+            result = 31 * result + (patient != null ? patient.hashCode() : 0);
+            return result;
+        }
     }
 
 }

@@ -66,6 +66,25 @@ public class InPatient extends Patient{
                     ", meal=" + meal +
                     "} " + super.toString();
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            InPatientBuilder that = (InPatientBuilder) o;
+
+            if (daysStayed != null ? !daysStayed.equals(that.daysStayed) : that.daysStayed != null) return false;
+            return meal != null ? meal.equals(that.meal) : that.meal == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = daysStayed != null ? daysStayed.hashCode() : 0;
+            result = 31 * result + (meal != null ? meal.hashCode() : 0);
+            return result;
+        }
     }
 
 
