@@ -1,7 +1,8 @@
 package me.mohammedriazkhan.controller.visit;
 
-import me.mohammedriazkhan.domain.visits.Medication;
+import me.mohammedriazkhan.domain.visit.Medication;
 import me.mohammedriazkhan.service.Impl.MedicationServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -10,12 +11,8 @@ import java.util.Set;
 @RequestMapping("/medication")
 public class MedicationController {
 
-    private final MedicationServiceImpl medicationService;
-
-    public MedicationController(MedicationServiceImpl medicationService) {
-        this.medicationService = medicationService;
-    }
-
+    @Autowired
+    private MedicationServiceImpl medicationService;
 
     @PostMapping
     public Medication create(@RequestBody Medication t){

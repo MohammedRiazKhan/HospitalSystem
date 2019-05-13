@@ -1,6 +1,6 @@
 package me.mohammedriazkhan.repository.appointment;
 
-import me.mohammedriazkhan.domain.appoinments.Appointment;
+import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.repository.Repository;
 
 import java.util.Set;

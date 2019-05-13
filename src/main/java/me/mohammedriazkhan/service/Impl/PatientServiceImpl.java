@@ -1,9 +1,9 @@
 package me.mohammedriazkhan.service.Impl;
 
-import me.mohammedriazkhan.domain.patients.Patient;
+import me.mohammedriazkhan.domain.patient.Patient;
 import me.mohammedriazkhan.repository.Impl.PatientRepositoryImpl;
-import me.mohammedriazkhan.repository.patients.PatientRepository;
-import me.mohammedriazkhan.service.patients.PatientService;
+import me.mohammedriazkhan.repository.patient.PatientRepository;
+import me.mohammedriazkhan.service.patient.PatientService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

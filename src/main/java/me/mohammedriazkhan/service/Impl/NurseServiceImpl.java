@@ -2,8 +2,8 @@ package me.mohammedriazkhan.service.Impl;
 
 import me.mohammedriazkhan.domain.employee.Nurse;
 import me.mohammedriazkhan.repository.Impl.NurseRepositoryImpl;
-import me.mohammedriazkhan.repository.employees.NurseRepository;
-import me.mohammedriazkhan.service.employees.NurseService;
+import me.mohammedriazkhan.repository.employee.NurseRepository;
+import me.mohammedriazkhan.service.employee.NurseService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

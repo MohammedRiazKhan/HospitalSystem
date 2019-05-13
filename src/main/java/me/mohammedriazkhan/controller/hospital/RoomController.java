@@ -14,10 +14,6 @@ public class RoomController {
     @Autowired
     private RoomServiceImpl roomService;
 
-    @Autowired
-    public RoomController(RoomServiceImpl roomService) {
-        this.roomService = roomService;
-    }
 
     @PostMapping
     public Room create(@RequestBody Room t){

@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.domain.employee;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import me.mohammedriazkhan.domain.patients.Patient;
+import me.mohammedriazkhan.domain.patient.Patient;
 
 import java.util.List;
 

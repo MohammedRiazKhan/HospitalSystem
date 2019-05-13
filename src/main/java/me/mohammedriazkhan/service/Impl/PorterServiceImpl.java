@@ -2,8 +2,8 @@ package me.mohammedriazkhan.service.Impl;
 
 import me.mohammedriazkhan.domain.employee.Porter;
 import me.mohammedriazkhan.repository.Impl.PorterRepositoryImpl;
-import me.mohammedriazkhan.repository.employees.PorterRepository;
-import me.mohammedriazkhan.service.employees.PorterService;
+import me.mohammedriazkhan.repository.employee.PorterRepository;
+import me.mohammedriazkhan.service.employee.PorterService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

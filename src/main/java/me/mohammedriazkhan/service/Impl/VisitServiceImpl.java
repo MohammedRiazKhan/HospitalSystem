@@ -1,9 +1,9 @@
 package me.mohammedriazkhan.service.Impl;
 
-import me.mohammedriazkhan.domain.visits.Visit;
+import me.mohammedriazkhan.domain.visit.Visit;
 import me.mohammedriazkhan.repository.Impl.VisitRepositoryImpl;
-import me.mohammedriazkhan.repository.visits.VisitRepository;
-import me.mohammedriazkhan.service.visits.VisitService;
+import me.mohammedriazkhan.repository.visit.VisitRepository;
+import me.mohammedriazkhan.service.visit.VisitService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

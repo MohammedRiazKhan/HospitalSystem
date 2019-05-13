@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.repository.Impl;
 
 import me.mohammedriazkhan.domain.employee.Cleaner;
-import me.mohammedriazkhan.repository.employees.CleanerRepository;
+import me.mohammedriazkhan.repository.employee.CleanerRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;

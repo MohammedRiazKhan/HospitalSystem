@@ -2,8 +2,8 @@ package me.mohammedriazkhan.service.Impl;
 
 import me.mohammedriazkhan.domain.employee.Cleaner;
 import me.mohammedriazkhan.repository.Impl.CleanerRepositoryImpl;
-import me.mohammedriazkhan.repository.employees.CleanerRepository;
-import me.mohammedriazkhan.service.employees.CleanerService;
+import me.mohammedriazkhan.repository.employee.CleanerRepository;
+import me.mohammedriazkhan.service.employee.CleanerService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.repository.Impl;
 
 import me.mohammedriazkhan.domain.employee.Porter;
-import me.mohammedriazkhan.repository.employees.PorterRepository;
+import me.mohammedriazkhan.repository.employee.PorterRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;

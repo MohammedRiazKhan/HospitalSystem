@@ -1,6 +1,6 @@
 package me.mohammedriazkhan.repository;
 
-import me.mohammedriazkhan.domain.appoinments.Appointment;
+import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.factory.appointment.AppointmentFactory;
 import org.junit.Assert;
 import org.junit.Before;

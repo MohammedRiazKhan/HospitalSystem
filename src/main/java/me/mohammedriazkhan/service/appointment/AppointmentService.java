@@ -1,6 +1,6 @@
 package me.mohammedriazkhan.service.appointment;
 
-import me.mohammedriazkhan.domain.appoinments.Appointment;
+import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.service.Service;
 
 import java.util.Set;

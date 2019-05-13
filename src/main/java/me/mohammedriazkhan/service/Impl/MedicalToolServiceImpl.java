@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.service.Impl;
 
-import me.mohammedriazkhan.domain.visits.MedicalTool;
-import me.mohammedriazkhan.service.visits.MedicalToolService;
+import me.mohammedriazkhan.domain.visit.MedicalTool;
+import me.mohammedriazkhan.service.visit.MedicalToolService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

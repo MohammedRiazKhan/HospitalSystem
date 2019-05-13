@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.factory.appointment;
 
-import me.mohammedriazkhan.domain.appoinments.Appointment;
-import me.mohammedriazkhan.domain.patients.Patient;
+import me.mohammedriazkhan.domain.appoinment.Appointment;
+import me.mohammedriazkhan.domain.patient.Patient;
 import me.mohammedriazkhan.utility.IDGenerator;
 
 public class AppointmentFactory {

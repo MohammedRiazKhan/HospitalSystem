@@ -3,8 +3,8 @@ package me.mohammedriazkhan.service.Impl;
 import me.mohammedriazkhan.domain.employee.Doctor;
 import org.springframework.stereotype.Service;
 import me.mohammedriazkhan.repository.Impl.DoctorRepositoryImpl;
-import me.mohammedriazkhan.repository.employees.DoctorRepository;
-import me.mohammedriazkhan.service.employees.DoctorService;
+import me.mohammedriazkhan.repository.employee.DoctorRepository;
+import me.mohammedriazkhan.service.employee.DoctorService;
 
 import java.util.Set;
 

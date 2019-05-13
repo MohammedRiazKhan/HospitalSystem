@@ -1,6 +1,6 @@
 package me.mohammedriazkhan.controller.patient;
 
-import me.mohammedriazkhan.domain.patients.Report;
+import me.mohammedriazkhan.domain.patient.Report;
 import me.mohammedriazkhan.service.Impl.ReportServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,13 +11,8 @@ import java.util.Set;
 @RequestMapping("/report")
 public class ReportController {
 
-    private final ReportServiceImpl reportService;
-
     @Autowired
-    public ReportController(ReportServiceImpl reportService) {
-        this.reportService = reportService;
-    }
-
+    private final ReportServiceImpl reportService;
 
     @PostMapping
     public Report create(@RequestBody Report t){

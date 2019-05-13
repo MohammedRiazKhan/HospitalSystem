@@ -1,6 +1,6 @@
 package me.mohammedriazkhan.controller.visit;
 
-import me.mohammedriazkhan.domain.visits.Visit;
+import me.mohammedriazkhan.domain.visit.Visit;
 import me.mohammedriazkhan.service.Impl.VisitServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +11,8 @@ import java.util.Set;
 @RequestMapping("/visit")
 public class VisitController {
 
-    private final VisitServiceImpl visitService;
-
     @Autowired
-    public VisitController(VisitServiceImpl visitService) {
-        this.visitService = visitService;
-    }
+    private VisitServiceImpl visitService;
 
     @PostMapping
     public Visit create(@RequestBody Visit t){

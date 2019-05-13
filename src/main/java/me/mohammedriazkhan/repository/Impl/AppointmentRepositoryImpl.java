@@ -1,6 +1,6 @@
 package me.mohammedriazkhan.repository.Impl;
 
-import me.mohammedriazkhan.domain.appoinments.Appointment;
+import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.repository.appointment.AppointmentRepository;
 import org.springframework.stereotype.Repository;
 

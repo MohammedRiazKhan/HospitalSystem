@@ -11,13 +11,8 @@ import java.util.Set;
 @RequestMapping("/department/ward")
 public class WardController {
 
-    private final WardServiceImpl wardService;
-
     @Autowired
-    public WardController(WardServiceImpl wardService) {
-        this.wardService = wardService;
-    }
-
+    private WardServiceImpl wardService;
 
     @PostMapping
     public Ward create(@RequestBody Ward t){

@@ -1,6 +1,6 @@
 package me.mohammedriazkhan.controller.patient;
 
-import me.mohammedriazkhan.domain.patients.Account;
+import me.mohammedriazkhan.domain.patient.Account;
 import me.mohammedriazkhan.service.Impl.AccountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,14 +11,8 @@ import java.util.Set;
 @RequestMapping("/account")
 public class AccountController {
 
-
-    private final AccountServiceImpl accountService;
-
     @Autowired
-    public AccountController(AccountServiceImpl accountService) {
-        this.accountService = accountService;
-    }
-
+    private AccountServiceImpl accountService;
 
     @PostMapping("/new")
     public Account create(@RequestBody Account account){

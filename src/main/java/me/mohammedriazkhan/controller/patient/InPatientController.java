@@ -1,6 +1,6 @@
 package me.mohammedriazkhan.controller.patient;
 
-import me.mohammedriazkhan.domain.patients.InPatient;
+import me.mohammedriazkhan.domain.patient.InPatient;
 import me.mohammedriazkhan.service.Impl.InPatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,13 +11,8 @@ import java.util.Set;
 @RequestMapping("patient/inpatient")
 public class InPatientController {
 
-    private final InPatientServiceImpl inPatientService;
-
     @Autowired
-    public InPatientController(InPatientServiceImpl inPatientService) {
-        this.inPatientService = inPatientService;
-    }
-
+    private InPatientServiceImpl inPatientService;
 
     @PostMapping
     public InPatient create(@RequestBody InPatient t){

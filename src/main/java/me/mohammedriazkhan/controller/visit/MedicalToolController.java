@@ -1,6 +1,6 @@
 package me.mohammedriazkhan.controller.visit;
 
-import me.mohammedriazkhan.domain.visits.MedicalTool;
+import me.mohammedriazkhan.domain.visit.MedicalTool;
 import me.mohammedriazkhan.service.Impl.MedicalToolServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +12,8 @@ import java.util.Set;
 
 public class MedicalToolController {
 
-    private final MedicalToolServiceImpl medicalToolService;
-
     @Autowired
-    public MedicalToolController(MedicalToolServiceImpl medicalToolService) {
-        this.medicalToolService = medicalToolService;
-    }
+    private MedicalToolServiceImpl medicalToolService;
 
     @PostMapping
     public MedicalTool create(@RequestBody MedicalTool t){

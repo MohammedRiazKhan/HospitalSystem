@@ -1,11 +1,11 @@
 package me.mohammedriazkhan.factory.appointment;
 
-import me.mohammedriazkhan.domain.appoinments.Appointment;
+import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.domain.employee.Doctor;
-import me.mohammedriazkhan.domain.patients.InPatient;
-import me.mohammedriazkhan.domain.patients.Meal;
+import me.mohammedriazkhan.domain.patient.InPatient;
+import me.mohammedriazkhan.domain.patient.Meal;
 import me.mohammedriazkhan.factory.employee.DoctorFactory;
-import me.mohammedriazkhan.factory.patients.InPatientFactory;
+import me.mohammedriazkhan.factory.patient.InPatientFactory;
 import org.junit.Assert;
 import org.junit.Test;
 

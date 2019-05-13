@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.repository.Impl;
 
-import me.mohammedriazkhan.domain.patients.Patient;
-import me.mohammedriazkhan.repository.patients.OutPatientRepository;
+import me.mohammedriazkhan.domain.patient.Patient;
+import me.mohammedriazkhan.repository.patient.OutPatientRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;

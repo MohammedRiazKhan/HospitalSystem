@@ -1,6 +1,6 @@
 package me.mohammedriazkhan.service.Impl;
 
-import me.mohammedriazkhan.domain.appoinments.Appointment;
+import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.repository.appointment.AppointmentRepository;
 import me.mohammedriazkhan.repository.Impl.AppointmentRepositoryImpl;
 import me.mohammedriazkhan.service.appointment.AppointmentService;
