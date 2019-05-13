@@ -1,4 +1,4 @@
-package me.mohammedriazkhan.controller;
+package me.mohammedriazkhan.controller.employee;
 
 import me.mohammedriazkhan.domain.employee.Doctor;
 import me.mohammedriazkhan.factory.employee.DoctorFactory;
@@ -29,6 +29,7 @@ public class DoctorControllerTest {
         doctor.setEmployeeId(1);
 
         ResponseEntity<Doctor> postResponse = restTemplate.postForEntity(baseURL + "/new", doctor, Doctor.class);
+
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
 
@@ -38,7 +39,7 @@ public class DoctorControllerTest {
     public void findById() {
 
         Doctor doctor = restTemplate.getForObject(baseURL + "/find/1", Doctor.class);
-        System.out.println(doctor.getFirstName());
+
         assertNotNull(doctor);
 
     }

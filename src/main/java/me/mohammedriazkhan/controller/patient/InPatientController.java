@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("patient/inpatient")
+@RequestMapping("/patient/inpatient")
 public class InPatientController {
 
     @Autowired

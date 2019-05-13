@@ -12,7 +12,7 @@ import java.util.Set;
 public class ReportController {
 
     @Autowired
-    private final ReportServiceImpl reportService;
+    private ReportServiceImpl reportService;
 
     @PostMapping
     public Report create(@RequestBody Report t){

@@ -11,6 +11,7 @@ import java.util.Set;
 @RequestMapping("/hospital")
 public class HospitalController {
 
+
     @Autowired
     private HospitalServiceImpl hospitalService;
 

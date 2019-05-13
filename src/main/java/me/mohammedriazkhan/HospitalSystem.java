@@ -12,5 +12,10 @@ public class HospitalSystem {
         SpringApplication.run(HospitalSystem.class, args);
     }
 
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
 
 }
