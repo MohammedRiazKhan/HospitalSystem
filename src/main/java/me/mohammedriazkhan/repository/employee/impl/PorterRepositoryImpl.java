@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-@Repository("InMemory")
+@Repository("PorterInMemory")
 public class PorterRepositoryImpl implements PorterRepository {
 
     private static PorterRepositoryImpl repository = null;

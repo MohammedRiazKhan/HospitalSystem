@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository("InMemory")
+@Repository("AdministrationInMemory")
 public class AdministrationRepositoryImpl implements AdministrationRepository {
 
     private static AdministrationRepositoryImpl administrationRepository = null;

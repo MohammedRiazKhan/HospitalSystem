@@ -7,7 +7,7 @@ import me.mohammedriazkhan.service.employee.AdministrationService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
-@Service
+@Service("AdministrationServiceImpl")
 public class AdministrationServiceImpl implements AdministrationService {
 
     private AdministrationServiceImpl service = null;

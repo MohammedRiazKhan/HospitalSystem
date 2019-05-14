@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-@Repository("InMemory")
+@Repository("CleanerInMemory")
 public class CleanerRepositoryImpl implements CleanerRepository{
 
     private static CleanerRepositoryImpl cleanerRepository = null;

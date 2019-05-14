@@ -8,7 +8,7 @@ import me.mohammedriazkhan.service.employee.DoctorService;
 
 import java.util.Set;
 
-@Service
+@Service("DoctorServiceImpl")
 public class DoctorServiceImpl implements DoctorService {
 
     private DoctorServiceImpl service = null;

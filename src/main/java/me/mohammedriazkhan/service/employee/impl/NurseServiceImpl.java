@@ -7,7 +7,7 @@ import me.mohammedriazkhan.service.employee.NurseService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
-@Service
+@Service("NurseServiceImpl")
 public class NurseServiceImpl implements NurseService {
 
     private NurseServiceImpl service = null;

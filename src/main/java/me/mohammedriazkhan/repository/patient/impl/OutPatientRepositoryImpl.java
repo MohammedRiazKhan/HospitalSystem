@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-@Repository("InMemory")
+@Repository("OutPatientInMemory")
 public class OutPatientRepositoryImpl implements OutPatientRepository {
 
     private static OutPatientRepositoryImpl repository = null;

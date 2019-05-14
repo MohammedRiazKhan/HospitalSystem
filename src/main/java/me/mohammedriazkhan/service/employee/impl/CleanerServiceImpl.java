@@ -7,7 +7,7 @@ import me.mohammedriazkhan.service.employee.CleanerService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
-@Service
+@Service("CleanerServiceImpl")
 public class CleanerServiceImpl implements CleanerService {
 
     private CleanerServiceImpl service = null;

@@ -4,13 +4,15 @@ import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.repository.appointment.AppointmentRepository;
 import me.mohammedriazkhan.repository.appointment.impl.AppointmentRepositoryImpl;
 import me.mohammedriazkhan.service.appointment.AppointmentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
-@Service
+@Service("AppointmentServiceImpl")
 public class AppointmentServiceImpl implements AppointmentService {
 
     private AppointmentServiceImpl service = null;
+
     private AppointmentRepository repository;
 
     public AppointmentServiceImpl(){

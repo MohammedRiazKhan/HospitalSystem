@@ -3,6 +3,7 @@ package me.mohammedriazkhan.controller.appointment;
 import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.service.appointment.impl.AppointmentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -12,6 +13,7 @@ import java.util.Set;
 public class AppointmentController {
 
     @Autowired
+    @Qualifier("AppointmentServiceImpl")
     private AppointmentServiceImpl appointmentService;
 
     @PostMapping("/new")

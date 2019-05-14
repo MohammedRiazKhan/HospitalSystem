@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-@Repository("InMemory")
+@Repository("WardInMemory")
 public class WardRepositoryImpl implements WardRepository {
 
     private static WardRepositoryImpl repository = null;
