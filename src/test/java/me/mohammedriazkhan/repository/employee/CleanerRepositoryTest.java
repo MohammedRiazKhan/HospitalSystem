@@ -61,7 +61,7 @@ public class CleanerRepositoryTest {
         cleanerRepository.update(cleaner2);
 
         //cleaner received
-        Cleaner cleaner3 = cleanerRepository.find(cleaner2.getEmployeeId());
+        Cleaner cleaner3 = cleanerRepository.read(cleaner2.getEmployeeId());
 
         Assert.assertEquals(cleaner3, cleaner2);
 
@@ -82,7 +82,7 @@ public class CleanerRepositoryTest {
         cleanerRepository.delete(cleaner.getEmployeeId());
 
         //try to get it
-        Cleaner notThere = cleanerRepository.find(cleaner.getEmployeeId());
+        Cleaner notThere = cleanerRepository.read(cleaner.getEmployeeId());
 
         Assert.assertNull(notThere);
 

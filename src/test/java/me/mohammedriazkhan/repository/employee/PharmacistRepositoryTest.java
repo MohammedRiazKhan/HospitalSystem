@@ -41,7 +41,7 @@ public class PharmacistRepositoryTest {
 
         Assert.assertNotNull(pharmacistRepository.getAll());
 
-        Pharmacist fromSet = pharmacistRepository.find(pharmacist.getEmployeeId());
+        Pharmacist fromSet = pharmacistRepository.read(pharmacist.getEmployeeId());
 
         Assert.assertEquals(pharmacist, fromSet);
 

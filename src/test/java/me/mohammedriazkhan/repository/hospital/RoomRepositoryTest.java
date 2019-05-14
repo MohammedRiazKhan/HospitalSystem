@@ -39,7 +39,7 @@ public class RoomRepositoryTest {
 
         Assert.assertNotNull(roomRepository.getAll());
 
-        Room room1 = roomRepository.find(room.getRoomId());
+        Room room1 = roomRepository.read(room.getRoomId());
 
         Assert.assertEquals(room, room1);
 
@@ -58,7 +58,7 @@ public class RoomRepositoryTest {
         room1.setRoomId(room.getRoomId());
         roomRepository.update(room1);
 
-        Room update = roomRepository.find(room1.getRoomId());
+        Room update = roomRepository.read(room1.getRoomId());
 
         Assert.assertEquals(room1, update);
 
@@ -74,7 +74,7 @@ public class RoomRepositoryTest {
 
         roomRepository.delete(room.getRoomId());
 
-        Room room1 = roomRepository.find(room.getRoomId());
+        Room room1 = roomRepository.read(room.getRoomId());
 
         Assert.assertNull(room1);
 

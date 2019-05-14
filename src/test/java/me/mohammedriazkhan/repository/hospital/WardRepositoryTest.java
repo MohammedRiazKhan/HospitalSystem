@@ -36,7 +36,7 @@ public class WardRepositoryTest {
 
         Assert.assertNotNull(wardRepository.getAll());
 
-        Ward ward1 = wardRepository.find(ward.getWardId());
+        Ward ward1 = wardRepository.read(ward.getWardId());
 
         Assert.assertEquals(ward, ward1);
 
@@ -54,7 +54,7 @@ public class WardRepositoryTest {
         ward1.setWardId(ward.getWardId());
         wardRepository.update(ward1);
 
-        Ward ward2 = wardRepository.find(ward1.getWardId());
+        Ward ward2 = wardRepository.read(ward1.getWardId());
 
         Assert.assertEquals(ward1, ward2);
 
@@ -70,7 +70,7 @@ public class WardRepositoryTest {
 
         wardRepository.delete(ward.getWardId());
 
-        Ward ward1 = wardRepository.find(ward.getWardId());
+        Ward ward1 = wardRepository.read(ward.getWardId());
 
         Assert.assertNull(ward1);
 

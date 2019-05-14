@@ -57,7 +57,7 @@ public class NurseRepositoryTest {
         nurseJackie.setEmployeeId(nurse.getEmployeeId());
         nurseRepository.update(nurseJackie);
 
-        Nurse nurseJackieClone = nurseRepository.find(nurseJackie.getEmployeeId());
+        Nurse nurseJackieClone = nurseRepository.read(nurseJackie.getEmployeeId());
 
         Assert.assertEquals(nurseJackie, nurseJackieClone);
 
@@ -72,7 +72,7 @@ public class NurseRepositoryTest {
 
         nurseRepository.delete(nurse.getEmployeeId());
 
-        Nurse nurseJackieClone = nurseRepository.find(nurse.getEmployeeId());
+        Nurse nurseJackieClone = nurseRepository.read(nurse.getEmployeeId());
 
         Assert.assertNull(nurseJackieClone);
 

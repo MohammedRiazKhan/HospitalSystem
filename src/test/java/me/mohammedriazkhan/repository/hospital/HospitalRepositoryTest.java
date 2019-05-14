@@ -62,7 +62,7 @@ public class HospitalRepositoryTest {
 
         hospitalRepository.update(hospitalUpdate);
 
-        Hospital updated = hospitalRepository.find(hospitalUpdate.getHospitalId());
+        Hospital updated = hospitalRepository.read(hospitalUpdate.getHospitalId());
 
         Assert.assertEquals(hospitalUpdate, updated);
 
@@ -80,7 +80,7 @@ public class HospitalRepositoryTest {
 
         hospitalRepository.delete(hospital.getHospitalId());
 
-        Hospital notThere = hospitalRepository.find(hospital.getHospitalId());
+        Hospital notThere = hospitalRepository.read(hospital.getHospitalId());
 
         Assert.assertNull(notThere);
 

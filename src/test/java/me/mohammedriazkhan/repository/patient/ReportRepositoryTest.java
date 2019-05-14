@@ -35,7 +35,7 @@ public class ReportRepositoryTest {
         reportitory.create(report);
         Assert.assertNotNull(reportitory.getAll());
 
-        Report fromSet = reportitory.find(report.getReportId());
+        Report fromSet = reportitory.read(report.getReportId());
 
         Assert.assertEquals(report, fromSet);
 
@@ -54,7 +54,7 @@ public class ReportRepositoryTest {
         update.setReportId(report.getReportId());
         reportitory.update(update);
 
-        Report updated = reportitory.find(report.getReportId());
+        Report updated = reportitory.read(report.getReportId());
 
         Assert.assertEquals(update, updated);
 
@@ -70,7 +70,7 @@ public class ReportRepositoryTest {
 
         reportitory.delete(report.getReportId());
 
-        Report report1 = reportitory.find(report.getReportId());
+        Report report1 = reportitory.read(report.getReportId());
 
         Assert.assertNull(report1);
 

@@ -55,7 +55,7 @@ public class AppointmentRepositoryTest {
         appointments.setAppointmentId(appointment.getAppointmentId());
         appointmentRepository.update(appointments);
 
-        Appointment updated = appointmentRepository.find(appointments.getAppointmentId());
+        Appointment updated = appointmentRepository.read(appointments.getAppointmentId());
 
         Assert.assertEquals(appointments, updated);
 
@@ -71,7 +71,7 @@ public class AppointmentRepositoryTest {
 
         appointmentRepository.delete(appointment.getAppointmentId());
 
-        Appointment notThereBro = appointmentRepository.find(appointment.getAppointmentId());
+        Appointment notThereBro = appointmentRepository.read(appointment.getAppointmentId());
 
         Assert.assertNull(notThereBro);
 

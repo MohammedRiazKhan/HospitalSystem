@@ -38,7 +38,7 @@ public class VisitRepositoryTest {
 
         Assert.assertNotNull(visitRepository.getAll());
 
-        Visit visit1 = visitRepository.find(visit.getVisitId());
+        Visit visit1 = visitRepository.read(visit.getVisitId());
 
         Assert.assertEquals(visit, visit1);
 
@@ -57,7 +57,7 @@ public class VisitRepositoryTest {
         visitUpdate.setVisitId(visit.getVisitId());
         visitRepository.update(visitUpdate);
 
-        Visit updated = visitRepository.find(visitUpdate.getVisitId());
+        Visit updated = visitRepository.read(visitUpdate.getVisitId());
 
         Assert.assertEquals(visitUpdate, updated);
 
@@ -74,7 +74,7 @@ public class VisitRepositoryTest {
 
         visitRepository.delete(visit.getVisitId());
 
-        Visit notThere = visitRepository.find(visit.getVisitId());
+        Visit notThere = visitRepository.read(visit.getVisitId());
 
         Assert.assertNull(notThere);
 

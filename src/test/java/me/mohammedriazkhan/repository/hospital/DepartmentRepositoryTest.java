@@ -36,7 +36,7 @@ public class DepartmentRepositoryTest {
 
         Assert.assertNotNull(departmentRepository.getAll());
 
-        Department fromSet = departmentRepository.find(department.getDepartmentId());
+        Department fromSet = departmentRepository.read(department.getDepartmentId());
 
         Assert.assertEquals(department, fromSet);
 
@@ -55,7 +55,7 @@ public class DepartmentRepositoryTest {
         departmentUpdate.setDepartmentId(department.getDepartmentId());
         departmentRepository.update(departmentUpdate);
 
-        Department updated = departmentRepository.find(departmentUpdate.getDepartmentId());
+        Department updated = departmentRepository.read(departmentUpdate.getDepartmentId());
 
         Assert.assertEquals(departmentUpdate, updated);
 
@@ -71,7 +71,7 @@ public class DepartmentRepositoryTest {
 
         departmentRepository.delete(department.getDepartmentId());
 
-        Department dep = departmentRepository.find(department.getDepartmentId());
+        Department dep = departmentRepository.read(department.getDepartmentId());
 
         Assert.assertNull(dep);
 

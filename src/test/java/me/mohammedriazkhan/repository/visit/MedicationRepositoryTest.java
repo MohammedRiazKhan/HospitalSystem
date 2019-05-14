@@ -36,7 +36,7 @@ public class MedicationRepositoryTest {
 
         Assert.assertNotNull(medicationRepository.getAll());
 
-        Medication medic = medicationRepository.find(medication.getMedicationId());
+        Medication medic = medicationRepository.read(medication.getMedicationId());
 
         Assert.assertEquals(medic, medication);
 
@@ -56,7 +56,7 @@ public class MedicationRepositoryTest {
         medication1.setMedicationId(medication.getMedicationId());
         medicationRepository.update(medication1);
 
-        Medication updated = medicationRepository.find(medication1.getMedicationId());
+        Medication updated = medicationRepository.read(medication1.getMedicationId());
 
         Assert.assertEquals(medication1, updated);
 
@@ -73,7 +73,7 @@ public class MedicationRepositoryTest {
 
         medicationRepository.delete(medication.getMedicationId());
 
-        Medication medic = medicationRepository.find(medication.getMedicationId());
+        Medication medic = medicationRepository.read(medication.getMedicationId());
 
         Assert.assertNull(medic);
 
