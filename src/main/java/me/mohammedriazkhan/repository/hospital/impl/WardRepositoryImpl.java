@@ -4,17 +4,19 @@ import me.mohammedriazkhan.domain.hospital.Ward;
 import me.mohammedriazkhan.repository.hospital.WardRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-@Repository
+@Repository("InMemory")
 public class WardRepositoryImpl implements WardRepository {
 
     private static WardRepositoryImpl repository = null;
-    private Set<Ward> wards;
+    private Map<Integer, Ward> wards;
 
     public WardRepositoryImpl(){
-        wards = new HashSet<>();
+        wards = new HashMap<>();
     }
 
     public static WardRepositoryImpl getWards() {
@@ -24,14 +26,14 @@ public class WardRepositoryImpl implements WardRepository {
         return repository;
     }
 
-    public Ward find(int id) {
+    /*public Ward find(int id) {
         return wards.stream().filter(ward -> ward.getWardId() == id).findAny().orElse(null);
-    }
+    }*/
 
     @Override
     public Ward create(Ward ward) {
 
-        wards.add(ward);
+        wards.put(ward.getWardId(), ward);
 
         return ward;
     }
@@ -39,38 +41,25 @@ public class WardRepositoryImpl implements WardRepository {
     @Override
     public Ward read(Integer id) {
 
-        Ward ward = find(id);
-        if(ward == null){
-            return null;
-        }
-        else {
-            return ward;
-        }
+        return wards.get(id);
     }
 
     @Override
     public Ward update(Ward ward) {
 
-        Ward ward1 = find(ward.getWardId());
-        if(wards.contains(ward1)){
-            wards.remove(ward1);
-            wards.add(ward);
-        }
-
-        return ward1;
+       wards.replace(ward.getWardId(), ward);
+       return wards.get(ward.getWardId());
     }
 
     @Override
     public void delete(Integer id) {
 
-        Ward ward = find(id);
-
-        wards.remove(ward);
+        wards.remove(id);
     }
 
     @Override
     public Set<Ward> getAll() {
-        return wards;
+        return new HashSet<>(wards.values());
     }
 
 

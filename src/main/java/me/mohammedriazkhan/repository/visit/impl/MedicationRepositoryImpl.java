@@ -4,17 +4,19 @@ import me.mohammedriazkhan.domain.visit.Medication;
 import me.mohammedriazkhan.repository.visit.MedicationRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-@Repository
+@Repository("InMemory")
 public class MedicationRepositoryImpl implements MedicationRepository {
 
     private static MedicationRepositoryImpl repository = null;
-    private Set<Medication> medication;
+    private Map<Integer, Medication> medication;
 
     public MedicationRepositoryImpl() {
-        medication = new HashSet<>();
+        medication = new HashMap<>();
     }
 
     public static MedicationRepositoryImpl getRepository() {
@@ -25,14 +27,11 @@ public class MedicationRepositoryImpl implements MedicationRepository {
         return repository;
     }
 
-    public Medication find(int id) {
-        return medication.stream().filter(medication1 -> medication1.getMedicationId() == id).findAny().orElse(null);
-    }
 
     @Override
     public Medication create(Medication medication1) {
 
-        medication.add(medication1);
+       medication.put(medication1.getMedicationId(), medication1);
 
         return medication1;
     }
@@ -40,41 +39,29 @@ public class MedicationRepositoryImpl implements MedicationRepository {
     @Override
     public Medication read(Integer id) {
 
-        Medication medication = find(id);
-        if (medication == null){
-            return null;
-        }
-        else {
-            return medication;
-        }
+       return medication.get(id);
 
     }
 
     @Override
     public Medication update(Medication medication1) {
 
-        Medication medication2 = find(medication1.getMedicationId());
-        if (medication.contains(medication2)) {
 
-            medication.remove(medication2);
-            medication.add(medication1);
-
-        }
-
-        return medication2;
+        medication.replace(medication1.getMedicationId(), medication1);
+        return medication.get(medication1.getMedicationId());
     }
 
 
 
     @Override
     public void delete(Integer id) {
-        Medication medications = find(id);
-        medication.remove(medications);
+
+        medication.remove(id);
     }
 
     @Override
     public Set<Medication> getAll() {
-        return medication;
+        return new HashSet<>(medication.values());
     }
 
 

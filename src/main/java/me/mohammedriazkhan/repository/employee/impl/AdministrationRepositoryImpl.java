@@ -4,18 +4,17 @@ import me.mohammedriazkhan.domain.employee.Administration;
 import me.mohammedriazkhan.repository.employee.AdministrationRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-@Repository
+@Repository("InMemory")
 public class AdministrationRepositoryImpl implements AdministrationRepository {
 
     private static AdministrationRepositoryImpl administrationRepository = null;
-    private Set<Administration> administrationStaff;
+    private Map<Integer, Administration> administrationStaff;
 
 
     public AdministrationRepositoryImpl(){
-        administrationStaff = new HashSet<>();
+        administrationStaff = new HashMap<>();
     }
 
     public static AdministrationRepositoryImpl getAdministrationRepository() {
@@ -27,14 +26,14 @@ public class AdministrationRepositoryImpl implements AdministrationRepository {
         return administrationRepository;
     }
 
-    public Administration find(int id) {
+   /* public Administration find(int id) {
         return administrationStaff.stream().filter(administration -> administration.getEmployeeId() == id).findAny().orElse(null);
-    }
+    }*/
 
     @Override
     public Administration create(Administration administration) {
 
-        administrationStaff.add(administration);
+        administrationStaff.put(administration.getEmployeeId(), administration);
 
         return administration;
     }
@@ -42,40 +41,29 @@ public class AdministrationRepositoryImpl implements AdministrationRepository {
     @Override
     public Administration read(Integer id) {
 
-        Administration administration = find(id);
-
-        if(administration == null){
-            return null;
-        }
-        else {
-            return administration;
-        }
+       return administrationStaff.get(id);
 
     }
 
     @Override
     public Administration update(Administration administration) {
 
-        Administration administration1 = find(administration.getEmployeeId());
-
-        if(administrationStaff.contains(administration1)){
-            administrationStaff.remove(administration1);
-            administrationStaff.add(administration);
-        }
-
-        return administration1;
+       administrationStaff.replace(administration.getEmployeeId(), administration);
+       return administrationStaff.get(administration.getEmployeeId());
     }
 
     @Override
     public void delete(Integer id) {
 
-        Administration administration = find(id);
-        administrationStaff.remove(administration);
+       administrationStaff.remove(id);
     }
 
     @Override
     public Set<Administration> getAll() {
-        return administrationStaff;
+
+        //copies the values in the set to a new collection then places it inside of a HashSet
+        return new HashSet<>(administrationStaff.values());
+
     }
 
 

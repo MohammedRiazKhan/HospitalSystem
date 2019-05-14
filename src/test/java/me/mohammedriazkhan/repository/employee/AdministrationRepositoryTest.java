@@ -36,7 +36,7 @@ public class AdministrationRepositoryTest {
         administrationRepository.create(admin);
 
         //retrieve the adminStaff
-        Administration adminInSet = administrationRepository.find(admin.getEmployeeId());
+        Administration adminInSet = administrationRepository.read(admin.getEmployeeId());
 
         Assert.assertEquals(admin, adminInSet);
 
@@ -74,7 +74,7 @@ public class AdministrationRepositoryTest {
         administrationRepository.delete(admin.getEmployeeId());
 
         //check if its deleted
-        Administration updatedVersion = administrationRepository.find(admin.getEmployeeId());
+        Administration updatedVersion = administrationRepository.read(admin.getEmployeeId());
 
         Assert.assertNull(updatedVersion);//will pass if its not there
 

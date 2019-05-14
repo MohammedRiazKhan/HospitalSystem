@@ -4,17 +4,19 @@ import me.mohammedriazkhan.domain.patient.Patient;
 import me.mohammedriazkhan.repository.patient.OutPatientRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-@Repository
+@Repository("InMemory")
 public class OutPatientRepositoryImpl implements OutPatientRepository {
 
     private static OutPatientRepositoryImpl repository = null;
-    private Set<Patient> patients;
+    private Map<Integer, Patient> patients;
 
     private OutPatientRepositoryImpl(){
-        patients = new HashSet<>();
+        patients = new HashMap<>();
     }
 
     public static OutPatientRepositoryImpl getRepository(){
@@ -29,50 +31,37 @@ public class OutPatientRepositoryImpl implements OutPatientRepository {
 
     @Override
     public Patient create(Patient patient) {
-        patients.add(patient);
-        return patient;
+       patients.put(patient.getPatientId(), patient);
+       return patient;
     }
 
     @Override
     public Patient update(Patient patient) {
 
-        Patient patientFound = find(patient.getPatientId());
-
-        if(patients.contains(patientFound)){
-            patients.remove(patientFound);
-            patients.add(patient);
-        }
-
-        return patientFound;
+        patients.replace(patient.getPatientId(), patient);
+        return patients.get(patient.getPatientId());
     }
 
     @Override
     public void delete(Integer id) {
 
-        Patient patient = find(id);
-        patients.remove(patient);
+       patients.remove(id);
     }
 
     @Override
     public Patient read(Integer id) {
 
-        Patient patient = find(id);
-        if(patient == null){
-            return null;
-        }
-        else{
-            return patient;
-        }
+      return patients.get(id);
 
     }
 
     @Override
     public Set<Patient> getAll() {
-        return patients;
+        return new HashSet<>(patients.values());
     }
 
-    public Patient find(int id) {
+    /*public Patient find(int id) {
         return patients.stream().filter(patient -> patient.getPatientId() == id).findAny().orElse(null);
-    }
+    }*/
 
 }

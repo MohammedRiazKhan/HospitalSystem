@@ -4,17 +4,16 @@ import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.repository.appointment.AppointmentRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-@Repository
+@Repository("InMemory")
 public class AppointmentRepositoryImpl implements AppointmentRepository {
 
     private static AppointmentRepositoryImpl appointmentRepository = null;
-    private Set<Appointment> appointments;
+    private Map<Integer, Appointment> appointments;
 
     public AppointmentRepositoryImpl(){
-        appointments = new HashSet<>();
+        appointments = new HashMap<>();
     }
 
     public static AppointmentRepositoryImpl getAppointmentRepository() {
@@ -26,54 +25,46 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
         return appointmentRepository;
     }
 
+    /*
+    Implementation using Set as data storage
     public Appointment find(int id) {
         return appointments.stream().filter(appointment -> appointment.getAppointmentId() == id).findAny().orElse(null);
-    }
+    }*/
 
     @Override
     public Appointment create(Appointment appointment) {
-        appointments.add(appointment);
+        this.appointments.put(appointment.getAppointmentId(), appointment);
         return appointment;
     }
 
     @Override
     public Appointment read(Integer id) {
 
-        Appointment appointment = find(id);
-
-        if(appointment == null){
-            return null;
-        }
-        else {
-            return appointment;
-        }
+       return this.appointments.get(id);
 
     }
 
     @Override
     public Appointment update(Appointment appointment) {
 
-        Appointment appointmentFound = find(appointment.getAppointmentId());
-
-        if(appointments.contains(appointmentFound)){
-            appointments.remove(appointmentFound);
-            appointments.add(appointment);
-        }
-        return appointmentFound;
+       this.appointments.replace(appointment.getAppointmentId(), appointment);
+       return this.appointments.get(appointment.getAppointmentId());
     }
 
     @Override
     public void delete(Integer id) {
 
-        Appointment appointment = find(id);
-
-        appointments.remove(appointment);
+        appointments.remove(id);
 
     }
 
     @Override
     public Set<Appointment> getAll() {
-        return appointments;
+
+        //return a set to eliminate any duplicates
+        Collection<Appointment> students = this.appointments.values();
+
+        return new HashSet<>(students);
     }
 
 

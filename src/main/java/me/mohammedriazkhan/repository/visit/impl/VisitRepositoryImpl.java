@@ -4,17 +4,19 @@ import me.mohammedriazkhan.domain.visit.Visit;
 import me.mohammedriazkhan.repository.visit.VisitRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-@Repository
+@Repository("InMemory")
 public class VisitRepositoryImpl implements VisitRepository {
 
     private static VisitRepositoryImpl repository = null;
-    private Set<Visit> visits;
+    private Map<Integer, Visit> visits;
 
     public VisitRepositoryImpl(){
-        visits = new HashSet<>();
+        visits = new HashMap<>();
     }
 
     public static VisitRepositoryImpl getRepository() {
@@ -24,14 +26,11 @@ public class VisitRepositoryImpl implements VisitRepository {
         }
         return repository;
     }
-    public Visit find(int id) {
-        return visits.stream().filter(visit -> visit.getVisitId() == id).findAny().orElse(null);
-    }
 
     @Override
     public Visit create(Visit visit) {
 
-        visits.add(visit);
+        visits.put(visit.getVisitId(), visit);
 
         return visit;
     }
@@ -39,38 +38,26 @@ public class VisitRepositoryImpl implements VisitRepository {
     @Override
     public Visit read(Integer id) {
 
-        Visit visit = find(id);
-
-        if(visit == null){
-            return null;
-        }
-        else {
-            return visit;
-        }
+       return visits.get(id);
     }
 
     @Override
     public Visit update(Visit visit) {
 
-        Visit visit1 = find(visit.getVisitId());
-        if(visits.contains(visit1)){
-            visits.remove(visit1);
-            visits.add(visit);
-        }
-
-        return visit1;
+      visits.replace(visit.getVisitId(), visit);
+      return visits.get(visit.getVisitId());
     }
 
     @Override
     public void delete(Integer id) {
 
-        Visit visit = find(id);
-        visits.remove(visit);
+        visits.remove(id);
+
     }
 
     @Override
     public Set<Visit> getAll() {
-        return visits;
+        return new HashSet<>(visits.values());
     }
 
 }

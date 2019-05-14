@@ -4,17 +4,19 @@ import me.mohammedriazkhan.domain.employee.Porter;
 import me.mohammedriazkhan.repository.employee.PorterRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-@Repository
+@Repository("InMemory")
 public class PorterRepositoryImpl implements PorterRepository {
 
     private static PorterRepositoryImpl repository = null;
-    private Set<Porter> porters;
+    private Map<Integer, Porter> porters;
 
     public PorterRepositoryImpl(){
-        porters = new HashSet<>();
+        porters = new HashMap<>();
     }
 
 
@@ -26,54 +28,39 @@ public class PorterRepositoryImpl implements PorterRepository {
         return repository;
     }
 
-    public Porter find(int id) {
+    /*public Porter find(int id) {
         return porters.stream().filter(porter -> porter.getEmployeeId() == id).findAny().orElse(null);
-    }
+    }*/
 
     @Override
     public Porter create(Porter porter) {
 
-        porters.add(porter);
-
+        porters.put(porter.getEmployeeId(), porter);
         return porter;
     }
 
     @Override
     public Porter read(Integer id) {
 
-        Porter porter = find(id);
-
-        if(porter == null){
-            return null;
-        }
-        else {
-            return porter;
-        }
+        return porters.get(id);
     }
 
     @Override
     public Porter update(Porter porter) {
 
-        Porter porter1 = find(porter.getEmployeeId());
-
-        if(porters.contains(porter1)){
-            porters.remove(porter1);
-            porters.add(porter);
-        }
-
-        return porter1;
+       porters.replace(porter.getEmployeeId(), porter);
+       return porters.get(porter.getEmployeeId());
     }
 
     @Override
     public void delete(Integer id) {
-        Porter porter = find(id);
-        porters.remove(porter);
+       porters.remove(id);
 
     }
 
     @Override
     public Set<Porter> getAll() {
-        return porters;
+        return new HashSet<>(porters.values());
     }
 
 }

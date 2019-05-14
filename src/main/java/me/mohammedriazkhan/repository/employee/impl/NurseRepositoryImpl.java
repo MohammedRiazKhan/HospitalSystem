@@ -4,17 +4,19 @@ import me.mohammedriazkhan.domain.employee.Nurse;
 import me.mohammedriazkhan.repository.employee.NurseRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-@Repository
+@Repository("InMemory")
 public class NurseRepositoryImpl implements NurseRepository {
 
     private static NurseRepositoryImpl repository = null;
-    private Set<Nurse> nurses;
+    private Map<Integer, Nurse> nurses;
 
     public NurseRepositoryImpl(){
-        nurses = new HashSet<>();
+        nurses = new HashMap<>();
     }
 
     public static NurseRepositoryImpl getRepository() {
@@ -26,57 +28,41 @@ public class NurseRepositoryImpl implements NurseRepository {
         return repository;
     }
 
-    public Nurse find(int id) {
+    /*public Nurse find(int id) {
         return nurses.stream().filter(nurse -> nurse.getEmployeeId() == id).findAny().orElse(null);
-    }
+    }*/
 
     @Override
     public Nurse create(Nurse nurse) {
 
-        nurses.add(nurse);
-
-        return nurse;
+       nurses.put(nurse.getEmployeeId(), nurse);
+       return nurse;
     }
 
     @Override
     public Nurse read(Integer id) {
 
-       Nurse nurse = find(id);
-
-       if(nurse == null){
-           return null;
-       }
-       else{
-           return nurse;
-       }
+     return nurses.get(id);
 
     }
 
     @Override
     public Nurse update(Nurse nurse) {
 
-        Nurse nurse1 = find(nurse.getEmployeeId());
-
-        if(nurses.contains(nurse1)){
-            nurses.remove(nurse1);
-            nurses.add(nurse);
-        }
-
-        return nurse1;
+      nurses.replace(nurse.getEmployeeId(), nurse);
+      return nurses.get(nurse.getEmployeeId());
     }
 
     @Override
     public void delete(Integer id) {
 
-
-        Nurse nurse = find(id);
-        nurses.remove(nurse);
+        nurses.remove(id);
 
     }
 
     @Override
     public Set<Nurse> getAll() {
-        return nurses;
+        return new HashSet<>(nurses.values());
     }
 
 }

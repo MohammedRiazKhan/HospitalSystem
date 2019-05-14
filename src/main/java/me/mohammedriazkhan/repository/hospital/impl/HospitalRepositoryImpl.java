@@ -4,17 +4,19 @@ import me.mohammedriazkhan.domain.hospital.Hospital;
 import me.mohammedriazkhan.repository.hospital.HospitalRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-@Repository
+@Repository("InMemory")
 public class HospitalRepositoryImpl implements HospitalRepository {
 
     private static HospitalRepositoryImpl repository = null;
-    private Set<Hospital> hospitals;
+    private Map<Integer, Hospital> hospitals;
 
     public HospitalRepositoryImpl(){
-        hospitals = new HashSet<>();
+        hospitals = new HashMap<>();
     }
 
     public static HospitalRepositoryImpl getRepository() {
@@ -26,52 +28,39 @@ public class HospitalRepositoryImpl implements HospitalRepository {
 
     }
 
-    public Hospital find(int id) {
+    /*public Hospital find(int id) {
         return hospitals.stream().filter(hospital -> hospital.getHospitalId() == id).findAny().orElse(null);
-    }
+    }*/
 
     @Override
     public Hospital create(Hospital hospital) {
 
-        hospitals.add(hospital);
-
-        return hospital;
+       hospitals.put(hospital.getHospitalId(), hospital);
+       return hospital;
     }
 
     @Override
     public Hospital read(Integer id) {
-        Hospital hospital = find(id);
-        if(hospital == null){
-            return  null;
-        }
-        else {
-            return hospital;
-        }
+      return hospitals.get(id);
     }
 
     @Override
     public Hospital update(Hospital hospital) {
 
-
-        Hospital hospital1 = find(hospital.getHospitalId());
-        if(hospitals.contains(hospital1)){
-            hospitals.remove(hospital1);
-            hospitals.add(hospital);
-        }
-        return hospital1;
+        hospitals.replace(hospital.getHospitalId(), hospital);
+        return hospitals.get(hospital.getHospitalId());
     }
 
     @Override
     public void delete(Integer id) {
 
-        Hospital hospital = find(id);
-        hospitals.remove(hospital);
+       hospitals.remove(id);
 
     }
 
     @Override
     public Set<Hospital> getAll() {
-        return hospitals;
+        return new HashSet<>(hospitals.values());
     }
 
 

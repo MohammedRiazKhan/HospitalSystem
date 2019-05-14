@@ -4,17 +4,19 @@ import me.mohammedriazkhan.domain.employee.Cleaner;
 import me.mohammedriazkhan.repository.employee.CleanerRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-@Repository
+@Repository("InMemory")
 public class CleanerRepositoryImpl implements CleanerRepository{
 
     private static CleanerRepositoryImpl cleanerRepository = null;
-    private Set<Cleaner> cleaners;
+    private Map<Integer, Cleaner> cleaners;
 
     private CleanerRepositoryImpl(){
-        cleaners = new HashSet<>();
+        cleaners = new HashMap<>();
     }
 
     public static CleanerRepositoryImpl getCleanerRepository() {
@@ -26,14 +28,14 @@ public class CleanerRepositoryImpl implements CleanerRepository{
     }
 
 
-    public Cleaner find(int id) {
+    /*public Cleaner find(int id) {
         return cleaners.stream().filter(cleaner -> cleaner.getEmployeeId() == id).findAny().orElse(null);
-    }
+    }*/
 
     @Override
     public Cleaner create(Cleaner cleaner) {
 
-        cleaners.add(cleaner);
+        cleaners.put(cleaner.getEmployeeId(), cleaner);
 
         return cleaner;
     }
@@ -41,41 +43,25 @@ public class CleanerRepositoryImpl implements CleanerRepository{
     @Override
     public Cleaner read(Integer id) {
 
-        Cleaner cleaner = find(id);
-
-        if(cleaner == null){
-            return null;
-        }
-        else{
-            return cleaner;
-        }
+       return cleaners.get(id);
     }
 
     @Override
     public Cleaner update(Cleaner cleaner) {
 
-        Cleaner cleaner1 = find(cleaner.getEmployeeId());
-
-        if(cleaners.contains(cleaner1)){
-
-            cleaners.remove(cleaner1);
-            cleaners.add(cleaner);
-
-        }
-
-        return cleaner1;
+        cleaners.replace(cleaner.getEmployeeId(), cleaner);
+        return cleaners.get(cleaner.getEmployeeId());
     }
 
     @Override
     public void delete(Integer id) {
 
-        Cleaner cleaner = find(id);
-        cleaners.remove(cleaner);
+        cleaners.remove(id);
 
     }
 
     @Override
     public Set<Cleaner> getAll() {
-        return cleaners;
+        return new HashSet<>(cleaners.values());
     }
 }
