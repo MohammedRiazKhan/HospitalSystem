@@ -9,7 +9,7 @@ public class AdministrationFactoryTest {
     @Test
     public void getAdministration1() {
 
-        Administration admin = AdministrationFactory.getAdministration();
+        Administration admin = AdministrationFactory.getAdministration(1, "A");
 
         Assert.assertNotNull(admin);
 

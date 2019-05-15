@@ -5,10 +5,10 @@ import me.mohammedriazkhan.utility.IDGenerator;
 
 public class AdministrationFactory {
 
-    public static Administration getAdministration() {
+    public static Administration getAdministration(int empId, String access) {
         return (Administration) new Administration.AdminBuilder()
-                .accessLevel("1")
-                .employeeId(IDGenerator.genId())
+                .accessLevel(access)
+                .employeeId(empId)
                 .build();
     }
 

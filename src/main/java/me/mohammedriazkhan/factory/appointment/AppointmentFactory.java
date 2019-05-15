@@ -8,7 +8,7 @@ public class AppointmentFactory {
 
     public static Appointment getAppointment(int appointmentId, String bookingDate, Patient patient) {
         return new Appointment.AppointmentBuilder()
-                .appointmentId(IDGenerator.genId())
+                .appointmentId(appointmentId)
                 .bookingDate(bookingDate)
                 .patient(patient)
                 .build();

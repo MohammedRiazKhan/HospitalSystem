@@ -21,7 +21,7 @@ public class AdministrationRepositoryTest {
     @Test
     public void create() {
 
-        Administration admin = AdministrationFactory.getAdministration();
+        Administration admin = AdministrationFactory.getAdministration(1, "A");
         administrationRepository.create(admin);
 
         Assert.assertNotNull(administrationRepository.getAll());
@@ -32,7 +32,7 @@ public class AdministrationRepositoryTest {
     public void read() {
 
         //Create a admin staff and add to set
-        Administration admin = AdministrationFactory.getAdministration();
+        Administration admin = AdministrationFactory.getAdministration(1, "A");
         administrationRepository.create(admin);
 
         //retrieve the adminStaff
@@ -46,11 +46,11 @@ public class AdministrationRepositoryTest {
     public void update() {
 
         //Create a admin staff and add to set
-        Administration admin = AdministrationFactory.getAdministration();
+        Administration admin = AdministrationFactory.getAdministration(1, "A");
         administrationRepository.create(admin);
 
         //updated version
-        Administration adminUpdate = AdministrationFactory.getAdministration();
+        Administration adminUpdate = AdministrationFactory.getAdministration(1, "A");
         adminUpdate.setEmployeeId(admin.getEmployeeId());
         administrationRepository.update(adminUpdate);
 
@@ -65,7 +65,7 @@ public class AdministrationRepositoryTest {
     public void delete() {
 
         //Create a admin staff and add to set
-        Administration admin = AdministrationFactory.getAdministration();
+        Administration admin = AdministrationFactory.getAdministration(1, "A");
         administrationRepository.create(admin);
 
         //checks that its not empty
