@@ -24,7 +24,7 @@ public class CleanerControllerTest {
     @Test
     public void create() {
 
-        Cleaner cleaner = CleanerFactory.getCleaner();
+        Cleaner cleaner = CleanerFactory.getCleaner(1);
         cleaner.setEmployeeId(1);
 
         ResponseEntity<Cleaner> postResponse = restTemplate.postForEntity(baseURL + "/new", cleaner, Cleaner.class);
