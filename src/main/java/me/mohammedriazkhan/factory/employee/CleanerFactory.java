@@ -5,9 +5,9 @@ import me.mohammedriazkhan.utility.IDGenerator;
 
 public class CleanerFactory {
 
-    public static Cleaner getCleaner() {
+    public static Cleaner getCleaner(int id) {
         return (Cleaner) new Cleaner.CleanerBuilder()
-                .employeeId(IDGenerator.genId())
+                .employeeId(id)
                 .jobTitle("Cleaner")
                 .build();
     }
