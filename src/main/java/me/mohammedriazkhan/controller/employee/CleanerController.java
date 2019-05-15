@@ -19,7 +19,7 @@ public class CleanerController {
     @PostMapping("/new")
     public Cleaner create(@RequestBody Cleaner clean){
 
-        Cleaner cleaner = CleanerFactory.getCleaner();
+        Cleaner cleaner = CleanerFactory.getCleaner(1);
 
         return service.create(cleaner);
     }
