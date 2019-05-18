@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class CleanerServiceImplTest {
 
     @Autowired
-    CleanerServiceImpl cleanerService;
+    private CleanerServiceImpl cleanerService;
 
 
     @Test

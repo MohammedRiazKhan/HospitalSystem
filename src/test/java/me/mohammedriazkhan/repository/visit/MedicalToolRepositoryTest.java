@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class MedicalToolRepositoryTest {
 
     @Autowired
-    MedicationRepositoryImpl medicationRepository;
+    private MedicationRepositoryImpl medicationRepository;
 
     @Test
     public void create() {

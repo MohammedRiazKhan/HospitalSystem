@@ -19,7 +19,7 @@ public class WardRepositoryTest {
 
 
     @Autowired
-    WardRepositoryImpl wardRepository;
+    private WardRepositoryImpl wardRepository;
 
 
     @Test

@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class PorterServiceImplTest {
 
     @Autowired
-    PorterServiceImpl porterService;
+    private PorterServiceImpl porterService;
 
     @Test
     public void create() {

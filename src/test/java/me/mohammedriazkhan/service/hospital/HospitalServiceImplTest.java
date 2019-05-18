@@ -19,7 +19,7 @@ public class HospitalServiceImplTest {
 
 
     @Autowired
-    HospitalServiceImpl hospitalService;
+    private HospitalServiceImpl hospitalService;
 
     @Test
     public void create() {

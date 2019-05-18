@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class DoctorServiceImplTest {
 
     @Autowired
-    DoctorServiceImpl doctorService;
+    private DoctorServiceImpl doctorService;
 
     @Test
     public void create() {

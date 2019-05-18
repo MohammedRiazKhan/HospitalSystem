@@ -21,7 +21,7 @@ public class OutPatientServiceImplTest {
 
 
     @Autowired
-    InPatientServiceImpl patientService;
+    private InPatientServiceImpl patientService;
 
 
     @Test

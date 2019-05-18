@@ -19,7 +19,7 @@ public class MedicationRepositoryTest {
 
 
     @Autowired
-    MedicationRepositoryImpl medicationRepository;
+    private MedicationRepositoryImpl medicationRepository;
 
 
     @Test

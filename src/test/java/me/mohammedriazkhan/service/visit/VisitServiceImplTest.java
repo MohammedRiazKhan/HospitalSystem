@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class VisitServiceImplTest {
 
     @Autowired
-    VisitServiceImpl visitService;
+    private VisitServiceImpl visitService;
 
 
     @Test

@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class ReportServiceImplTest {
 
     @Autowired
-    ReportServiceImpl reportService;
+    private ReportServiceImpl reportService;
 
 
     @Test

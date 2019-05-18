@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class PorterRepositoryTest {
 
     @Autowired
-    PorterRepositoryImpl porterRepository;
+    private PorterRepositoryImpl porterRepository;
 
     @Test
     public void create() {

@@ -19,7 +19,7 @@ public class MedicationServiceImplTest {
 
 
     @Autowired
-    MedicationServiceImpl medicationService;
+    private MedicationServiceImpl medicationService;
 
 
     @Test

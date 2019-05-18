@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class PharmacistServiceImplTest {
 
     @Autowired
-    PharmacistServiceImpl pharmacistService;
+    private PharmacistServiceImpl pharmacistService;
 
 
     @Test

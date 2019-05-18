@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class VisitRepositoryTest {
 
     @Autowired
-    VisitRepositoryImpl visitRepository;
+    private VisitRepositoryImpl visitRepository;
 
     @Test
     public void create() {

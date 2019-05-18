@@ -20,7 +20,7 @@ import static junit.framework.TestCase.*;
 public class PatientRepositoryTest {
 
     @Autowired
-    PatientRepositoryImpl patientRepository;
+    private PatientRepositoryImpl patientRepository;
 
     @Test
     public void create() {

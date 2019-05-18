@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class AdministrationServiceImplTest {
 
     @Autowired
-    AdministrationServiceImpl administrationService;
+    private AdministrationServiceImpl administrationService;
 
 
     @Test

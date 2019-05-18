@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class DepartmentServiceImplTest {
 
     @Autowired
-    DepartmentServiceImpl departmentService;
+    private DepartmentServiceImpl departmentService;
 
 
     @Test

@@ -19,7 +19,7 @@ public class ReportRepositoryTest {
 
 
     @Autowired
-    ReportRepositoryImpl reportitory;
+    private ReportRepositoryImpl reportitory;
 
 
     @Test

@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class WardServiceImplTest {
 
     @Autowired
-    WardServiceImpl wardService;
+    private WardServiceImpl wardService;
 
 
     @Test

@@ -20,7 +20,7 @@ import static junit.framework.TestCase.*;
 public class CleanerRepositoryTest {
 
     @Autowired
-    CleanerRepositoryImpl cleanerRepository;
+    private CleanerRepositoryImpl cleanerRepository;
 
     @Test
     public void create() {

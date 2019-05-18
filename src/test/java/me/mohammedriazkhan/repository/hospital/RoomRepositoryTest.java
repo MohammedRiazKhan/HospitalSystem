@@ -19,7 +19,7 @@ public class RoomRepositoryTest {
 
 
     @Autowired
-    RoomRepositoryImpl roomRepository;
+    private RoomRepositoryImpl roomRepository;
 
 
     @Test

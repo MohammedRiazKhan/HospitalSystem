@@ -21,7 +21,7 @@ public class OutPatientRepositoryTest {
 
 
     @Autowired
-    PatientRepositoryImpl patientRepository;
+    private PatientRepositoryImpl patientRepository;
 
 
     @Test

@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class AppointmentServiceImplTest {
 
     @Autowired
-    AppointmentServiceImpl appointmentService;
+    private AppointmentServiceImpl appointmentService;
 
     @Test
     public void create() {

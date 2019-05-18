@@ -18,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class NurseServiceImplTest {
 
     @Autowired
-    NurseServiceImpl nurseService;
+    private NurseServiceImpl nurseService;
 
 
     @Test

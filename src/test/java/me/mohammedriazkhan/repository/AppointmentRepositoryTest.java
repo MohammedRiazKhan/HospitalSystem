@@ -19,7 +19,7 @@ public class AppointmentRepositoryTest {
 
 
     @Autowired
-    AppointmentRepositoryImpl appointmentRepository;
+    private AppointmentRepositoryImpl appointmentRepository;
 
     @Test
     public void create() {

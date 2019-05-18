@@ -20,7 +20,7 @@ import static junit.framework.TestCase.*;
 public class PatientServiceImplTest {
 
     @Autowired
-    InPatientServiceImpl patientService;
+    private InPatientServiceImpl patientService;
 
 
     @Test
