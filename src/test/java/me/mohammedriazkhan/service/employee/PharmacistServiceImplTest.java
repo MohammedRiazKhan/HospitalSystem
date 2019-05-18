@@ -6,17 +6,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.service.employee.impl.PharmacistServiceImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class PharmacistServiceImplTest {
 
+    @Autowired
     PharmacistServiceImpl pharmacistService;
 
-    @Before
-    public void setUp() throws Exception {
-
-        pharmacistService = new PharmacistServiceImpl();
-
-    }
 
     @Test
     public void create() {
@@ -26,7 +29,7 @@ public class PharmacistServiceImplTest {
 
         pharmacistService.create(pharmacist);
 
-        Assert.assertNotNull(pharmacistService.getAll());
+        assertNotNull(pharmacistService.getAll());
 
     }
 
@@ -38,11 +41,11 @@ public class PharmacistServiceImplTest {
 
         pharmacistService.create(pharmacist);
 
-        Assert.assertNotNull(pharmacistService.getAll());
+        assertNotNull(pharmacistService.getAll());
 
         Pharmacist fromSet = pharmacistService.read(pharmacist.getEmployeeId());
 
-        Assert.assertEquals(pharmacist, fromSet);
+        assertEquals(pharmacist, fromSet);
 
 
 
@@ -56,7 +59,7 @@ public class PharmacistServiceImplTest {
 
         pharmacistService.create(pharmacist);
 
-        Assert.assertNotNull(pharmacistService.getAll());
+        assertNotNull(pharmacistService.getAll());
 
         Pharmacist update = PharmacistFactory.getPharmacist(1, "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
         update.setEmployeeId(pharmacist.getEmployeeId());
@@ -64,7 +67,7 @@ public class PharmacistServiceImplTest {
 
         Pharmacist updated = pharmacistService.read(update.getEmployeeId());
 
-        Assert.assertEquals(update, updated);
+        assertEquals(update, updated);
 
     }
 
@@ -76,13 +79,13 @@ public class PharmacistServiceImplTest {
 
         pharmacistService.create(pharmacist);
 
-        Assert.assertNotNull(pharmacistService.getAll());
+        assertNotNull(pharmacistService.getAll());
 
         pharmacistService.delete(pharmacist.getEmployeeId());
 
         Pharmacist notThere = pharmacistService.read(pharmacist.getEmployeeId());
 
-        Assert.assertNull(notThere);
+        assertNull(notThere);
 
 
     }

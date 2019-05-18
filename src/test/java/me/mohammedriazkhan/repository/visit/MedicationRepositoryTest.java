@@ -6,18 +6,21 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.visit.impl.MedicationRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class MedicationRepositoryTest {
 
 
+    @Autowired
     MedicationRepositoryImpl medicationRepository;
 
-    @Before
-    public void setUp() throws Exception {
-
-        medicationRepository = MedicationRepositoryImpl.getRepository();
-
-    }
 
     @Test
     public void create() {
@@ -25,7 +28,7 @@ public class MedicationRepositoryTest {
         Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
         medicationRepository.create(medication);
 
-        Assert.assertNotNull(medicationRepository.getAll());
+        assertNotNull(medicationRepository.getAll());
     }
 
     @Test
@@ -34,11 +37,11 @@ public class MedicationRepositoryTest {
         Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
         medicationRepository.create(medication);
 
-        Assert.assertNotNull(medicationRepository.getAll());
+        assertNotNull(medicationRepository.getAll());
 
         Medication medic = medicationRepository.read(medication.getMedicationId());
 
-        Assert.assertEquals(medic, medication);
+        assertEquals(medic, medication);
 
 
     }
@@ -50,7 +53,7 @@ public class MedicationRepositoryTest {
         Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
         medicationRepository.create(medication);
 
-        Assert.assertNotNull(medicationRepository.getAll());
+        assertNotNull(medicationRepository.getAll());
 
         Medication medication1 = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
         medication1.setMedicationId(medication.getMedicationId());
@@ -58,7 +61,7 @@ public class MedicationRepositoryTest {
 
         Medication updated = medicationRepository.read(medication1.getMedicationId());
 
-        Assert.assertEquals(medication1, updated);
+        assertEquals(medication1, updated);
 
 
     }
@@ -69,13 +72,13 @@ public class MedicationRepositoryTest {
         Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
         medicationRepository.create(medication);
 
-        Assert.assertNotNull(medicationRepository.getAll());
+        assertNotNull(medicationRepository.getAll());
 
         medicationRepository.delete(medication.getMedicationId());
 
         Medication medic = medicationRepository.read(medication.getMedicationId());
 
-        Assert.assertNull(medic);
+        assertNull(medic);
 
 
 

@@ -6,17 +6,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.service.employee.impl.NurseServiceImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class NurseServiceImplTest {
 
+    @Autowired
     NurseServiceImpl nurseService;
 
-    @Before
-    public void setUp() throws Exception {
-
-        nurseService = new NurseServiceImpl();
-
-    }
 
     @Test
     public void create() {
@@ -25,7 +28,7 @@ public class NurseServiceImplTest {
 
         nurseService.create(nurse);
 
-        Assert.assertNotNull(nurseService.getAll());
+        assertNotNull(nurseService.getAll());
 
     }
 
@@ -36,11 +39,11 @@ public class NurseServiceImplTest {
 
         nurseService.create(nurse);
 
-        Assert.assertNotNull(nurseService.getAll());
+        assertNotNull(nurseService.getAll());
 
         Nurse fromSet = nurseService.read(nurse.getEmployeeId());
 
-        Assert.assertEquals(nurse, fromSet);
+        assertEquals(nurse, fromSet);
 
     }
 
@@ -50,7 +53,7 @@ public class NurseServiceImplTest {
         Nurse nurse = NurseFactory.getNurse(1, "Nurse", "Nurse", "2", "Nurse Duh", "1", "asd");
         nurseService.create(nurse);
 
-        Assert.assertNotNull(nurseService.getAll());
+        assertNotNull(nurseService.getAll());
 
         Nurse nurseJackie = NurseFactory.getNurse(1, "Nurse", "Jackie", "2", "Nurse Duh", "1", "asd");
         nurseJackie.setEmployeeId(nurse.getEmployeeId());
@@ -58,7 +61,7 @@ public class NurseServiceImplTest {
 
         Nurse nurseJackieClone = nurseService.read(nurseJackie.getEmployeeId());
 
-        Assert.assertEquals(nurseJackie, nurseJackieClone);
+        assertEquals(nurseJackie, nurseJackieClone);
 
     }
 
@@ -67,13 +70,13 @@ public class NurseServiceImplTest {
         Nurse nurse = NurseFactory.getNurse(1, "Nurse", "Nurse", "2", "Nurse Duh", "1", "asd");
         nurseService.create(nurse);
 
-        Assert.assertNotNull(nurseService.getAll());
+        assertNotNull(nurseService.getAll());
 
         nurseService.delete(nurse.getEmployeeId());
 
         Nurse nurseJackieClone = nurseService.read(nurse.getEmployeeId());
 
-        Assert.assertNull(nurseJackieClone);
+        assertNull(nurseJackieClone);
 
 
 

@@ -6,16 +6,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.service.hospital.impl.DepartmentServiceImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class DepartmentServiceImplTest {
+
+    @Autowired
     DepartmentServiceImpl departmentService;
 
-    @Before
-    public void setUp() throws Exception {
-
-        departmentService = new DepartmentServiceImpl();
-
-    }
 
     @Test
     public void create() {
@@ -23,7 +27,7 @@ public class DepartmentServiceImplTest {
         Department department = DepartmentFactory.getDepartment(1, 1, null, null);
         departmentService.create(department);
 
-        Assert.assertNotNull(departmentService.getAll());
+        assertNotNull(departmentService.getAll());
 
     }
 
@@ -33,11 +37,11 @@ public class DepartmentServiceImplTest {
         Department department = DepartmentFactory.getDepartment(1, 1, null, null);
         departmentService.create(department);
 
-        Assert.assertNotNull(departmentService.getAll());
+        assertNotNull(departmentService.getAll());
 
         Department fromSet = departmentService.read(department.getDepartmentId());
 
-        Assert.assertEquals(department, fromSet);
+        assertEquals(department, fromSet);
 
 
     }
@@ -48,7 +52,7 @@ public class DepartmentServiceImplTest {
         Department department = DepartmentFactory.getDepartment(1, 1, null, null);
         departmentService.create(department);
 
-        Assert.assertNotNull(departmentService.getAll());
+        assertNotNull(departmentService.getAll());
 
         Department departmentUpdate = DepartmentFactory.getDepartment(1, 2, null, null);
         departmentUpdate.setDepartmentId(department.getDepartmentId());
@@ -56,7 +60,7 @@ public class DepartmentServiceImplTest {
 
         Department updated = departmentService.read(departmentUpdate.getDepartmentId());
 
-        Assert.assertEquals(departmentUpdate, updated);
+        assertEquals(departmentUpdate, updated);
 
     }
 
@@ -66,13 +70,13 @@ public class DepartmentServiceImplTest {
         Department department = DepartmentFactory.getDepartment(1, 1, null, null);
         departmentService.create(department);
 
-        Assert.assertNotNull(departmentService.getAll());
+        assertNotNull(departmentService.getAll());
 
         departmentService.delete(department.getDepartmentId());
 
         Department dep = departmentService.read(department.getDepartmentId());
 
-        Assert.assertNull(dep);
+        assertNull(dep);
 
 
     }

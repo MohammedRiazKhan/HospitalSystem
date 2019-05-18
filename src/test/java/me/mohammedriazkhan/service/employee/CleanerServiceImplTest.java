@@ -6,17 +6,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.service.employee.impl.CleanerServiceImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class CleanerServiceImplTest {
 
+    @Autowired
     CleanerServiceImpl cleanerService;
 
-    @Before
-    public void setUp() throws Exception {
-
-        cleanerService = new CleanerServiceImpl();
-
-    }
 
     @Test
     public void create() {
@@ -26,7 +29,7 @@ public class CleanerServiceImplTest {
 
         cleanerService.create(cleaner);
 
-        Assert.assertNotNull(cleanerService.getAll());
+        assertNotNull(cleanerService.getAll());
 
     }
 
@@ -62,7 +65,7 @@ public class CleanerServiceImplTest {
         //cleaner received
         Cleaner cleaner3 = cleanerService.read(cleaner2.getEmployeeId());
 
-        Assert.assertEquals(cleaner3, cleaner2);
+        assertEquals(cleaner3, cleaner2);
 
 
 
@@ -75,7 +78,7 @@ public class CleanerServiceImplTest {
         Cleaner cleaner = CleanerFactory.getCleaner(1);
         cleanerService.create(cleaner);
 
-        Assert.assertNotNull(cleanerService.getAll());
+        assertNotNull(cleanerService.getAll());
 
         //delete
         cleanerService.delete(cleaner.getEmployeeId());
@@ -83,7 +86,7 @@ public class CleanerServiceImplTest {
         //try to get it
         Cleaner notThere = cleanerService.read(cleaner.getEmployeeId());
 
-        Assert.assertNull(notThere);
+        assertNull(notThere);
 
 
 

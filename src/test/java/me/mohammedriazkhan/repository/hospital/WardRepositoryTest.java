@@ -6,17 +6,21 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.hospital.impl.WardRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class WardRepositoryTest {
 
 
+    @Autowired
     WardRepositoryImpl wardRepository;
 
-    @Before
-    public void setUp() throws Exception {
-
-        wardRepository = WardRepositoryImpl.getWards();
-    }
 
     @Test
     public void create() {
@@ -24,7 +28,7 @@ public class WardRepositoryTest {
         Ward ward = WardFactory.getWard(1, null);
         wardRepository.create(ward);
 
-        Assert.assertNotNull(wardRepository.getAll());
+        assertNotNull(wardRepository.getAll());
 
     }
 
@@ -34,11 +38,11 @@ public class WardRepositoryTest {
         Ward ward = WardFactory.getWard(1, null);
         wardRepository.create(ward);
 
-        Assert.assertNotNull(wardRepository.getAll());
+        assertNotNull(wardRepository.getAll());
 
         Ward ward1 = wardRepository.read(ward.getWardId());
 
-        Assert.assertEquals(ward, ward1);
+        assertEquals(ward, ward1);
 
     }
 
@@ -48,7 +52,7 @@ public class WardRepositoryTest {
         Ward ward = WardFactory.getWard(1, null);
         wardRepository.create(ward);
 
-        Assert.assertNotNull(wardRepository.getAll());
+        assertNotNull(wardRepository.getAll());
 
         Ward ward1 = WardFactory.getWard(1, null);
         ward1.setWardId(ward.getWardId());
@@ -56,7 +60,7 @@ public class WardRepositoryTest {
 
         Ward ward2 = wardRepository.read(ward1.getWardId());
 
-        Assert.assertEquals(ward1, ward2);
+        assertEquals(ward1, ward2);
 
     }
 
@@ -66,13 +70,13 @@ public class WardRepositoryTest {
         Ward ward = WardFactory.getWard(1, null);
         wardRepository.create(ward);
 
-        Assert.assertNotNull(wardRepository.getAll());
+        assertNotNull(wardRepository.getAll());
 
         wardRepository.delete(ward.getWardId());
 
         Ward ward1 = wardRepository.read(ward.getWardId());
 
-        Assert.assertNull(ward1);
+        assertNull(ward1);
 
 
 

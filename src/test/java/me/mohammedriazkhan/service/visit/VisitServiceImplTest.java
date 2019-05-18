@@ -6,17 +6,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.service.visit.impl.VisitServiceImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class VisitServiceImplTest {
 
+    @Autowired
     VisitServiceImpl visitService;
 
-    @Before
-    public void setUp() throws Exception {
-
-        visitService = new VisitServiceImpl();
-
-    }
 
     @Test
     public void create() {
@@ -25,7 +28,7 @@ public class VisitServiceImplTest {
 
         visitService.create(visit);
 
-        Assert.assertNotNull(visitService.getAll());
+        assertNotNull(visitService.getAll());
 
     }
 
@@ -36,11 +39,11 @@ public class VisitServiceImplTest {
 
         visitService.create(visit);
 
-        Assert.assertNotNull(visitService.getAll());
+        assertNotNull(visitService.getAll());
 
         Visit visit1 = visitService.read(visit.getVisitId());
 
-        Assert.assertEquals(visit, visit1);
+        assertEquals(visit, visit1);
 
     }
 
@@ -51,7 +54,7 @@ public class VisitServiceImplTest {
 
         visitService.create(visit);
 
-        Assert.assertNotNull(visitService.getAll());
+        assertNotNull(visitService.getAll());
 
         Visit visitUpdate = VisitFactory.getVisit(1, "sdf", null, null, null, null, null);
         visitUpdate.setVisitId(visit.getVisitId());
@@ -59,7 +62,7 @@ public class VisitServiceImplTest {
 
         Visit updated = visitService.read(visitUpdate.getVisitId());
 
-        Assert.assertEquals(visitUpdate, updated);
+        assertEquals(visitUpdate, updated);
 
     }
 
@@ -70,13 +73,13 @@ public class VisitServiceImplTest {
 
         visitService.create(visit);
 
-        Assert.assertNotNull(visitService.getAll());
+        assertNotNull(visitService.getAll());
 
         visitService.delete(visit.getVisitId());
 
         Visit notThere = visitService.read(visit.getVisitId());
 
-        Assert.assertNull(notThere);
+        assertNull(notThere);
 
     }
 }

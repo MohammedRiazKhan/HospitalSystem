@@ -6,18 +6,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.appointment.impl.AppointmentRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class AppointmentRepositoryTest {
 
 
+    @Autowired
     AppointmentRepositoryImpl appointmentRepository;
-
-    @Before
-    public void setUp() throws Exception {
-
-        appointmentRepository = AppointmentRepositoryImpl.getAppointmentRepository();
-
-    }
 
     @Test
     public void create() {
@@ -25,7 +27,7 @@ public class AppointmentRepositoryTest {
         Appointment appointment = AppointmentFactory.getAppointment(1, "asdf", null);
         appointmentRepository.create(appointment);
 
-        Assert.assertNotNull(appointmentRepository.getAll());
+        assertNotNull(appointmentRepository.getAll());
 
     }
 
@@ -35,11 +37,11 @@ public class AppointmentRepositoryTest {
         Appointment appointment = AppointmentFactory.getAppointment(1, "asdf", null);
         appointmentRepository.create(appointment);
 
-        Assert.assertNotNull(appointmentRepository.getAll());
+        assertNotNull(appointmentRepository.getAll());
 
         Appointment from = appointmentRepository.read(appointment.getAppointmentId());
 
-        Assert.assertEquals(appointment, from);
+        assertEquals(appointment, from);
 
     }
 
@@ -49,7 +51,7 @@ public class AppointmentRepositoryTest {
         Appointment appointment = AppointmentFactory.getAppointment(1, "asdf", null);
         appointmentRepository.create(appointment);
 
-        Assert.assertNotNull(appointmentRepository.getAll());
+        assertNotNull(appointmentRepository.getAll());
 
         Appointment appointments = AppointmentFactory.getAppointment(1, "asafsdfdf", null);
         appointments.setAppointmentId(appointment.getAppointmentId());
@@ -57,7 +59,7 @@ public class AppointmentRepositoryTest {
 
         Appointment updated = appointmentRepository.read(appointments.getAppointmentId());
 
-        Assert.assertEquals(appointments, updated);
+        assertEquals(appointments, updated);
 
     }
 
@@ -67,13 +69,13 @@ public class AppointmentRepositoryTest {
         Appointment appointment = AppointmentFactory.getAppointment(1, "asdf", null);
         appointmentRepository.create(appointment);
 
-        Assert.assertNotNull(appointmentRepository.getAll());
+       assertNotNull(appointmentRepository.getAll());
 
         appointmentRepository.delete(appointment.getAppointmentId());
 
         Appointment notThereBro = appointmentRepository.read(appointment.getAppointmentId());
 
-        Assert.assertNull(notThereBro);
+        assertNull(notThereBro);
 
     }
 }

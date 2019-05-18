@@ -8,16 +8,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.service.patient.impl.InPatientServiceImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class InPatientServiceImplTest {
 
 
+    @Autowired
     InPatientServiceImpl patientService;
-
-    @Before
-    public void setUp() throws Exception {
-        patientService = new InPatientServiceImpl();
-    }
 
 
     @Test
@@ -33,7 +37,7 @@ public class InPatientServiceImplTest {
         patientService.create(patient);
 
         //checks if the repos set is not null
-        Assert.assertNotNull(patientService.getAll());
+        assertNotNull(patientService.getAll());
 
     }
 
@@ -48,7 +52,7 @@ public class InPatientServiceImplTest {
         //getting a patient from the set
         Patient patientFromSet = patientService.read(patient.getPatientId());
 
-        Assert.assertEquals(patient, patientFromSet);
+        assertEquals(patient, patientFromSet);
 
 
     }
@@ -71,7 +75,7 @@ public class InPatientServiceImplTest {
         //patient once updated (pulled from set)
         Patient updatedPatientFromSet = patientService.read(patient.getPatientId());
 
-        Assert.assertEquals(patientNew, updatedPatientFromSet);
+        assertEquals(patientNew, updatedPatientFromSet);
 
         System.out.println(patientNew.toString());
         System.out.println(updatedPatientFromSet.toString());
@@ -87,7 +91,7 @@ public class InPatientServiceImplTest {
         patientService.create(patient);
 
         //checks if set has a value
-        Assert.assertNotNull(patientService.getAll());
+        assertNotNull(patientService.getAll());
 
         //deleting the patient
         patientService.delete(patient.getPatientId());
@@ -96,7 +100,7 @@ public class InPatientServiceImplTest {
         Patient patientInSet = patientService.read(patient.getPatientId());
 
         //if null it will pass
-        Assert.assertNull(patientInSet);
+        assertNull(patientInSet);
 
 
     }

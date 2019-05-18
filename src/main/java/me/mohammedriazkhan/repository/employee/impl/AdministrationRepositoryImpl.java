@@ -6,12 +6,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository("AdministrationInMemory")
+@Repository
 public class AdministrationRepositoryImpl implements AdministrationRepository {
 
     private static AdministrationRepositoryImpl administrationRepository = null;
     private Map<Integer, Administration> administrationStaff;
-
 
     public AdministrationRepositoryImpl(){
         administrationStaff = new HashMap<>();

@@ -6,18 +6,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.employee.impl.PharmacistRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class PharmacistRepositoryTest {
 
-
+    @Autowired
     PharmacistRepositoryImpl pharmacistRepository;
 
-    @Before
-    public void setUp() throws Exception {
-
-        pharmacistRepository = PharmacistRepositoryImpl.getRepository();
-
-    }
 
     @Test
     public void create() {
@@ -27,7 +29,7 @@ public class PharmacistRepositoryTest {
 
         pharmacistRepository.create(pharmacist);
 
-        Assert.assertNotNull(pharmacistRepository.getAll());
+        assertNotNull(pharmacistRepository.getAll());
 
     }
 
@@ -39,11 +41,11 @@ public class PharmacistRepositoryTest {
 
         pharmacistRepository.create(pharmacist);
 
-        Assert.assertNotNull(pharmacistRepository.getAll());
+        assertNotNull(pharmacistRepository.getAll());
 
         Pharmacist fromSet = pharmacistRepository.read(pharmacist.getEmployeeId());
 
-        Assert.assertEquals(pharmacist, fromSet);
+        assertEquals(pharmacist, fromSet);
 
 
 
@@ -57,7 +59,7 @@ public class PharmacistRepositoryTest {
 
         pharmacistRepository.create(pharmacist);
 
-        Assert.assertNotNull(pharmacistRepository.getAll());
+        assertNotNull(pharmacistRepository.getAll());
 
         Pharmacist update = PharmacistFactory.getPharmacist(1, "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
         update.setEmployeeId(pharmacist.getEmployeeId());
@@ -65,7 +67,7 @@ public class PharmacistRepositoryTest {
 
         Pharmacist updated = pharmacistRepository.read(update.getEmployeeId());
 
-        Assert.assertEquals(update, updated);
+        assertEquals(update, updated);
 
     }
 
@@ -77,13 +79,13 @@ public class PharmacistRepositoryTest {
 
         pharmacistRepository.create(pharmacist);
 
-        Assert.assertNotNull(pharmacistRepository.getAll());
+        assertNotNull(pharmacistRepository.getAll());
 
         pharmacistRepository.delete(pharmacist.getEmployeeId());
 
         Pharmacist notThere = pharmacistRepository.read(pharmacist.getEmployeeId());
 
-        Assert.assertNull(notThere);
+        assertNull(notThere);
 
 
     }

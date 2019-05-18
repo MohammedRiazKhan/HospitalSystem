@@ -6,18 +6,21 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.employee.impl.CleanerRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+
+
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class CleanerRepositoryTest {
 
-
+    @Autowired
     CleanerRepositoryImpl cleanerRepository;
-
-    @Before
-    public void setUp() throws Exception {
-
-        cleanerRepository = CleanerRepositoryImpl.getCleanerRepository();
-
-    }
 
     @Test
     public void create() {
@@ -27,7 +30,7 @@ public class CleanerRepositoryTest {
 
         cleanerRepository.create(cleaner);
 
-        Assert.assertNotNull(cleanerRepository.getAll());
+        assertNotNull(cleanerRepository.getAll());
 
     }
 
@@ -63,7 +66,7 @@ public class CleanerRepositoryTest {
         //cleaner received
         Cleaner cleaner3 = cleanerRepository.read(cleaner2.getEmployeeId());
 
-        Assert.assertEquals(cleaner3, cleaner2);
+        assertEquals(cleaner3, cleaner2);
 
 
 
@@ -76,7 +79,7 @@ public class CleanerRepositoryTest {
         Cleaner cleaner = CleanerFactory.getCleaner(1);
         cleanerRepository.create(cleaner);
 
-        Assert.assertNotNull(cleanerRepository.getAll());
+        assertNotNull(cleanerRepository.getAll());
 
         //delete
         cleanerRepository.delete(cleaner.getEmployeeId());
@@ -84,7 +87,7 @@ public class CleanerRepositoryTest {
         //try to get it
         Cleaner notThere = cleanerRepository.read(cleaner.getEmployeeId());
 
-        Assert.assertNull(notThere);
+        assertNull(notThere);
 
 
 

@@ -6,17 +6,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.employee.impl.PorterRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class PorterRepositoryTest {
 
-
+    @Autowired
     PorterRepositoryImpl porterRepository;
-
-    @Before
-    public void setUp() throws Exception {
-
-        porterRepository = PorterRepositoryImpl.getRepository();
-    }
 
     @Test
     public void create() {
@@ -24,7 +26,7 @@ public class PorterRepositoryTest {
         Porter porter = PorterFactory.getPorter(1, "Dale", "Claassen", "66666");
         porterRepository.create(porter);
 
-        Assert.assertNotNull(porterRepository.getAll());
+        assertNotNull(porterRepository.getAll());
 
     }
 
@@ -34,11 +36,11 @@ public class PorterRepositoryTest {
         Porter porter = PorterFactory.getPorter(1, "Dale", "Claassen", "66666");
         porterRepository.create(porter);
 
-        Assert.assertNotNull(porterRepository.getAll());
+        assertNotNull(porterRepository.getAll());
 
         Porter porter1 = porterRepository.read(porter.getEmployeeId());
 
-        Assert.assertEquals(porter, porter1);
+        assertEquals(porter, porter1);
 
 
     }
@@ -49,7 +51,7 @@ public class PorterRepositoryTest {
         Porter porter = PorterFactory.getPorter(1, "Dale", "Claassen", "66666");
         porterRepository.create(porter);
 
-        Assert.assertNotNull(porterRepository.getAll());
+        assertNotNull(porterRepository.getAll());
 
         Porter porter1 = PorterFactory.getPorter(1, "Dale", "Claassen", "6666eqwe6");
         porter1.setEmployeeId(porter.getEmployeeId());
@@ -57,7 +59,7 @@ public class PorterRepositoryTest {
 
         Porter porter2 = porterRepository.read(porter1.getEmployeeId());
 
-        Assert.assertEquals(porter1, porter2);
+        assertEquals(porter1, porter2);
 
     }
 
@@ -67,13 +69,13 @@ public class PorterRepositoryTest {
         Porter porter = PorterFactory.getPorter(1, "Dale", "Claassen", "66666");
         porterRepository.create(porter);
 
-        Assert.assertNotNull(porterRepository.getAll());
+        assertNotNull(porterRepository.getAll());
 
         porterRepository.delete(porter.getEmployeeId());
 
         Porter notInSet = porterRepository.read(porter.getEmployeeId());
 
-        Assert.assertNull(notInSet);
+        assertNull(notInSet);
 
 
 

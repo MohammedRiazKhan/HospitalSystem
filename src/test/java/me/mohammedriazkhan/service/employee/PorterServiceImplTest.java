@@ -6,15 +6,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.service.employee.impl.PorterServiceImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class PorterServiceImplTest {
+
+    @Autowired
     PorterServiceImpl porterService;
-
-    @Before
-    public void setUp() throws Exception {
-
-        porterService =new PorterServiceImpl();
-    }
 
     @Test
     public void create() {
@@ -22,7 +26,7 @@ public class PorterServiceImplTest {
         Porter porter = PorterFactory.getPorter(1, "Dale", "Claassen", "66666");
         porterService.create(porter);
 
-        Assert.assertNotNull(porterService.getAll());
+        assertNotNull(porterService.getAll());
 
     }
 
@@ -32,11 +36,11 @@ public class PorterServiceImplTest {
         Porter porter = PorterFactory.getPorter(1, "Dale", "Claassen", "66666");
         porterService.create(porter);
 
-        Assert.assertNotNull(porterService.getAll());
+       assertNotNull(porterService.getAll());
 
         Porter porter1 = porterService.read(porter.getEmployeeId());
 
-        Assert.assertEquals(porter, porter1);
+        assertEquals(porter, porter1);
 
 
     }
@@ -47,7 +51,7 @@ public class PorterServiceImplTest {
         Porter porter = PorterFactory.getPorter(1, "Dale", "Claassen", "66666");
         porterService.create(porter);
 
-        Assert.assertNotNull(porterService.getAll());
+        assertNotNull(porterService.getAll());
 
         Porter porter1 = PorterFactory.getPorter(1, "Dale", "Claassen", "6666eqwe6");
         porter1.setEmployeeId(porter.getEmployeeId());
@@ -55,7 +59,7 @@ public class PorterServiceImplTest {
 
         Porter porter2 = porterService.read(porter1.getEmployeeId());
 
-        Assert.assertEquals(porter1, porter2);
+        assertEquals(porter1, porter2);
 
     }
 
@@ -65,13 +69,13 @@ public class PorterServiceImplTest {
         Porter porter = PorterFactory.getPorter(1, "Dale", "Claassen", "66666");
         porterService.create(porter);
 
-        Assert.assertNotNull(porterService.getAll());
+        assertNotNull(porterService.getAll());
 
         porterService.delete(porter.getEmployeeId());
 
         Porter notInSet = porterService.read(porter.getEmployeeId());
 
-        Assert.assertNull(notInSet);
+        assertNull(notInSet);
 
 
 

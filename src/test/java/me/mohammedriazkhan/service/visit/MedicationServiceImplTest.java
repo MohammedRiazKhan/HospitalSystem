@@ -6,18 +6,21 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.service.visit.impl.MedicationServiceImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class MedicationServiceImplTest {
 
 
+    @Autowired
     MedicationServiceImpl medicationService;
 
-    @Before
-    public void setUp() throws Exception {
-
-        medicationService = new MedicationServiceImpl();
-
-    }
 
     @Test
     public void create() {
@@ -25,7 +28,7 @@ public class MedicationServiceImplTest {
         Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
         medicationService.create(medication);
 
-        Assert.assertNotNull(medicationService.getAll());
+        assertNotNull(medicationService.getAll());
     }
 
     @Test
@@ -34,11 +37,11 @@ public class MedicationServiceImplTest {
         Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
         medicationService.create(medication);
 
-        Assert.assertNotNull(medicationService.getAll());
+        assertNotNull(medicationService.getAll());
 
         Medication medic = medicationService.read(medication.getMedicationId());
 
-        Assert.assertEquals(medic, medication);
+        assertEquals(medic, medication);
 
 
     }
@@ -50,7 +53,7 @@ public class MedicationServiceImplTest {
         Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
         medicationService.create(medication);
 
-        Assert.assertNotNull(medicationService.getAll());
+        assertNotNull(medicationService.getAll());
 
         Medication medication1 = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
         medication1.setMedicationId(medication.getMedicationId());
@@ -58,7 +61,7 @@ public class MedicationServiceImplTest {
 
         Medication updated = medicationService.read(medication1.getMedicationId());
 
-        Assert.assertEquals(medication1, updated);
+        assertEquals(medication1, updated);
 
 
     }
@@ -69,13 +72,13 @@ public class MedicationServiceImplTest {
         Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
         medicationService.create(medication);
 
-        Assert.assertNotNull(medicationService.getAll());
+        assertNotNull(medicationService.getAll());
 
         medicationService.delete(medication.getMedicationId());
 
         Medication medic = medicationService.read(medication.getMedicationId());
 
-        Assert.assertNull(medic);
+        assertNull(medic);
 
 
 

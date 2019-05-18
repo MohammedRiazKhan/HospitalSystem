@@ -6,18 +6,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.employee.impl.NurseRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class NurseRepositoryTest {
 
-
+    @Autowired
     NurseRepositoryImpl nurseRepository;
-
-    @Before
-    public void setUp() throws Exception {
-
-        nurseRepository = NurseRepositoryImpl.getRepository();
-
-    }
 
     @Test
     public void create() {
@@ -26,7 +27,7 @@ public class NurseRepositoryTest {
 
         nurseRepository.create(nurse);
 
-        Assert.assertNotNull(nurseRepository.getAll());
+        assertNotNull(nurseRepository.getAll());
 
     }
 
@@ -37,11 +38,11 @@ public class NurseRepositoryTest {
 
         nurseRepository.create(nurse);
 
-        Assert.assertNotNull(nurseRepository.getAll());
+        assertNotNull(nurseRepository.getAll());
 
         Nurse fromSet = nurseRepository.read(nurse.getEmployeeId());
 
-        Assert.assertEquals(nurse, fromSet);
+        assertEquals(nurse, fromSet);
 
     }
 
@@ -51,7 +52,7 @@ public class NurseRepositoryTest {
         Nurse nurse = NurseFactory.getNurse(1, "Nurse", "Nurse", "2", "Nurse Duh", "1", "asd");
         nurseRepository.create(nurse);
 
-        Assert.assertNotNull(nurseRepository.getAll());
+        assertNotNull(nurseRepository.getAll());
 
         Nurse nurseJackie = NurseFactory.getNurse(1, "Nurse", "Jackie", "2", "Nurse Duh", "1", "asd");
         nurseJackie.setEmployeeId(nurse.getEmployeeId());
@@ -59,7 +60,7 @@ public class NurseRepositoryTest {
 
         Nurse nurseJackieClone = nurseRepository.read(nurseJackie.getEmployeeId());
 
-        Assert.assertEquals(nurseJackie, nurseJackieClone);
+        assertEquals(nurseJackie, nurseJackieClone);
 
     }
 
@@ -68,13 +69,13 @@ public class NurseRepositoryTest {
         Nurse nurse = NurseFactory.getNurse(1, "Nurse", "Nurse", "2", "Nurse Duh", "1", "asd");
         nurseRepository.create(nurse);
 
-        Assert.assertNotNull(nurseRepository.getAll());
+        assertNotNull(nurseRepository.getAll());
 
         nurseRepository.delete(nurse.getEmployeeId());
 
         Nurse nurseJackieClone = nurseRepository.read(nurse.getEmployeeId());
 
-        Assert.assertNull(nurseJackieClone);
+        assertNull(nurseJackieClone);
 
 
 

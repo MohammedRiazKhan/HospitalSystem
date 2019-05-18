@@ -6,17 +6,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.visit.impl.VisitRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class VisitRepositoryTest {
 
+    @Autowired
     VisitRepositoryImpl visitRepository;
-
-    @Before
-    public void setUp() throws Exception {
-
-        visitRepository = VisitRepositoryImpl.getRepository();
-
-    }
 
     @Test
     public void create() {
@@ -25,7 +27,7 @@ public class VisitRepositoryTest {
 
         visitRepository.create(visit);
 
-        Assert.assertNotNull(visitRepository.getAll());
+        assertNotNull(visitRepository.getAll());
 
     }
 
@@ -36,11 +38,11 @@ public class VisitRepositoryTest {
 
         visitRepository.create(visit);
 
-        Assert.assertNotNull(visitRepository.getAll());
+        assertNotNull(visitRepository.getAll());
 
         Visit visit1 = visitRepository.read(visit.getVisitId());
 
-        Assert.assertEquals(visit, visit1);
+        assertEquals(visit, visit1);
 
     }
 
@@ -51,7 +53,7 @@ public class VisitRepositoryTest {
 
         visitRepository.create(visit);
 
-        Assert.assertNotNull(visitRepository.getAll());
+        assertNotNull(visitRepository.getAll());
 
         Visit visitUpdate = VisitFactory.getVisit(1, "sdf", null, null, null, null, null);
         visitUpdate.setVisitId(visit.getVisitId());
@@ -59,7 +61,7 @@ public class VisitRepositoryTest {
 
         Visit updated = visitRepository.read(visitUpdate.getVisitId());
 
-        Assert.assertEquals(visitUpdate, updated);
+        assertEquals(visitUpdate, updated);
 
     }
 
@@ -70,13 +72,13 @@ public class VisitRepositoryTest {
 
         visitRepository.create(visit);
 
-        Assert.assertNotNull(visitRepository.getAll());
+        assertNotNull(visitRepository.getAll());
 
         visitRepository.delete(visit.getVisitId());
 
         Visit notThere = visitRepository.read(visit.getVisitId());
 
-        Assert.assertNull(notThere);
+        assertNull(notThere);
 
     }
 }

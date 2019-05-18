@@ -8,16 +8,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.patient.impl.PatientRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class PatientRepositoryTest {
 
+    @Autowired
     PatientRepositoryImpl patientRepository;
-
-    @Before
-    public void setUp() throws Exception {
-        patientRepository = PatientRepositoryImpl.getRepository();
-    }
-
 
     @Test
     public void create() {
@@ -32,7 +35,7 @@ public class PatientRepositoryTest {
         patientRepository.create(patient);
 
         //checks if the repos set is not null
-        Assert.assertNotNull(patientRepository.getAll());
+        assertNotNull(patientRepository.getAll());
 
     }
 
@@ -47,7 +50,7 @@ public class PatientRepositoryTest {
         //getting a patient from the set
         Patient patientFromSet = patientRepository.read(patient.getPatientId());
 
-        Assert.assertEquals(patient, patientFromSet);
+        assertEquals(patient, patientFromSet);
 
 
     }
@@ -70,7 +73,7 @@ public class PatientRepositoryTest {
         //patient once updated (pulled from set)
         Patient updatedPatientFromSet = patientRepository.read(patient.getPatientId());
 
-        Assert.assertEquals(patientNew, updatedPatientFromSet);
+        assertEquals(patientNew, updatedPatientFromSet);
 
         System.out.println(patientNew.toString());
         System.out.println(updatedPatientFromSet.toString());
@@ -86,7 +89,7 @@ public class PatientRepositoryTest {
         patientRepository.create(patient);
 
         //checks if set has a value
-        Assert.assertNotNull(patientRepository.getAll());
+        assertNotNull(patientRepository.getAll());
 
         //deleting the patient
         patientRepository.delete(patient.getPatientId());
@@ -95,7 +98,7 @@ public class PatientRepositoryTest {
         Patient patientInSet = patientRepository.read(patient.getPatientId());
 
         //if null it will pass
-        Assert.assertNull(patientInSet);
+        assertNull(patientInSet);
 
 
     }

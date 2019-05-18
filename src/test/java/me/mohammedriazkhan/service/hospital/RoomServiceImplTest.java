@@ -6,17 +6,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.service.hospital.impl.RoomServiceImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class RoomServiceImplTest {
 
-    RoomServiceImpl roomService;
-
-    @Before
-    public void setUp() throws Exception {
-
-        roomService = new RoomServiceImpl();
-
-    }
+    @Autowired
+    private RoomServiceImpl roomService;
 
     @Test
     public void create() {
@@ -24,7 +26,7 @@ public class RoomServiceImplTest {
         Room room = RoomFactory.getRoom(1, null);
         roomService.create(room);
 
-        Assert.assertNotNull(roomService.getAll());
+        assertNotNull(roomService.getAll());
 
 
     }
@@ -36,11 +38,11 @@ public class RoomServiceImplTest {
         Room room = RoomFactory.getRoom(1, null);
         roomService.create(room);
 
-        Assert.assertNotNull(roomService.getAll());
+        assertNotNull(roomService.getAll());
 
         Room room1 = roomService.read(room.getRoomId());
 
-        Assert.assertEquals(room, room1);
+        assertEquals(room, room1);
 
 
     }
@@ -51,7 +53,7 @@ public class RoomServiceImplTest {
         Room room = RoomFactory.getRoom(1, null);
         roomService.create(room);
 
-        Assert.assertNotNull(roomService.getAll());
+        assertNotNull(roomService.getAll());
 
         Room room1 = RoomFactory.getRoom(2, null);
         room1.setRoomId(room.getRoomId());
@@ -59,7 +61,7 @@ public class RoomServiceImplTest {
 
         Room update = roomService.read(room1.getRoomId());
 
-        Assert.assertEquals(room1, update);
+        assertEquals(room1, update);
 
     }
 
@@ -69,13 +71,13 @@ public class RoomServiceImplTest {
         Room room = RoomFactory.getRoom(1, null);
         roomService.create(room);
 
-        Assert.assertNotNull(roomService.getAll());
+        assertNotNull(roomService.getAll());
 
         roomService.delete(room.getRoomId());
 
         Room room1 = roomService.read(room.getRoomId());
 
-        Assert.assertNull(room1);
+        assertNull(room1);
 
     }
 }

@@ -6,16 +6,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.service.hospital.impl.WardServiceImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class WardServiceImplTest {
 
+    @Autowired
     WardServiceImpl wardService;
 
-    @Before
-    public void setUp() throws Exception {
-
-        wardService = new WardServiceImpl();
-    }
 
     @Test
     public void create() {
@@ -23,7 +27,7 @@ public class WardServiceImplTest {
         Ward ward = WardFactory.getWard(1, null);
         wardService.create(ward);
 
-        Assert.assertNotNull(wardService.getAll());
+        assertNotNull(wardService.getAll());
 
     }
 
@@ -33,11 +37,11 @@ public class WardServiceImplTest {
         Ward ward = WardFactory.getWard(1, null);
         wardService.create(ward);
 
-        Assert.assertNotNull(wardService.getAll());
+        assertNotNull(wardService.getAll());
 
         Ward ward1 = wardService.read(ward.getWardId());
 
-        Assert.assertEquals(ward, ward1);
+        assertEquals(ward, ward1);
 
     }
 
@@ -47,7 +51,7 @@ public class WardServiceImplTest {
         Ward ward = WardFactory.getWard(1, null);
         wardService.create(ward);
 
-        Assert.assertNotNull(wardService.getAll());
+        assertNotNull(wardService.getAll());
 
         Ward ward1 = WardFactory.getWard(1, null);
         ward1.setWardId(ward.getWardId());
@@ -55,7 +59,7 @@ public class WardServiceImplTest {
 
         Ward ward2 = wardService.read(ward1.getWardId());
 
-        Assert.assertEquals(ward1, ward2);
+        assertEquals(ward1, ward2);
 
     }
 
@@ -65,13 +69,13 @@ public class WardServiceImplTest {
         Ward ward = WardFactory.getWard(1, null);
         wardService.create(ward);
 
-        Assert.assertNotNull(wardService.getAll());
+        assertNotNull(wardService.getAll());
 
         wardService.delete(ward.getWardId());
 
         Ward ward1 = wardService.read(ward.getWardId());
 
-        Assert.assertNull(ward1);
+        assertNull(ward1);
 
 
 

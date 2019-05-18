@@ -6,17 +6,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.employee.impl.AdministrationRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class AdministrationRepositoryTest {
 
-    AdministrationRepositoryImpl administrationRepository;
-
-    @Before
-    public void setUp() throws Exception {
-
-        administrationRepository = AdministrationRepositoryImpl.getAdministrationRepository();
-
-    }
+    @Autowired
+    private AdministrationRepositoryImpl administrationRepository;
 
     @Test
     public void create() {
@@ -24,7 +27,7 @@ public class AdministrationRepositoryTest {
         Administration admin = AdministrationFactory.getAdministration(1, "A");
         administrationRepository.create(admin);
 
-        Assert.assertNotNull(administrationRepository.getAll());
+        assertNotNull(administrationRepository.getAll());
 
     }
 
@@ -38,7 +41,7 @@ public class AdministrationRepositoryTest {
         //retrieve the adminStaff
         Administration adminInSet = administrationRepository.read(admin.getEmployeeId());
 
-        Assert.assertEquals(admin, adminInSet);
+        assertEquals(admin, adminInSet);
 
     }
 
@@ -57,7 +60,7 @@ public class AdministrationRepositoryTest {
         //get the updated version
         Administration updatedVersion = administrationRepository.read(adminUpdate.getEmployeeId());
 
-        Assert.assertEquals(adminUpdate, updatedVersion);
+        assertEquals(adminUpdate, updatedVersion);
 
     }
 
@@ -69,15 +72,14 @@ public class AdministrationRepositoryTest {
         administrationRepository.create(admin);
 
         //checks that its not empty
-        Assert.assertNotNull(administrationRepository.getAll());
+        assertNotNull(administrationRepository.getAll());
 
         administrationRepository.delete(admin.getEmployeeId());
 
         //check if its deleted
         Administration updatedVersion = administrationRepository.read(admin.getEmployeeId());
 
-        Assert.assertNull(updatedVersion);//will pass if its not there
-
+        assertNull(updatedVersion);//will pass if its not there
 
     }
 }

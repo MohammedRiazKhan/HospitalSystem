@@ -6,17 +6,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.service.employee.impl.DoctorServiceImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class DoctorServiceImplTest {
 
+    @Autowired
     DoctorServiceImpl doctorService;
-
-    @Before
-    public void setUp() throws Exception {
-
-        doctorService = new DoctorServiceImpl();
-
-    }
 
     @Test
     public void create() {
@@ -24,7 +26,7 @@ public class DoctorServiceImplTest {
         Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
         doctorService.create(doc);
 
-        Assert.assertNotNull(doctorService.getAll());
+        assertNotNull(doctorService.getAll());
 
     }
 
@@ -36,7 +38,7 @@ public class DoctorServiceImplTest {
 
         Doctor fromSet = doctorService.read(doc.getEmployeeId());
 
-        Assert.assertEquals(doc, fromSet);
+        assertEquals(doc, fromSet);
 
     }
 
@@ -46,7 +48,7 @@ public class DoctorServiceImplTest {
         Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
         doctorService.create(doc);
 
-        Assert.assertNotNull(doctorService.getAll());
+        assertNotNull(doctorService.getAll());
 
         Doctor doctor = DoctorFactory.getDoctor("Dr", "Dr", "Renal");
         doctor.setEmployeeId(doc.getEmployeeId());
@@ -56,7 +58,7 @@ public class DoctorServiceImplTest {
         //get doc
         Doctor fromSet = doctorService.read(doctor.getEmployeeId());
 
-        Assert.assertEquals(doctor, fromSet);
+        assertEquals(doctor, fromSet);
 
     }
 
@@ -66,13 +68,13 @@ public class DoctorServiceImplTest {
         Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
         doctorService.create(doc);
 
-        Assert.assertNotNull(doctorService.getAll());
+        assertNotNull(doctorService.getAll());
 
         doctorService.delete(doc.getEmployeeId());
 
         Doctor docTor = doctorService.read(doc.getEmployeeId());
 
-        Assert.assertNull(docTor);
+        assertNull(docTor);
 
     }
 }

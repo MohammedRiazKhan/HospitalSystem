@@ -6,17 +6,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.hospital.impl.DepartmentRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class DepartmentRepositoryTest {
 
+    @Autowired
     DepartmentRepositoryImpl departmentRepository;
-
-    @Before
-    public void setUp() throws Exception {
-
-        departmentRepository = DepartmentRepositoryImpl.getRepository();
-
-    }
 
     @Test
     public void create() {
@@ -24,7 +26,7 @@ public class DepartmentRepositoryTest {
         Department department = DepartmentFactory.getDepartment(1, 1, null, null);
         departmentRepository.create(department);
 
-        Assert.assertNotNull(departmentRepository.getAll());
+        assertNotNull(departmentRepository.getAll());
 
     }
 
@@ -34,11 +36,11 @@ public class DepartmentRepositoryTest {
         Department department = DepartmentFactory.getDepartment(1, 1, null, null);
         departmentRepository.create(department);
 
-        Assert.assertNotNull(departmentRepository.getAll());
+        assertNotNull(departmentRepository.getAll());
 
         Department fromSet = departmentRepository.read(department.getDepartmentId());
 
-        Assert.assertEquals(department, fromSet);
+        assertEquals(department, fromSet);
 
 
     }
@@ -49,7 +51,7 @@ public class DepartmentRepositoryTest {
         Department department = DepartmentFactory.getDepartment(1, 1, null, null);
         departmentRepository.create(department);
 
-        Assert.assertNotNull(departmentRepository.getAll());
+        assertNotNull(departmentRepository.getAll());
 
         Department departmentUpdate = DepartmentFactory.getDepartment(1, 2, null, null);
         departmentUpdate.setDepartmentId(department.getDepartmentId());
@@ -57,7 +59,7 @@ public class DepartmentRepositoryTest {
 
         Department updated = departmentRepository.read(departmentUpdate.getDepartmentId());
 
-        Assert.assertEquals(departmentUpdate, updated);
+        assertEquals(departmentUpdate, updated);
 
     }
 
@@ -67,13 +69,13 @@ public class DepartmentRepositoryTest {
         Department department = DepartmentFactory.getDepartment(1, 1, null, null);
         departmentRepository.create(department);
 
-        Assert.assertNotNull(departmentRepository.getAll());
+        assertNotNull(departmentRepository.getAll());
 
         departmentRepository.delete(department.getDepartmentId());
 
         Department dep = departmentRepository.read(department.getDepartmentId());
 
-        Assert.assertNull(dep);
+       assertNull(dep);
 
 
     }

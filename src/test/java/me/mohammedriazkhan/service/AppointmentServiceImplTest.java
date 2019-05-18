@@ -6,17 +6,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.service.appointment.impl.AppointmentServiceImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class AppointmentServiceImplTest {
 
+    @Autowired
     AppointmentServiceImpl appointmentService;
-
-    @Before
-    public void setUp() throws Exception {
-
-        appointmentService = new AppointmentServiceImpl();
-
-    }
 
     @Test
     public void create() {
@@ -24,7 +26,7 @@ public class AppointmentServiceImplTest {
         Appointment appointment = AppointmentFactory.getAppointment(1, "asdf", null);
         appointmentService.create(appointment);
 
-        Assert.assertNotNull(appointmentService.getAll());
+        assertNotNull(appointmentService.getAll());
 
     }
 
@@ -34,11 +36,11 @@ public class AppointmentServiceImplTest {
         Appointment appointment = AppointmentFactory.getAppointment(1, "asdf", null);
         appointmentService.create(appointment);
 
-        Assert.assertNotNull(appointmentService.getAll());
+        assertNotNull(appointmentService.getAll());
 
         Appointment from = appointmentService.read(appointment.getAppointmentId());
 
-        Assert.assertEquals(appointment, from);
+        assertEquals(appointment, from);
 
     }
 
@@ -48,7 +50,7 @@ public class AppointmentServiceImplTest {
         Appointment appointment = AppointmentFactory.getAppointment(1, "asdf", null);
         appointmentService.create(appointment);
 
-        Assert.assertNotNull(appointmentService.getAll());
+        assertNotNull(appointmentService.getAll());
 
         Appointment appointments = AppointmentFactory.getAppointment(1, "asafsdfdf", null);
         appointments.setAppointmentId(appointment.getAppointmentId());
@@ -56,7 +58,7 @@ public class AppointmentServiceImplTest {
 
         Appointment updated = appointmentService.read(appointments.getAppointmentId());
 
-        Assert.assertEquals(appointments, updated);
+        assertEquals(appointments, updated);
 
     }
 
@@ -66,13 +68,13 @@ public class AppointmentServiceImplTest {
         Appointment appointment = AppointmentFactory.getAppointment(1, "asdf", null);
         appointmentService.create(appointment);
 
-        Assert.assertNotNull(appointmentService.getAll());
+        assertNotNull(appointmentService.getAll());
 
         appointmentService.delete(appointment.getAppointmentId());
 
         Appointment notThereBro = appointmentService.read(appointment.getAppointmentId());
 
-        Assert.assertNull(notThereBro);
+        assertNull(notThereBro);
 
     }
 }

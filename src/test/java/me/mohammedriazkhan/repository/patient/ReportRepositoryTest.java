@@ -6,25 +6,28 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.patient.impl.ReportRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ReportRepositoryTest {
 
 
+    @Autowired
     ReportRepositoryImpl reportitory;
 
-    @Before
-    public void setUp() throws Exception {
-
-        reportitory = ReportRepositoryImpl.getReportRepository();
-
-    }
 
     @Test
     public void create() {
 
         Report report = ReportFactory.getReport(1, "fas", null, null, null);
         reportitory.create(report);
-        Assert.assertNotNull(reportitory.getAll());
+        assertNotNull(reportitory.getAll());
 
     }
 
@@ -33,11 +36,11 @@ public class ReportRepositoryTest {
 
         Report report = ReportFactory.getReport(1, "fas", null, null, null);
         reportitory.create(report);
-        Assert.assertNotNull(reportitory.getAll());
+        assertNotNull(reportitory.getAll());
 
         Report fromSet = reportitory.read(report.getReportId());
 
-        Assert.assertEquals(report, fromSet);
+        assertEquals(report, fromSet);
 
 
     }
@@ -48,7 +51,7 @@ public class ReportRepositoryTest {
 
         Report report = ReportFactory.getReport(1, "fas", null, null, null);
         reportitory.create(report);
-        Assert.assertNotNull(reportitory.getAll());
+        assertNotNull(reportitory.getAll());
 
         Report update = ReportFactory.getReport(1, "fadass", null, null, null);
         update.setReportId(report.getReportId());
@@ -56,7 +59,7 @@ public class ReportRepositoryTest {
 
         Report updated = reportitory.read(report.getReportId());
 
-        Assert.assertEquals(update, updated);
+        assertEquals(update, updated);
 
     }
 
@@ -66,13 +69,13 @@ public class ReportRepositoryTest {
 
         Report report = ReportFactory.getReport(1, "fas", null, null, null);
         reportitory.create(report);
-        Assert.assertNotNull(reportitory.getAll());
+        assertNotNull(reportitory.getAll());
 
         reportitory.delete(report.getReportId());
 
         Report report1 = reportitory.read(report.getReportId());
 
-        Assert.assertNull(report1);
+        assertNull(report1);
 
 
     }

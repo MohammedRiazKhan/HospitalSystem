@@ -6,18 +6,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.hospital.impl.HospitalRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class HospitalRepositoryTest {
 
-
+    @Autowired
     HospitalRepositoryImpl hospitalRepository;
-
-    @Before
-    public void setUp() throws Exception {
-
-        hospitalRepository = HospitalRepositoryImpl.getRepository();
-
-    }
 
     @Test
     public void create() {
@@ -26,7 +27,7 @@ public class HospitalRepositoryTest {
 
         hospitalRepository.create(hospital);
 
-        Assert.assertNotNull(hospitalRepository.getAll());
+        assertNotNull(hospitalRepository.getAll());
 
     }
 
@@ -37,13 +38,11 @@ public class HospitalRepositoryTest {
 
         hospitalRepository.create(hospital);
 
-        Assert.assertNotNull(hospitalRepository.getAll());
+        assertNotNull(hospitalRepository.getAll());
 
         Hospital fromSet = hospitalRepository.read(hospital.getHospitalId());
 
-        Assert.assertEquals(hospital, fromSet);
-
-
+        assertEquals(hospital, fromSet);
 
 
     }
@@ -55,7 +54,7 @@ public class HospitalRepositoryTest {
 
         hospitalRepository.create(hospital);
 
-        Assert.assertNotNull(hospitalRepository.getAll());
+        assertNotNull(hospitalRepository.getAll());
 
         Hospital hospitalUpdate = HospitalFactory.getHospital(null, 1, "Greys fantomy");
         hospitalUpdate.setHospitalId(hospital.getHospitalId());
@@ -64,7 +63,7 @@ public class HospitalRepositoryTest {
 
         Hospital updated = hospitalRepository.read(hospitalUpdate.getHospitalId());
 
-        Assert.assertEquals(hospitalUpdate, updated);
+        assertEquals(hospitalUpdate, updated);
 
 
     }
@@ -76,13 +75,13 @@ public class HospitalRepositoryTest {
 
         hospitalRepository.create(hospital);
 
-        Assert.assertNotNull(hospitalRepository.getAll());
+        assertNotNull(hospitalRepository.getAll());
 
         hospitalRepository.delete(hospital.getHospitalId());
 
         Hospital notThere = hospitalRepository.read(hospital.getHospitalId());
 
-        Assert.assertNull(notThere);
+        assertNull(notThere);
 
 
 

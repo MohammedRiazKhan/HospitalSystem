@@ -6,18 +6,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.repository.employee.impl.DoctorRepositoryImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class DoctorRepositoryTest {
 
-
+    @Autowired
     DoctorRepositoryImpl doctorRepository;
-
-    @Before
-    public void setUp() throws Exception {
-
-        doctorRepository = DoctorRepositoryImpl.getDoctorRepository();
-
-    }
 
     @Test
     public void create() {
@@ -25,7 +26,7 @@ public class DoctorRepositoryTest {
         Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
         doctorRepository.create(doc);
 
-        Assert.assertNotNull(doctorRepository.getAll());
+        assertNotNull(doctorRepository.getAll());
 
     }
 
@@ -37,7 +38,7 @@ public class DoctorRepositoryTest {
 
         Doctor fromSet = doctorRepository.read(doc.getEmployeeId());
 
-        Assert.assertEquals(doc, fromSet);
+        assertEquals(doc, fromSet);
 
     }
 
@@ -47,7 +48,7 @@ public class DoctorRepositoryTest {
         Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
         doctorRepository.create(doc);
 
-        Assert.assertNotNull(doctorRepository.getAll());
+        assertNotNull(doctorRepository.getAll());
 
         Doctor doctor = DoctorFactory.getDoctor("Dr", "Dr", "Renal");
         doctor.setEmployeeId(doc.getEmployeeId());
@@ -57,7 +58,7 @@ public class DoctorRepositoryTest {
         //get doc
         Doctor fromSet = doctorRepository.read(doctor.getEmployeeId());
 
-        Assert.assertEquals(doctor, fromSet);
+        assertEquals(doctor, fromSet);
 
     }
 
@@ -67,13 +68,13 @@ public class DoctorRepositoryTest {
         Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
         doctorRepository.create(doc);
 
-        Assert.assertNotNull(doctorRepository.getAll());
+        assertNotNull(doctorRepository.getAll());
 
         doctorRepository.delete(doc.getEmployeeId());
 
         Doctor docTor = doctorRepository.read(doc.getEmployeeId());
 
-        Assert.assertNull(docTor);
+        assertNull(docTor);
 
     }
 }

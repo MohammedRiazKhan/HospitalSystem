@@ -6,17 +6,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import me.mohammedriazkhan.service.employee.impl.AdministrationServiceImpl;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import static junit.framework.TestCase.*;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class AdministrationServiceImplTest {
 
+    @Autowired
     AdministrationServiceImpl administrationService;
 
-    @Before
-    public void setUp() throws Exception {
-
-        administrationService = new AdministrationServiceImpl();
-
-    }
 
     @Test
     public void create() {
@@ -24,7 +27,7 @@ public class AdministrationServiceImplTest {
         Administration admin = AdministrationFactory.getAdministration(1, "Jane");
         administrationService.create(admin);
 
-        Assert.assertNotNull(administrationService.getAll());
+        assertNotNull(administrationService.getAll());
 
     }
 
@@ -38,7 +41,7 @@ public class AdministrationServiceImplTest {
         //retrieve the adminStaff
         Administration adminInSet = administrationService.read(admin.getEmployeeId());
 
-        Assert.assertEquals(admin, adminInSet);
+        assertEquals(admin, adminInSet);
 
     }
 
@@ -57,7 +60,7 @@ public class AdministrationServiceImplTest {
         //get the updated version
         Administration updatedVersion = administrationService.read(adminUpdate.getEmployeeId());
 
-        Assert.assertEquals(adminUpdate, updatedVersion);
+        assertEquals(adminUpdate, updatedVersion);
 
     }
 
@@ -69,14 +72,14 @@ public class AdministrationServiceImplTest {
         administrationService.create(admin);
 
         //checks that its not empty
-        Assert.assertNotNull(administrationService.getAll());
+        assertNotNull(administrationService.getAll());
 
         administrationService.delete(admin.getEmployeeId());
 
         //check if its deleted
         Administration updatedVersion = administrationService.read(admin.getEmployeeId());
 
-        Assert.assertNull(updatedVersion);//will pass if its not there
+        assertNull(updatedVersion);//will pass if its not there
 
 
     }
