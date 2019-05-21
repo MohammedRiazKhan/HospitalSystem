@@ -8,11 +8,8 @@ import me.mohammedriazkhan.service.employee.impl.DoctorServiceImpl;
 import java.util.Set;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/doctor")
 public class DoctorController {
-
-
 
     @Autowired
     private DoctorServiceImpl doctorService;
