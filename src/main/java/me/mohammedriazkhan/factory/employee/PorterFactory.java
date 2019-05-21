@@ -1,13 +1,13 @@
 package me.mohammedriazkhan.factory.employee;
 
 import me.mohammedriazkhan.domain.employee.Porter;
-import me.mohammedriazkhan.utility.IDGenerator;
+
 
 public class PorterFactory {
 
     public static Porter getPorter(int employeeId, String firstName, String lastName, String identityNumber) {
         return (Porter) new Porter.PorterBuilder()
-                .employeeId(IDGenerator.genId())
+                .employeeId(employeeId)
                 .firstName(firstName)
                 .lastName(lastName)
                 .identityNumber(identityNumber)

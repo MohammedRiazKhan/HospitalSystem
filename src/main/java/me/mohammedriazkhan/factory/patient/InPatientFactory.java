@@ -2,13 +2,13 @@ package me.mohammedriazkhan.factory.patient;
 
 import me.mohammedriazkhan.domain.employee.Doctor;
 import me.mohammedriazkhan.domain.patient.InPatient;
-import me.mohammedriazkhan.utility.IDGenerator;
+
 
 public class InPatientFactory {
 
     public static InPatient getInPatient(String firstName, String lastName, String telephone, String identityNumber, int age, Doctor doctor) {
         return (InPatient) new InPatient.InPatientBuilder()
-                .patientId(IDGenerator.genId())
+                .patientId(1)
                 .firstName(firstName)
                 .lastName(lastName)
                 .age(age)

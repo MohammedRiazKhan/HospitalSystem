@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Doctor extends Employee{
 
-    @JsonProperty("specialisation")
     private String specialisation;
     private List<Patient> patients;
 
@@ -40,7 +39,6 @@ public class Doctor extends Employee{
 
     public static class DoctorBuilder extends Employee.Builder{
 
-        @JsonProperty("specialisation")
         private String specialisation;
         private List<Patient> patients;
 

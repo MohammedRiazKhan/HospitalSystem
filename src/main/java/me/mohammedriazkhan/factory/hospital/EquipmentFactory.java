@@ -1,13 +1,13 @@
 package me.mohammedriazkhan.factory.hospital;
 
 import me.mohammedriazkhan.domain.hospital.Equipment;
-import me.mohammedriazkhan.utility.IDGenerator;
+
 
 public class EquipmentFactory {
 
     public static Equipment getEquipment(int equipmentId, String name, String desc, int quantity) {
-        return (Equipment) new Equipment.EquipmentBuilder()
-                .equipmentId(IDGenerator.genId())
+        return new Equipment.EquipmentBuilder()
+                .equipmentId(equipmentId)
                 .name(name)
                 .desc(desc)
                 .quantity(quantity)

@@ -2,7 +2,7 @@ package me.mohammedriazkhan.factory.appointment;
 
 import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.domain.patient.Patient;
-import me.mohammedriazkhan.utility.IDGenerator;
+
 
 public class AppointmentFactory {
 

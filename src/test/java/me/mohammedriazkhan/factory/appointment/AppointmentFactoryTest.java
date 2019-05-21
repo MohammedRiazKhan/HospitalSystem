@@ -20,7 +20,7 @@ public class AppointmentFactoryTest {
 
         ArrayList list = new ArrayList();
 
-        Doctor doc = DoctorFactory.getDoctor("Moh", "Khan", "Renal");
+        Doctor doc = DoctorFactory.getDoctor(1, "Moh", "Khan", "Renal");
 
 
         List<Meal> m = new ArrayList<>();

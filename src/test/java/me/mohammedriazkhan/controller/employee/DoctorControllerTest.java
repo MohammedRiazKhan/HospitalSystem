@@ -25,7 +25,7 @@ public class DoctorControllerTest {
     @Test
     public void create() {
 
-        Doctor doctor = DoctorFactory.getDoctor("Riaz", "Khan", "Renal");
+        Doctor doctor = DoctorFactory.getDoctor(1, "Riaz", "Khan", "Renal");
         doctor.setEmployeeId(1);
 
         ResponseEntity<Doctor> postResponse = restTemplate.postForEntity(baseURL + "/new", doctor, Doctor.class);

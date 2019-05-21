@@ -26,7 +26,7 @@ public class PatientFactoryTest {
 
         List<Patient> p = new ArrayList<Patient>();
 
-        Doctor doc = DoctorFactory.getDoctor( "Mohammed", "Khan", "Renal");
+        Doctor doc = DoctorFactory.getDoctor( 1, "Mohammed", "Khan", "Renal");
 
 
         List<Meal> m = new ArrayList<>();
