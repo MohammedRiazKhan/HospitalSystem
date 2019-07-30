@@ -1,6 +1,7 @@
 package me.mohammedriazkhan.domain.employee;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.domain.patient.Patient;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public class Doctor extends Employee{
 
     private String specialisation;
-    private List<Patient> patients;
+    private List<Appointment> appointments;
 
     public Doctor(){
 
@@ -16,7 +17,7 @@ public class Doctor extends Employee{
 
     protected Doctor(DoctorBuilder builder) {
         super(builder);
-        this.patients = builder.patients;
+        this.appointments = builder.appointments;
         this.specialisation = builder.specialisation;
 
     }
@@ -29,18 +30,18 @@ public class Doctor extends Employee{
         this.specialisation = specialisation;
     }
 
-    public List<Patient> getPatients() {
-        return patients;
+    public List<Appointment> getAppointments() {
+        return appointments;
     }
 
-    public void setPatients(List<Patient> patients) {
-        this.patients = patients;
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
     }
 
     public static class DoctorBuilder extends Employee.Builder{
 
         private String specialisation;
-        private List<Patient> patients;
+        private List<Appointment> appointments;
 
         public DoctorBuilder(){
             super();
@@ -52,8 +53,8 @@ public class Doctor extends Employee{
             return this;
         }
 
-        public DoctorBuilder patients(List<Patient> patients){
-            this.patients = patients;
+        public DoctorBuilder appointments(List<Appointment> appointments){
+            this.appointments = appointments;
             return this;
         }
 
@@ -68,7 +69,7 @@ public class Doctor extends Employee{
         public String toString() {
             return "DoctorBuilder{" +
                     "specialisation='" + specialisation + '\'' +
-                    ", patients=" + patients +
+                    ", appointments=" + appointments +
                     "} " + super.toString();
         }
 
@@ -81,14 +82,14 @@ public class Doctor extends Employee{
 
             if (specialisation != null ? !specialisation.equals(that.specialisation) : that.specialisation != null)
                 return false;
-            return patients != null ? patients.equals(that.patients) : that.patients == null;
+            return appointments != null ? appointments.equals(that.appointments) : that.appointments == null;
 
         }
 
         @Override
         public int hashCode() {
             int result = specialisation != null ? specialisation.hashCode() : 0;
-            result = 31 * result + (patients != null ? patients.hashCode() : 0);
+            result = 31 * result + (appointments != null ? appointments.hashCode() : 0);
             return result;
         }
     }

@@ -22,14 +22,13 @@ public class VisitFactoryTest {
     @Test
     public void getVisit() {
 
-
         String firstName = "Riaz";
         String lastName = "Khan";
         String telephone = "0762828630";
         String identityNumber = "1234564897";
         int age = 23;
 
-        List<Patient> p = new ArrayList<Patient>();
+        List<Patient> p = new ArrayList<>();
 
         Doctor doc = DoctorFactory.getDoctor( 1, "Mohammed", "Khan", "Renal");
 
