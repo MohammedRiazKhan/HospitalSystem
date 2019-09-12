@@ -16,7 +16,7 @@ public class HospitalFactoryTest {
         List<Department> departmentList = new ArrayList<>();
 
         //Hospital
-        Hospital hosp = HospitalFactory.getHospital(departmentList, 1, "MyHosp");
+        Hospital hosp = HospitalFactory.getHospital(departmentList, "ass", "MyHosp");
 
         Assert.assertNotNull(hosp.getHospitalId());
 

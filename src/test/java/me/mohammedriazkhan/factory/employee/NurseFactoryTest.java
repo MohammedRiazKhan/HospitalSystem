@@ -11,7 +11,7 @@ public class NurseFactoryTest {
     @Test
     public void getNurse() {
 
-        Nurse nurse = NurseFactory.getNurse(1, null, null, null, null, null, null);
+        Nurse nurse = NurseFactory.getNurse( null, null, null, null, null, null);
         Assert.assertNotNull(nurse);
 
     }

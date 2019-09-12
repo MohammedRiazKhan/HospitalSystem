@@ -12,7 +12,7 @@ public class QualificationFactoryTest {
     public void getQualification() {
 
 
-        Qualification qualification = QualificationFactory.getQualification(1, "IT", "CPUT", "3");
+        Qualification qualification = QualificationFactory.getQualification("IT", "CPUT", "3");
         Assert.assertNotNull(qualification);
 
     }

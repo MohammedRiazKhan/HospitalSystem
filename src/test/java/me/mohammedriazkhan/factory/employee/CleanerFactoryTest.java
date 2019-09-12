@@ -10,7 +10,7 @@ public class CleanerFactoryTest {
     public void getCleaner() {
 
 
-        Cleaner cleaner = CleanerFactory.getCleaner(1);
+        Cleaner cleaner = CleanerFactory.getCleaner();
         Assert.assertNotNull(cleaner);
 
     }

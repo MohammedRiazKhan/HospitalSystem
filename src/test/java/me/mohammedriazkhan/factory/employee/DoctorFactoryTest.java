@@ -13,7 +13,7 @@ public class DoctorFactoryTest {
     @Test
     public void getDoctor() {
 
-        Doctor doctor = DoctorFactory.getDoctor(1, "Riaz", "khan", "f");
+        Doctor doctor = DoctorFactory.getDoctor( "Riaz", "khan", "f");
         Assert.assertNotNull(doctor);
     }
 }

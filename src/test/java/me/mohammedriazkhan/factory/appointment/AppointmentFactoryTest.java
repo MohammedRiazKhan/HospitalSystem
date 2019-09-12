@@ -20,7 +20,7 @@ public class AppointmentFactoryTest {
 
         //ArrayList list = new ArrayList();
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Moh", "Khan", "Renal");
+        Doctor doc = DoctorFactory.getDoctor("Moh", "Khan", "Renal");
 
 
         //List<Meal> m = new ArrayList<>();
@@ -29,7 +29,7 @@ public class AppointmentFactoryTest {
         InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, doc);
 
         Appointment appointment = AppointmentFactory.getAppointment
-                (1, "17-04-2018", patient);
+                ("17-04-2018", "Patient1");
 
         Assert.assertNotNull(appointment);
 

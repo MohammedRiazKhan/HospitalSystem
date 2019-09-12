@@ -9,7 +9,7 @@ public class WardFactoryTest {
     @Test
     public void getWard() {
 
-        Ward ward = WardFactory.getWard(1, "A");
+        Ward ward = WardFactory.getWard( "A");
 
         Assert.assertNotNull("A", ward.getWardCode());
 

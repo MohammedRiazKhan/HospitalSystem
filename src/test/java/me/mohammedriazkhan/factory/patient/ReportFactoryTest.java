@@ -11,7 +11,7 @@ public class ReportFactoryTest {
     @Test
     public void getReport() {
 
-        Report report = ReportFactory.getReport(1, "Title", "Content", "IQR", null);
+        Report report = ReportFactory.getReport( "Title", "Content", "IQR", null);
         Assert.assertNotNull(report);
 
 

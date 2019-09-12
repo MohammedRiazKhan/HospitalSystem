@@ -11,7 +11,7 @@ public class MedicationFactoryTest {
     @Test
     public void getMedication() {
 
-        Medication medication = MedicationFactory.getMedication(1, "Panado", "Pain Killer", 2);
+        Medication medication = MedicationFactory.getMedication("Panado", "Pain Killer", 2);
         Assert.assertNotNull(medication);
 
     }

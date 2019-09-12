@@ -20,7 +20,7 @@ public class PatientFactoryTest {
 
         List<Patient> p = new ArrayList<>();
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Dr", "Mohammed", "Renal");
+        Doctor doc = DoctorFactory.getDoctor("Dr", "Mohammed", "Renal");
 
         List<Meal> daysStayed = new ArrayList<>();
         List<String> meals = new ArrayList<>();
@@ -36,7 +36,7 @@ public class PatientFactoryTest {
         );
 
 
-        Assert.assertEquals(aPatient.getDoctor(), doc);
+        Assert.assertEquals(aPatient.getDoctorId(), doc.getEmployeeId());
 
     }
 }

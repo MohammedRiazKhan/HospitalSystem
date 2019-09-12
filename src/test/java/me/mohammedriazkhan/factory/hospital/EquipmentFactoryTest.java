@@ -10,7 +10,7 @@ public class EquipmentFactoryTest {
     @Test
     public void getEquipment() {
 
-        Equipment equip = EquipmentFactory.getEquipment(1, null, null, 1);
+        Equipment equip = EquipmentFactory.getEquipment(null, null, 1);
 
     }
 }

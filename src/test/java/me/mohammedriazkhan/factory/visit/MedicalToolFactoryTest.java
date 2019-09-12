@@ -11,7 +11,7 @@ public class MedicalToolFactoryTest {
     @Test
     public void getMedicalTool() {
 
-        MedicalTool medicalTool = MedicalToolFactory.getMedicalTool(1, "fas", "fasd");
+        MedicalTool medicalTool = MedicalToolFactory.getMedicalTool("fas", "fasd");
         Assert.assertNotNull(medicalTool);
 
     }

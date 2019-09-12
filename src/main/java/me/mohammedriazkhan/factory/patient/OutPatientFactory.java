@@ -8,7 +8,7 @@ import me.mohammedriazkhan.helper.IDGenerator;
 
 public class OutPatientFactory {
 
-    public static OutPatient getOutPatient(String firstName, String lastName, String telephone, String identityNumber, int age, Doctor doctor, Appointment appointment) {
+    public static OutPatient getOutPatient(String firstName, String lastName, String telephone, String identityNumber, int age, String doctor, Appointment appointment) {
         return (OutPatient) new OutPatient.OutPatientBuilder()
                 .patientId(IDGenerator.generateId())
                 .firstName(firstName)

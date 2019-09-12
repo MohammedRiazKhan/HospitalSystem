@@ -9,7 +9,7 @@ public class PorterFactoryTest {
     @Test
     public void getPorter() {
 
-        Porter porter = PorterFactory.getPorter(1, "clay", "pet", "123");
+        Porter porter = PorterFactory.getPorter("clay", "pet", "123");
 
         Assert.assertNotNull(porter.getEmployeeId());
 

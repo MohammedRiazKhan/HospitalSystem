@@ -30,7 +30,7 @@ public class VisitFactoryTest {
 
         List<Patient> p = new ArrayList<>();
 
-        Doctor doc = DoctorFactory.getDoctor( 1, "Mohammed", "Khan", "Renal");
+        Doctor doc = DoctorFactory.getDoctor( "Mohammed", "Khan", "Renal");
 
 
         List<Meal> m = new ArrayList<>();
@@ -44,10 +44,10 @@ public class VisitFactoryTest {
 
         InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, doc);
 
-        Nurse docN = NurseFactory.getNurse(1, "Mohammed", "Khan", "Renal", "asd", "das", "afds");
+        Nurse docN = NurseFactory.getNurse("Mohammed", "Khan", "Renal", "asd", "das", "afds");
 
 
-        Visit visit = VisitFactory.getVisit(1, "Today", patient, doc, docN, medication, tools);
+        Visit visit = VisitFactory.getVisit("Today", patient.getPatientId(), doc.getEmployeeId(), docN.getEmployeeId(), medication, tools);
 
         Assert.assertNotNull(visit);
 
