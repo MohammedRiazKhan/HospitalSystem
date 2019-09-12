@@ -5,14 +5,15 @@ import me.mohammedriazkhan.domain.employee.Doctor;
 import me.mohammedriazkhan.domain.employee.Nurse;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Visit {
 
-    private int visitId;
+    private String visitId;
     private String visitDate;
-    private Patient patient;
-    private Doctor doctor;
-    private Nurse nurse;
+    private String patientId;
+    private String doctorId;
+    private String nurseId;
     private List<Medication> medication;
     private List<MedicalTool> tools;
 
@@ -24,18 +25,20 @@ public class Visit {
     private Visit(VisitBuilder builder){
         this.visitId = builder.visitId;
         this.visitDate = builder.visitDate;
-        this.patient = builder.patient;
-        this.nurse = builder.nurse;
+        this.patientId = builder.patientId;
+        this.doctorId = builder.doctorId;
+        this.nurseId = builder.nurseId;
         this.medication = builder.medication;
         this.tools = builder.tools;
 
     }
 
-    public int getVisitId() {
+
+    public String getVisitId() {
         return visitId;
     }
 
-    public void setVisitId(int visitId) {
+    public void setVisitId(String visitId) {
         this.visitId = visitId;
     }
 
@@ -47,28 +50,28 @@ public class Visit {
         this.visitDate = visitDate;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public String getPatientId() {
+        return patientId;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public String getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId;
     }
 
-    public Nurse getNurse() {
-        return nurse;
+    public String getNurseId() {
+        return nurseId;
     }
 
-    public void setNurse(Nurse nurse) {
-        this.nurse = nurse;
+    public void setNurseId(String nurseId) {
+        this.nurseId = nurseId;
     }
 
     public List<Medication> getMedication() {
@@ -88,16 +91,16 @@ public class Visit {
     }
 
     public static class VisitBuilder{
-        private int visitId;
+        private String visitId;
         private String visitDate;
-        private Patient patient;
-        private Doctor doctor;
-        private Nurse nurse;
+        private String patientId;
+        private String doctorId;
+        private String nurseId;
         private List<Medication> medication;
         private List<MedicalTool> tools;
 
 
-        public VisitBuilder visitId(int visitId){
+        public VisitBuilder visitId(String visitId){
 
             this.visitId = visitId;
             return this;
@@ -108,18 +111,18 @@ public class Visit {
             return this;
         }
 
-        public VisitBuilder patient(Patient patient){
-            this.patient = patient;
+        public VisitBuilder patientId(String patientId){
+            this.patientId = patientId;
             return this;
         }
 
-        public VisitBuilder doctor(Doctor doctor){
-            this.doctor = doctor;
+        public VisitBuilder doctorId(String doctorId){
+            this.doctorId = doctorId;
             return this;
         }
 
-        public VisitBuilder nurse(Nurse nurse){
-            this.nurse = nurse;
+        public VisitBuilder nurseId(String nurseId){
+            this.nurseId = nurseId;
             return this;
         }
 
@@ -137,14 +140,15 @@ public class Visit {
             return new Visit(this);
         }
 
+
         @Override
         public String toString() {
             return "VisitBuilder{" +
-                    "visitId=" + visitId +
+                    "visitId='" + visitId + '\'' +
                     ", visitDate='" + visitDate + '\'' +
-                    ", patient=" + patient +
-                    ", doctor=" + doctor +
-                    ", nurse=" + nurse +
+                    ", patientId='" + patientId + '\'' +
+                    ", doctorId='" + doctorId + '\'' +
+                    ", nurseId='" + nurseId + '\'' +
                     ", medication=" + medication +
                     ", tools=" + tools +
                     '}';
@@ -154,29 +158,19 @@ public class Visit {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             VisitBuilder that = (VisitBuilder) o;
-
-            if (visitId != that.visitId) return false;
-            if (visitDate != null ? !visitDate.equals(that.visitDate) : that.visitDate != null) return false;
-            if (patient != null ? !patient.equals(that.patient) : that.patient != null) return false;
-            if (doctor != null ? !doctor.equals(that.doctor) : that.doctor != null) return false;
-            if (nurse != null ? !nurse.equals(that.nurse) : that.nurse != null) return false;
-            if (medication != null ? !medication.equals(that.medication) : that.medication != null) return false;
-            return tools != null ? tools.equals(that.tools) : that.tools == null;
-
+            return Objects.equals(visitId, that.visitId) &&
+                    Objects.equals(visitDate, that.visitDate) &&
+                    Objects.equals(patientId, that.patientId) &&
+                    Objects.equals(doctorId, that.doctorId) &&
+                    Objects.equals(nurseId, that.nurseId) &&
+                    Objects.equals(medication, that.medication) &&
+                    Objects.equals(tools, that.tools);
         }
 
         @Override
         public int hashCode() {
-            int result = visitId;
-            result = 31 * result + (visitDate != null ? visitDate.hashCode() : 0);
-            result = 31 * result + (patient != null ? patient.hashCode() : 0);
-            result = 31 * result + (doctor != null ? doctor.hashCode() : 0);
-            result = 31 * result + (nurse != null ? nurse.hashCode() : 0);
-            result = 31 * result + (medication != null ? medication.hashCode() : 0);
-            result = 31 * result + (tools != null ? tools.hashCode() : 0);
-            return result;
+            return Objects.hash(visitId, visitDate, patientId, doctorId, nurseId, medication, tools);
         }
     }
 

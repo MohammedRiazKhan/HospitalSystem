@@ -1,8 +1,10 @@
 package me.mohammedriazkhan.domain.visit;
 
+import java.util.Objects;
+
 public class MedicalTool {
 
-    private int toolId;
+    private String toolId;
     private String toolName;
     private String toolCost;
 
@@ -19,11 +21,11 @@ public class MedicalTool {
 
     }
 
-    public int getToolId() {
+    public String getToolId() {
         return toolId;
     }
 
-    public void setToolId(int toolId) {
+    public void setToolId(String toolId) {
         this.toolId = toolId;
     }
 
@@ -44,7 +46,7 @@ public class MedicalTool {
     }
 
     public static class MedicalToolBuilder{
-        private int toolId;
+        private String toolId;
         private String toolName;
         private String toolCost;
 
@@ -52,7 +54,7 @@ public class MedicalTool {
 
         }
 
-        public MedicalToolBuilder toolId(int toolId){
+        public MedicalToolBuilder toolId(String toolId){
             this.toolId = toolId;
             return this;
         }
@@ -98,10 +100,7 @@ public class MedicalTool {
 
         @Override
         public int hashCode() {
-            int result = toolId;
-            result = 31 * result + (toolName != null ? toolName.hashCode() : 0);
-            result = 31 * result + (toolCost != null ? toolCost.hashCode() : 0);
-            return result;
+            return Objects.hash(toolId, toolName, toolCost);
         }
     }
 

@@ -1,12 +1,14 @@
 package me.mohammedriazkhan.domain.patient;
 
+import java.util.Objects;
+
 public class Report {
 
-    private int reportId;
+    private String reportId;
     private String title;
     private String description;
     private String dateRange;
-    private Patient patient;
+    private String patientId;
 
 
     public Report(){
@@ -18,15 +20,15 @@ public class Report {
         this.title = builder.title;
         this.description = builder.description;
         this.dateRange = builder.dateRange;
-        this.patient = builder.patient;
+        this.patientId = builder.patientId;
 
     }
 
-    public int getReportId() {
+    public String getReportId() {
         return reportId;
     }
 
-    public void setReportId(int reportId) {
+    public void setReportId(String reportId) {
         this.reportId = reportId;
     }
 
@@ -54,22 +56,22 @@ public class Report {
         this.dateRange = dateRange;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public String getPatientId() {
+        return patientId;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
     }
 
     public static class ReportBuilder{
-        private int reportId;
+        private String reportId;
         private String title;
         private String description;
         private String dateRange;
-        private Patient patient;
+        private String patientId;
 
-        public ReportBuilder reportId(int reportId){
+        public ReportBuilder reportId(String reportId){
             this.reportId = reportId;
             return this;
         }
@@ -89,8 +91,8 @@ public class Report {
             return this;
         }
 
-        public ReportBuilder patient(Patient patient){
-            this.patient = patient;
+        public ReportBuilder patient(String patientId){
+            this.patientId = patientId;
             return this;
         }
 
@@ -101,39 +103,31 @@ public class Report {
         }
 
         @Override
-        public String toString() {
-            return "ReportBuilder{" +
-                    "reportId=" + reportId +
-                    ", title='" + title + '\'' +
-                    ", description='" + description + '\'' +
-                    ", dateRange='" + dateRange + '\'' +
-                    ", patient=" + patient +
-                    '}';
-        }
-
-        @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             ReportBuilder that = (ReportBuilder) o;
-
-            if (reportId != that.reportId) return false;
-            if (title != null ? !title.equals(that.title) : that.title != null) return false;
-            if (description != null ? !description.equals(that.description) : that.description != null) return false;
-            if (dateRange != null ? !dateRange.equals(that.dateRange) : that.dateRange != null) return false;
-            return patient != null ? patient.equals(that.patient) : that.patient == null;
-
+            return Objects.equals(reportId, that.reportId) &&
+                    Objects.equals(title, that.title) &&
+                    Objects.equals(description, that.description) &&
+                    Objects.equals(dateRange, that.dateRange) &&
+                    Objects.equals(patientId, that.patientId);
         }
 
         @Override
         public int hashCode() {
-            int result = reportId;
-            result = 31 * result + (title != null ? title.hashCode() : 0);
-            result = 31 * result + (description != null ? description.hashCode() : 0);
-            result = 31 * result + (dateRange != null ? dateRange.hashCode() : 0);
-            result = 31 * result + (patient != null ? patient.hashCode() : 0);
-            return result;
+            return Objects.hash(reportId, title, description, dateRange, patientId);
+        }
+
+        @Override
+        public String toString() {
+            return "ReportBuilder{" +
+                    "reportId='" + reportId + '\'' +
+                    ", title='" + title + '\'' +
+                    ", description='" + description + '\'' +
+                    ", dateRange='" + dateRange + '\'' +
+                    ", patientId='" + patientId + '\'' +
+                    '}';
         }
     }
 

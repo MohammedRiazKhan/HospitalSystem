@@ -1,8 +1,10 @@
 package me.mohammedriazkhan.domain.patient;
 
+import java.util.Objects;
+
 public class Meal {
 
-    private int mealId;
+    private String mealId;
     private String breakfast;
     private String lunch;
     private String supper;
@@ -24,11 +26,11 @@ public class Meal {
 
     }
 
-    public int getMealId() {
+    public String getMealId() {
         return mealId;
     }
 
-    public void setMealId(int mealId) {
+    public void setMealId(String mealId) {
         this.mealId = mealId;
     }
 
@@ -65,13 +67,13 @@ public class Meal {
     }
 
     public static class MealBuilder{
-        private int mealId;
+        private String mealId;
         private String breakfast;
         private String lunch;
         private String supper;
         private Patient patient;
 
-        public MealBuilder mealId(int mealId){
+        public MealBuilder mealId(String mealId){
             this.mealId = mealId;
             return this;
         }
@@ -129,12 +131,7 @@ public class Meal {
 
         @Override
         public int hashCode() {
-            int result = mealId;
-            result = 31 * result + (breakfast != null ? breakfast.hashCode() : 0);
-            result = 31 * result + (lunch != null ? lunch.hashCode() : 0);
-            result = 31 * result + (supper != null ? supper.hashCode() : 0);
-            result = 31 * result + (patient != null ? patient.hashCode() : 0);
-            return result;
+            return Objects.hash(mealId, breakfast, lunch, supper, patient);
         }
     }
 

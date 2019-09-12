@@ -1,8 +1,10 @@
 package me.mohammedriazkhan.domain.employee;
 
+import java.util.Objects;
+
 public class Qualification {
 
-    private int qualificationId;
+    private String qualificationId;
     private String qualificationName;
     private String instituteName;
     private String duration;
@@ -22,11 +24,11 @@ public class Qualification {
 
     }
 
-    public int getQualificationId() {
+    public String getQualificationId() {
         return qualificationId;
     }
 
-    public void setQualificationId(int qualificationId) {
+    public void setQualificationId(String qualificationId) {
         this.qualificationId = qualificationId;
     }
 
@@ -56,7 +58,7 @@ public class Qualification {
 
     public static class QualificationBuilder {
 
-        private int qualificationId;
+        private String qualificationId;
         private String qualificationName;
         private String instituteName;
         private String duration;
@@ -65,7 +67,7 @@ public class Qualification {
 
         }
 
-        public QualificationBuilder qualificationId(int qualificationId){
+        public QualificationBuilder qualificationId(String qualificationId){
             this.qualificationId = qualificationId;
             return this;
         }
@@ -104,25 +106,16 @@ public class Qualification {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             QualificationBuilder that = (QualificationBuilder) o;
-
-            if (qualificationId != that.qualificationId) return false;
-            if (qualificationName != null ? !qualificationName.equals(that.qualificationName) : that.qualificationName != null)
-                return false;
-            if (instituteName != null ? !instituteName.equals(that.instituteName) : that.instituteName != null)
-                return false;
-            return duration != null ? duration.equals(that.duration) : that.duration == null;
-
+            return Objects.equals(qualificationId, that.qualificationId) &&
+                    Objects.equals(qualificationName, that.qualificationName) &&
+                    Objects.equals(instituteName, that.instituteName) &&
+                    Objects.equals(duration, that.duration);
         }
 
         @Override
         public int hashCode() {
-            int result = qualificationId;
-            result = 31 * result + (qualificationName != null ? qualificationName.hashCode() : 0);
-            result = 31 * result + (instituteName != null ? instituteName.hashCode() : 0);
-            result = 31 * result + (duration != null ? duration.hashCode() : 0);
-            return result;
+            return Objects.hash(qualificationId, qualificationName, instituteName, duration);
         }
     }
 

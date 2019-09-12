@@ -1,8 +1,10 @@
 package me.mohammedriazkhan.domain.patient;
 
+import java.util.Objects;
+
 public abstract class Account {
 
-    private int accountNo;
+    private String accountNo;
     private double balance;
     private String paymentTerms;
 
@@ -19,11 +21,11 @@ public abstract class Account {
 
     }
 
-    public int getAccountNo() {
+    public String getAccountNo() {
         return accountNo;
     }
 
-    public void setAccountNo(int accountNo) {
+    public void setAccountNo(String accountNo) {
         this.accountNo = accountNo;
     }
 
@@ -44,11 +46,11 @@ public abstract class Account {
     }
 
     public abstract static class AccountBuilder {
-        private int accountNo;
+        private String accountNo;
         private double balance;
         private String paymentTerms;
 
-        public AccountBuilder accountNo(int accountNo){
+        public AccountBuilder accountNo(String accountNo){
             this.accountNo = accountNo;
             return this;
         }
@@ -74,6 +76,21 @@ public abstract class Account {
                     ", balance=" + balance +
                     ", paymentTerms='" + paymentTerms + '\'' +
                     '}';
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            AccountBuilder that = (AccountBuilder) o;
+            return Double.compare(that.balance, balance) == 0 &&
+                    Objects.equals(accountNo, that.accountNo) &&
+                    Objects.equals(paymentTerms, that.paymentTerms);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(accountNo, balance, paymentTerms);
         }
     }
 

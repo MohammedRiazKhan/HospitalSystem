@@ -2,15 +2,17 @@ package me.mohammedriazkhan.domain.patient;
 
 import me.mohammedriazkhan.domain.employee.Doctor;
 
+import java.util.Objects;
+
 public abstract class Patient {
 
-    private int patientId;
+    private String patientId;
     private String firstName;
     private String lastName;
     private String telephone;
     private String identityNumber;
     private int age;
-    private Doctor doctor;
+    private String doctorId;
 
 
 
@@ -27,15 +29,15 @@ public abstract class Patient {
         this.telephone = builder.telephone;
         this.identityNumber = builder.identityNumber;
         this.age = builder.age;
-        this.doctor = builder.doctor;
+        this.doctorId = builder.doctorId;
 
     }
 
-    public int getPatientId() {
+    public String getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(int patientId) {
+    public void setPatientId(String patientId) {
         this.patientId = patientId;
     }
 
@@ -79,25 +81,25 @@ public abstract class Patient {
         this.age = age;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public String getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setDoctor(String doctorId) {
+        this.doctorId = doctorId;
     }
 
     public static abstract class Builder{
 
-        private int patientId;
+        private String patientId;
         private String firstName;
         private String lastName;
         private String telephone;
         private String identityNumber;
         private int age;
-        private Doctor doctor;
+        private String doctorId;
 
-        public Builder patientId(int patientId){
+        public Builder patientId(String patientId){
 
             this.patientId = patientId;
             return this;
@@ -134,24 +136,43 @@ public abstract class Patient {
             return this;
         }
 
-        public Builder doctor(Doctor doctor){
+        public Builder doctor(String doctorId){
 
-            this.doctor = doctor;
+            this.doctorId = doctorId;
             return this;
         }
 
         public abstract Patient build();
 
         @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Builder builder = (Builder) o;
+            return age == builder.age &&
+                    Objects.equals(patientId, builder.patientId) &&
+                    Objects.equals(firstName, builder.firstName) &&
+                    Objects.equals(lastName, builder.lastName) &&
+                    Objects.equals(telephone, builder.telephone) &&
+                    Objects.equals(identityNumber, builder.identityNumber) &&
+                    Objects.equals(doctorId, builder.doctorId);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(patientId, firstName, lastName, telephone, identityNumber, age, doctorId);
+        }
+
+        @Override
         public String toString() {
             return "Builder{" +
-                    "patientId=" + patientId +
+                    "patientId='" + patientId + '\'' +
                     ", firstName='" + firstName + '\'' +
                     ", lastName='" + lastName + '\'' +
                     ", telephone='" + telephone + '\'' +
                     ", identityNumber='" + identityNumber + '\'' +
                     ", age=" + age +
-                    ", doctor=" + doctor +
+                    ", doctorId='" + doctorId + '\'' +
                     '}';
         }
     }

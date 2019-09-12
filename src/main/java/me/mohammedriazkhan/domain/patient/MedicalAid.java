@@ -1,8 +1,10 @@
 package me.mohammedriazkhan.domain.patient;
 
+import java.util.Objects;
+
 public class MedicalAid extends Account{
 
-    private int medicalAidNo;
+    private String medicalAidNo;
 
     public MedicalAid(){
 
@@ -15,19 +17,23 @@ public class MedicalAid extends Account{
 
     }
 
-    public int getMedicalAidNo() {
+    public String getMedicalAidNo() {
         return medicalAidNo;
     }
 
-    public void setMedicalAidNo(int medicalAidNo) {
+    public void setMedicalAidNo(String medicalAidNo) {
         this.medicalAidNo = medicalAidNo;
     }
 
     public static class MedicalAidBuilder extends Account.AccountBuilder{
 
-        private int medicalAidNo;
+        private String medicalAidNo;
 
-        private MedicalAidBuilder medicalAidNo(int medicalAidNo){
+        public MedicalAidBuilder(){
+            super();
+        }
+
+        private MedicalAidBuilder medicalAidNo(String medicalAidNo){
             this.medicalAidNo = medicalAidNo;
             return this;
         }
@@ -44,16 +50,14 @@ public class MedicalAid extends Account{
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
+            if (!super.equals(o)) return false;
             MedicalAidBuilder that = (MedicalAidBuilder) o;
-
-            return medicalAidNo == that.medicalAidNo;
-
+            return Objects.equals(medicalAidNo, that.medicalAidNo);
         }
 
         @Override
         public int hashCode() {
-            return medicalAidNo;
+            return Objects.hash(super.hashCode(), medicalAidNo);
         }
 
         @Override

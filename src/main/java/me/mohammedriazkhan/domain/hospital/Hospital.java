@@ -1,11 +1,12 @@
 package me.mohammedriazkhan.domain.hospital;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Hospital {
 
     private List<Department> departments;
-    private int hospitalId;
+    private String hospitalId;
     private String hospitalName;
 
 
@@ -29,11 +30,11 @@ public class Hospital {
         this.departments = departments;
     }
 
-    public int getHospitalId() {
+    public String getHospitalId() {
         return hospitalId;
     }
 
-    public void setHospitalId(int hospitalId) {
+    public void setHospitalId(String hospitalId) {
         this.hospitalId = hospitalId;
     }
 
@@ -48,14 +49,14 @@ public class Hospital {
     public static class HospitalBuilder{
 
         private List<Department> departments;
-        private int hospitalId;
+        private String hospitalId;
         private String hospitalName;
 
         public HospitalBuilder(){
 
         }
 
-        public HospitalBuilder hospitalId(int hospitalId){
+        public HospitalBuilder hospitalId(String hospitalId){
             this.hospitalId = hospitalId;
             return this;
         }
@@ -89,21 +90,15 @@ public class Hospital {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             HospitalBuilder that = (HospitalBuilder) o;
-
-            if (hospitalId != that.hospitalId) return false;
-            if (departments != null ? !departments.equals(that.departments) : that.departments != null) return false;
-            return hospitalName != null ? hospitalName.equals(that.hospitalName) : that.hospitalName == null;
-
+            return Objects.equals(departments, that.departments) &&
+                    Objects.equals(hospitalId, that.hospitalId) &&
+                    Objects.equals(hospitalName, that.hospitalName);
         }
 
         @Override
         public int hashCode() {
-            int result = departments != null ? departments.hashCode() : 0;
-            result = 31 * result + hospitalId;
-            result = 31 * result + (hospitalName != null ? hospitalName.hashCode() : 0);
-            return result;
+            return Objects.hash(departments, hospitalId, hospitalName);
         }
     }
 

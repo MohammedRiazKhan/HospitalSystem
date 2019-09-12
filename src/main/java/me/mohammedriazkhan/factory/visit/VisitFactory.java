@@ -6,18 +6,20 @@ import me.mohammedriazkhan.domain.patient.Patient;
 import me.mohammedriazkhan.domain.visit.MedicalTool;
 import me.mohammedriazkhan.domain.visit.Medication;
 import me.mohammedriazkhan.domain.visit.Visit;
+import me.mohammedriazkhan.helper.IDGenerator;
 
 import java.util.List;
 
 public class VisitFactory {
 
-    public static Visit getVisit(int visitId, String visitDate, Patient patient, Doctor doctor, Nurse nurse, List<Medication> medication, List<MedicalTool> tools) {
+    public static Visit getVisit( String visitDate, String patient, String doctorId, String nurse, List<Medication> medication, List<MedicalTool> tools) {
         return (Visit) new Visit.VisitBuilder()
-                .doctor(doctor)
+                .visitId(IDGenerator.generateId())
+                .doctorId(doctorId)
                 .medication(medication)
-                .patient(patient)
+                .patientId(patient)
                 .visitDate(visitDate)
-                .nurse(nurse)
+                .nurseId(nurse)
                 .build();
     }
 

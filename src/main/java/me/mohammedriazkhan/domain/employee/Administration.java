@@ -1,9 +1,10 @@
 package me.mohammedriazkhan.domain.employee;
 
+import java.util.Objects;
+
 public class Administration extends Employee{
 
-   private String accessLevel;
-
+    private String accessLevel;
 
     public Administration() {
 
@@ -12,9 +13,15 @@ public class Administration extends Employee{
     private Administration(AdminBuilder builder){
        super(builder);
        this.accessLevel = builder.accessLevel;
-   }
+    }
 
+    public String getAccessLevel() {
+        return accessLevel;
+    }
 
+    public void setAccessLevel(String accessLevel) {
+        this.accessLevel = accessLevel;
+    }
 
    public static class AdminBuilder extends Employee.Builder{
 
@@ -46,24 +53,15 @@ public class Administration extends Employee{
        public boolean equals(Object o) {
            if (this == o) return true;
            if (o == null || getClass() != o.getClass()) return false;
-
            AdminBuilder that = (AdminBuilder) o;
-
-           return accessLevel != null ? accessLevel.equals(that.accessLevel) : that.accessLevel == null;
-
+           return Objects.equals(accessLevel, that.accessLevel);
        }
 
        @Override
        public int hashCode() {
-           return accessLevel != null ? accessLevel.hashCode() : 0;
+           return Objects.hash(accessLevel);
        }
    }
 
-    public String getAccessLevel() {
-        return accessLevel;
-    }
 
-    public void setAccessLevel(String accessLevel) {
-        this.accessLevel = accessLevel;
-    }
 }

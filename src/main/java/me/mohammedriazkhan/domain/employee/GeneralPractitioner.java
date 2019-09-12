@@ -1,42 +1,41 @@
 package me.mohammedriazkhan.domain.employee;
 
-public class GeneralPracticioner extends Doctor {
-
+public class GeneralPractitioner extends Doctor {
 
     private String practice;
 
-    public GeneralPracticioner(){
+    public GeneralPractitioner(){
 
     }
 
-    private GeneralPracticioner(GeneralPracticionerBuilder builder){
+    private GeneralPractitioner(GeneralPractitionerBuilder builder){
 
       super(builder);
       this.practice = builder.practice;
 
     }
 
-    public static class GeneralPracticionerBuilder extends Doctor.DoctorBuilder{
+    public static class GeneralPractitionerBuilder extends Doctor.DoctorBuilder{
 
         private String practice;
 
-        public GeneralPracticionerBuilder(){
+        public GeneralPractitionerBuilder(){
             super();
         }
 
-        public GeneralPracticionerBuilder practice(String practice){
+        public GeneralPractitionerBuilder practice(String practice){
             this.practice = practice;
             return this;
         }
 
         @Override
         public Employee build() {
-            return new GeneralPracticioner(this);
+            return new GeneralPractitioner(this);
         }
 
         @Override
         public String toString() {
-            return "GeneralPracticionerBuilder{" +
+            return "GeneralPractitionerBuilder{" +
                     "practice='" + practice + '\'' +
                     "} " + super.toString();
         }
@@ -47,7 +46,7 @@ public class GeneralPracticioner extends Doctor {
             if (o == null || getClass() != o.getClass()) return false;
             if (!super.equals(o)) return false;
 
-            GeneralPracticionerBuilder that = (GeneralPracticionerBuilder) o;
+            GeneralPractitionerBuilder that = (GeneralPractitionerBuilder) o;
 
             return practice != null ? practice.equals(that.practice) : that.practice == null;
 

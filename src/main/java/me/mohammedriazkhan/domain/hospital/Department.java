@@ -1,11 +1,12 @@
 package me.mohammedriazkhan.domain.hospital;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Department {
 
-    private int departmentId;
-    private int hospitalId;
+    private String departmentId;
+    private String hospitalId;
     private List<Ward> wards;
     private List<Room> rooms;
 
@@ -18,19 +19,19 @@ public class Department {
 
     }
 
-    public int getDepartmentId() {
+    public String getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(int departmentId) {
+    public void setDepartmentId(String departmentId) {
         this.departmentId = departmentId;
     }
 
-    public int getHospitalId() {
+    public String getHospitalId() {
         return hospitalId;
     }
 
-    public void setHospitalId(int hospitalId) {
+    public void setHospitalId(String hospitalId) {
         this.hospitalId = hospitalId;
     }
 
@@ -52,8 +53,8 @@ public class Department {
 
     public static class DepartmentBuilder{
 
-        private int departmentId;
-        private int hospitalId;
+        private String departmentId;
+        private String hospitalId;
         private List<Ward> wards;
         private List<Room> rooms;
 
@@ -61,12 +62,12 @@ public class Department {
 
         }
 
-        public DepartmentBuilder departmentId(int departmentId){
+        public DepartmentBuilder departmentId(String departmentId){
             this.departmentId = departmentId;
             return this;
         }
 
-        public DepartmentBuilder hospitalId(int hospitalId){
+        public DepartmentBuilder hospitalId(String hospitalId){
             this.hospitalId = hospitalId;
             return this;
         }
@@ -113,11 +114,7 @@ public class Department {
 
         @Override
         public int hashCode() {
-            int result = departmentId;
-            result = 31 * result + hospitalId;
-            result = 31 * result + (wards != null ? wards.hashCode() : 0);
-            result = 31 * result + (rooms != null ? rooms.hashCode() : 0);
-            return result;
+            return Objects.hash(departmentId, hospitalId, wards, rooms);
         }
     }
 

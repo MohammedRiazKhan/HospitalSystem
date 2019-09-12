@@ -1,8 +1,10 @@
 package me.mohammedriazkhan.domain.visit;
 
+import java.util.Objects;
+
 public class Medication {
 
-    private int medicationId;
+    private String medicationId;
     private String medicineName;
     private String description;
     private int dose;
@@ -18,11 +20,11 @@ public class Medication {
         this.dose = builder.dose;
     }
 
-    public int getMedicationId() {
+    public String getMedicationId() {
         return medicationId;
     }
 
-    public void setMedicationId(int medicationId) {
+    public void setMedicationId(String medicationId) {
         this.medicationId = medicationId;
     }
 
@@ -52,12 +54,12 @@ public class Medication {
 
     public static class MedicationBuilder{
 
-        private int medicationId;
+        private String medicationId;
         private String medicineName;
         private String description;
         private int dose;
 
-        public MedicationBuilder medicationId(int medicationId){
+        public MedicationBuilder medicationId(String medicationId){
             this.medicationId = medicationId;
             return this;
         }
@@ -108,11 +110,7 @@ public class Medication {
 
         @Override
         public int hashCode() {
-            int result = medicationId;
-            result = 31 * result + (medicineName != null ? medicineName.hashCode() : 0);
-            result = 31 * result + (description != null ? description.hashCode() : 0);
-            result = 31 * result + dose;
-            return result;
+            return Objects.hash(medicationId, medicineName, description, dose);
         }
     }
 

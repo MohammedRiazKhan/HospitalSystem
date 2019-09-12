@@ -1,8 +1,10 @@
 package me.mohammedriazkhan.domain.hospital;
 
+import java.util.Objects;
+
 public class Ward {
 
-    private int wardId;
+    private String wardId;
     private String wardCode;
 
     public Ward(){
@@ -16,11 +18,11 @@ public class Ward {
 
     }
 
-    public int getWardId() {
+    public String getWardId() {
         return wardId;
     }
 
-    public void setWardId(int wardId) {
+    public void setWardId(String wardId) {
         this.wardId = wardId;
     }
 
@@ -34,10 +36,10 @@ public class Ward {
 
     public static class WardBuilder{
 
-        private int wardId;
+        private String wardId;
         private String wardCode;
 
-        public WardBuilder wardId(int wardId){
+        public WardBuilder wardId(String wardId){
             this.wardId = wardId;
             return this;
         }
@@ -74,9 +76,7 @@ public class Ward {
 
         @Override
         public int hashCode() {
-            int result = wardId;
-            result = 31 * result + (wardCode != null ? wardCode.hashCode() : 0);
-            return result;
+            return Objects.hash(wardId, wardCode);
         }
     }
 

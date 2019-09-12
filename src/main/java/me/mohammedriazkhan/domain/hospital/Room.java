@@ -1,10 +1,11 @@
 package me.mohammedriazkhan.domain.hospital;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Room {
 
-    private int roomId;
+    private String roomId;
     private List<Equipment> equipment;
 
     public Room(){
@@ -16,20 +17,20 @@ public class Room {
         this.equipment = builder.equipment;
     }
 
-    public int getRoomId() {
+    public String getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(int roomId) {
+    public void setRoomId(String roomId) {
         this.roomId = roomId;
     }
 
     public static class RoomBuilder{
 
-        private int roomId;
+        private String roomId;
         private List<Equipment> equipment;
 
-        public RoomBuilder roomId(int roomId){
+        public RoomBuilder roomId(String roomId){
             this.roomId = roomId;
             return this;
         }
@@ -65,9 +66,7 @@ public class Room {
 
         @Override
         public int hashCode() {
-            int result = roomId;
-            result = 31 * result + (equipment != null ? equipment.hashCode() : 0);
-            return result;
+            return Objects.hash(roomId, equipment);
         }
     }
 

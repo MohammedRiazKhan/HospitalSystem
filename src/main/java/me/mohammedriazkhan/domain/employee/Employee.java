@@ -1,13 +1,9 @@
 package me.mohammedriazkhan.domain.employee;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public abstract class Employee {
 
-    private int employeeId;
-    @JsonProperty("fName")
+    private String employeeId;
     private String firstName;
-    @JsonProperty("lName")
     private String lastName;
     private String identityNumber;
     private String jobTitle;
@@ -16,7 +12,6 @@ public abstract class Employee {
     public Employee(){
 
     }
-
 
     protected Employee(Builder builder){
 
@@ -29,11 +24,11 @@ public abstract class Employee {
 
     }
 
-    public int getEmployeeId() {
+    public String getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
 
@@ -79,16 +74,14 @@ public abstract class Employee {
 
     public static abstract class Builder{
 
-        private int employeeId;
-        @JsonProperty("fName")
+        private String employeeId;
         private String firstName;
-        @JsonProperty("lName")
         private String lastName;
         private String identityNumber;
         private String jobTitle;
         private String dateOfEmployment;
 
-        public Builder employeeId(int employeeId){
+        public Builder employeeId(String employeeId){
             this.employeeId = employeeId;
             return this;
         }

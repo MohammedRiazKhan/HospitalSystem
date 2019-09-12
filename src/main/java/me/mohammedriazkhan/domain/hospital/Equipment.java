@@ -1,8 +1,10 @@
 package me.mohammedriazkhan.domain.hospital;
 
+import java.util.Objects;
+
 public class Equipment {
 
-    private int equipmentId;
+    private String equipmentId;
     private String name;
     private String desc;
     private int quantity;
@@ -20,16 +22,46 @@ public class Equipment {
         this.quantity = builder.quantity;
     }
 
+    public String getEquipmentId() {
+        return equipmentId;
+    }
 
+    public void setEquipmentId(String equipmentId) {
+        this.equipmentId = equipmentId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public static class EquipmentBuilder{
 
-        private int equipmentId;
+        private String equipmentId;
         private String name;
         private String desc;
         private int quantity;
 
-        public EquipmentBuilder equipmentId(int equipmentId){
+        public EquipmentBuilder equipmentId(String equipmentId){
             this.equipmentId = equipmentId;
             return this;
         }
@@ -79,11 +111,7 @@ public class Equipment {
 
         @Override
         public int hashCode() {
-            int result = equipmentId;
-            result = 31 * result + (name != null ? name.hashCode() : 0);
-            result = 31 * result + (desc != null ? desc.hashCode() : 0);
-            result = 31 * result + quantity;
-            return result;
+            return Objects.hash(equipmentId, name, desc, quantity);
         }
     }
 

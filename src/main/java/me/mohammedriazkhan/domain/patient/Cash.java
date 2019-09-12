@@ -27,6 +27,10 @@ public class Cash extends Account{
 
         private double cashAmount;
 
+        public CashBuilder(){
+            super();
+        }
+
         private CashBuilder cashAmount(double cashAmount){
             this.cashAmount = cashAmount;
             return this;
