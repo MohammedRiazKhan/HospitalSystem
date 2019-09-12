@@ -1,12 +1,12 @@
 package me.mohammedriazkhan.domain.appoinment;
 
-import me.mohammedriazkhan.domain.patient.Patient;
+import java.util.Objects;
 
 public class Appointment {
 
-    private int appointmentId;
+    private String appointmentId;
     private String bookingDate;
-    private Patient patient;
+    private String patientId;
 
     public Appointment(){
 
@@ -16,15 +16,15 @@ public class Appointment {
 
         this.appointmentId = builder.appointmentId;
         this.bookingDate = builder.bookingDate;
-        this.patient = builder.patient;
+        this.patientId = builder.patientId;
 
     }
 
-    public int getAppointmentId() {
+    public String getAppointmentId() {
         return appointmentId;
     }
 
-    public void setAppointmentId(int appointmentId) {
+    public void setAppointmentId(String appointmentId) {
         this.appointmentId = appointmentId;
     }
 
@@ -36,25 +36,25 @@ public class Appointment {
         this.bookingDate = bookingDate;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public String getPatientId() {
+        return patientId;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
     }
 
     public static class AppointmentBuilder{
 
-        private int appointmentId;
+        private String appointmentId;
         private String bookingDate;
-        private Patient patient;
+        private String patientId;
 
         public AppointmentBuilder(){
 
         }
 
-        public AppointmentBuilder appointmentId(int appointmentId){
+        public AppointmentBuilder appointmentId(String appointmentId){
             this.appointmentId = appointmentId;
             return this;
         }
@@ -64,10 +64,18 @@ public class Appointment {
             return this;
         }
 
-        public AppointmentBuilder patient(Patient patient){
-            this.patient = patient;
+        public AppointmentBuilder patientId(String patientId){
+            this.patientId = patientId;
             return this;
         }
+
+        public AppointmentBuilder copy(Appointment appointment){
+            this.appointmentId = appointment.appointmentId;
+            this.bookingDate = appointment.bookingDate;
+            this.patientId = appointment.patientId;
+            return this;
+        }
+
 
         public Appointment build(){
             return new Appointment(this);
@@ -76,9 +84,9 @@ public class Appointment {
         @Override
         public String toString() {
             return "AppointmentBuilder{" +
-                    "appointmentId=" + appointmentId +
+                    "appointmentId='" + appointmentId + '\'' +
                     ", bookingDate='" + bookingDate + '\'' +
-                    ", patient=" + patient +
+                    ", patientId='" + patientId + '\'' +
                     '}';
         }
 
@@ -86,21 +94,15 @@ public class Appointment {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             AppointmentBuilder that = (AppointmentBuilder) o;
-
-            if (appointmentId != that.appointmentId) return false;
-            if (bookingDate != null ? !bookingDate.equals(that.bookingDate) : that.bookingDate != null) return false;
-            return patient != null ? patient.equals(that.patient) : that.patient == null;
-
+            return Objects.equals(appointmentId, that.appointmentId) &&
+                    Objects.equals(bookingDate, that.bookingDate) &&
+                    Objects.equals(patientId, that.patientId);
         }
 
         @Override
         public int hashCode() {
-            int result = appointmentId;
-            result = 31 * result + (bookingDate != null ? bookingDate.hashCode() : 0);
-            result = 31 * result + (patient != null ? patient.hashCode() : 0);
-            return result;
+            return Objects.hash(appointmentId, bookingDate, patientId);
         }
     }
 

@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static junit.framework.TestCase.*;
+import static org.junit.Assert.assertNotEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -45,20 +46,16 @@ public class DoctorRepositoryTest {
     @Test
     public void update() {
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Dr", "Doctor", "Renal");
-        doctorRepository.create(doc);
 
-        assertNotNull(doctorRepository.getAll());
+        Doctor doctor = DoctorFactory.getDoctor(1,"riaz", "khan", "alles");
+        doctorRepository.create(doctor);
 
-        Doctor doctor = DoctorFactory.getDoctor(1, "Dr", "Dr", "Renal");
-        doctor.setEmployeeId(doc.getEmployeeId());
+        Doctor updatedDoctor = DoctorFactory.getDoctor(1, "Not riaz", "khan", "alles");
 
-        doctorRepository.update(doctor);
+        doctorRepository.update(updatedDoctor);
 
-        //get doc
-        Doctor fromSet = doctorRepository.read(doctor.getEmployeeId());
+        Assert.assertNotEquals(doctor.getFirstName(), updatedDoctor.getFirstName());
 
-        assertEquals(doctor, fromSet);
 
     }
 

@@ -9,7 +9,7 @@ to better manage their day to day operations with the use of a hospital system.
   and dispensary
 - Will be able to store patients records and retrieve them when needed.
 - Be able to generate Patient reports
-- Allow team members Doctors and Nurses who are caring for a patient to have up to date information on their patients.
+- Allow team members Doctors and Nurses who are caring for a patientId to have up to date information on their patients.
 - Keep track of any information pertaining to the hospital and possibly link up to a larger hospital system.
 
 <img src="uml.png" />
