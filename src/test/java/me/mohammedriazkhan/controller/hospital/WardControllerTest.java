@@ -24,7 +24,7 @@ public class WardControllerTest {
     @Test
     public void create() {
 
-        Ward ward = WardFactory.getWard(1, "A");
+        Ward ward = WardFactory.getWard("A");
 
         ResponseEntity<Ward> postResponse = restTemplate.postForEntity(baseURL + "/new", ward, Ward.class);
 
@@ -47,7 +47,7 @@ public class WardControllerTest {
 
         int id = 1;
         Ward ward = restTemplate.getForObject(baseURL + "/find/" + id, Ward.class);
-        ward.setWardId(1);
+        ward.setWardId("AS");
 
         restTemplate.put(baseURL + "/update/" + id, ward);
 

@@ -22,7 +22,7 @@ public class DoctorController {
     }
 
     @GetMapping(path = "/find/{id}")
-    public Doctor findById(@PathVariable int id){
+    public Doctor findById(@PathVariable String id){
 
         Doctor doctor = doctorService.read(id);
 
@@ -37,7 +37,7 @@ public class DoctorController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable String id){
         doctorService.delete(id);
     }
 

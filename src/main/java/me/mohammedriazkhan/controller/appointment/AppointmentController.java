@@ -23,7 +23,7 @@ public class AppointmentController {
     }
 
     @GetMapping(path = "/find/{id}")
-    public Appointment findById(@PathVariable int id){
+    public Appointment findById(@PathVariable String id){
 
         Appointment account = appointmentService.read(id);
         return account;
@@ -37,7 +37,7 @@ public class AppointmentController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable String id){
         appointmentService.delete(id);
     }
 

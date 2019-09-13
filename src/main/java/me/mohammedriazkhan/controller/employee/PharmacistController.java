@@ -20,7 +20,7 @@ public class PharmacistController {
     }
 
     @GetMapping(path = "/find/{id}")
-    public Pharmacist findById(@PathVariable int id){
+    public Pharmacist findById(@PathVariable String id){
         return pharmacistService.read(id);
     }
 
@@ -30,7 +30,7 @@ public class PharmacistController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable String id){
 
         pharmacistService.delete(id);
 

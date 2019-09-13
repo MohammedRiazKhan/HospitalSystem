@@ -27,7 +27,7 @@ public class VisitControllerTest {
     @Test
     public void create() {
 
-        Visit visit = VisitFactory.getVisit(1, "fasd", null, null, null, null, null);
+        Visit visit = VisitFactory.getVisit("fasd", null, null, null, null, null);
 
         ResponseEntity<Visit> postResponse = restTemplate.postForEntity(baseURL + "/new", visit, Visit.class);
 

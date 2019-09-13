@@ -24,7 +24,7 @@ public class RoomControllerTest {
     @Test
     public void create() {
 
-        Room room = RoomFactory.getRoom(1, null);
+        Room room = RoomFactory.getRoom( null);
 
         ResponseEntity<Room> postResponse = restTemplate.postForEntity(baseURL + "/new", room, Room.class);
 

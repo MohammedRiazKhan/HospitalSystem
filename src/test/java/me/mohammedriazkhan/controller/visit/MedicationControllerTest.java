@@ -24,7 +24,7 @@ public class MedicationControllerTest {
     @Test
     public void create() {
 
-        Medication medication = MedicationFactory.getMedication(1, "Ponado", "For Pain", 2);
+        Medication medication = MedicationFactory.getMedication("Ponado", "For Pain", 2);
 
         ResponseEntity<Medication> postResponse = restTemplate.postForEntity(baseURL + "/new", medication, Medication.class);
 

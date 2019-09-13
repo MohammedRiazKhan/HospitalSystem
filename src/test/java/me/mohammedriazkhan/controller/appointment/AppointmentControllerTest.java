@@ -26,8 +26,8 @@ public class AppointmentControllerTest {
     @Test
     public void create() {
 
-        Appointment appointment = AppointmentFactory.getAppointment(1, "1 May 19", null);
-        appointment.setAppointmentId(1);
+        Appointment appointment = AppointmentFactory.getAppointment("1 May 19", null);
+        appointment.setAppointmentId("fas");
 
         ResponseEntity<Appointment> postResponse = restTemplate.postForEntity(baseURL + "/new", appointment, Appointment.class);
 

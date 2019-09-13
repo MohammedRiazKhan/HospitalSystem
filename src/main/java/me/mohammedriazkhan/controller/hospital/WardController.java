@@ -20,7 +20,7 @@ public class WardController {
     }
 
     @GetMapping(path = "/find/{id}")
-    public Ward findById(@PathVariable int id){
+    public Ward findById(@PathVariable String id){
         return wardService.read(id);
     }
 
@@ -30,7 +30,7 @@ public class WardController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable String id){
         wardService.delete(id);
 
     }

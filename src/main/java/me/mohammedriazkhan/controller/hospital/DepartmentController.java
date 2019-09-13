@@ -22,7 +22,7 @@ public class DepartmentController {
     }
 
     @GetMapping(path = "/find/{id}")
-    public Department findById(@PathVariable int id){
+    public Department findById(@PathVariable String id){
         return departmentService.read(id);
     }
 
@@ -32,7 +32,7 @@ public class DepartmentController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable String id){
 
         departmentService.delete(id);
 

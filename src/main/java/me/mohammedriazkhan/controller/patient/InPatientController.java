@@ -20,7 +20,7 @@ public class InPatientController {
     }
 
     @GetMapping(path = "/find/{id}")
-    public InPatient findById(@PathVariable int id){
+    public InPatient findById(@PathVariable String id){
         return null;
     }
 
@@ -30,7 +30,7 @@ public class InPatientController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable String id){
 
 
     }

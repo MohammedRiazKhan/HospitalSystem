@@ -24,8 +24,8 @@ public class PorterControllerTest {
     @Test
     public void create() {
 
-        Porter porter = PorterFactory.getPorter(1, "Jake", "Paul", "00001321");
-        porter.setEmployeeId(1);
+        Porter porter = PorterFactory.getPorter("Jake", "Paul", "00001321");
+        porter.setEmployeeId("f");
 
         ResponseEntity<Porter> postResponse = restTemplate.postForEntity(baseURL + "/new", porter, Porter.class);
 

@@ -21,7 +21,7 @@ public class MedicalToolController {
     }
 
     @GetMapping(path = "/find/{id}")
-    public MedicalTool findById(@PathVariable int id){
+    public MedicalTool findById(@PathVariable String id){
         return medicalToolService.read(id);
     }
 
@@ -31,7 +31,7 @@ public class MedicalToolController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable String id){
         medicalToolService.delete(id);
 
     }

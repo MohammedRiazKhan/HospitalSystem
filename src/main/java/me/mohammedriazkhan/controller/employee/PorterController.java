@@ -20,7 +20,7 @@ public class PorterController {
     }
 
     @GetMapping(path = "/find/{id}")
-    public Porter findById(@PathVariable int id){
+    public Porter findById(@PathVariable String id){
         return porterService.read(id);
     }
 
@@ -30,7 +30,7 @@ public class PorterController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable String id){
         porterService.delete(id);
 
     }

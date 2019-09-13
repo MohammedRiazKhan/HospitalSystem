@@ -19,13 +19,11 @@ public class CleanerController {
     @PostMapping("/new")
     public Cleaner create(@RequestBody Cleaner clean){
 
-        Cleaner cleaner = CleanerFactory.getCleaner(1);
-
-        return service.create(cleaner);
+        return service.create(clean);
     }
 
     @GetMapping(path = "/find/{id}")
-    public Cleaner findById(@PathVariable int id){
+    public Cleaner findById(@PathVariable String id){
 
         Cleaner cleaner = service.read(id);
 
@@ -40,7 +38,7 @@ public class CleanerController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable String id){
         service.delete(id);
     }
 

@@ -22,7 +22,7 @@ public class NurseController {
     }
 
     @GetMapping(path = "/find/{id}")
-    public Nurse findById(@PathVariable int id){
+    public Nurse findById(@PathVariable String id){
         return nurseService.read(id);
     }
 
@@ -32,7 +32,7 @@ public class NurseController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable String id){
 
         nurseService.delete(id);
 

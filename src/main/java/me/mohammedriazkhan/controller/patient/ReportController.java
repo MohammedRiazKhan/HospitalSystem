@@ -20,7 +20,7 @@ public class ReportController {
     }
 
     @GetMapping(path = "/find/{id}")
-    public Report findById(@PathVariable int id){
+    public Report findById(@PathVariable String id){
         return reportService.read(id);
     }
 
@@ -30,7 +30,7 @@ public class ReportController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable String id){
         reportService.delete(id);
 
     }

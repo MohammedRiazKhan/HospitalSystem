@@ -24,7 +24,7 @@ public class ReportControllerTest {
     @Test
     public void create() {
 
-        Report report = ReportFactory.getReport(1, "Text", "Body", null, null);
+        Report report = ReportFactory.getReport("Text", "Body", null, null);
         report.setReportId(1);
         ResponseEntity<Report> postResponse = restTemplate.postForEntity(baseURL + "/new", report, Report.class);
 

@@ -21,7 +21,7 @@ public class AccountController {
     }
 
     @GetMapping(path = "/find/{id}")
-    public Account findById(@PathVariable int id){
+    public Account findById(@PathVariable String id){
 
         Account account = accountService.read(id);
         return account;
@@ -35,7 +35,7 @@ public class AccountController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable String id){
         accountService.delete(id);
     }
 

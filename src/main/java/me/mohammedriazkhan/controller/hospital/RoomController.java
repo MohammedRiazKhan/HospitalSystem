@@ -21,7 +21,7 @@ public class RoomController {
     }
 
     @GetMapping(path = "/find/{id}")
-    public Room findById(@PathVariable int id){
+    public Room findById(@PathVariable String id){
         return roomService.read(id);
     }
 
@@ -31,7 +31,7 @@ public class RoomController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable String id){
         roomService.delete(id);
 
     }

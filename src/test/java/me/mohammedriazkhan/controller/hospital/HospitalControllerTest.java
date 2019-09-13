@@ -24,7 +24,7 @@ public class HospitalControllerTest {
     @Test
     public void create() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, 1, "Greys Memorial");
+        Hospital hospital = HospitalFactory.getHospital(null, "as", "Greys Memorial");
 
         ResponseEntity<Hospital> postResponse = restTemplate.postForEntity(baseURL + "/new", hospital, Hospital.class);
 
