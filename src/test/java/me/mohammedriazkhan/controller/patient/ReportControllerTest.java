@@ -25,7 +25,7 @@ public class ReportControllerTest {
     public void create() {
 
         Report report = ReportFactory.getReport("Text", "Body", null, null);
-        report.setReportId(1);
+        report.setReportId("Afsd");
         ResponseEntity<Report> postResponse = restTemplate.postForEntity(baseURL + "/new", report, Report.class);
 
         assertNotNull(postResponse);

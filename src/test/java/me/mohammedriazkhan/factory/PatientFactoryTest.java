@@ -33,7 +33,7 @@ public class PatientFactoryTest {
         List<String> d = new ArrayList<>();
 
 
-        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, doc);
+        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, "Afsd");
 
         Assert.assertNotNull(patient.getPatientId());
 

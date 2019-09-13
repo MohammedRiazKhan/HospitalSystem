@@ -24,8 +24,8 @@ public class NurseControllerTest {
     @Test
     public void create() {
 
-        Nurse nurse = NurseFactory.getNurse(1, "Riaz", "Khan", "1234", "Nurse Duh", "Today", null);
-        nurse.setEmployeeId(1);
+        Nurse nurse = NurseFactory.getNurse("Riaz", "Khan", "1234", "Nurse Duh", "Today", null);
+        nurse.setEmployeeId("Afsd");
 
         ResponseEntity<Nurse> postResponse = restTemplate.postForEntity(baseURL + "/new", nurse, Nurse.class);
 

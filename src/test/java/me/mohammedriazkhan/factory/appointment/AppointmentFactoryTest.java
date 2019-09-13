@@ -26,7 +26,7 @@ public class AppointmentFactoryTest {
         //List<Meal> m = new ArrayList<>();
         //List<String> d = new ArrayList<>();
 
-        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, doc);
+        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, "Afsd");
 
         Appointment appointment = AppointmentFactory.getAppointment
                 ("17-04-2018", "Patient1");

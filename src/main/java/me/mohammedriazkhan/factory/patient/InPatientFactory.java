@@ -7,7 +7,7 @@ import me.mohammedriazkhan.helper.IDGenerator;
 
 public class InPatientFactory {
 
-    public static InPatient getInPatient(String firstName, String lastName, String telephone, String identityNumber, int age, Doctor doctor) {
+    public static InPatient getInPatient(String firstName, String lastName, String telephone, String identityNumber, int age, String doctor) {
         return (InPatient) new InPatient.InPatientBuilder()
                 .patientId(IDGenerator.generateId())
                 .firstName(firstName)

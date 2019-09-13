@@ -24,8 +24,8 @@ public class DepartmentControllerTest {
     @Test
     public void create() {
 
-        Department department = DepartmentFactory.getDepartment(1, 1, null, null);
-        department.setDepartmentId(1);
+        Department department = DepartmentFactory.getDepartment( "Afsd", null, null);
+        department.setDepartmentId("Afsd");
 
         ResponseEntity<Department> postResponse = restTemplate.postForEntity(baseURL + "/new", department, Department.class);
 

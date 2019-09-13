@@ -32,7 +32,7 @@ public class PatientFactoryTest {
                 "1234568",
                 "0000213546546",
                 23,
-                doc
+                "Afsd"
         );
 
 

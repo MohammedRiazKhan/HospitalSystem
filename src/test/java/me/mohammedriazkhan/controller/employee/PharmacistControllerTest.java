@@ -24,8 +24,8 @@ public class PharmacistControllerTest {
     @Test
     public void create() {
 
-        Pharmacist pharmacist = PharmacistFactory.getPharmacist(1, "JOnh", "do", " ", " ", " ", null);
-        pharmacist.setEmployeeId(1);
+        Pharmacist pharmacist = PharmacistFactory.getPharmacist( "JOnh", "do", " ", " ", " ", null);
+        pharmacist.setEmployeeId("Afsd");
 
         ResponseEntity<Pharmacist> postResponse = restTemplate.postForEntity(baseURL + "/new", pharmacist, Pharmacist.class);
 

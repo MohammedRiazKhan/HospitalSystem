@@ -42,7 +42,7 @@ public class VisitFactoryTest {
         List<MedicalTool> tools = new ArrayList<>();
 
 
-        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, doc);
+        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, "FASd");
 
         Nurse docN = NurseFactory.getNurse("Mohammed", "Khan", "Renal", "asd", "das", "afds");
 

@@ -30,7 +30,7 @@ public class PatientServiceImplTest {
         Doctor doc = DoctorFactory.getDoctor( "Dr", "Doctor", "Renal");
 
         //patient
-        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, doc);
+        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, "Afsd");
 
         //create a patient
         patientService.create(patient);
@@ -45,7 +45,7 @@ public class PatientServiceImplTest {
 
         //creating a patient
         Doctor doc = DoctorFactory.getDoctor( "Dr", "Doctor", "Renal");
-        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, doc);
+        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, "Afsd");
         patientService.create(patient);
 
         //getting a patient from the set
@@ -61,11 +61,11 @@ public class PatientServiceImplTest {
 
         //creating a patient
         Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
-        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, doc);
+        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, "Afsd");
         patientService.create(patient);
 
         //creating a new patient to update
-        Patient patientNew = InPatientFactory.getInPatient("Mohammed", "Khan", "0762828630", "1111111111", 23, doc);
+        Patient patientNew = InPatientFactory.getInPatient("Mohammed", "Khan", "0762828630", "1111111111", 23, "Afsd");
         patientNew.setPatientId(patient.getPatientId());
 
         //updating the value
@@ -86,7 +86,7 @@ public class PatientServiceImplTest {
 
         //creating a patient
         Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
-        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, doc);
+        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, "Afsd");
         patientService.create(patient);
 
         //checks if set has a value
