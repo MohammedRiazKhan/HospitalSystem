@@ -5,7 +5,7 @@ import me.mohammedriazkhan.service.Service;
 
 import java.util.Set;
 
-public interface DepartmentService extends Service<Department, Integer> {
+public interface DepartmentService extends Service<Department, String> {
 
     Set<Department> getAll();
 

@@ -13,10 +13,10 @@ import java.util.Set;
 public class NurseRepositoryImpl implements NurseRepository {
 
     private static NurseRepositoryImpl repository = null;
-    private Map<Integer, Nurse> nurses;
+    private HashSet<Nurse> nurses;
 
     public NurseRepositoryImpl(){
-        nurses = new HashMap<>();
+        nurses = new HashSet<>();
     }
 
     public static NurseRepositoryImpl getRepository() {
@@ -28,41 +28,44 @@ public class NurseRepositoryImpl implements NurseRepository {
         return repository;
     }
 
-    /*public Nurse find(int id) {
-        return nurses.stream().filter(nurse -> nurse.getEmployeeId() == id).findAny().orElse(null);
-    }*/
-
     @Override
     public Nurse create(Nurse nurse) {
 
-       nurses.put(nurse.getEmployeeId(), nurse);
+       nurses.add(nurse);
        return nurse;
     }
 
     @Override
-    public Nurse read(Integer id) {
+    public Nurse read(String id) {
 
-     return nurses.get(id);
+     return nurses.stream().filter(nurse -> nurse.getEmployeeId().equals(id)).findAny().orElse(null);
 
     }
 
     @Override
     public Nurse update(Nurse nurse) {
 
-      nurses.replace(nurse.getEmployeeId(), nurse);
-      return nurses.get(nurse.getEmployeeId());
+        Nurse inDB = read(nurse.getEmployeeId());
+
+        if(inDB != null){
+            nurses.remove(inDB);
+            nurses.add(nurse);
+            return nurse;
+        }
+
+        return null;
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
 
-        nurses.remove(id);
-
+        Nurse inDB = read(id);
+        nurses.remove(inDB);
     }
 
     @Override
     public Set<Nurse> getAll() {
-        return new HashSet<>(nurses.values());
+        return nurses;
     }
 
 }

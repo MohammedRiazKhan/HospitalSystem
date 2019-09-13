@@ -23,7 +23,7 @@ public class NurseRepositoryTest {
     @Test
     public void create() {
 
-        Nurse nurse = NurseFactory.getNurse(1, "Nurse", "Nurse", "2", "Nurse Duh", "1", "asd");
+        Nurse nurse = NurseFactory.getNurse( "Nurse", "Nurse", "2", "Nurse Duh", "1", "asd");
 
         nurseRepository.create(nurse);
 
@@ -34,7 +34,7 @@ public class NurseRepositoryTest {
     @Test
     public void read() {
 
-        Nurse nurse = NurseFactory.getNurse(1, "Nurse", "Nurse", "2", "Nurse Duh", "1", "asd");
+        Nurse nurse = NurseFactory.getNurse("Nurse", "Nurse", "2", "Nurse Duh", "1", "asd");
 
         nurseRepository.create(nurse);
 
@@ -49,12 +49,12 @@ public class NurseRepositoryTest {
     @Test
     public void update() {
 
-        Nurse nurse = NurseFactory.getNurse(1, "Nurse", "Nurse", "2", "Nurse Duh", "1", "asd");
+        Nurse nurse = NurseFactory.getNurse( "Nurse", "Nurse", "2", "Nurse Duh", "1", "asd");
         nurseRepository.create(nurse);
 
         assertNotNull(nurseRepository.getAll());
 
-        Nurse nurseJackie = NurseFactory.getNurse(1, "Nurse", "Jackie", "2", "Nurse Duh", "1", "asd");
+        Nurse nurseJackie = NurseFactory.getNurse("Nurse", "Jackie", "2", "Nurse Duh", "1", "asd");
         nurseJackie.setEmployeeId(nurse.getEmployeeId());
         nurseRepository.update(nurseJackie);
 
@@ -66,7 +66,7 @@ public class NurseRepositoryTest {
 
     @Test
     public void delete() {
-        Nurse nurse = NurseFactory.getNurse(1, "Nurse", "Nurse", "2", "Nurse Duh", "1", "asd");
+        Nurse nurse = NurseFactory.getNurse( "Nurse", "Nurse", "2", "Nurse Duh", "1", "asd");
         nurseRepository.create(nurse);
 
         assertNotNull(nurseRepository.getAll());

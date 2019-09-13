@@ -13,11 +13,11 @@ import java.util.Set;
 public class MedicalToolRepositoryImpl implements MedicalToolRepository{
 
     private static MedicalToolRepositoryImpl repository = null;
-    private Map<Integer, MedicalTool> medicalTools;
+    private Set<MedicalTool> medicalTools;
 
     public MedicalToolRepositoryImpl()
     {
-        medicalTools = new HashMap<>();
+        medicalTools = new HashSet<>();
     }
 
     public static MedicalToolRepositoryImpl getRepository() {
@@ -31,35 +31,40 @@ public class MedicalToolRepositoryImpl implements MedicalToolRepository{
     @Override
     public MedicalTool create(MedicalTool medicalTool) {
 
-       medicalTools.put(medicalTool.getToolId(), medicalTool);
-
-        return medicalTool;
+       medicalTools.add(medicalTool);
+       return medicalTool;
     }
 
     @Override
-    public MedicalTool read(Integer id) {
+    public MedicalTool read(String id) {
 
-       return medicalTools.get(id);
+       return medicalTools.stream().filter(medicalTool -> medicalTool.getToolId().equals(id)).findAny().orElse(null);
 
     }
 
     @Override
     public MedicalTool update(MedicalTool medicalTool) {
 
-       medicalTools.replace(medicalTool.getToolId(), medicalTool);
-       return medicalTools.get(medicalTool.getToolId());
+       MedicalTool inDB = read(medicalTool.getToolId());
+       if(inDB != null){
+           medicalTools.remove(inDB);
+           medicalTools.add(medicalTool);
+           return medicalTool;
+       }
+
+       return null;
     }
 
     @Override
-    public void delete(Integer id) {
-
-        medicalTools.remove(id);
+    public void delete(String id) {
+        MedicalTool inDB = read(id);
+        medicalTools.remove(inDB);
 
     }
 
     @Override
     public Set<MedicalTool> getAll() {
-        return new HashSet<>(medicalTools.values());
+        return medicalTools;
     }
 
 

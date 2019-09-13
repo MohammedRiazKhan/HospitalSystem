@@ -6,7 +6,7 @@ import me.mohammedriazkhan.repository.Repository;
 
 import java.util.Set;
 
-public interface DepartmentRepository extends Repository<Department, Integer> {
+public interface DepartmentRepository extends Repository<Department, String> {
 
     Set<Department> getAll();
 

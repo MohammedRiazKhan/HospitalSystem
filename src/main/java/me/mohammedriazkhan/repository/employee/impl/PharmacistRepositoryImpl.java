@@ -14,10 +14,10 @@ public class PharmacistRepositoryImpl implements PharmacistRepository {
 
 
     private static PharmacistRepositoryImpl repository = null;
-    private Map<Integer, Pharmacist> pharmacists;
+    private HashSet<Pharmacist> pharmacists;
 
     public PharmacistRepositoryImpl(){
-        pharmacists = new HashMap<>();
+        pharmacists = new HashSet<>();
     }
 
     public static PharmacistRepositoryImpl getRepository() {
@@ -29,40 +29,43 @@ public class PharmacistRepositoryImpl implements PharmacistRepository {
         return repository;
     }
 
-    /*public Pharmacist find(int id) {
-        return pharmacists.stream().filter(pharmacist -> pharmacist.getEmployeeId() == id).findAny().orElse(null);
-    }*/
-
     @Override
     public Pharmacist create(Pharmacist pharmacist) {
 
-        pharmacists.put(pharmacist.getEmployeeId(), pharmacist);
+        pharmacists.add(pharmacist);
 
         return pharmacist;
     }
 
     @Override
-    public Pharmacist read(Integer id) {
-       return pharmacists.get(id);
+    public Pharmacist read(String id) {
+       return pharmacists.stream().filter(pharmacist -> pharmacist.getEmployeeId().equals(id)).findAny().orElse(null);
     }
 
     @Override
     public Pharmacist update(Pharmacist pharmacist) {
 
-        pharmacists.replace(pharmacist.getEmployeeId(), pharmacist);
-        return pharmacists.get(pharmacist.getEmployeeId());
+        Pharmacist inDB = read(pharmacist.getEmployeeId());
+        if(inDB != null){
+            pharmacists.remove(inDB);
+            pharmacists.add(pharmacist);
+            return pharmacist;
+        }
+
+        return null;
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
 
-        pharmacists.remove(id);
+        Pharmacist inDB = read(id);
+        pharmacists.remove(inDB);
 
     }
 
     @Override
     public Set<Pharmacist> getAll() {
-        return new HashSet<>(pharmacists.values());
+        return pharmacists;
     }
 
 

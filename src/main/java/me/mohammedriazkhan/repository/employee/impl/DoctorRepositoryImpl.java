@@ -13,11 +13,11 @@ import java.util.Set;
 public class DoctorRepositoryImpl implements DoctorRepository {
 
     private static DoctorRepositoryImpl doctorRepository = null;
-    private Map<Integer, Doctor> doctors;
+    private Set<Doctor> doctors;
 
 
     public DoctorRepositoryImpl(){
-        doctors = new HashMap<>();
+        doctors = new HashSet<>();
     }
 
 
@@ -30,37 +30,41 @@ public class DoctorRepositoryImpl implements DoctorRepository {
         return doctorRepository;
     }
 
-   /* public Doctor find(int id) {
-        return doctors.stream().filter(doctor -> doctor.getEmployeeId() == id).findAny().orElse(null);
-    }*/
-
     @Override
     public Doctor create(Doctor doctor) {
 
-        doctors.put(doctor.getEmployeeId(), doctor);
-        return doctor;
+       doctors.add(doctor);
+       return doctor;
     }
 
     @Override
-    public Doctor read(Integer id) {
-       return doctors.get(id);
+    public Doctor read(String id) {
+       return doctors.stream().filter(doctor -> doctor.getEmployeeId().equals(id)).findAny().orElse(null);
     }
 
     @Override
     public Doctor update(Doctor doctor) {
 
-       doctors.replace(doctor.getEmployeeId(), doctor);
-       return doctors.get(doctor.getEmployeeId());
+        Doctor inDB = read(doctor.getEmployeeId());
+
+        if(inDB != null){
+            doctors.remove(inDB);
+            doctors.add(doctor);
+            return doctor;
+        }
+
+        return null;
     }
 
     @Override
-    public void delete(Integer id) {
-       doctors.remove(id);
+    public void delete(String id) {
+        Doctor inDB = read(id);
+        doctors.remove(inDB);
     }
 
     @Override
     public Set<Doctor> getAll() {
-        return new HashSet<>(doctors.values());
+        return doctors;
     }
 
 

@@ -5,7 +5,7 @@ import me.mohammedriazkhan.service.Service;
 
 import java.util.Set;
 
-public interface RoomService extends Service<Room, Integer> {
+public interface RoomService extends Service<Room, String> {
 
     Set<Room> getAll();
 

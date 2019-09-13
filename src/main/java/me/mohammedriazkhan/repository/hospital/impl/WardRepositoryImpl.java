@@ -13,10 +13,10 @@ import java.util.Set;
 public class WardRepositoryImpl implements WardRepository {
 
     private static WardRepositoryImpl repository = null;
-    private Map<Integer, Ward> wards;
+    private Set<Ward> wards;
 
     public WardRepositoryImpl(){
-        wards = new HashMap<>();
+        wards = new HashSet<>();
     }
 
     public static WardRepositoryImpl getWards() {
@@ -26,40 +26,44 @@ public class WardRepositoryImpl implements WardRepository {
         return repository;
     }
 
-    /*public Ward find(int id) {
-        return wards.stream().filter(ward -> ward.getWardId() == id).findAny().orElse(null);
-    }*/
 
     @Override
     public Ward create(Ward ward) {
 
-        wards.put(ward.getWardId(), ward);
+        wards.add(ward);
 
         return ward;
     }
 
     @Override
-    public Ward read(Integer id) {
+    public Ward read(String id) {
 
-        return wards.get(id);
+        return wards.stream().filter(ward -> ward.getWardId().equals(id)).findAny().orElse(null);
     }
 
     @Override
     public Ward update(Ward ward) {
 
-       wards.replace(ward.getWardId(), ward);
-       return wards.get(ward.getWardId());
+        Ward inDB = read(ward.getWardId());
+
+        if(inDB != null){
+            wards.remove(inDB);
+            wards.add(ward);
+            return ward;
+
+        }
+        return null;
     }
 
     @Override
-    public void delete(Integer id) {
-
-        wards.remove(id);
+    public void delete(String id) {
+        Ward inDB = read(id);
+        wards.remove(inDB);
     }
 
     @Override
     public Set<Ward> getAll() {
-        return new HashSet<>(wards.values());
+        return wards;
     }
 
 

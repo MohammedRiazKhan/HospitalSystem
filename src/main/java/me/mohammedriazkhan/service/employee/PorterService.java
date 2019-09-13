@@ -5,6 +5,6 @@ import me.mohammedriazkhan.service.Service;
 
 import java.util.Set;
 
-public interface PorterService extends Service<Porter, Integer> {
+public interface PorterService extends Service<Porter, String> {
     Set<Porter> getAll();
 }

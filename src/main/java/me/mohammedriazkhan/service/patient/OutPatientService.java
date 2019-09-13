@@ -5,6 +5,6 @@ import me.mohammedriazkhan.service.Service;
 
 import java.util.Set;
 
-public interface OutPatientService extends Service<Patient, Integer> {
+public interface OutPatientService extends Service<Patient, String> {
     Set<Patient> getAll();
 }

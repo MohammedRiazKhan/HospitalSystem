@@ -13,10 +13,10 @@ import java.util.Set;
 public class PorterRepositoryImpl implements PorterRepository {
 
     private static PorterRepositoryImpl repository = null;
-    private Map<Integer, Porter> porters;
+    private Set<Porter> porters;
 
     public PorterRepositoryImpl(){
-        porters = new HashMap<>();
+        porters = new HashSet<>();
     }
 
 
@@ -28,39 +28,44 @@ public class PorterRepositoryImpl implements PorterRepository {
         return repository;
     }
 
-    /*public Porter find(int id) {
-        return porters.stream().filter(porter -> porter.getEmployeeId() == id).findAny().orElse(null);
-    }*/
-
     @Override
     public Porter create(Porter porter) {
 
-        porters.put(porter.getEmployeeId(), porter);
+        porters.add(porter);
         return porter;
     }
 
     @Override
-    public Porter read(Integer id) {
+    public Porter read(String id) {
 
-        return porters.get(id);
+        return porters.stream().filter(porter -> porter.getEmployeeId().equals(id)).findAny().orElse(null);
     }
 
     @Override
     public Porter update(Porter porter) {
 
-       porters.replace(porter.getEmployeeId(), porter);
-       return porters.get(porter.getEmployeeId());
+        Porter inDB = read(porter.getEmployeeId());
+
+        if(inDB != null){
+            porters.remove(inDB);
+            porters.add(porter);
+            return porter;
+        }
+
+        return null;
     }
 
     @Override
-    public void delete(Integer id) {
-       porters.remove(id);
+    public void delete(String id) {
+
+        Porter inDB = read(id);
+       porters.remove(inDB);
 
     }
 
     @Override
     public Set<Porter> getAll() {
-        return new HashSet<>(porters.values());
+        return porters;
     }
 
 }

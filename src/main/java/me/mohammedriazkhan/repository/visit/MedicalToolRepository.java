@@ -5,7 +5,7 @@ import me.mohammedriazkhan.repository.Repository;
 
 import java.util.Set;
 
-public interface MedicalToolRepository extends Repository<MedicalTool, Integer> {
+public interface MedicalToolRepository extends Repository<MedicalTool, String> {
 
 
     Set<MedicalTool> getAll();

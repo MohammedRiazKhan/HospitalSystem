@@ -23,7 +23,7 @@ public class DepartmentRepositoryTest {
     @Test
     public void create() {
 
-        Department department = DepartmentFactory.getDepartment(1, 1, null, null);
+        Department department = DepartmentFactory.getDepartment( "ass", null, null);
         departmentRepository.create(department);
 
         assertNotNull(departmentRepository.getAll());
@@ -33,7 +33,7 @@ public class DepartmentRepositoryTest {
     @Test
     public void read() {
 
-        Department department = DepartmentFactory.getDepartment(1, 1, null, null);
+        Department department = DepartmentFactory.getDepartment("ass", null, null);
         departmentRepository.create(department);
 
         assertNotNull(departmentRepository.getAll());
@@ -48,12 +48,12 @@ public class DepartmentRepositoryTest {
     @Test
     public void update() {
 
-        Department department = DepartmentFactory.getDepartment(1, 1, null, null);
+        Department department = DepartmentFactory.getDepartment("Asd", null, null);
         departmentRepository.create(department);
 
         assertNotNull(departmentRepository.getAll());
 
-        Department departmentUpdate = DepartmentFactory.getDepartment(1, 2, null, null);
+        Department departmentUpdate = DepartmentFactory.getDepartment("fasd", null, null);
         departmentUpdate.setDepartmentId(department.getDepartmentId());
         departmentRepository.update(departmentUpdate);
 
@@ -66,7 +66,7 @@ public class DepartmentRepositoryTest {
     @Test
     public void delete() {
 
-        Department department = DepartmentFactory.getDepartment(1, 1, null, null);
+        Department department = DepartmentFactory.getDepartment("ASd", null, null);
         departmentRepository.create(department);
 
         assertNotNull(departmentRepository.getAll());

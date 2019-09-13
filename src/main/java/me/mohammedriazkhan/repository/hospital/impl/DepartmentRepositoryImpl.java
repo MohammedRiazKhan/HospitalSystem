@@ -13,10 +13,10 @@ import java.util.Set;
 public class DepartmentRepositoryImpl implements DepartmentRepository {
 
     private static DepartmentRepositoryImpl repository = null;
-    private Map<Integer, Department> departments;
+    private Set<Department> departments;
 
     public DepartmentRepositoryImpl(){
-        departments = new HashMap<>();
+        departments = new HashSet<>();
     }
 
     public static DepartmentRepositoryImpl getRepository() {
@@ -28,41 +28,43 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
         return repository;
     }
 
-    /*public Department find(int id) {
-        return departments.stream().filter(department -> department.getDepartmentId() == id).findAny().orElse(null);
-    }*/
-
     @Override
     public Department create(Department department) {
 
-        departments.put(department.getDepartmentId(), department);
-
-        return department;
+       departments.add(department);
+       return department;
     }
 
     @Override
-    public Department read(Integer id) {
+    public Department read(String id) {
 
-       return departments.get(id);
+       return departments.stream().filter(department -> department.getDepartmentId().equals(id)).findAny().orElse(null);
 
     }
 
     @Override
     public Department update(Department department) {
 
-       departments.replace(department.getDepartmentId(), department);
-       return departments.get(department.getDepartmentId());
+        Department inDB = read(department.getDepartmentId());
+        if(inDB != null){
+            departments.remove(inDB);
+            departments.add(department);
+            return department;
+        }
+        return null;
     }
 
     @Override
-    public void delete(Integer id) {
-       departments.remove(id);
+    public void delete(String id) {
+
+        Department inDB = read(id);
+       departments.remove(inDB);
 
     }
 
     @Override
     public Set<Department> getAll() {
-        return new HashSet<>(departments.values());
+        return departments;
     }
 
 

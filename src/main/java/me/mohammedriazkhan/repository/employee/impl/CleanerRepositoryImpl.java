@@ -13,10 +13,10 @@ import java.util.Set;
 public class CleanerRepositoryImpl implements CleanerRepository{
 
     private static CleanerRepositoryImpl cleanerRepository = null;
-    private Map<Integer, Cleaner> cleaners;
+    private Set<Cleaner> cleaners;
 
     private CleanerRepositoryImpl(){
-        cleaners = new HashMap<>();
+        cleaners = new HashSet<>();
     }
 
     public static CleanerRepositoryImpl getCleanerRepository() {
@@ -28,40 +28,43 @@ public class CleanerRepositoryImpl implements CleanerRepository{
     }
 
 
-    /*public Cleaner find(int id) {
-        return cleaners.stream().filter(cleaner -> cleaner.getEmployeeId() == id).findAny().orElse(null);
-    }*/
-
     @Override
     public Cleaner create(Cleaner cleaner) {
 
-        cleaners.put(cleaner.getEmployeeId(), cleaner);
+        cleaners.add(cleaner);
 
         return cleaner;
     }
 
     @Override
-    public Cleaner read(Integer id) {
+    public Cleaner read(String id) {
 
-       return cleaners.get(id);
+       return cleaners.stream().filter(cleaner -> cleaner.getEmployeeId().equals(id)).findAny().orElse(null);
     }
 
     @Override
     public Cleaner update(Cleaner cleaner) {
+        Cleaner inDB = read(cleaner.getEmployeeId());
+        if(inDB != null){
+            cleaners.remove(inDB);
+            cleaners.add(cleaner);
+            return cleaner;
+        }
 
-        cleaners.replace(cleaner.getEmployeeId(), cleaner);
-        return cleaners.get(cleaner.getEmployeeId());
+        return null;
+
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
 
-        cleaners.remove(id);
+        Cleaner inDB = read(id);
+        cleaners.remove(inDB);
 
     }
 
     @Override
     public Set<Cleaner> getAll() {
-        return new HashSet<>(cleaners.values());
+        return cleaners;
     }
 }

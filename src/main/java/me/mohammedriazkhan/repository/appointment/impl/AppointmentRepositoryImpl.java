@@ -10,10 +10,10 @@ import java.util.*;
 public class AppointmentRepositoryImpl implements AppointmentRepository {
 
     private static AppointmentRepositoryImpl appointmentRepository = null;
-    private Map<Integer, Appointment> appointments;
+    private Set<Appointment> appointments;
 
     public AppointmentRepositoryImpl(){
-        appointments = new HashMap<>();
+        appointments = new HashSet<>();
     }
 
     public static AppointmentRepositoryImpl getAppointmentRepository() {
@@ -25,46 +25,44 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
         return appointmentRepository;
     }
 
-    /*
-    Implementation using Set as data storage
-    public Appointment find(int id) {
-        return appointments.stream().filter(appointment -> appointment.getAppointmentId() == id).findAny().orElse(null);
-    }*/
-
     @Override
     public Appointment create(Appointment appointment) {
-        this.appointments.put(appointment.getAppointmentId(), appointment);
+        appointments.add(appointment);
         return appointment;
     }
 
     @Override
-    public Appointment read(Integer id) {
+    public Appointment read(String id) {
 
-       return this.appointments.get(id);
+       return appointments.stream().filter(appointment -> appointment.getAppointmentId().equals(id)).findAny().orElse(null);
 
     }
 
     @Override
     public Appointment update(Appointment appointment) {
 
-       this.appointments.replace(appointment.getAppointmentId(), appointment);
-       return this.appointments.get(appointment.getAppointmentId());
+        Appointment inDB = read(appointment.getAppointmentId());
+
+        if(inDB != null){
+            appointments.remove(inDB);
+            appointments.add(appointment);
+            return appointment;
+        }
+
+        return null;
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
 
-        appointments.remove(id);
-
+        Appointment inDB = read(id);
+        appointments.remove(inDB);
     }
 
     @Override
     public Set<Appointment> getAll() {
 
-        //return a set to eliminate any duplicates
-        Collection<Appointment> students = this.appointments.values();
-
-        return new HashSet<>(students);
+       return appointments;
     }
 
 

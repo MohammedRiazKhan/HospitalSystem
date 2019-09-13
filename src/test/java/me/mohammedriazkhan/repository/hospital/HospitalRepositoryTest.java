@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.UUID;
+
 import static junit.framework.TestCase.*;
 
 @RunWith(SpringRunner.class)
@@ -23,7 +25,7 @@ public class HospitalRepositoryTest {
     @Test
     public void create() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, 1, "Greys Anatomy");
+        Hospital hospital = HospitalFactory.getHospital(null, "da", "Greys Anatomy");
 
         hospitalRepository.create(hospital);
 
@@ -34,7 +36,7 @@ public class HospitalRepositoryTest {
     @Test
     public void read() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, 1, "Greys Anatomy");
+        Hospital hospital = HospitalFactory.getHospital(null, "ASDf", "Greys Anatomy");
 
         hospitalRepository.create(hospital);
 
@@ -50,13 +52,13 @@ public class HospitalRepositoryTest {
     @Test
     public void update() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, 1, "Greys Anatomy");
+        Hospital hospital = HospitalFactory.getHospital(null, "ASDf", "Greys Anatomy");
 
         hospitalRepository.create(hospital);
 
         assertNotNull(hospitalRepository.getAll());
 
-        Hospital hospitalUpdate = HospitalFactory.getHospital(null, 1, "Greys fantomy");
+        Hospital hospitalUpdate = HospitalFactory.getHospital(null, "ASdf", "Greys fantomy");
         hospitalUpdate.setHospitalId(hospital.getHospitalId());
 
         hospitalRepository.update(hospitalUpdate);
@@ -71,7 +73,7 @@ public class HospitalRepositoryTest {
     @Test
     public void delete() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, 1, "Greys Anatomy");
+        Hospital hospital = HospitalFactory.getHospital(null, UUID.randomUUID().toString(), "Greys Anatomy");
 
         hospitalRepository.create(hospital);
 

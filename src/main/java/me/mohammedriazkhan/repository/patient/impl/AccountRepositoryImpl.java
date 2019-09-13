@@ -1,23 +1,21 @@
 package me.mohammedriazkhan.repository.patient.impl;
 
-import me.mohammedriazkhan.domain.visit.MedicalTool;
+import me.mohammedriazkhan.domain.patient.Account;
 import me.mohammedriazkhan.repository.patient.AccountRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 @Repository("AccountInMemory")
 public class AccountRepositoryImpl implements AccountRepository {
 
     private static AccountRepositoryImpl repository = null;
-    private Map<Integer, MedicalTool> medicalTools;
+    private Set<Account> accounts;
 
     public AccountRepositoryImpl()
     {
-        medicalTools = new HashMap<>();
+        accounts = new HashSet<>();
     }
 
     public static AccountRepositoryImpl getRepository() {
@@ -27,35 +25,41 @@ public class AccountRepositoryImpl implements AccountRepository {
         return repository;
     }
 
-    @Override
-    public MedicalTool create(MedicalTool medicalTool) {
 
-        medicalTools.put(medicalTool.getToolId(), medicalTool);
-        return medicalTool;
+    @Override
+    public Set<Account> getAll() {
+        return accounts;
     }
 
     @Override
-    public MedicalTool read(Integer id) {
-        return medicalTools.get(id);
+    public Account create(Account account) {
+        accounts.add(account);
+        return account;
     }
 
     @Override
-    public MedicalTool update(MedicalTool medicalTool) {
-
-        medicalTools.replace(medicalTool.getToolId(), medicalTool);
-        return medicalTools.get(medicalTool.getToolId());
+    public Account read(String s) {
+        return accounts.stream().filter(account -> account.getAccountNo().equals(s)).findAny().orElse(null);
     }
 
     @Override
-    public void delete(Integer id) {
+    public Account update(Account account) {
 
-        medicalTools.remove(id);
+        Account inDB = read(account.getAccountNo());
+        if(inDB != null){
+            accounts.remove(inDB);
+            accounts.add(account);
+            return account;
+        }
 
+        return null;
     }
 
     @Override
-    public Set<MedicalTool> getAll() {
-        return new HashSet<>(medicalTools.values());
-    }
+    public void delete(String s) {
 
+        Account inDB = read(s);
+        accounts.remove(inDB);
+
+    }
 }

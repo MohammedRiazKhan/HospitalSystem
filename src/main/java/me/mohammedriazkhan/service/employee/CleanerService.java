@@ -5,7 +5,7 @@ import me.mohammedriazkhan.service.Service;
 
 import java.util.Set;
 
-public interface CleanerService extends Service<Cleaner, Integer> {
+public interface CleanerService extends Service<Cleaner, String> {
 
     Set<Cleaner> getAll();
 

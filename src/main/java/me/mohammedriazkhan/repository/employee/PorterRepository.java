@@ -5,7 +5,7 @@ import me.mohammedriazkhan.repository.Repository;
 
 import java.util.Set;
 
-public interface PorterRepository extends Repository<Porter, Integer> {
+public interface PorterRepository extends Repository<Porter, String> {
 
     Set<Porter> getAll();
 

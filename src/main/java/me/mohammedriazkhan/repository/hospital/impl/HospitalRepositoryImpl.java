@@ -13,10 +13,10 @@ import java.util.Set;
 public class HospitalRepositoryImpl implements HospitalRepository {
 
     private static HospitalRepositoryImpl repository = null;
-    private Map<Integer, Hospital> hospitals;
+    private Set<Hospital> hospitals;
 
     public HospitalRepositoryImpl(){
-        hospitals = new HashMap<>();
+        hospitals = new HashSet<>();
     }
 
     public static HospitalRepositoryImpl getRepository() {
@@ -28,39 +28,43 @@ public class HospitalRepositoryImpl implements HospitalRepository {
 
     }
 
-    /*public Hospital find(int id) {
-        return hospitals.stream().filter(hospital -> hospital.getHospitalId() == id).findAny().orElse(null);
-    }*/
-
     @Override
     public Hospital create(Hospital hospital) {
 
-       hospitals.put(hospital.getHospitalId(), hospital);
+       hospitals.add(hospital);
        return hospital;
     }
 
     @Override
-    public Hospital read(Integer id) {
-      return hospitals.get(id);
+    public Hospital read(String id) {
+      return hospitals.stream().filter(hospital -> hospital.getHospitalId().equals(id)).findAny().orElse(null);
     }
 
     @Override
     public Hospital update(Hospital hospital) {
 
-        hospitals.replace(hospital.getHospitalId(), hospital);
-        return hospitals.get(hospital.getHospitalId());
+        Hospital inDB = read(hospital.getHospitalId());
+        if(inDB != null){
+            hospitals.remove(hospital);
+            hospitals.add(hospital);
+            return hospital;
+
+        }
+
+        return null;
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
 
-       hospitals.remove(id);
+        Hospital inDB = read(id);
+        hospitals.remove(inDB);
 
     }
 
     @Override
     public Set<Hospital> getAll() {
-        return new HashSet<>(hospitals.values());
+        return hospitals;
     }
 
 

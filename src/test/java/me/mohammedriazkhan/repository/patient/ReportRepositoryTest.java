@@ -25,7 +25,7 @@ public class ReportRepositoryTest {
     @Test
     public void create() {
 
-        Report report = ReportFactory.getReport(1, "fas", null, null, null);
+        Report report = ReportFactory.getReport( "fas", null, null, null);
         reportitory.create(report);
         assertNotNull(reportitory.getAll());
 
@@ -34,7 +34,7 @@ public class ReportRepositoryTest {
     @Test
     public void read() {
 
-        Report report = ReportFactory.getReport(1, "fas", null, null, null);
+        Report report = ReportFactory.getReport("fas", null, null, null);
         reportitory.create(report);
         assertNotNull(reportitory.getAll());
 
@@ -49,11 +49,11 @@ public class ReportRepositoryTest {
     public void update() {
 
 
-        Report report = ReportFactory.getReport(1, "fas", null, null, null);
+        Report report = ReportFactory.getReport("fas", null, null, null);
         reportitory.create(report);
         assertNotNull(reportitory.getAll());
 
-        Report update = ReportFactory.getReport(1, "fadass", null, null, null);
+        Report update = ReportFactory.getReport( "fadass", null, null, null);
         update.setReportId(report.getReportId());
         reportitory.update(update);
 
@@ -67,7 +67,7 @@ public class ReportRepositoryTest {
     public void delete() {
 
 
-        Report report = ReportFactory.getReport(1, "fas", null, null, null);
+        Report report = ReportFactory.getReport( "fas", null, null, null);
         reportitory.create(report);
         assertNotNull(reportitory.getAll());
 

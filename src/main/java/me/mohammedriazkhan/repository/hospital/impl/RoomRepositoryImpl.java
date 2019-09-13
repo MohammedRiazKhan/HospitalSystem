@@ -13,10 +13,10 @@ import java.util.Set;
 public class RoomRepositoryImpl implements RoomRepository{
 
     private static RoomRepositoryImpl roomRepository = null;
-    private Map<Integer, Room> rooms;
+    private Set<Room> rooms;
 
     public RoomRepositoryImpl(){
-        rooms = new HashMap<>();
+        rooms = new HashSet<>();
     }
 
     public static RoomRepositoryImpl getRoomRepository() {
@@ -26,39 +26,43 @@ public class RoomRepositoryImpl implements RoomRepository{
         return roomRepository;
     }
 
-   /* public Room find(int id) {
-        return rooms.stream().filter(room -> room.getRoomId() == id).findAny().orElse(null);
-    }*/
-
     @Override
     public Room create(Room room) {
 
-        rooms.put(room.getRoomId(), room);
+        rooms.add(room);
         return room;
     }
 
     @Override
-    public Room read(Integer id) {
-       return rooms.get(id);
+    public Room read(String id) {
+       return rooms.stream().filter(room -> room.getRoomId().equals(id)).findAny().orElse(null);
     }
 
     @Override
     public Room update(Room room) {
 
-        rooms.replace(room.getRoomId(), room);
-        return rooms.get(room.getRoomId());
+        Room inDB = read(room.getRoomId());
+
+        if(inDB != null){
+            rooms.remove(inDB);
+            rooms.add(room);
+            return room;
+        }
+
+        return null;
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
 
-       rooms.remove(id);
+        Room inDB = read(id);
+        rooms.remove(inDB);
 
     }
 
     @Override
     public Set<Room> getAll() {
-        return new HashSet<>(rooms.values());
+        return rooms;
     }
 
 }

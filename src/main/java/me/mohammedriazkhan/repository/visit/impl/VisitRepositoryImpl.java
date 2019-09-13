@@ -13,10 +13,10 @@ import java.util.Set;
 public class VisitRepositoryImpl implements VisitRepository {
 
     private static VisitRepositoryImpl repository = null;
-    private Map<Integer, Visit> visits;
+    private Set<Visit> visits;
 
     public VisitRepositoryImpl(){
-        visits = new HashMap<>();
+        visits = new HashSet<>();
     }
 
     public static VisitRepositoryImpl getRepository() {
@@ -30,34 +30,42 @@ public class VisitRepositoryImpl implements VisitRepository {
     @Override
     public Visit create(Visit visit) {
 
-        visits.put(visit.getVisitId(), visit);
+        visits.add(visit);
 
         return visit;
     }
 
     @Override
-    public Visit read(Integer id) {
+    public Visit read(String id) {
 
-       return visits.get(id);
+       return visits.stream().filter(visit -> visit.getVisitId().equals(id)).findAny().orElse(null);
     }
 
     @Override
     public Visit update(Visit visit) {
 
-      visits.replace(visit.getVisitId(), visit);
-      return visits.get(visit.getVisitId());
+        Visit inDB = read(visit.getVisitId());
+        if(inDB != null){
+
+            visits.remove(inDB);
+            visits.add(visit);
+            return visit;
+
+        }
+        return null;
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
 
-        visits.remove(id);
+        Visit inDB = read(id);
+        visits.remove(inDB);
 
     }
 
     @Override
     public Set<Visit> getAll() {
-        return new HashSet<>(visits.values());
+        return visits;
     }
 
 }

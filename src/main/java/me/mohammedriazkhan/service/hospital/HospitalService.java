@@ -5,6 +5,6 @@ import me.mohammedriazkhan.service.Service;
 
 import java.util.Set;
 
-public interface HospitalService extends Service<Hospital, Integer> {
+public interface HospitalService extends Service<Hospital, String> {
     Set<Hospital> getAll();
 }

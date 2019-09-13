@@ -13,10 +13,10 @@ import java.util.Set;
 public class ReportRepositoryImpl implements ReportRepository {
 
     private static ReportRepositoryImpl reportRepository = null;
-    private Map<Integer, Report> reports;
+    private Set<Report> reports;
 
     public ReportRepositoryImpl(){
-        reports = new HashMap<>();
+        reports = new HashSet<>();
     }
 
     public static ReportRepositoryImpl getReportRepository() {
@@ -31,34 +31,39 @@ public class ReportRepositoryImpl implements ReportRepository {
     @Override
     public Report create(Report report) {
 
-       reports.put(report.getReportId(), report);
-
-        return report;
+       reports.add(report);
+       return report;
     }
 
     @Override
-    public Report read(Integer id) {
+    public Report read(String id) {
 
-       return reports.get(id);
+       return reports.stream().filter(report -> report.getReportId().equals(id)).findAny().orElse(null);
     }
 
     @Override
     public Report update(Report report) {
 
-       reports.replace(report.getReportId(), report);
-       return reports.get(report.getReportId());
+        Report inDB = read(report.getReportId());
+        if(inDB != null){
+            reports.remove(inDB);
+            reports.add(report);
+            return report;
+        }
+        return null;
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
 
-        reports.remove(id);
+        Report inDB = read(id);
+        reports.remove(inDB);
 
     }
 
     @Override
     public Set<Report> getAll() {
-        return new HashSet<>(reports.values());
+        return reports;
     }
 
 }

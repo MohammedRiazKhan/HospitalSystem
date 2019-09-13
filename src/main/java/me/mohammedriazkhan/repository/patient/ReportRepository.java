@@ -5,7 +5,7 @@ import me.mohammedriazkhan.repository.Repository;
 
 import java.util.Set;
 
-public interface ReportRepository extends Repository<Report, Integer> {
+public interface ReportRepository extends Repository<Report, String> {
 
 
     Set<Report> getAll();

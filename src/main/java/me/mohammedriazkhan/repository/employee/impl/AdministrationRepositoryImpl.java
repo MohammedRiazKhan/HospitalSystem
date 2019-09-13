@@ -10,10 +10,10 @@ import java.util.*;
 public class AdministrationRepositoryImpl implements AdministrationRepository {
 
     private static AdministrationRepositoryImpl administrationRepository = null;
-    private Map<Integer, Administration> administrationStaff;
+    private Set<Administration> administrationStaff;
 
     public AdministrationRepositoryImpl(){
-        administrationStaff = new HashMap<>();
+        administrationStaff = new HashSet<>();
     }
 
     public static AdministrationRepositoryImpl getAdministrationRepository() {
@@ -26,42 +26,48 @@ public class AdministrationRepositoryImpl implements AdministrationRepository {
     }
 
    /* public Administration find(int id) {
-        return administrationStaff.stream().filter(administration -> administration.getEmployeeId() == id).findAny().orElse(null);
+        return
     }*/
 
     @Override
     public Administration create(Administration administration) {
 
-        administrationStaff.put(administration.getEmployeeId(), administration);
-
-        return administration;
+       administrationStaff.add(administration);
+       return administration;
     }
 
     @Override
-    public Administration read(Integer id) {
+    public Administration read(String id) {
 
-       return administrationStaff.get(id);
+       return administrationStaff.stream().filter(administration -> administration.getEmployeeId().equals(id)).findAny().orElse(null);
 
     }
 
     @Override
     public Administration update(Administration administration) {
 
-       administrationStaff.replace(administration.getEmployeeId(), administration);
-       return administrationStaff.get(administration.getEmployeeId());
+        Administration inDB = read(administration.getEmployeeId());
+        if(inDB != null){
+            administrationStaff.remove(inDB);
+            administrationStaff.add(administration);
+            return administration;
+        }
+
+        return null;
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
+        Administration inDB = read(id);
 
-       administrationStaff.remove(id);
+        administrationStaff.remove(inDB);
+
     }
 
     @Override
     public Set<Administration> getAll() {
 
-        //copies the values in the set to a new collection then places it inside of a HashSet
-        return new HashSet<>(administrationStaff.values());
+        return administrationStaff;
 
     }
 

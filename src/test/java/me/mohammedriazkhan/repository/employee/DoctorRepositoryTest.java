@@ -24,7 +24,7 @@ public class DoctorRepositoryTest {
     @Test
     public void create() {
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Dr", "Doctor", "Renal");
+        Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
         doctorRepository.create(doc);
 
         assertNotNull(doctorRepository.getAll());
@@ -34,7 +34,7 @@ public class DoctorRepositoryTest {
     @Test
     public void read() {
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Dr", "Doctor", "Renal");
+        Doctor doc = DoctorFactory.getDoctor( "Dr", "Doctor", "Renal");
         doctorRepository.create(doc);
 
         Doctor fromSet = doctorRepository.read(doc.getEmployeeId());
@@ -47,10 +47,10 @@ public class DoctorRepositoryTest {
     public void update() {
 
 
-        Doctor doctor = DoctorFactory.getDoctor(1,"riaz", "khan", "alles");
+        Doctor doctor = DoctorFactory.getDoctor("riaz", "khan", "alles");
         doctorRepository.create(doctor);
 
-        Doctor updatedDoctor = DoctorFactory.getDoctor(1, "Not riaz", "khan", "alles");
+        Doctor updatedDoctor = DoctorFactory.getDoctor("Not riaz", "khan", "alles");
 
         doctorRepository.update(updatedDoctor);
 
@@ -62,7 +62,7 @@ public class DoctorRepositoryTest {
     @Test
     public void delete() {
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Dr", "Doctor", "Renal");
+        Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
         doctorRepository.create(doc);
 
         assertNotNull(doctorRepository.getAll());

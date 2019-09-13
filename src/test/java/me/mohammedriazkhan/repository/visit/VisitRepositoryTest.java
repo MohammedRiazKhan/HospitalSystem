@@ -23,7 +23,7 @@ public class VisitRepositoryTest {
     @Test
     public void create() {
 
-        Visit visit = VisitFactory.getVisit(1, "Today", null, null, null, null, null);
+        Visit visit = VisitFactory.getVisit( "Today", null, null, null, null, null);
 
         visitRepository.create(visit);
 
@@ -34,7 +34,7 @@ public class VisitRepositoryTest {
     @Test
     public void read() {
 
-        Visit visit = VisitFactory.getVisit(1, "Today", null, null, null, null, null);
+        Visit visit = VisitFactory.getVisit("Today", null, null, null, null, null);
 
         visitRepository.create(visit);
 
@@ -49,13 +49,13 @@ public class VisitRepositoryTest {
     @Test
     public void update() {
 
-        Visit visit = VisitFactory.getVisit(1, "Today", null, null, null, null, null);
+        Visit visit = VisitFactory.getVisit( "Today", null, null, null, null, null);
 
         visitRepository.create(visit);
 
         assertNotNull(visitRepository.getAll());
 
-        Visit visitUpdate = VisitFactory.getVisit(1, "sdf", null, null, null, null, null);
+        Visit visitUpdate = VisitFactory.getVisit("sdf", null, null, null, null, null);
         visitUpdate.setVisitId(visit.getVisitId());
         visitRepository.update(visitUpdate);
 
@@ -68,7 +68,7 @@ public class VisitRepositoryTest {
     @Test
     public void delete() {
 
-        Visit visit = VisitFactory.getVisit(1, "Today", null, null, null, null, null);
+        Visit visit = VisitFactory.getVisit("Today", null, null, null, null, null);
 
         visitRepository.create(visit);
 

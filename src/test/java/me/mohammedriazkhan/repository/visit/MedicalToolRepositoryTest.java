@@ -23,7 +23,7 @@ public class MedicalToolRepositoryTest {
     @Test
     public void create() {
 
-        Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
+        Medication medication = MedicationFactory.getMedication("Heroine", "Not good", 1);
         medicationRepository.create(medication);
 
         assertNotNull(medicationRepository.getAll());
@@ -32,7 +32,7 @@ public class MedicalToolRepositoryTest {
     @Test
     public void read() {
 
-        Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
+        Medication medication = MedicationFactory.getMedication( "Heroine", "Not good", 1);
         medicationRepository.create(medication);
 
         assertNotNull(medicationRepository.getAll());
@@ -48,12 +48,12 @@ public class MedicalToolRepositoryTest {
     public void update() {
 
 
-        Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
+        Medication medication = MedicationFactory.getMedication("Heroine", "Not good", 1);
         medicationRepository.create(medication);
 
         assertNotNull(medicationRepository.getAll());
 
-        Medication medication1 = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
+        Medication medication1 = MedicationFactory.getMedication( "Heroine", "Not good", 1);
         medication1.setMedicationId(medication.getMedicationId());
         medicationRepository.update(medication1);
 
@@ -67,7 +67,7 @@ public class MedicalToolRepositoryTest {
     @Test
     public void delete() {
 
-        Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
+        Medication medication = MedicationFactory.getMedication( "Heroine", "Not good", 1);
         medicationRepository.create(medication);
 
         assertNotNull(medicationRepository.getAll());

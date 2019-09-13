@@ -5,7 +5,7 @@ import me.mohammedriazkhan.service.Service;
 
 import java.util.Set;
 
-public interface AccountService extends Service<Account, Integer> {
+public interface AccountService extends Service<Account, String> {
 
     Set<Account> getAll();
 }

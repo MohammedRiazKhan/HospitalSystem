@@ -5,7 +5,7 @@ import me.mohammedriazkhan.repository.Repository;
 
 import java.util.Set;
 
-public interface CleanerRepository extends Repository<Cleaner, Integer> {
+public interface CleanerRepository extends Repository<Cleaner, String> {
 
     Set<Cleaner> getAll();
 

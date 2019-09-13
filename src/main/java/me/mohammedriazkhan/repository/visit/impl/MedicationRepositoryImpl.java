@@ -13,10 +13,10 @@ import java.util.Set;
 public class MedicationRepositoryImpl implements MedicationRepository {
 
     private static MedicationRepositoryImpl repository = null;
-    private Map<Integer, Medication> medication;
+    private Set<Medication> medication;
 
     public MedicationRepositoryImpl() {
-        medication = new HashMap<>();
+        medication = new HashSet<>();
     }
 
     public static MedicationRepositoryImpl getRepository() {
@@ -31,37 +31,42 @@ public class MedicationRepositoryImpl implements MedicationRepository {
     @Override
     public Medication create(Medication medication1) {
 
-       medication.put(medication1.getMedicationId(), medication1);
+        medication.add(medication1);
 
         return medication1;
     }
 
     @Override
-    public Medication read(Integer id) {
+    public Medication read(String id) {
 
-       return medication.get(id);
+       return medication.stream().filter(medication1 -> medication1.getMedicationId().equals(id)).findAny().orElse(null);
 
     }
 
     @Override
     public Medication update(Medication medication1) {
 
+       Medication inDB = read(medication1.getMedicationId());
+       if(inDB != null){
+           medication.remove(inDB);
+           medication.add(medication1);
+           return medication1;
+       }
 
-        medication.replace(medication1.getMedicationId(), medication1);
-        return medication.get(medication1.getMedicationId());
+       return medication1;
     }
 
-
-
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
 
-        medication.remove(id);
+        Medication inDB = read(id);
+
+        medication.remove(inDB);
     }
 
     @Override
     public Set<Medication> getAll() {
-        return new HashSet<>(medication.values());
+        return medication;
     }
 
 

@@ -13,10 +13,10 @@ import java.util.Set;
 public class PatientRepositoryImpl implements PatientRepository{
 
     private static PatientRepositoryImpl repository = null;
-    private Map<Integer, Patient> patients;
+    private HashSet<Patient> patients;
 
     public PatientRepositoryImpl(){
-        patients = new HashMap<>();
+        patients = new HashSet<>();
     }
 
     public static PatientRepositoryImpl getRepository(){
@@ -30,33 +30,40 @@ public class PatientRepositoryImpl implements PatientRepository{
 
     @Override
     public Patient create(Patient patient) {
-        patients.put(patient.getPatientId(), patient);
+        patients.add(patient);
         return patient;
     }
 
     @Override
     public Patient update(Patient patient) {
 
-        patients.replace(patient.getPatientId(), patient);
-        return patients.get(patient.getPatientId());
+        Patient inDB = read(patient.getPatientId());
+
+        if(inDB != null){
+            patients.remove(inDB);
+            patients.add(patient);
+            return patient;
+        }
+
+        return null;
     }
 
     @Override
-    public void delete(Integer id) {
-
-        patients.remove(id);
+    public void delete(String id) {
+        Patient inDB = read(id);
+        patients.remove(inDB);
     }
 
     @Override
-    public Patient read(Integer id) {
+    public Patient read(String id) {
 
-        return patients.get(id);
+        return patients.stream().filter(patient -> patient.getPatientId().equals(id)).findAny().orElse(null);
 
     }
 
     @Override
     public Set<Patient> getAll() {
-        return new HashSet<>(patients.values());
+        return patients;
     }
 
 }

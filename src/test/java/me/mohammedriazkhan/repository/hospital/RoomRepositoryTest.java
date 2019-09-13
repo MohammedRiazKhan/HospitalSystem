@@ -25,7 +25,7 @@ public class RoomRepositoryTest {
     @Test
     public void create() {
 
-        Room room = RoomFactory.getRoom(1, null);
+        Room room = RoomFactory.getRoom(null);
         roomRepository.create(room);
 
         assertNotNull(roomRepository.getAll());
@@ -37,7 +37,7 @@ public class RoomRepositoryTest {
     public void read() {
 
 
-        Room room = RoomFactory.getRoom(1, null);
+        Room room = RoomFactory.getRoom( null);
         roomRepository.create(room);
 
         assertNotNull(roomRepository.getAll());
@@ -52,12 +52,12 @@ public class RoomRepositoryTest {
     @Test
     public void update() {
 
-        Room room = RoomFactory.getRoom(1, null);
+        Room room = RoomFactory.getRoom( null);
         roomRepository.create(room);
 
         assertNotNull(roomRepository.getAll());
 
-        Room room1 = RoomFactory.getRoom(2, null);
+        Room room1 = RoomFactory.getRoom( null);
         room1.setRoomId(room.getRoomId());
         roomRepository.update(room1);
 
@@ -70,7 +70,7 @@ public class RoomRepositoryTest {
     @Test
     public void delete() {
 
-        Room room = RoomFactory.getRoom(1, null);
+        Room room = RoomFactory.getRoom( null);
         roomRepository.create(room);
 
         assertNotNull(roomRepository.getAll());
