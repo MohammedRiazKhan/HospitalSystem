@@ -36,7 +36,7 @@ public class WardServiceImpl implements WardService {
     }
 
     @Override
-    public Ward read(Integer integer) {
+    public Ward read(String integer) {
         return repository.read(integer);
     }
 
@@ -46,7 +46,7 @@ public class WardServiceImpl implements WardService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
 
         repository.delete(integer);
     }

@@ -35,7 +35,7 @@ public class CleanerServiceImpl implements CleanerService {
     }
 
     @Override
-    public Cleaner read(Integer integer) {
+    public Cleaner read(String integer) {
         return repository.read(integer);
     }
 
@@ -45,7 +45,7 @@ public class CleanerServiceImpl implements CleanerService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
         repository.delete(integer);
     }
 

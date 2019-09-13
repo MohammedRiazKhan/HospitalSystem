@@ -36,7 +36,7 @@ public class VisitServiceImpl implements VisitService {
     }
 
     @Override
-    public Visit read(Integer integer) {
+    public Visit read(String integer) {
         return repository.read(integer);
     }
 
@@ -46,7 +46,7 @@ public class VisitServiceImpl implements VisitService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
 
         repository.delete(integer);
     }

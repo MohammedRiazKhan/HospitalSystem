@@ -25,7 +25,7 @@ public class PharmacistServiceImplTest {
     public void create() {
 
         int[] meds = {1,1,1,1};
-        Pharmacist pharmacist = PharmacistFactory.getPharmacist(1, "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
+        Pharmacist pharmacist = PharmacistFactory.getPharmacist( "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
 
         pharmacistService.create(pharmacist);
 
@@ -37,7 +37,7 @@ public class PharmacistServiceImplTest {
     public void read() {
 
         int[] meds = {1,1,1,1};
-        Pharmacist pharmacist = PharmacistFactory.getPharmacist(1, "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
+        Pharmacist pharmacist = PharmacistFactory.getPharmacist( "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
 
         pharmacistService.create(pharmacist);
 
@@ -55,13 +55,13 @@ public class PharmacistServiceImplTest {
     public void update() {
 
         int[] meds = {1,1,1,1};
-        Pharmacist pharmacist = PharmacistFactory.getPharmacist(1, "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
+        Pharmacist pharmacist = PharmacistFactory.getPharmacist( "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
 
         pharmacistService.create(pharmacist);
 
         assertNotNull(pharmacistService.getAll());
 
-        Pharmacist update = PharmacistFactory.getPharmacist(1, "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
+        Pharmacist update = PharmacistFactory.getPharmacist( "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
         update.setEmployeeId(pharmacist.getEmployeeId());
         pharmacistService.update(update);
 
@@ -75,7 +75,7 @@ public class PharmacistServiceImplTest {
     public void delete() {
 
         int[] meds = {1,1,1,1};
-        Pharmacist pharmacist = PharmacistFactory.getPharmacist(1, "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
+        Pharmacist pharmacist = PharmacistFactory.getPharmacist( "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
 
         pharmacistService.create(pharmacist);
 

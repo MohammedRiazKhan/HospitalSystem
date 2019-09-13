@@ -38,7 +38,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account read(Integer integer) {
+    public Account read(String integer) {
         return null;
     }
 
@@ -48,7 +48,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
 
     }
 }

@@ -36,7 +36,7 @@ public class NurseServiceImpl implements NurseService {
     }
 
     @Override
-    public Nurse read(Integer integer) {
+    public Nurse read(String integer) {
         return repository.read(integer);
     }
 
@@ -46,7 +46,7 @@ public class NurseServiceImpl implements NurseService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
 
         repository.delete(integer);
     }

@@ -25,7 +25,7 @@ public class MedicationServiceImplTest {
     @Test
     public void create() {
 
-        Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
+        Medication medication = MedicationFactory.getMedication( "Heroine", "Not good", 1);
         medicationService.create(medication);
 
         assertNotNull(medicationService.getAll());
@@ -34,7 +34,7 @@ public class MedicationServiceImplTest {
     @Test
     public void read() {
 
-        Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
+        Medication medication = MedicationFactory.getMedication("Heroine", "Not good", 1);
         medicationService.create(medication);
 
         assertNotNull(medicationService.getAll());
@@ -50,12 +50,12 @@ public class MedicationServiceImplTest {
     public void update() {
 
 
-        Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
+        Medication medication = MedicationFactory.getMedication("Heroine", "Not good", 1);
         medicationService.create(medication);
 
         assertNotNull(medicationService.getAll());
 
-        Medication medication1 = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
+        Medication medication1 = MedicationFactory.getMedication( "Heroine", "Not good", 1);
         medication1.setMedicationId(medication.getMedicationId());
         medicationService.update(medication1);
 
@@ -69,7 +69,7 @@ public class MedicationServiceImplTest {
     @Test
     public void delete() {
 
-        Medication medication = MedicationFactory.getMedication(1, "Heroine", "Not good", 1);
+        Medication medication = MedicationFactory.getMedication( "Heroine", "Not good", 1);
         medicationService.create(medication);
 
         assertNotNull(medicationService.getAll());

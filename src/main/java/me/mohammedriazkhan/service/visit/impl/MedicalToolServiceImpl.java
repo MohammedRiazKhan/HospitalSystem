@@ -1,12 +1,30 @@
 package me.mohammedriazkhan.service.visit.impl;
 
 import me.mohammedriazkhan.domain.visit.MedicalTool;
+import me.mohammedriazkhan.repository.visit.MedicalToolRepository;
+import me.mohammedriazkhan.repository.visit.impl.MedicalToolRepositoryImpl;
 import me.mohammedriazkhan.service.visit.MedicalToolService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 @Service
 public class MedicalToolServiceImpl implements MedicalToolService {
+
+    private MedicalToolServiceImpl service = null;
+    private MedicalToolRepository repository;
+
+    public MedicalToolServiceImpl() {
+        repository = MedicalToolRepositoryImpl.getRepository();
+    }
+
+    public MedicalToolServiceImpl getService(){
+
+        if(service == null){
+            return new MedicalToolServiceImpl();
+        }
+        return service;
+    }
+
     @Override
     public Set<MedicalTool> getAll() {
         return null;
@@ -18,7 +36,7 @@ public class MedicalToolServiceImpl implements MedicalToolService {
     }
 
     @Override
-    public MedicalTool read(Integer integer) {
+    public MedicalTool read(String integer) {
         return null;
     }
 
@@ -28,7 +46,7 @@ public class MedicalToolServiceImpl implements MedicalToolService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
 
     }
 }

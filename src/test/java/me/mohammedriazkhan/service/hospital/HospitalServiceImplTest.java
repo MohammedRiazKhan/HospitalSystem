@@ -24,7 +24,7 @@ public class HospitalServiceImplTest {
     @Test
     public void create() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, 1, "Greys Anatomy");
+        Hospital hospital = HospitalFactory.getHospital(null, "h", "Greys Anatomy");
 
         hospitalService.create(hospital);
 
@@ -35,7 +35,7 @@ public class HospitalServiceImplTest {
     @Test
     public void read() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, 1, "Greys Anatomy");
+        Hospital hospital = HospitalFactory.getHospital(null, "h", "Greys Anatomy");
 
         hospitalService.create(hospital);
 
@@ -53,13 +53,13 @@ public class HospitalServiceImplTest {
     @Test
     public void update() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, 1, "Greys Anatomy");
+        Hospital hospital = HospitalFactory.getHospital(null, "h", "Greys Anatomy");
 
         hospitalService.create(hospital);
 
         assertNotNull(hospitalService.getAll());
 
-        Hospital hospitalUpdate = HospitalFactory.getHospital(null, 1, "Greys fantomy");
+        Hospital hospitalUpdate = HospitalFactory.getHospital(null, "h", "Greys fantomy");
         hospitalUpdate.setHospitalId(hospital.getHospitalId());
 
         hospitalService.update(hospitalUpdate);
@@ -74,7 +74,7 @@ public class HospitalServiceImplTest {
     @Test
     public void delete() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, 1, "Greys Anatomy");
+        Hospital hospital = HospitalFactory.getHospital(null, "h", "Greys Anatomy");
 
         hospitalService.create(hospital);
 

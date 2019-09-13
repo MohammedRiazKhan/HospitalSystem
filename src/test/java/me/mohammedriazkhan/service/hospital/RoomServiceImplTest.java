@@ -23,7 +23,7 @@ public class RoomServiceImplTest {
     @Test
     public void create() {
 
-        Room room = RoomFactory.getRoom(1, null);
+        Room room = RoomFactory.getRoom( null);
         roomService.create(room);
 
         assertNotNull(roomService.getAll());
@@ -35,7 +35,7 @@ public class RoomServiceImplTest {
     public void read() {
 
 
-        Room room = RoomFactory.getRoom(1, null);
+        Room room = RoomFactory.getRoom( null);
         roomService.create(room);
 
         assertNotNull(roomService.getAll());
@@ -50,12 +50,12 @@ public class RoomServiceImplTest {
     @Test
     public void update() {
 
-        Room room = RoomFactory.getRoom(1, null);
+        Room room = RoomFactory.getRoom( null);
         roomService.create(room);
 
         assertNotNull(roomService.getAll());
 
-        Room room1 = RoomFactory.getRoom(2, null);
+        Room room1 = RoomFactory.getRoom( null);
         room1.setRoomId(room.getRoomId());
         roomService.update(room1);
 
@@ -68,7 +68,7 @@ public class RoomServiceImplTest {
     @Test
     public void delete() {
 
-        Room room = RoomFactory.getRoom(1, null);
+        Room room = RoomFactory.getRoom( null);
         roomService.create(room);
 
         assertNotNull(roomService.getAll());

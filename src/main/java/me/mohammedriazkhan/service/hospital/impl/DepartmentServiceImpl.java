@@ -37,7 +37,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department read(Integer integer) {
+    public Department read(String integer) {
         return repository.read(integer);
     }
 
@@ -47,7 +47,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
         repository.delete(integer);
     }
 

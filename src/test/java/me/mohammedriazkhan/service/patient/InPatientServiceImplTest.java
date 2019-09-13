@@ -28,7 +28,7 @@ public class InPatientServiceImplTest {
     public void create() {
 
         //doctor instance to pass into patient creation
-        Doctor doc = DoctorFactory.getDoctor(1, "Dr", "Doctor", "Renal");
+        Doctor doc = DoctorFactory.getDoctor( "Dr", "Doctor", "Renal");
 
         //patient
         Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, doc);
@@ -45,7 +45,7 @@ public class InPatientServiceImplTest {
     public void read() {
 
         //creating a patient
-        Doctor doc = DoctorFactory.getDoctor(1, "Dr", "Doctor", "Renal");
+        Doctor doc = DoctorFactory.getDoctor( "Dr", "Doctor", "Renal");
         Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, doc);
         patientService.create(patient);
 
@@ -61,7 +61,7 @@ public class InPatientServiceImplTest {
     public void update() {
 
         //creating a patient
-        Doctor doc = DoctorFactory.getDoctor(1, "Dr", "Doctor", "Renal");
+        Doctor doc = DoctorFactory.getDoctor( "Dr", "Doctor", "Renal");
         Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, doc);
         patientService.create(patient);
 
@@ -86,7 +86,7 @@ public class InPatientServiceImplTest {
     public void delete() {
 
         //creating a patient
-        Doctor doc = DoctorFactory.getDoctor(1, "Dr", "Doctor", "Renal");
+        Doctor doc = DoctorFactory.getDoctor( "Dr", "Doctor", "Renal");
         Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, doc);
         patientService.create(patient);
 

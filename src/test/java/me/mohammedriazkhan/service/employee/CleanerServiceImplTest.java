@@ -25,7 +25,7 @@ public class CleanerServiceImplTest {
     public void create() {
 
         //create a cleaner
-        Cleaner cleaner = CleanerFactory.getCleaner(1);
+        Cleaner cleaner = CleanerFactory.getCleaner();
 
         cleanerService.create(cleaner);
 
@@ -37,7 +37,7 @@ public class CleanerServiceImplTest {
     public void read() {
 
         //create a cleaner
-        Cleaner cleaner = CleanerFactory.getCleaner(1);
+        Cleaner cleaner = CleanerFactory.getCleaner();
         cleanerService.create(cleaner);
 
         System.out.println(cleaner.getEmployeeId());
@@ -53,11 +53,11 @@ public class CleanerServiceImplTest {
     public void update() {
 
         //create a cleaner
-        Cleaner cleaner = CleanerFactory.getCleaner(1);
+        Cleaner cleaner = CleanerFactory.getCleaner();
         cleanerService.create(cleaner);
 
         //create a cleaner2
-        Cleaner cleaner2 = CleanerFactory.getCleaner(1);
+        Cleaner cleaner2 = CleanerFactory.getCleaner();
         cleaner2.setEmployeeId(cleaner.getEmployeeId());
 
         cleanerService.update(cleaner2);
@@ -75,7 +75,7 @@ public class CleanerServiceImplTest {
     @Test
     public void delete() {
         //create a cleaner
-        Cleaner cleaner = CleanerFactory.getCleaner(1);
+        Cleaner cleaner = CleanerFactory.getCleaner();
         cleanerService.create(cleaner);
 
         assertNotNull(cleanerService.getAll());

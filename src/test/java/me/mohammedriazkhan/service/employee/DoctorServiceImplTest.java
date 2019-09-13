@@ -23,7 +23,7 @@ public class DoctorServiceImplTest {
     @Test
     public void create() {
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Dr", "Doctor", "Renal");
+        Doctor doc = DoctorFactory.getDoctor( "Dr", "Doctor", "Renal");
         doctorService.create(doc);
 
         assertNotNull(doctorService.getAll());
@@ -33,7 +33,7 @@ public class DoctorServiceImplTest {
     @Test
     public void read() {
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Dr", "Doctor", "Renal");
+        Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
         doctorService.create(doc);
 
         Doctor fromSet = doctorService.read(doc.getEmployeeId());
@@ -45,12 +45,12 @@ public class DoctorServiceImplTest {
     @Test
     public void update() {
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Dr", "Doctor", "Renal");
+        Doctor doc = DoctorFactory.getDoctor( "Dr", "Doctor", "Renal");
         doctorService.create(doc);
 
         assertNotNull(doctorService.getAll());
 
-        Doctor doctor = DoctorFactory.getDoctor(1, "Dr", "Dr", "Renal");
+        Doctor doctor = DoctorFactory.getDoctor( "Dr", "Dr", "Renal");
         doctor.setEmployeeId(doc.getEmployeeId());
 
         doctorService.update(doctor);
@@ -65,7 +65,7 @@ public class DoctorServiceImplTest {
     @Test
     public void delete() {
 
-        Doctor doc = DoctorFactory.getDoctor(1, "Dr", "Doctor", "Renal");
+        Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
         doctorService.create(doc);
 
         assertNotNull(doctorService.getAll());

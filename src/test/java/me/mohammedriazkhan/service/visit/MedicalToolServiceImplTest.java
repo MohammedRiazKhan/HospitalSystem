@@ -19,7 +19,7 @@ public class MedicalToolServiceImplTest {
     @Test
     public void create() {
 
-        MedicalTool medicalTool = MedicalToolFactory.getMedicalTool(1, "fas", "fasd");
+        MedicalTool medicalTool = MedicalToolFactory.getMedicalTool( "fas", "fasd");
         medicationService.create(medicalTool);
 
         assertNotNull(medicationService.getAll());
@@ -28,7 +28,7 @@ public class MedicalToolServiceImplTest {
     @Test
     public void read() {
 
-               MedicalTool medicalTool = MedicalToolFactory.getMedicalTool(1, "fas", "fasd");
+               MedicalTool medicalTool = MedicalToolFactory.getMedicalTool( "fas", "fasd");
         medicationService.create(medicalTool);
 
         assertNotNull(medicationService.getAll());
@@ -44,13 +44,12 @@ public class MedicalToolServiceImplTest {
     public void update() {
 
 
-        MedicalTool medicalTool = MedicalToolFactory.getMedicalTool(1, "fas", "fasd");
+        MedicalTool medicalTool = MedicalToolFactory.getMedicalTool("fas", "fasd");
         medicationService.create(medicalTool);
 
 
         assertNotNull(medicationService.getAll());
-
-        MedicalTool medication1 = MedicalToolFactory.getMedicalTool(1, "fas", "fasd");
+        MedicalTool medication1 = MedicalToolFactory.getMedicalTool("fas", "fasd");
         medication1.setToolId(medicalTool.getToolId());
         medicationService.update(medication1);
 
@@ -64,7 +63,7 @@ public class MedicalToolServiceImplTest {
     @Test
     public void delete() {
 
-        MedicalTool medicalTool = MedicalToolFactory.getMedicalTool(1, "fas", "fasd");
+        MedicalTool medicalTool = MedicalToolFactory.getMedicalTool( "fas", "fasd");
         medicationService.create(medicalTool);
 
         assertNotNull(medicationService.getAll());

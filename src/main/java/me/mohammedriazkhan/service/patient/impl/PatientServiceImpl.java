@@ -36,7 +36,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Patient read(Integer integer) {
+    public Patient read(String integer) {
         return repository.read(integer);
     }
 
@@ -46,7 +46,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
 
         repository.delete(integer);
     }

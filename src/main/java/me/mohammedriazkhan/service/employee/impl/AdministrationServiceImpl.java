@@ -36,7 +36,7 @@ public class AdministrationServiceImpl implements AdministrationService {
     }
 
     @Override
-    public Administration read(Integer integer) {
+    public Administration read(String integer) {
         return repository.read(integer);
     }
 
@@ -46,7 +46,7 @@ public class AdministrationServiceImpl implements AdministrationService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
 
         repository.delete(integer);
     }

@@ -38,7 +38,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public Room read(Integer integer) {
+    public Room read(String integer) {
         return repository.read(integer);
     }
 
@@ -48,7 +48,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
 
         repository.delete(integer);
     }

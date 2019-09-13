@@ -24,7 +24,7 @@ public class AdministrationServiceImplTest {
     @Test
     public void create() {
 
-        Administration admin = AdministrationFactory.getAdministration(1, "Jane");
+        Administration admin = AdministrationFactory.getAdministration( "Jane");
         administrationService.create(admin);
 
         assertNotNull(administrationService.getAll());
@@ -35,7 +35,7 @@ public class AdministrationServiceImplTest {
     public void read() {
 
         //Create a admin staff and add to set
-        Administration admin = AdministrationFactory.getAdministration(1, "Janbe");
+        Administration admin = AdministrationFactory.getAdministration( "Janbe");
         administrationService.create(admin);
 
         //retrieve the adminStaff
@@ -49,11 +49,11 @@ public class AdministrationServiceImplTest {
     public void update() {
 
         //Create a admin staff and add to set
-        Administration admin = AdministrationFactory.getAdministration(1, "kane");
+        Administration admin = AdministrationFactory.getAdministration( "kane");
         administrationService.create(admin);
 
         //updated version
-        Administration adminUpdate = AdministrationFactory.getAdministration(1, "Khan");
+        Administration adminUpdate = AdministrationFactory.getAdministration( "Khan");
         adminUpdate.setEmployeeId(admin.getEmployeeId());
         administrationService.update(adminUpdate);
 
@@ -68,7 +68,7 @@ public class AdministrationServiceImplTest {
     public void delete() {
 
         //Create a admin staff and add to set
-        Administration admin = AdministrationFactory.getAdministration(1, "Pane");
+        Administration admin = AdministrationFactory.getAdministration( "Pane");
         administrationService.create(admin);
 
         //checks that its not empty

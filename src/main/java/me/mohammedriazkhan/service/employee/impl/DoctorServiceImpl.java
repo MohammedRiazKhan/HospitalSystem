@@ -37,7 +37,7 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public Doctor read(Integer integer) {
+    public Doctor read(String integer) {
         return repository.read(integer);
     }
 
@@ -47,7 +47,7 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
 
         repository.delete(integer);
     }

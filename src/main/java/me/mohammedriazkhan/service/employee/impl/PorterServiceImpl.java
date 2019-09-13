@@ -36,7 +36,7 @@ public class PorterServiceImpl implements PorterService {
     }
 
     @Override
-    public Porter read(Integer integer) {
+    public Porter read(String integer) {
         return repository.read(integer);
     }
 
@@ -46,7 +46,7 @@ public class PorterServiceImpl implements PorterService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
 
         repository.delete(integer);
 

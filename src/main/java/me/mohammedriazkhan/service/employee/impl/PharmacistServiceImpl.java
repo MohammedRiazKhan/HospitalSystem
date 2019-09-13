@@ -36,7 +36,7 @@ public class PharmacistServiceImpl implements PharmicistService {
     }
 
     @Override
-    public Pharmacist read(Integer integer) {
+    public Pharmacist read(String integer) {
         return repository.read(integer);
     }
 
@@ -46,7 +46,7 @@ public class PharmacistServiceImpl implements PharmicistService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
 
         repository.delete(integer);
 

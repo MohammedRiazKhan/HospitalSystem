@@ -24,7 +24,7 @@ public class ReportServiceImplTest {
     @Test
     public void create() {
 
-        Report report = ReportFactory.getReport(1, "fas", null, null, null);
+        Report report = ReportFactory.getReport("fas", null, null, null);
         reportService.create(report);
         assertNotNull(reportService.getAll());
 
@@ -33,7 +33,7 @@ public class ReportServiceImplTest {
     @Test
     public void read() {
 
-        Report report = ReportFactory.getReport(1, "fas", null, null, null);
+        Report report = ReportFactory.getReport("fas", null, null, null);
         reportService.create(report);
         assertNotNull(reportService.getAll());
 
@@ -48,11 +48,11 @@ public class ReportServiceImplTest {
     public void update() {
 
 
-        Report report = ReportFactory.getReport(1, "fas", null, null, null);
+        Report report = ReportFactory.getReport("fas", null, null, null);
         reportService.create(report);
         assertNotNull(reportService.getAll());
 
-        Report update = ReportFactory.getReport(1, "fadass", null, null, null);
+        Report update = ReportFactory.getReport("fadass", null, null, null);
         update.setReportId(report.getReportId());
         reportService.update(update);
 
@@ -66,7 +66,7 @@ public class ReportServiceImplTest {
     public void delete() {
 
 
-        Report report = ReportFactory.getReport(1, "fas", null, null, null);
+        Report report = ReportFactory.getReport("fas", null, null, null);
         reportService.create(report);
         assertNotNull(reportService.getAll());
 

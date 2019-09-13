@@ -36,7 +36,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public Report read(Integer integer) {
+    public Report read(String integer) {
         return null;
     }
 
@@ -46,7 +46,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
 
         repository.delete(integer);
     }

@@ -23,7 +23,7 @@ public class AppointmentServiceImplTest {
     @Test
     public void create() {
 
-        Appointment appointment = AppointmentFactory.getAppointment(1, "asdf", null);
+        Appointment appointment = AppointmentFactory.getAppointment( "asdf", null);
         appointmentService.create(appointment);
 
         assertNotNull(appointmentService.getAll());
@@ -33,7 +33,7 @@ public class AppointmentServiceImplTest {
     @Test
     public void read() {
 
-        Appointment appointment = AppointmentFactory.getAppointment(1, "asdf", null);
+        Appointment appointment = AppointmentFactory.getAppointment( "asdf", null);
         appointmentService.create(appointment);
 
         assertNotNull(appointmentService.getAll());
@@ -47,12 +47,12 @@ public class AppointmentServiceImplTest {
     @Test
     public void update() {
 
-        Appointment appointment = AppointmentFactory.getAppointment(1, "asdf", null);
+        Appointment appointment = AppointmentFactory.getAppointment( "asdf", null);
         appointmentService.create(appointment);
 
         assertNotNull(appointmentService.getAll());
 
-        Appointment appointments = AppointmentFactory.getAppointment(1, "asafsdfdf", null);
+        Appointment appointments = AppointmentFactory.getAppointment("asafsdfdf", null);
         appointments.setAppointmentId(appointment.getAppointmentId());
         appointmentService.update(appointments);
 
@@ -65,7 +65,7 @@ public class AppointmentServiceImplTest {
     @Test
     public void delete() {
 
-        Appointment appointment = AppointmentFactory.getAppointment(1, "asdf", null);
+        Appointment appointment = AppointmentFactory.getAppointment( "asdf", null);
         appointmentService.create(appointment);
 
         assertNotNull(appointmentService.getAll());

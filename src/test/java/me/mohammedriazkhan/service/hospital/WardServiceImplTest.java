@@ -24,7 +24,7 @@ public class WardServiceImplTest {
     @Test
     public void create() {
 
-        Ward ward = WardFactory.getWard(1, null);
+        Ward ward = WardFactory.getWard(null);
         wardService.create(ward);
 
         assertNotNull(wardService.getAll());
@@ -34,7 +34,7 @@ public class WardServiceImplTest {
     @Test
     public void read() {
 
-        Ward ward = WardFactory.getWard(1, null);
+        Ward ward = WardFactory.getWard(null);
         wardService.create(ward);
 
         assertNotNull(wardService.getAll());
@@ -48,12 +48,12 @@ public class WardServiceImplTest {
     @Test
     public void update() {
 
-        Ward ward = WardFactory.getWard(1, null);
+        Ward ward = WardFactory.getWard( null);
         wardService.create(ward);
 
         assertNotNull(wardService.getAll());
 
-        Ward ward1 = WardFactory.getWard(1, null);
+        Ward ward1 = WardFactory.getWard(null);
         ward1.setWardId(ward.getWardId());
         wardService.update(ward1);
 
@@ -66,7 +66,7 @@ public class WardServiceImplTest {
     @Test
     public void delete() {
 
-        Ward ward = WardFactory.getWard(1, null);
+        Ward ward = WardFactory.getWard(null);
         wardService.create(ward);
 
         assertNotNull(wardService.getAll());

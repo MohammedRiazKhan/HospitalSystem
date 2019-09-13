@@ -37,7 +37,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public Appointment read(Integer integer) {
+    public Appointment read(String integer) {
         return this.repository.read(integer);
     }
 
@@ -47,7 +47,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String integer) {
 
         repository.delete(integer);
     }

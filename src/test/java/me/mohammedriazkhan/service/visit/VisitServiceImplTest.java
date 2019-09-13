@@ -24,7 +24,7 @@ public class VisitServiceImplTest {
     @Test
     public void create() {
 
-        Visit visit = VisitFactory.getVisit(1, "Today", null, null, null, null, null);
+        Visit visit = VisitFactory.getVisit("Today", null, null, null, null, null);
 
         visitService.create(visit);
 
@@ -35,7 +35,7 @@ public class VisitServiceImplTest {
     @Test
     public void read() {
 
-        Visit visit = VisitFactory.getVisit(1, "Today", null, null, null, null, null);
+        Visit visit = VisitFactory.getVisit( "Today", null, null, null, null, null);
 
         visitService.create(visit);
 
@@ -50,13 +50,13 @@ public class VisitServiceImplTest {
     @Test
     public void update() {
 
-        Visit visit = VisitFactory.getVisit(1, "Today", null, null, null, null, null);
+        Visit visit = VisitFactory.getVisit("Today", null, null, null, null, null);
 
         visitService.create(visit);
 
         assertNotNull(visitService.getAll());
 
-        Visit visitUpdate = VisitFactory.getVisit(1, "sdf", null, null, null, null, null);
+        Visit visitUpdate = VisitFactory.getVisit("sdf", null, null, null, null, null);
         visitUpdate.setVisitId(visit.getVisitId());
         visitService.update(visitUpdate);
 
@@ -69,7 +69,7 @@ public class VisitServiceImplTest {
     @Test
     public void delete() {
 
-        Visit visit = VisitFactory.getVisit(1, "Today", null, null, null, null, null);
+        Visit visit = VisitFactory.getVisit("Today", null, null, null, null, null);
 
         visitService.create(visit);
 
