@@ -5,6 +5,7 @@ import me.mohammedriazkhan.factory.employee.CleanerFactory;
 import me.mohammedriazkhan.service.employee.impl.CleanerServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -14,6 +15,7 @@ import java.util.Set;
 public class CleanerController {
 
     @Autowired
+    @Qualifier("CleanerServiceImpl")
     private CleanerServiceImpl service;
 
     @PostMapping("/new")

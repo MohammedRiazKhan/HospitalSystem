@@ -8,9 +8,7 @@ public class Appointment {
     private String bookingDate;
     private String patientId;
 
-    public Appointment(){
-
-    }
+    public Appointment(){}
 
     public Appointment(AppointmentBuilder builder){
 

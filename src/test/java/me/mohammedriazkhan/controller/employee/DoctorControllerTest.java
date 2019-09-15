@@ -2,8 +2,10 @@ package me.mohammedriazkhan.controller.employee;
 
 import me.mohammedriazkhan.domain.employee.Doctor;
 import me.mohammedriazkhan.factory.employee.DoctorFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -15,6 +17,7 @@ import static junit.framework.TestCase.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DoctorControllerTest {
 
     @Autowired
@@ -23,7 +26,7 @@ public class DoctorControllerTest {
     private String baseURL="http://localhost:8080/doctor";
 
     @Test
-    public void create() {
+    public void a_create() {
 
         Doctor doctor = DoctorFactory.getDoctor("Riaz", "Khan", "Renal");
         doctor.setEmployeeId("Afsd");
@@ -36,7 +39,7 @@ public class DoctorControllerTest {
     }
 
     @Test
-    public void findById() {
+    public void b_findById() {
 
         Doctor doctor = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Doctor.class);
 
@@ -45,7 +48,7 @@ public class DoctorControllerTest {
     }
 
     @Test
-    public void update() {
+    public void c_update() {
 
         int id = 1;
         Doctor doctor = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Doctor.class);
@@ -60,7 +63,7 @@ public class DoctorControllerTest {
     }
 
     @Test
-    public void delete() {
+    public void e_delete() {
 
         int id = 1;
         Doctor doctor = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Doctor.class);
@@ -77,7 +80,7 @@ public class DoctorControllerTest {
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
 
         HttpHeaders headers = new HttpHeaders();
 

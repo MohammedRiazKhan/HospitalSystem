@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/department/ward")
+@RequestMapping("/ward")
 public class WardController {
 
     @Autowired

@@ -2,8 +2,10 @@ package me.mohammedriazkhan.controller.employee;
 
 import me.mohammedriazkhan.domain.employee.Nurse;
 import me.mohammedriazkhan.factory.employee.NurseFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -14,6 +16,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class NurseControllerTest {
 
     @Autowired
@@ -22,10 +25,11 @@ public class NurseControllerTest {
     private String baseURL="http://localhost:8080/employee/nurse";
 
     @Test
-    public void create() {
+    public void a_create() {
 
         Nurse nurse = NurseFactory.getNurse("Riaz", "Khan", "1234", "Nurse Duh", "Today", null);
         nurse.setEmployeeId("Afsd");
+        assertNotNull(nurse);
 
         ResponseEntity<Nurse> postResponse = restTemplate.postForEntity(baseURL + "/new", nurse, Nurse.class);
 
@@ -35,7 +39,7 @@ public class NurseControllerTest {
     }
 
     @Test
-    public void findById() {
+    public void b_findById() {
 
         Nurse nurse = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Nurse.class);
 
@@ -44,9 +48,8 @@ public class NurseControllerTest {
     }
 
     @Test
-    public void update() {
+    public void c_update() {
 
-        int id = 1;
         Nurse nurse = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Nurse.class);
         nurse.setFirstName("Mohammed");
 
@@ -59,7 +62,7 @@ public class NurseControllerTest {
     }
 
     @Test
-    public void delete() {
+    public void e_delete() {
 
         int id = 1;
         Nurse nurse = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Nurse.class);
@@ -76,7 +79,7 @@ public class NurseControllerTest {
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
 
         HttpHeaders headers = new HttpHeaders();
 

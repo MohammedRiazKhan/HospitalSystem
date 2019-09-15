@@ -72,7 +72,7 @@ public class MedicalTool {
 
         public MedicalTool build(){
 
-            return new MedicalTool();
+            return new MedicalTool(this);
 
         }
 

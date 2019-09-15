@@ -16,6 +16,10 @@ public class Department {
 
 
     public Department(DepartmentBuilder builder){
+        this.departmentId = builder.departmentId;
+        this.hospitalId = builder.hospitalId;
+        this.wards = builder.wards;
+        this.rooms = builder.rooms;
 
     }
 

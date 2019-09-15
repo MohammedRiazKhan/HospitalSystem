@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/employee/porter")
+@RequestMapping("/porter")
 public class PorterController {
 
     @Autowired

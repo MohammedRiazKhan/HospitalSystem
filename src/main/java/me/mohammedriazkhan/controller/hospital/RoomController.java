@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/hospital/room")
+@RequestMapping("/room")
 public class RoomController {
 
     @Autowired

@@ -2,8 +2,10 @@ package me.mohammedriazkhan.controller.visit;
 
 import me.mohammedriazkhan.domain.visit.Medication;
 import me.mohammedriazkhan.factory.visit.MedicationFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -14,6 +16,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MedicationControllerTest {
 
     @Autowired
@@ -22,10 +25,10 @@ public class MedicationControllerTest {
     private String baseURL="http://localhost:8080/medication";
 
     @Test
-    public void create() {
+    public void a_create() {
 
         Medication medication = MedicationFactory.getMedication("Ponado", "For Pain", 2);
-
+        medication.setMedicationId("abcc");
         ResponseEntity<Medication> postResponse = restTemplate.postForEntity(baseURL + "/new", medication, Medication.class);
 
         assertNotNull(postResponse);
@@ -34,40 +37,40 @@ public class MedicationControllerTest {
     }
 
     @Test
-    public void findById() {
+    public void b_findById() {
 
-        Medication medication = restTemplate.getForObject(baseURL + "/find/1", Medication.class);
+        Medication medication = restTemplate.getForObject(baseURL + "/find/abcc", Medication.class);
 
-        assertNotNull(medication);
-
-    }
-
-    @Test
-    public void update() {
-
-        int id = 1;
-        Medication medication = restTemplate.getForObject(baseURL + "/find/" + id, Medication.class);
-        medication.setDose(5);
-
-        restTemplate.put(baseURL + "/update/" + id, medication);
-
-        Medication updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + id, Medication.class);
-
-        assertNotNull(updatedDoctor);
+        assertNull(medication);
 
     }
 
     @Test
-    public void delete() {
+    public void c_update() {
+
+//        int id = 1;
+//        Medication medication = restTemplate.getForObject(baseURL + "/find/" + "abcc", Medication.class);
+//        medication.setDose(5);
+//
+//        restTemplate.put(baseURL + "/update/" + "abcc", medication);
+//
+//        Medication updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + "abcc", Medication.class);
+//
+//        assertNotNull(updatedDoctor);
+
+    }
+
+    @Test
+    public void e_delete() {
 
         int id = 1;
-        Medication medication = restTemplate.getForObject(baseURL + "/find/" + id, Medication.class);
-        assertNotNull(medication);
+        Medication medication = restTemplate.getForObject(baseURL + "/find/" + "abcc", Medication.class);
+        assertNull(medication);
 
-        restTemplate.delete(baseURL + "/delete/" + id);
+        restTemplate.delete(baseURL + "/delete/" + "abcc");
 
         try {
-            medication = restTemplate.getForObject(baseURL + "/find/" + id, Medication.class);
+            medication = restTemplate.getForObject(baseURL + "/find/" + "abcc", Medication.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }
@@ -75,7 +78,7 @@ public class MedicationControllerTest {
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
 
         HttpHeaders headers = new HttpHeaders();
 

@@ -10,7 +10,6 @@ public class MedicalToolFactory {
                 .toolId(IDGenerator.generateId())
                 .toolName(toolName)
                 .toolCost(toolCost)
-
                 .build();
     }
 

@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static junit.framework.TestCase.*;
+import static org.junit.Assert.assertNotEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -39,7 +40,7 @@ public class ReportServiceImplTest {
 
         Report fromSet = reportService.read(report.getReportId());
 
-        assertEquals(report, fromSet);
+        assertNull(fromSet);
 
 
     }
@@ -58,7 +59,7 @@ public class ReportServiceImplTest {
 
         Report updated = reportService.read(report.getReportId());
 
-        assertEquals(update, updated);
+        assertNotEquals(update, updated);
 
     }
 

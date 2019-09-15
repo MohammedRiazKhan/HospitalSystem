@@ -1,9 +1,12 @@
 package me.mohammedriazkhan.controller.patient;
 
+import me.mohammedriazkhan.domain.patient.InPatient;
 import me.mohammedriazkhan.domain.patient.Patient;
 import me.mohammedriazkhan.factory.patient.InPatientFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -14,6 +17,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class InPatientControllerTest {
 
     @Autowired
@@ -22,11 +26,11 @@ public class InPatientControllerTest {
     private String baseURL="http://localhost:8080/patient/inpatient";
 
     @Test
-    public void create() {
+    public void a_create() {
 
-        Patient inPatient = InPatientFactory.getInPatient("MOhammed", "Khan", null, null, 23, null);
-
-        ResponseEntity<Patient> postResponse = restTemplate.postForEntity(baseURL + "/new", inPatient, Patient.class);
+        InPatient inPatient = InPatientFactory.getInPatient("MOhammed", "Khan", null, null, 23, null);
+        inPatient.setPatientId("avc");
+        ResponseEntity<InPatient> postResponse = restTemplate.postForEntity(baseURL + "/new", inPatient, InPatient.class);
 
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
@@ -34,40 +38,40 @@ public class InPatientControllerTest {
     }
 
     @Test
-    public void findById() {
+    public void b_findById() {
 
-        Patient inPatient = restTemplate.getForObject(baseURL + "/find/1", Patient.class);
+        InPatient inPatient = restTemplate.getForObject(baseURL + "/find/avc", InPatient.class);
 
         assertNotNull(inPatient);
 
     }
 
     @Test
-    public void update() {
+    public void c_update() {
 
         int id = 1;
-        Patient inPatient = restTemplate.getForObject(baseURL + "/find/" + id, Patient.class);
+        InPatient inPatient = restTemplate.getForObject(baseURL + "/find/" + "avc", InPatient.class);
         inPatient.setFirstName("riaz");
 
-        restTemplate.put(baseURL + "/update/" + id, inPatient);
+        restTemplate.put(baseURL + "/update/" + "avc", inPatient);
 
-        Patient updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + id, Patient.class);
+        InPatient updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + "avc", InPatient.class);
 
         assertNotNull(updatedDoctor);
 
     }
 
     @Test
-    public void delete() {
+    public void e_delete() {
 
         int id = 1;
-        Patient inPatient = restTemplate.getForObject(baseURL + "/find/" + id, Patient.class);
+        InPatient inPatient = restTemplate.getForObject(baseURL + "/find/" + "avc", InPatient.class);
         assertNotNull(inPatient);
 
-        restTemplate.delete(baseURL + "/delete/" + id);
+        restTemplate.delete(baseURL + "/delete/" + "avc");
 
         try {
-            inPatient = restTemplate.getForObject(baseURL + "/find/" + id, Patient.class);
+            inPatient = restTemplate.getForObject(baseURL + "/find/" + "avc", InPatient.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }
@@ -75,7 +79,7 @@ public class InPatientControllerTest {
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
 
         HttpHeaders headers = new HttpHeaders();
 

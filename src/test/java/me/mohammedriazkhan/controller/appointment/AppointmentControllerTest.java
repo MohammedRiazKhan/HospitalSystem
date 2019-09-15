@@ -3,8 +3,10 @@ package me.mohammedriazkhan.controller.appointment;
 import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.factory.appointment.AppointmentFactory;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -17,6 +19,7 @@ import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AppointmentControllerTest {
 
     @Autowired
@@ -25,7 +28,7 @@ public class AppointmentControllerTest {
     private String baseURL="http://localhost:8080/appointment";
 
     @Test
-    public void create() {
+    public void a_create() {
 
         Appointment appointment = AppointmentFactory.getAppointment("1 May 19", null);
         appointment.setAppointmentId("fas");
@@ -38,7 +41,7 @@ public class AppointmentControllerTest {
     }
 
     @Test
-    public void findById() {
+    public void b_findById() {
 
         //returns an object as a pojo thus getForObject
         Appointment lookingFor = restTemplate.getForObject(baseURL + "/find/" + "fas", Appointment.class);
@@ -48,7 +51,7 @@ public class AppointmentControllerTest {
     }
 
     @Test
-    public void update() {
+    public void c_update() {
 
         Appointment appointment = restTemplate.getForObject(baseURL + "/find/" + "fas", Appointment.class);
         appointment.setBookingDate("13 May 19");
@@ -62,7 +65,7 @@ public class AppointmentControllerTest {
     }
 
     @Test
-    public void delete() {
+    public void e_delete() {
 
         Appointment appointment = restTemplate.getForObject(baseURL + "/find/" + "fas", Appointment.class);
         assertNotNull(appointment);
@@ -78,7 +81,7 @@ public class AppointmentControllerTest {
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
 
         HttpHeaders headers = new HttpHeaders();
 

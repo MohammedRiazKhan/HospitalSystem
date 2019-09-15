@@ -2,8 +2,10 @@ package me.mohammedriazkhan.controller.hospital;
 
 import me.mohammedriazkhan.domain.hospital.Room;
 import me.mohammedriazkhan.factory.hospital.RoomFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -14,6 +16,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RoomControllerTest {
 
     @Autowired
@@ -22,9 +25,10 @@ public class RoomControllerTest {
     private String baseURL="http://localhost:8080/hospital/room";
 
     @Test
-    public void create() {
+    public void a_create() {
 
         Room room = RoomFactory.getRoom( null);
+        room.setRoomId("as");
 
         ResponseEntity<Room> postResponse = restTemplate.postForEntity(baseURL + "/new", room, Room.class);
 
@@ -34,40 +38,40 @@ public class RoomControllerTest {
     }
 
     @Test
-    public void findById() {
+    public void b_findById() {
 
-        Room room  = restTemplate.getForObject(baseURL + "/find/1", Room.class);
+        Room room  = restTemplate.getForObject(baseURL + "/find/as", Room.class);
 
         assertNotNull(room);
 
     }
 
     @Test
-    public void update() {
+    public void c_update() {
 
         int id = 1;
-        Room room  = restTemplate.getForObject(baseURL + "/find/" + id, Room.class);
+        Room room  = restTemplate.getForObject(baseURL + "/find/" + "as", Room.class);
 
 
-        restTemplate.put(baseURL + "/update/" + id, room);
+        restTemplate.put(baseURL + "/update/" + "as", room);
 
-        Room updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + id, Room.class);
+        Room updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + "as", Room.class);
 
         assertNotNull(updatedDoctor);
 
     }
 
     @Test
-    public void delete() {
+    public void e_delete() {
 
         int id = 1;
-        Room room = restTemplate.getForObject(baseURL + "/find/" + id, Room.class);
+        Room room = restTemplate.getForObject(baseURL + "/find/" + "as", Room.class);
         assertNotNull(room);
 
-        restTemplate.delete(baseURL + "/delete/" + id);
+        restTemplate.delete(baseURL + "/delete/" + "as");
 
         try {
-            room = restTemplate.getForObject(baseURL + "/find/" + id, Room.class);
+            room = restTemplate.getForObject(baseURL + "/find/" + "as", Room.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }
@@ -75,7 +79,7 @@ public class RoomControllerTest {
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
 
         HttpHeaders headers = new HttpHeaders();
 

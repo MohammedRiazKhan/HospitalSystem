@@ -15,8 +15,7 @@ public class MedicalToolRepositoryImpl implements MedicalToolRepository{
     private static MedicalToolRepositoryImpl repository = null;
     private Set<MedicalTool> medicalTools;
 
-    public MedicalToolRepositoryImpl()
-    {
+    public MedicalToolRepositoryImpl(){
         medicalTools = new HashSet<>();
     }
 

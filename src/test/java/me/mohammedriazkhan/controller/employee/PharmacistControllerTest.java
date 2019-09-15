@@ -2,8 +2,10 @@ package me.mohammedriazkhan.controller.employee;
 
 import me.mohammedriazkhan.domain.employee.Pharmacist;
 import me.mohammedriazkhan.factory.employee.PharmacistFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -14,6 +16,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PharmacistControllerTest {
 
     @Autowired
@@ -22,7 +25,7 @@ public class PharmacistControllerTest {
     private String baseURL = "http://localhost:8080/employee/pharmacist";
 
     @Test
-    public void create() {
+    public void a_create() {
 
         Pharmacist pharmacist = PharmacistFactory.getPharmacist( "JOnh", "do", " ", " ", " ", null);
         pharmacist.setEmployeeId("Afsd");
@@ -35,7 +38,7 @@ public class PharmacistControllerTest {
     }
 
     @Test
-    public void findById() {
+    public void b_findById() {
 
         Pharmacist pharmacist = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Pharmacist.class);
 
@@ -44,7 +47,7 @@ public class PharmacistControllerTest {
     }
 
     @Test
-    public void update() {
+    public void c_update() {
 
         int id = 1;
         Pharmacist pharmacist = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Pharmacist.class);
@@ -59,7 +62,7 @@ public class PharmacistControllerTest {
     }
 
     @Test
-    public void delete() {
+    public void e_delete() {
 
         int id = 1;
         Pharmacist pharmacist = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Pharmacist.class);
@@ -76,7 +79,7 @@ public class PharmacistControllerTest {
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
 
         HttpHeaders headers = new HttpHeaders();
 

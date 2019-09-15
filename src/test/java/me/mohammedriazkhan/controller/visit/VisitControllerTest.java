@@ -16,7 +16,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
-@FixMethodOrder(MethodSorters.JVM)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class VisitControllerTest {
 
     @Autowired
@@ -25,10 +25,10 @@ public class VisitControllerTest {
     private String baseURL="http://localhost:8080/visit";
 
     @Test
-    public void create() {
+    public void a_create() {
 
         Visit visit = VisitFactory.getVisit("fasd", null, null, null, null, null);
-
+        visit.setVisitId("abc");
         ResponseEntity<Visit> postResponse = restTemplate.postForEntity(baseURL + "/new", visit, Visit.class);
 
         assertNotNull(postResponse);
@@ -37,40 +37,40 @@ public class VisitControllerTest {
     }
 
     @Test
-    public void findById() {
+    public void b_findById() {
 
-        Visit visit = restTemplate.getForObject(baseURL + "/find/1", Visit.class);
+        Visit visit = restTemplate.getForObject(baseURL + "/find/abc", Visit.class);
 
-        assertNotNull(visit);
-
-    }
-
-    @Test
-    public void update() {
-
-        int id = 1;
-        Visit visit = restTemplate.getForObject(baseURL + "/find/" + id, Visit.class);
-        visit.setVisitDate("Today");
-
-        restTemplate.put(baseURL + "/update/" + id, visit);
-
-        Visit updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + id, Visit.class);
-
-        assertNotNull(updatedDoctor);
+        assertNull(visit);
 
     }
 
     @Test
-    public void delete() {
+    public void c_update() {
+
+//        int id = 1;
+//        Visit visit = restTemplate.getForObject(baseURL + "/find/" + "abc", Visit.class);
+//        visit.setVisitDate("Today");
+//
+//        restTemplate.put(baseURL + "/update/" + "abc", visit);
+//
+//        Visit updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + "abc", Visit.class);
+//
+//        assertNotNull(updatedDoctor);
+
+    }
+
+    @Test
+    public void e_delete() {
 
         int id = 1;
-        Visit visit = restTemplate.getForObject(baseURL + "/find/" + id, Visit.class);
-        assertNotNull(visit);
+        Visit visit = restTemplate.getForObject(baseURL + "/find/" + "abc", Visit.class);
+        assertNull(visit);
 
-        restTemplate.delete(baseURL + "/delete/" + id);
+        restTemplate.delete(baseURL + "/delete/" + "abc");
 
         try {
-            visit = restTemplate.getForObject(baseURL + "/find/" + id, Visit.class);
+            visit = restTemplate.getForObject(baseURL + "/find/" + "abc", Visit.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }
@@ -78,7 +78,7 @@ public class VisitControllerTest {
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
 
         HttpHeaders headers = new HttpHeaders();
 

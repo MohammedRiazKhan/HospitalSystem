@@ -2,8 +2,10 @@ package me.mohammedriazkhan.controller.employee;
 
 import me.mohammedriazkhan.domain.employee.Porter;
 import me.mohammedriazkhan.factory.employee.PorterFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -14,6 +16,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PorterControllerTest {
 
     @Autowired
@@ -22,7 +25,7 @@ public class PorterControllerTest {
     private String baseURL="http://localhost:8080/employee/porter";
 
     @Test
-    public void create() {
+    public void a_create() {
 
         Porter porter = PorterFactory.getPorter("Jake", "Paul", "00001321");
         porter.setEmployeeId("f");
@@ -35,7 +38,7 @@ public class PorterControllerTest {
     }
 
     @Test
-    public void findById() {
+    public void b_findById() {
 
         Porter porter = restTemplate.getForObject(baseURL + "/find/f", Porter.class);
 
@@ -44,7 +47,7 @@ public class PorterControllerTest {
     }
 
     @Test
-    public void update() {
+    public void c_update() {
 
         int id = 1;
         Porter porter = restTemplate.getForObject(baseURL + "/find/" + "f", Porter.class);
@@ -59,7 +62,7 @@ public class PorterControllerTest {
     }
 
     @Test
-    public void delete() {
+    public void e_delete() {
 
         int id = 1;
         Porter porter = restTemplate.getForObject(baseURL + "/find/" + "f", Porter.class);
@@ -76,7 +79,7 @@ public class PorterControllerTest {
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
 
         HttpHeaders headers = new HttpHeaders();
 

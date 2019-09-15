@@ -14,7 +14,6 @@ public class DepartmentFactoryTest {
     @Test
     public void getDepartment() {
 
-
         List<Ward> ward = new ArrayList<>();
         List<Room> rooms = new ArrayList<>();
 

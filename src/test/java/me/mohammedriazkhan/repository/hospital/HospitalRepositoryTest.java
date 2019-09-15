@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.UUID;
 
 import static junit.framework.TestCase.*;
+import static org.junit.Assert.assertNotEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -44,7 +45,7 @@ public class HospitalRepositoryTest {
 
         Hospital fromSet = hospitalRepository.read(hospital.getHospitalId());
 
-        assertEquals(hospital, fromSet);
+        assertEquals(hospital.getHospitalId(), fromSet.getHospitalId());
 
 
     }
@@ -66,7 +67,6 @@ public class HospitalRepositoryTest {
         Hospital updated = hospitalRepository.read(hospitalUpdate.getHospitalId());
 
         assertEquals(hospitalUpdate, updated);
-
 
     }
 

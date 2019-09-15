@@ -2,8 +2,10 @@ package me.mohammedriazkhan.controller.employee;
 
 import me.mohammedriazkhan.domain.employee.Cleaner;
 import me.mohammedriazkhan.factory.employee.CleanerFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -14,6 +16,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CleanerControllerTest {
 
     @Autowired
@@ -22,7 +25,7 @@ public class CleanerControllerTest {
     private String baseURL="http://localhost:8080/cleaner";
 
     @Test
-    public void create() {
+    public void a_create() {
 
         Cleaner cleaner = CleanerFactory.getCleaner();
         cleaner.setEmployeeId("Asdf");
@@ -35,7 +38,7 @@ public class CleanerControllerTest {
     }
 
     @Test
-    public void findById() {
+    public void b_findById() {
 
         Cleaner cleaner = restTemplate.getForObject(baseURL + "/find/Asdf", Cleaner.class);
 
@@ -44,7 +47,7 @@ public class CleanerControllerTest {
     }
 
     @Test
-    public void update() {
+    public void c_update() {
 
         int id = 1;
         Cleaner cleaner = restTemplate.getForObject(baseURL + "/find/" + "Asdf", Cleaner.class);
@@ -59,7 +62,7 @@ public class CleanerControllerTest {
     }
 
     @Test
-    public void delete() {
+    public void e_delete() {
 
         Cleaner cleaner = restTemplate.getForObject(baseURL + "/find/" + "Asdf", Cleaner.class);
         assertNotNull(cleaner);
@@ -75,7 +78,7 @@ public class CleanerControllerTest {
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
 
         HttpHeaders headers = new HttpHeaders();
 

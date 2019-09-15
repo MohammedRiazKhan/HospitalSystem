@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
+@RestController
+@RequestMapping("/outpatient")
 public class OutPatientController {
     @Autowired
     private OutPatientService inPatientService;

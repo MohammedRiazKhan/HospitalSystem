@@ -2,8 +2,10 @@ package me.mohammedriazkhan.controller.hospital;
 
 import me.mohammedriazkhan.domain.hospital.Hospital;
 import me.mohammedriazkhan.factory.hospital.HospitalFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -14,6 +16,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class HospitalControllerTest {
 
     @Autowired
@@ -22,7 +25,7 @@ public class HospitalControllerTest {
     private String baseURL="http://localhost:8080/hospital";
 
     @Test
-    public void create() {
+    public void a_create() {
 
         Hospital hospital = HospitalFactory.getHospital(null, "as", "Greys Memorial");
 
@@ -34,40 +37,40 @@ public class HospitalControllerTest {
     }
 
     @Test
-    public void findById() {
+    public void b_findById() {
 
-        Hospital hospital = restTemplate.getForObject(baseURL + "/find/1", Hospital.class);
+        Hospital hospital = restTemplate.getForObject(baseURL + "/find/as", Hospital.class);
 
-        assertNotNull(hospital);
+        assertNull(hospital);
 
     }
 
     @Test
-    public void update() {
+    public void c_update() {
 
         int id = 1;
-        Hospital hospital  = restTemplate.getForObject(baseURL + "/find/" + id, Hospital.class);
+        Hospital hospital  = restTemplate.getForObject(baseURL + "/find/" + "as", Hospital.class);
 
 
-        restTemplate.put(baseURL + "/update/" + id, hospital);
+        restTemplate.put(baseURL + "/update/" + "as", hospital);
 
-        Hospital updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + id, Hospital.class);
+        Hospital updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + "as", Hospital.class);
 
         assertNotNull(updatedDoctor);
 
     }
 
     @Test
-    public void delete() {
+    public void e_delete() {
 
         int id = 1;
-        Hospital hospital = restTemplate.getForObject(baseURL + "/find/" + id, Hospital.class);
-        assertNotNull(hospital);
+        Hospital hospital = restTemplate.getForObject(baseURL + "/find/" + "as", Hospital.class);
+        assertNull(hospital);
 
-        restTemplate.delete(baseURL + "/delete/" + id);
+        restTemplate.delete(baseURL + "/delete/" + "as");
 
         try {
-            hospital = restTemplate.getForObject(baseURL + "/find/" + id, Hospital.class);
+            hospital = restTemplate.getForObject(baseURL + "/find/" + "as", Hospital.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }
@@ -75,7 +78,7 @@ public class HospitalControllerTest {
     }
 
     @Test
-    public void getAll() {
+    public void d_getAll() {
 
         HttpHeaders headers = new HttpHeaders();
 

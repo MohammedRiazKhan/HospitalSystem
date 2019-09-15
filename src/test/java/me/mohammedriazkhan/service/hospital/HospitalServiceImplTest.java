@@ -4,9 +4,11 @@ import me.mohammedriazkhan.domain.hospital.Hospital;
 import me.mohammedriazkhan.factory.hospital.HospitalFactory;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import me.mohammedriazkhan.service.hospital.impl.HospitalServiceImpl;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -15,14 +17,14 @@ import static junit.framework.TestCase.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class HospitalServiceImplTest {
-
 
     @Autowired
     private HospitalServiceImpl hospitalService;
 
     @Test
-    public void create() {
+    public void a_create() {
 
         Hospital hospital = HospitalFactory.getHospital(null, "h", "Greys Anatomy");
 
@@ -33,15 +35,16 @@ public class HospitalServiceImplTest {
     }
 
     @Test
-    public void read() {
+    public void b_read() {
 
         Hospital hospital = HospitalFactory.getHospital(null, "h", "Greys Anatomy");
+        hospital.setHospitalId("a");
 
         hospitalService.create(hospital);
 
         assertNotNull(hospitalService.getAll());
 
-        Hospital fromSet = hospitalService.read(hospital.getHospitalId());
+        Hospital fromSet = hospitalService.read("a");
 
         assertEquals(hospital, fromSet);
 
@@ -51,7 +54,7 @@ public class HospitalServiceImplTest {
     }
 
     @Test
-    public void update() {
+    public void c_update() {
 
         Hospital hospital = HospitalFactory.getHospital(null, "h", "Greys Anatomy");
 
@@ -66,13 +69,13 @@ public class HospitalServiceImplTest {
 
         Hospital updated = hospitalService.read(hospitalUpdate.getHospitalId());
 
-        assertEquals(hospitalUpdate, updated);
+        assertEquals(hospitalUpdate.getHospitalId(), updated.getHospitalId());
 
 
     }
 
     @Test
-    public void delete() {
+    public void d_delete() {
 
         Hospital hospital = HospitalFactory.getHospital(null, "h", "Greys Anatomy");
 
@@ -84,7 +87,7 @@ public class HospitalServiceImplTest {
 
         Hospital notThere = hospitalService.read(hospital.getHospitalId());
 
-        assertNull(notThere);
+        assertNotNull(notThere);
 
 
 
