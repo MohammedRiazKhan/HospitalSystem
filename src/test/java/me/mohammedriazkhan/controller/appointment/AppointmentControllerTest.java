@@ -2,6 +2,7 @@ package me.mohammedriazkhan.controller.appointment;
 
 import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.factory.appointment.AppointmentFactory;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,22 +41,21 @@ public class AppointmentControllerTest {
     public void findById() {
 
         //returns an object as a pojo thus getForObject
-        Appointment appointment = restTemplate.getForObject(baseURL + "/find/1", Appointment.class);
+        Appointment lookingFor = restTemplate.getForObject(baseURL + "/find/" + "fas", Appointment.class);
 
-        assertNotNull(appointment);
+        assertNotNull(lookingFor);
 
     }
 
     @Test
     public void update() {
 
-        int id = 1;
-        Appointment appointment = restTemplate.getForObject(baseURL + "/find/" + id, Appointment.class);
+        Appointment appointment = restTemplate.getForObject(baseURL + "/find/" + "fas", Appointment.class);
         appointment.setBookingDate("13 May 19");
 
-        restTemplate.put(baseURL + "/update/" + id, appointment);
+        restTemplate.put(baseURL + "/update/" + "fas", appointment);
 
-        Appointment appointmentUpdated = restTemplate.getForObject(baseURL + "/update/" + id, Appointment.class);
+        Appointment appointmentUpdated = restTemplate.getForObject(baseURL + "/update/" + "fas", Appointment.class);
 
         assertNotNull(appointmentUpdated);
 
@@ -64,14 +64,13 @@ public class AppointmentControllerTest {
     @Test
     public void delete() {
 
-        int id = 1;
-        Appointment appointment = restTemplate.getForObject(baseURL + "/find/" + id, Appointment.class);
+        Appointment appointment = restTemplate.getForObject(baseURL + "/find/" + "fas", Appointment.class);
         assertNotNull(appointment);
 
-        restTemplate.delete(baseURL + "/delete/" + id);
+        restTemplate.delete(baseURL + "/delete/" + "fas");
 
         try {
-            appointment = restTemplate.getForObject(baseURL + "/find/" + id, Appointment.class);
+            appointment = restTemplate.getForObject(baseURL + "/find/" + "fas", Appointment.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }

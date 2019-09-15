@@ -37,7 +37,7 @@ public class PorterControllerTest {
     @Test
     public void findById() {
 
-        Porter porter = restTemplate.getForObject(baseURL + "/find/1", Porter.class);
+        Porter porter = restTemplate.getForObject(baseURL + "/find/f", Porter.class);
 
         assertNotNull(porter);
 
@@ -47,12 +47,12 @@ public class PorterControllerTest {
     public void update() {
 
         int id = 1;
-        Porter porter = restTemplate.getForObject(baseURL + "/find/" + id, Porter.class);
+        Porter porter = restTemplate.getForObject(baseURL + "/find/" + "f", Porter.class);
         porter.setFirstName("Mohammed");
 
-        restTemplate.put(baseURL + "/update/" + id, porter);
+        restTemplate.put(baseURL + "/update/" + "f", porter);
 
-        Porter updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + id, Porter.class);
+        Porter updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + "f", Porter.class);
 
         assertNotNull(updatedDoctor);
 
@@ -62,13 +62,13 @@ public class PorterControllerTest {
     public void delete() {
 
         int id = 1;
-        Porter porter = restTemplate.getForObject(baseURL + "/find/" + id, Porter.class);
+        Porter porter = restTemplate.getForObject(baseURL + "/find/" + "f", Porter.class);
         assertNotNull(porter);
 
-        restTemplate.delete(baseURL + "/delete/" + id);
+        restTemplate.delete(baseURL + "/delete/" + "f");
 
         try {
-            porter = restTemplate.getForObject(baseURL + "/find/" + id, Porter.class);
+            porter = restTemplate.getForObject(baseURL + "/find/" + "f", Porter.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }

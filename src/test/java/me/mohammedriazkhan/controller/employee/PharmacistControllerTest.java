@@ -37,7 +37,7 @@ public class PharmacistControllerTest {
     @Test
     public void findById() {
 
-        Pharmacist pharmacist = restTemplate.getForObject(baseURL + "/find/1", Pharmacist.class);
+        Pharmacist pharmacist = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Pharmacist.class);
 
         assertNotNull(pharmacist);
 
@@ -47,12 +47,12 @@ public class PharmacistControllerTest {
     public void update() {
 
         int id = 1;
-        Pharmacist pharmacist = restTemplate.getForObject(baseURL + "/find/" + id, Pharmacist.class);
+        Pharmacist pharmacist = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Pharmacist.class);
         pharmacist.setFirstName("Mohammed");
 
-        restTemplate.put(baseURL + "/update/" + id, pharmacist);
+        restTemplate.put(baseURL + "/update/" + "Afsd", pharmacist);
 
-        Pharmacist updatedPharmacist = restTemplate.getForObject(baseURL + "/update/" + id, Pharmacist.class);
+        Pharmacist updatedPharmacist = restTemplate.getForObject(baseURL + "/update/" + "Afsd", Pharmacist.class);
 
         assertNotNull(updatedPharmacist);
 
@@ -62,13 +62,13 @@ public class PharmacistControllerTest {
     public void delete() {
 
         int id = 1;
-        Pharmacist pharmacist = restTemplate.getForObject(baseURL + "/find/" + id, Pharmacist.class);
+        Pharmacist pharmacist = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Pharmacist.class);
         assertNotNull(pharmacist);
 
-        restTemplate.delete(baseURL + "/delete/" + id);
+        restTemplate.delete(baseURL + "/delete/" + "Afsd");
 
         try {
-            pharmacist = restTemplate.getForObject(baseURL + "/find/" + id, Pharmacist.class);
+            pharmacist = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Pharmacist.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }

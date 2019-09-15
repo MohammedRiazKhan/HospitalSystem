@@ -38,7 +38,7 @@ public class DoctorControllerTest {
     @Test
     public void findById() {
 
-        Doctor doctor = restTemplate.getForObject(baseURL + "/find/1", Doctor.class);
+        Doctor doctor = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Doctor.class);
 
         assertNotNull(doctor);
 
@@ -48,12 +48,12 @@ public class DoctorControllerTest {
     public void update() {
 
         int id = 1;
-        Doctor doctor = restTemplate.getForObject(baseURL + "/find/" + id, Doctor.class);
+        Doctor doctor = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Doctor.class);
         doctor.setFirstName("Mohammed");
 
-        restTemplate.put(baseURL + "/update/" + id, doctor);
+        restTemplate.put(baseURL + "/update/" + "Afsd", doctor);
 
-        Doctor updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + id, Doctor.class);
+        Doctor updatedDoctor = restTemplate.getForObject(baseURL + "/update/" + "Afsd", Doctor.class);
 
         assertNotNull(updatedDoctor);
 
@@ -63,13 +63,13 @@ public class DoctorControllerTest {
     public void delete() {
 
         int id = 1;
-        Doctor doctor = restTemplate.getForObject(baseURL + "/find/" + id, Doctor.class);
+        Doctor doctor = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Doctor.class);
         assertNotNull(doctor);
 
-        restTemplate.delete(baseURL + "/delete/" + id);
+        restTemplate.delete(baseURL + "/delete/" + "Afsd");
 
         try {
-            doctor = restTemplate.getForObject(baseURL + "/find/" + id, Doctor.class);
+            doctor = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Doctor.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }

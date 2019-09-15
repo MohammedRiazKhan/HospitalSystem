@@ -37,7 +37,7 @@ public class NurseControllerTest {
     @Test
     public void findById() {
 
-        Nurse nurse = restTemplate.getForObject(baseURL + "/find/1", Nurse.class);
+        Nurse nurse = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Nurse.class);
 
         assertNotNull(nurse);
 
@@ -47,12 +47,12 @@ public class NurseControllerTest {
     public void update() {
 
         int id = 1;
-        Nurse nurse = restTemplate.getForObject(baseURL + "/find/" + id, Nurse.class);
+        Nurse nurse = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Nurse.class);
         nurse.setFirstName("Mohammed");
 
-        restTemplate.put(baseURL + "/update/" + id, nurse);
+        restTemplate.put(baseURL + "/update/" + "Afsd", nurse);
 
-        Nurse updatedNurse = restTemplate.getForObject(baseURL + "/update/" + id, Nurse.class);
+        Nurse updatedNurse = restTemplate.getForObject(baseURL + "/update/" + "Afsd", Nurse.class);
 
         assertNotNull(updatedNurse);
 
@@ -62,13 +62,13 @@ public class NurseControllerTest {
     public void delete() {
 
         int id = 1;
-        Nurse nurse = restTemplate.getForObject(baseURL + "/find/" + id, Nurse.class);
+        Nurse nurse = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Nurse.class);
         assertNotNull(nurse);
 
-        restTemplate.delete(baseURL + "/delete/" + id);
+        restTemplate.delete(baseURL + "/delete/" + "Afsd");
 
         try {
-            nurse = restTemplate.getForObject(baseURL + "/find/" + id, Nurse.class);
+            nurse = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Nurse.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }

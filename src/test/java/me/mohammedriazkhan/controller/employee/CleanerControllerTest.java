@@ -37,7 +37,7 @@ public class CleanerControllerTest {
     @Test
     public void findById() {
 
-        Cleaner cleaner = restTemplate.getForObject(baseURL + "/find/1", Cleaner.class);
+        Cleaner cleaner = restTemplate.getForObject(baseURL + "/find/Asdf", Cleaner.class);
 
         assertNotNull(cleaner);
 
@@ -47,12 +47,12 @@ public class CleanerControllerTest {
     public void update() {
 
         int id = 1;
-        Cleaner cleaner = restTemplate.getForObject(baseURL + "/find/" + id, Cleaner.class);
+        Cleaner cleaner = restTemplate.getForObject(baseURL + "/find/" + "Asdf", Cleaner.class);
         cleaner.setFirstName("Mohammed");
 
-        restTemplate.put(baseURL + "/update/" + id, cleaner);
+        restTemplate.put(baseURL + "/update/" + "Asdf", cleaner);
 
-        Cleaner updatedCleaner = restTemplate.getForObject(baseURL + "/update/" + id, Cleaner.class);
+        Cleaner updatedCleaner = restTemplate.getForObject(baseURL + "/update/" + "Asdf", Cleaner.class);
 
         assertNotNull(updatedCleaner);
 
@@ -61,14 +61,13 @@ public class CleanerControllerTest {
     @Test
     public void delete() {
 
-        int id = 1;
-        Cleaner cleaner = restTemplate.getForObject(baseURL + "/find/" + id, Cleaner.class);
+        Cleaner cleaner = restTemplate.getForObject(baseURL + "/find/" + "Asdf", Cleaner.class);
         assertNotNull(cleaner);
 
-        restTemplate.delete(baseURL + "/delete/" + id);
+        restTemplate.delete(baseURL + "/delete/" + "Asdf");
 
         try {
-            cleaner = restTemplate.getForObject(baseURL + "/find/" + id, Cleaner.class);
+            cleaner = restTemplate.getForObject(baseURL + "/find/" + "Asdf", Cleaner.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }
