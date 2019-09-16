@@ -1,7 +1,16 @@
 package me.mohammedriazkhan.service.visit;
 
+import me.mohammedriazkhan.domain.appoinment.Appointment;
+import me.mohammedriazkhan.domain.employee.Doctor;
+import me.mohammedriazkhan.domain.patient.Patient;
 import me.mohammedriazkhan.domain.visit.Visit;
+import me.mohammedriazkhan.factory.appointment.AppointmentFactory;
+import me.mohammedriazkhan.factory.employee.DoctorFactory;
+import me.mohammedriazkhan.factory.patient.InPatientFactory;
 import me.mohammedriazkhan.factory.visit.VisitFactory;
+import me.mohammedriazkhan.service.appointment.AppointmentService;
+import me.mohammedriazkhan.service.employee.DoctorService;
+import me.mohammedriazkhan.service.patient.PatientService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +28,12 @@ public class VisitServiceImplTest {
 
     @Autowired
     private VisitServiceImpl visitService;
+    @Autowired
+    private PatientService patientService;
+    @Autowired
+    private DoctorService doctorService;
+    @Autowired
+    private AppointmentService appointmentService;
 
 
     @Test
@@ -82,4 +97,23 @@ public class VisitServiceImplTest {
         assertNull(notThere);
 
     }
+
+    @Test
+    public void createVisit(){
+
+//        Patient patient = InPatientFactory.getInPatient("Mohammed", "Khan", "0762828630", "1", 1, "ME");
+//        patientService.create(patient);
+//
+//        Doctor doctor = DoctorFactory.getDoctor("Riaz", "Khan", "Renal");
+//        doctorService.create(doctor);
+//
+//        Appointment appointment = AppointmentFactory.getAppointment("Today", patient.getPatientId());
+//        appointmentService.create(appointment);
+//
+//        Visit visit = visitService.createVisit(patient.getPatientId(), doctor.getEmployeeId(), appointment.getAppointmentId());
+//        assertNotNull(visit);
+
+
+    }
+
 }

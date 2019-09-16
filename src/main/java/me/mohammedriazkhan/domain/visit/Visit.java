@@ -1,9 +1,5 @@
 package me.mohammedriazkhan.domain.visit;
 
-import me.mohammedriazkhan.domain.patient.Patient;
-import me.mohammedriazkhan.domain.employee.Doctor;
-import me.mohammedriazkhan.domain.employee.Nurse;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -17,10 +13,7 @@ public class Visit {
     private List<Medication> medication;
     private List<MedicalTool> tools;
 
-
-    public Visit(){
-
-    }
+    public Visit(){}
 
     private Visit(VisitBuilder builder){
         this.visitId = builder.visitId;
@@ -30,7 +23,6 @@ public class Visit {
         this.nurseId = builder.nurseId;
         this.medication = builder.medication;
         this.tools = builder.tools;
-
     }
 
 

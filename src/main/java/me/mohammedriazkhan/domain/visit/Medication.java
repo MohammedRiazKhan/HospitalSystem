@@ -9,9 +9,7 @@ public class Medication {
     private String description;
     private int dose;
 
-    public Medication(){
-
-    }
+    public Medication(){}
 
     private Medication(MedicationBuilder builder){
         this.medicationId = builder.medicationId;
@@ -97,15 +95,11 @@ public class Medication {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             MedicationBuilder that = (MedicationBuilder) o;
-
-            if (medicationId != that.medicationId) return false;
-            if (dose != that.dose) return false;
-            if (medicineName != null ? !medicineName.equals(that.medicineName) : that.medicineName != null)
-                return false;
-            return description != null ? description.equals(that.description) : that.description == null;
-
+            return dose == that.dose &&
+                    Objects.equals(medicationId, that.medicationId) &&
+                    Objects.equals(medicineName, that.medicineName) &&
+                    Objects.equals(description, that.description);
         }
 
         @Override

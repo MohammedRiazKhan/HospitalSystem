@@ -14,12 +14,7 @@ public abstract class Patient {
     private int age;
     private String doctorId;
 
-
-
-
-    public Patient(){
-
-    }
+    public Patient(){}
 
     protected Patient(Builder builder){
 

@@ -8,17 +8,12 @@ public class MedicalTool {
     private String toolName;
     private String toolCost;
 
-    public MedicalTool(){
-
-    }
+    public MedicalTool(){}
 
     private MedicalTool(MedicalToolBuilder builder){
-
         this.toolId = builder.toolId;
         this.toolName = builder.toolName;
         this.toolCost = builder.toolCost;
-
-
     }
 
     public String getToolId() {
@@ -37,7 +32,7 @@ public class MedicalTool {
         this.toolName = toolName;
     }
 
-    public String getToolCost() {
+    public String getToolCost(){
         return toolCost;
     }
 
@@ -50,9 +45,7 @@ public class MedicalTool {
         private String toolName;
         private String toolCost;
 
-        public MedicalToolBuilder(){
-
-        }
+        public MedicalToolBuilder(){}
 
         public MedicalToolBuilder toolId(String toolId){
             this.toolId = toolId;
@@ -71,9 +64,7 @@ public class MedicalTool {
 
 
         public MedicalTool build(){
-
             return new MedicalTool(this);
-
         }
 
         @Override
@@ -89,13 +80,10 @@ public class MedicalTool {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             MedicalToolBuilder that = (MedicalToolBuilder) o;
-
-            if (toolId != that.toolId) return false;
-            if (toolName != null ? !toolName.equals(that.toolName) : that.toolName != null) return false;
-            return toolCost != null ? toolCost.equals(that.toolCost) : that.toolCost == null;
-
+            return Objects.equals(toolId, that.toolId) &&
+                    Objects.equals(toolName, that.toolName) &&
+                    Objects.equals(toolCost, that.toolCost);
         }
 
         @Override

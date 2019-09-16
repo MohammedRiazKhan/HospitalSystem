@@ -4,9 +4,7 @@ public class Cash extends Account{
 
     private double cashAmount;
 
-    public Cash(){
-
-    }
+    public Cash(){}
 
     private Cash(CashBuilder builder){
 

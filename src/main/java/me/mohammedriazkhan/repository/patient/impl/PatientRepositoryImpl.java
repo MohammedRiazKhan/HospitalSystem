@@ -13,7 +13,7 @@ import java.util.Set;
 public class PatientRepositoryImpl implements PatientRepository{
 
     private static PatientRepositoryImpl repository = null;
-    private HashSet<Patient> patients;
+    private Set<Patient> patients;
 
     public PatientRepositoryImpl(){
         patients = new HashSet<>();

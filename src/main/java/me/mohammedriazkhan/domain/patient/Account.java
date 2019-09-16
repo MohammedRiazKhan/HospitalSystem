@@ -8,10 +8,7 @@ public abstract class Account {
     private double balance;
     private String paymentTerms;
 
-    public Account(){
-
-    }
-
+    public Account(){}
 
     protected Account(AccountBuilder builder){
 
