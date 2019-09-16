@@ -14,20 +14,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 
         auth.inMemoryAuthentication()
-                .withUser("riaz")
-                .password("khan") //if you dont want to use a password encoder {noop} before password
-                .roles("ADMIN")//or .roles("PASS IN ROLE)
+                .withUser("admin")
+                .password("{noop}admin")
+                .roles("ADMIN")
                 .and()
-                .withUser("Mohammed")
-                .password("{noop}khan")
+                .withUser("user")
+                .password("{noop}user")
                 .roles("USER");
-
 
     }
 
@@ -38,20 +35,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/doctor/getAll")
+                .antMatchers(HttpMethod.GET, "/report/getAll")
                 .hasRole("ADMIN")
                 .and()
                 .csrf().disable();
 
     }
 
-//    //bEncrypt. ==>should return a format like = {encoder}xxxx
 //    @Bean
 //    public PasswordEncoder encoder(){
-//       return NoOpPasswordEncoder.getInstance();
+//       return new BCryptPasswordEncoder();
 //    }
-//
-//
+
+
 
 
 }

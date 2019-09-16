@@ -41,7 +41,7 @@ public class DoctorController {
         doctorService.delete(id);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/getall")
     public Set<Doctor> getAll(){
         return doctorService.getAll();
     }
