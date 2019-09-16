@@ -92,29 +92,5 @@ public class DoctorControllerTest {
 
     }
 
-    @Test
-    public void whenCredentialsAreRightWillBeOK() throws Exception {
-
-        restTemplate = new TestRestTemplate("admin", "admin");
-
-        ResponseEntity<String> response = restTemplate.getForEntity(baseURL + "/getall", String.class);
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-
-    }
-
-    @Test
-    public void whenWrongCredentialsWillBe4xx() throws Exception {
-
-        restTemplate = new TestRestTemplate("admin", "admins");
-
-        ResponseEntity<String> response = restTemplate.getForEntity(baseURL + "/getall", String.class);
-
-        assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
-
-    }
-
-
-
 
 }
