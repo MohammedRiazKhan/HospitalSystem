@@ -14,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 
@@ -43,13 +45,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     }
 
-    //bEncrypt. ==>should return a format like = {encoder}xxxx
-    @Bean
-    public PasswordEncoder encoder(){
-       return NoOpPasswordEncoder.getInstance();
-    }
-
-
+//    //bEncrypt. ==>should return a format like = {encoder}xxxx
+//    @Bean
+//    public PasswordEncoder encoder(){
+//       return NoOpPasswordEncoder.getInstance();
+//    }
+//
+//
 
 
 }
