@@ -8,25 +8,23 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class Security extends WebSecurityConfigurerAdapter {
-
-    //define all the users and their roles.
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 
-
         auth.inMemoryAuthentication()
                 .withUser("riaz")
-                .password("{noop}khan") //if you dont want to use a password encoder {noop} before password
-                .roles("DOCTOR")//or .roles("PASS IN ROLE)
+                .password("khan") //if you dont want to use a password encoder {noop} before password
+                .roles("ADMIN")//or .roles("PASS IN ROLE)
                 .and()
                 .withUser("Mohammed")
                 .password("{noop}khan")
-                .roles("DOCTOR", "NURSE");
+                .roles("USER");
 
 
     }
@@ -39,7 +37,7 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/doctor/getAll")
-                .hasRole("DOCTOR")
+                .hasRole("ADMIN")
                 .and()
                 .csrf().disable();
 
@@ -48,7 +46,7 @@ public class Security extends WebSecurityConfigurerAdapter {
     //bEncrypt. ==>should return a format like = {encoder}xxxx
     @Bean
     public PasswordEncoder encoder(){
-        return new BCryptPasswordEncoder();
+       return NoOpPasswordEncoder.getInstance();
     }
 
 
