@@ -38,9 +38,7 @@ public class SecurityTest {
     @Test
     public void whenCorrectCredentialsWillBe200() throws Exception {
 
-        restTemplate = new TestRestTemplate("admin", "admin");
-
-        ResponseEntity<String> response = restTemplate.getForEntity(baseURL + "/getall", String.class);
+        ResponseEntity<String> response = restTemplate.withBasicAuth("admin", "admin").getForEntity(baseURL + "/getall", String.class);
 
         System.out.println(response.getStatusCode());
         System.out.println(response.getBody());
@@ -52,9 +50,7 @@ public class SecurityTest {
     @Test
     public void whenIncorrectCredentialsWillBe401() throws Exception {
 
-        restTemplate = new TestRestTemplate("admin", "admins");
-
-        ResponseEntity<String> response = restTemplate.getForEntity(baseURL + "/getall", String.class);
+        ResponseEntity<String> response = restTemplate.withBasicAuth("admin", "admins").getForEntity(baseURL + "/getall", String.class);
 
         System.out.println(response.getStatusCode());
         System.out.println(response.getBody());
