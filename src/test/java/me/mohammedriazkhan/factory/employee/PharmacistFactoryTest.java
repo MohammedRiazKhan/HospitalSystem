@@ -11,7 +11,8 @@ public class PharmacistFactoryTest {
     @Test
     public void getPharmacist() {
 
-        Pharmacist pharmacist = PharmacistFactory.getPharmacist( null, null, null, null, null, null);
+        Pharmacist pharmacist = PharmacistFactory.getPharmacist( "Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "No Expiration");
+        System.out.println(pharmacist);
         Assert.assertNotNull(pharmacist);
 
     }

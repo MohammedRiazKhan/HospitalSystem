@@ -19,22 +19,19 @@ import static junit.framework.TestCase.*;
 @SpringBootTest
 public class OutPatientRepositoryTest {
 
-
     @Autowired
     private PatientRepositoryImpl patientRepository;
-
 
     @Test
     public void create() {
 
-        //doctor instance to pass into patient creation
-        Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
 
-        //patient
-        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, "fas");
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
 
         //create a patient
-        patientRepository.create(patient);
+        patientRepository.create(aPatient);
 
         //checks if the repos set is not null
         assertNotNull(patientRepository.getAll());
@@ -44,15 +41,17 @@ public class OutPatientRepositoryTest {
     @Test
     public void read() {
 
-        //creating a patient
-        Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
-        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, "FAsd");
-        patientRepository.create(patient);
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
+
+        patientRepository.create(aPatient);
 
         //getting a patient from the set
-        Patient patientFromSet = patientRepository.read(patient.getPatientId());
+        Patient patientFromSet = patientRepository.read(aPatient.getPatientId());
 
-        assertEquals(patient, patientFromSet);
+        assertEquals(aPatient, patientFromSet);
 
 
     }
@@ -60,20 +59,22 @@ public class OutPatientRepositoryTest {
     @Test
     public void update() {
 
-        //creating a patient
-        Doctor doc = DoctorFactory.getDoctor( "Dr", "Doctor", "Renal");
-        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, "ASfd");
-        patientRepository.create(patient);
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
+
+        patientRepository.create(aPatient);
 
         //creating a new patient to update
-        Patient patientNew = InPatientFactory.getInPatient("Mohammed", "Khan", "0762828630", "1111111111", 23,"ASDf");
-        patientNew.setPatientId(patient.getPatientId());
+        Patient patientNew = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+        patientNew.setPatientId(aPatient.getPatientId());
 
         //updating the value
         patientRepository.update(patientNew);
 
         //patient once updated (pulled from set)
-        Patient updatedPatientFromSet = patientRepository.read(patient.getPatientId());
+        Patient updatedPatientFromSet = patientRepository.read(aPatient.getPatientId());
 
         assertEquals(patientNew, updatedPatientFromSet);
 
@@ -85,19 +86,21 @@ public class OutPatientRepositoryTest {
     @Test
     public void delete() {
 
-        //creating a patient
-        Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
-        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, "ASDf");
-        patientRepository.create(patient);
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
+
+        patientRepository.create(aPatient);
 
         //checks if set has a value
         assertNotNull(patientRepository.getAll());
 
         //deleting the patient
-        patientRepository.delete(patient.getPatientId());
+        patientRepository.delete(aPatient.getPatientId());
 
         //checking if object is in set
-        Patient patientInSet = patientRepository.read(patient.getPatientId());
+        Patient patientInSet = patientRepository.read(aPatient.getPatientId());
 
         //if null it will pass
         assertNull(patientInSet);

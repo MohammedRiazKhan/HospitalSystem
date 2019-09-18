@@ -1,53 +1,63 @@
 package me.mohammedriazkhan.domain.patient;
 
-import me.mohammedriazkhan.domain.appoinment.Appointment;
+import java.util.Objects;
 
 public class OutPatient extends Patient{
 
-    private Appointment appointment;
+    private String appointmentId;
 
-    public OutPatient(){
-
-    }
+    public OutPatient(){}
 
     private OutPatient(OutPatientBuilder builder){
         super(builder);
-        this.appointment = builder.appointment;
+        this.appointmentId = builder.appointmentId;
 
     }
 
-    public Appointment getAppointment() {
-        return appointment;
+    public String getAppointmentId() {
+        return appointmentId;
     }
 
-    public void setAppointment(Appointment appointment) {
-        this.appointment = appointment;
+    public void setAppointmentId(String appointmentId) {
+        this.appointmentId = appointmentId;
     }
 
     public static class OutPatientBuilder extends Patient.Builder{
 
-        private Appointment appointment;
+        private String appointmentId;
 
         public OutPatientBuilder(){
             super();
         }
 
-        public OutPatientBuilder appointment(Appointment appointment){
-            this.appointment = appointment;
+        public OutPatientBuilder appointmentId(String appointmentId){
+            this.appointmentId = appointmentId;
             return this;
         }
-
-
 
         @Override
         public Patient build() {
             return new OutPatient(this);
         }
 
+        public OutPatientBuilder copy(OutPatient outPatient){
+
+            this.firstName(outPatient.getFirstName());
+            this.patientId(outPatient.getPatientId());
+            this.lastName(outPatient.getLastName());
+            this.telephone(outPatient.getTelephone());
+            this.address(outPatient.getAddress());
+            this.identityNumber(outPatient.getIdentityNumber());
+            this.age(outPatient.getAge());
+            this.accountId(outPatient.getAccountId());
+            this.appointmentId(outPatient.getAppointmentId());
+            return this;
+        }
+
         @Override
         public String toString() {
             return "OutPatientBuilder{" +
-                    "appointment=" + appointment +
+                    "appointmentId='" + appointmentId + '\'' +
                     "} " + super.toString();
         }
 
@@ -55,16 +65,14 @@ public class OutPatient extends Patient{
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
+            if (!super.equals(o)) return false;
             OutPatientBuilder that = (OutPatientBuilder) o;
-
-            return appointment != null ? appointment.equals(that.appointment) : that.appointment == null;
-
+            return Objects.equals(appointmentId, that.appointmentId);
         }
 
         @Override
         public int hashCode() {
-            return appointment != null ? appointment.hashCode() : 0;
+            return Objects.hash(super.hashCode(), appointmentId);
         }
     }
 

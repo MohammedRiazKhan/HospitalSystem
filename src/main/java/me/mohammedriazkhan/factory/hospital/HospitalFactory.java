@@ -2,16 +2,17 @@ package me.mohammedriazkhan.factory.hospital;
 
 import me.mohammedriazkhan.domain.hospital.Department;
 import me.mohammedriazkhan.domain.hospital.Hospital;
+import me.mohammedriazkhan.helper.IDGenerator;
 
 
 import java.util.List;
 
 public class HospitalFactory {
 
-    public static Hospital getHospital(List<Department> departments, String hospitalId, String hospitalName) {
+    public static Hospital getHospital (String hospitalName, List<Department> departments) {
         return new Hospital.HospitalBuilder()
+                .hospitalId(IDGenerator.generateId())
                 .departments(departments)
-                .hospitalId(hospitalId)
                 .hospitalName(hospitalName)
                 .build();
     }

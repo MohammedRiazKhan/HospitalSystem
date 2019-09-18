@@ -9,10 +9,7 @@ public class Hospital {
     private String hospitalId;
     private String hospitalName;
 
-
-    public Hospital(){
-
-    }
+    public Hospital(){}
 
     private Hospital(HospitalBuilder builder){
 
@@ -52,9 +49,7 @@ public class Hospital {
         private String hospitalId;
         private String hospitalName;
 
-        public HospitalBuilder(){
-
-        }
+        public HospitalBuilder(){}
 
         public HospitalBuilder hospitalId(String hospitalId){
             this.hospitalId = hospitalId;
@@ -74,6 +69,15 @@ public class Hospital {
         public Hospital build(){
 
             return new Hospital(this);
+
+        }
+
+        public HospitalBuilder copy(Hospital hospital){
+
+            this.hospitalId(hospital.getHospitalId());
+            this.hospitalName(hospital.getHospitalName());
+            this.departments(hospital.getDepartments());
+            return this;
 
         }
 

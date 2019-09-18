@@ -1,7 +1,9 @@
 package me.mohammedriazkhan.controller.patient;
 
+import me.mohammedriazkhan.domain.employee.Doctor;
 import me.mohammedriazkhan.domain.patient.InPatient;
 import me.mohammedriazkhan.domain.patient.Patient;
+import me.mohammedriazkhan.factory.employee.DoctorFactory;
 import me.mohammedriazkhan.factory.patient.InPatientFactory;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -28,7 +30,10 @@ public class InPatientControllerTest {
     @Test
     public void a_create() {
 
-        InPatient inPatient = InPatientFactory.getInPatient("MOhammed", "Khan", null, null, 23, null);
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient inPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
         inPatient.setPatientId("avc");
         ResponseEntity<InPatient> postResponse = restTemplate.postForEntity(baseURL + "/new", inPatient, InPatient.class);
 

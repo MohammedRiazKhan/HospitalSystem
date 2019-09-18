@@ -9,22 +9,13 @@ public class Visit {
     private String visitDate;
     private String patientId;
     private String doctorId;
-    private String nurseId;
-    private List<Medication> medication;
-    private List<MedicalTool> tools;
 
-    public Visit(){}
-
-    private Visit(VisitBuilder builder){
-        this.visitId = builder.visitId;
-        this.visitDate = builder.visitDate;
-        this.patientId = builder.patientId;
-        this.doctorId = builder.doctorId;
-        this.nurseId = builder.nurseId;
-        this.medication = builder.medication;
-        this.tools = builder.tools;
+    public Visit(String visitId, String visitDate, String patientId, String doctorId) {
+        this.visitId = visitId;
+        this.visitDate = visitDate;
+        this.patientId = patientId;
+        this.doctorId = doctorId;
     }
-
 
     public String getVisitId() {
         return visitId;
@@ -58,112 +49,32 @@ public class Visit {
         this.doctorId = doctorId;
     }
 
-    public String getNurseId() {
-        return nurseId;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Visit visit = (Visit) o;
+        return Objects.equals(visitId, visit.visitId) &&
+                Objects.equals(visitDate, visit.visitDate) &&
+                Objects.equals(patientId, visit.patientId) &&
+                Objects.equals(doctorId, visit.doctorId);
     }
 
-    public void setNurseId(String nurseId) {
-        this.nurseId = nurseId;
+    @Override
+    public int hashCode() {
+        return Objects.hash(visitId, visitDate, patientId, doctorId);
     }
 
-    public List<Medication> getMedication() {
-        return medication;
+    @Override
+    public String toString() {
+        return "Visit{" +
+                "visitId='" + visitId + '\'' +
+                ", visitDate='" + visitDate + '\'' +
+                ", patientId='" + patientId + '\'' +
+                ", doctorId='" + doctorId + '\'' +
+                 +
+                '}';
     }
-
-    public void setMedication(List<Medication> medication) {
-        this.medication = medication;
-    }
-
-    public List<MedicalTool> getTools() {
-        return tools;
-    }
-
-    public void setTools(List<MedicalTool> tools) {
-        this.tools = tools;
-    }
-
-    public static class VisitBuilder{
-        private String visitId;
-        private String visitDate;
-        private String patientId;
-        private String doctorId;
-        private String nurseId;
-        private List<Medication> medication;
-        private List<MedicalTool> tools;
-
-
-        public VisitBuilder visitId(String visitId){
-
-            this.visitId = visitId;
-            return this;
-        }
-
-        public VisitBuilder visitDate(String visitDate){
-            this.visitDate = visitDate;
-            return this;
-        }
-
-        public VisitBuilder patientId(String patientId){
-            this.patientId = patientId;
-            return this;
-        }
-
-        public VisitBuilder doctorId(String doctorId){
-            this.doctorId = doctorId;
-            return this;
-        }
-
-        public VisitBuilder nurseId(String nurseId){
-            this.nurseId = nurseId;
-            return this;
-        }
-
-        public VisitBuilder medication(List<Medication> medication){
-            this.medication = medication;
-            return this;
-        }
-
-        public VisitBuilder tools(List<MedicalTool> tools){
-            this.tools = tools;
-            return this;
-        }
-
-        public Visit build(){
-            return new Visit(this);
-        }
-
-
-        @Override
-        public String toString() {
-            return "VisitBuilder{" +
-                    "visitId='" + visitId + '\'' +
-                    ", visitDate='" + visitDate + '\'' +
-                    ", patientId='" + patientId + '\'' +
-                    ", doctorId='" + doctorId + '\'' +
-                    ", nurseId='" + nurseId + '\'' +
-                    ", medication=" + medication +
-                    ", tools=" + tools +
-                    '}';
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            VisitBuilder that = (VisitBuilder) o;
-            return Objects.equals(visitId, that.visitId) &&
-                    Objects.equals(visitDate, that.visitDate) &&
-                    Objects.equals(patientId, that.patientId) &&
-                    Objects.equals(doctorId, that.doctorId) &&
-                    Objects.equals(nurseId, that.nurseId) &&
-                    Objects.equals(medication, that.medication) &&
-                    Objects.equals(tools, that.tools);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(visitId, visitDate, patientId, doctorId, nurseId, medication, tools);
-        }
-    }
-
 }

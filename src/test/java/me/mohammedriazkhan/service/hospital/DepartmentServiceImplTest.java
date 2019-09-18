@@ -1,6 +1,8 @@
 package me.mohammedriazkhan.service.hospital;
 
 import me.mohammedriazkhan.domain.hospital.Department;
+import me.mohammedriazkhan.domain.hospital.Room;
+import me.mohammedriazkhan.domain.hospital.Ward;
 import me.mohammedriazkhan.factory.hospital.DepartmentFactory;
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,6 +12,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static junit.framework.TestCase.*;
 
@@ -24,7 +29,10 @@ public class DepartmentServiceImplTest {
     @Test
     public void create() {
 
-        Department department = DepartmentFactory.getDepartment( "h", null, null);
+        List<Ward> ward = new ArrayList<>();
+        List<Room> rooms = new ArrayList<>();
+
+        Department department = DepartmentFactory.getDepartment(ward, rooms);
         departmentService.create(department);
 
         assertNotNull(departmentService.getAll());
@@ -34,7 +42,10 @@ public class DepartmentServiceImplTest {
     @Test
     public void read() {
 
-        Department department = DepartmentFactory.getDepartment("h", null, null);
+        List<Ward> ward = new ArrayList<>();
+        List<Room> rooms = new ArrayList<>();
+
+        Department department = DepartmentFactory.getDepartment(ward, rooms);
         departmentService.create(department);
 
         assertNotNull(departmentService.getAll());
@@ -49,12 +60,15 @@ public class DepartmentServiceImplTest {
     @Test
     public void update() {
 
-        Department department = DepartmentFactory.getDepartment("h", null, null);
+        List<Ward> ward = new ArrayList<>();
+        List<Room> rooms = new ArrayList<>();
+
+        Department department = DepartmentFactory.getDepartment(ward, rooms);
         departmentService.create(department);
 
         assertNotNull(departmentService.getAll());
 
-        Department departmentUpdate = DepartmentFactory.getDepartment("h", null, null);
+        Department departmentUpdate =  DepartmentFactory.getDepartment(ward, rooms);
         departmentUpdate.setDepartmentId(department.getDepartmentId());
         departmentService.update(departmentUpdate);
 
@@ -67,7 +81,10 @@ public class DepartmentServiceImplTest {
     @Test
     public void delete() {
 
-        Department department = DepartmentFactory.getDepartment("h", null, null);
+        List<Ward> ward = new ArrayList<>();
+        List<Room> rooms = new ArrayList<>();
+
+        Department department = DepartmentFactory.getDepartment(ward, rooms);
         departmentService.create(department);
 
         assertNotNull(departmentService.getAll());

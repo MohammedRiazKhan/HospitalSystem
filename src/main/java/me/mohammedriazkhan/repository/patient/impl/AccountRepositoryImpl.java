@@ -39,13 +39,13 @@ public class AccountRepositoryImpl implements AccountRepository {
 
     @Override
     public Account read(String s) {
-        return accounts.stream().filter(account -> account.getAccountNo().equals(s)).findAny().orElse(null);
+        return accounts.stream().filter(account -> account.getAccountId().equals(s)).findAny().orElse(null);
     }
 
     @Override
     public Account update(Account account) {
 
-        Account inDB = read(account.getAccountNo());
+        Account inDB = read(account.getAccountId());
         if(inDB != null){
             accounts.remove(inDB);
             accounts.add(account);

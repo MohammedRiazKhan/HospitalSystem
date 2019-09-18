@@ -1,31 +1,50 @@
 package me.mohammedriazkhan.domain.employee;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Pharmacist extends Employee{
 
-    private int[] medic;
+    private String licence;
 
-    public Pharmacist(){
+    public Pharmacist(){}
 
+    public String getLicence() {
+        return licence;
+    }
+
+    public void setLicence(String licence) {
+        this.licence = licence;
     }
 
     public Pharmacist(PharmacistBuilder builder){
         super(builder);
-        this.medic = builder.medic;
+        this.licence = builder.licence;
     }
 
     public static class PharmacistBuilder extends Employee.Builder{
 
-        private int[] medic;
+        private String licence;
 
         public PharmacistBuilder(){
             super();
         }
 
-        public PharmacistBuilder medic(int[] medic){
-            this.medic = medic;
+        public PharmacistBuilder licence(String licence){
+            this.licence = licence;
             return this;
+        }
+
+        public PharmacistBuilder copy(Pharmacist pharmacist){
+            this.employeeId(pharmacist.getEmployeeId());
+            this.firstName(pharmacist.getFirstName());
+            this.lastName(pharmacist.getLastName());
+            this.identityNumber(pharmacist.getIdentityNumber());
+            this.employmentDate(pharmacist.getEmploymentDate());
+            this.jobTitle(pharmacist.getJobTitle());
+            this.licence(pharmacist.getLicence());
+            return this;
+
         }
 
 
@@ -35,34 +54,17 @@ public class Pharmacist extends Employee{
         }
 
         @Override
-        public String toString() {
-            return "PharmacistBuilder{" +
-                    "medic=" + Arrays.toString(medic) +
-                    "} " + super.toString();
-        }
-
-        @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             PharmacistBuilder that = (PharmacistBuilder) o;
-
-            return Arrays.equals(medic, that.medic);
-
+            return Objects.equals(licence, that.licence);
         }
 
         @Override
         public int hashCode() {
-            return Arrays.hashCode(medic);
+            return Objects.hash(licence);
         }
     }
 
-    public int[] getMedic() {
-        return medic;
-    }
-
-    public void setMedic(int[] medic) {
-        this.medic = medic;
-    }
 }

@@ -5,14 +5,15 @@ import me.mohammedriazkhan.helper.IDGenerator;
 
 public class PharmacistFactory {
 
-    public static Pharmacist getPharmacist(String firstName, String lastName, String identityNumber, String jobTitle, String dateOfEmployment, int[] medic) {
+    public static Pharmacist getPharmacist(String firstName, String lastName, String identificationNumber, String employmentDate, String jobTitle, String license) {
         return (Pharmacist) new Pharmacist.PharmacistBuilder()
+                .licence(license)
                 .employeeId(IDGenerator.generateId())
                 .firstName(firstName)
                 .lastName(lastName)
-                .identityNumber(identityNumber)
+                .identityNumber(identificationNumber)
+                .employmentDate(employmentDate)
                 .jobTitle(jobTitle)
-                .dateOfEmployment(dateOfEmployment)
                 .build();
     }
 

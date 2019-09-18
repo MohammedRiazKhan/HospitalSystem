@@ -6,16 +6,16 @@ public class Medication {
 
     private String medicationId;
     private String medicineName;
-    private String description;
-    private int dose;
+    private String dose;
+    private int quantity;
 
     public Medication(){}
 
     private Medication(MedicationBuilder builder){
         this.medicationId = builder.medicationId;
         this.medicineName = builder.medicineName;
-        this.description = builder.description;
         this.dose = builder.dose;
+        this.quantity = builder.quantity;
     }
 
     public String getMedicationId() {
@@ -34,78 +34,63 @@ public class Medication {
         this.medicineName = medicineName;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getDose() {
+    public String getDose() {
         return dose;
     }
 
-    public void setDose(int dose) {
+    public void setDose(String dose) {
         this.dose = dose;
     }
 
-    public static class MedicationBuilder{
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public static class MedicationBuilder {
 
         private String medicationId;
         private String medicineName;
-        private String description;
-        private int dose;
+        private String dose;
+        private int quantity;
 
-        public MedicationBuilder medicationId(String medicationId){
+        public MedicationBuilder medicationId(String medicationId) {
             this.medicationId = medicationId;
             return this;
         }
 
-        public MedicationBuilder medicineName(String medicineName){
+        public MedicationBuilder medicineName(String medicineName) {
             this.medicineName = medicineName;
             return this;
         }
 
-        public MedicationBuilder description(String description){
-            this.description = description;
-            return this;
-        }
-
-        public MedicationBuilder dose(int dose){
+        public MedicationBuilder dose(String dose) {
             this.dose = dose;
             return this;
         }
 
-        public Medication build(){
+        public MedicationBuilder quantity(int quantity) {
+            this.quantity = quantity;
+            return this;
+        }
+
+        public MedicationBuilder copy(Medication medication){
+
+            this.medicationId(medication.medicationId);
+            this.medicineName(medication.getMedicineName());
+            this.dose(medication.getDose());
+            this.quantity(medication.getQuantity());
+            return this;
+
+        }
+
+        public Medication build() {
             return new Medication(this);
         }
 
-        @Override
-        public String toString() {
-            return "MedicationBuilder{" +
-                    "medicationId=" + medicationId +
-                    ", medicineName='" + medicineName + '\'' +
-                    ", description='" + description + '\'' +
-                    ", dose=" + dose +
-                    '}';
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            MedicationBuilder that = (MedicationBuilder) o;
-            return dose == that.dose &&
-                    Objects.equals(medicationId, that.medicationId) &&
-                    Objects.equals(medicineName, that.medicineName) &&
-                    Objects.equals(description, that.description);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(medicationId, medicineName, description, dose);
-        }
     }
 
 }

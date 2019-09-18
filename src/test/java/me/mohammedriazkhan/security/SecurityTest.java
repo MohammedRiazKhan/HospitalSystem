@@ -29,7 +29,7 @@ public class SecurityTest {
     @Before
     public void addDummyData(){
 
-        Doctor doctor = DoctorFactory.getDoctor("Riaz", "Khan", "Brains");
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
 
         ResponseEntity<Doctor> postResponse = restTemplate.postForEntity(baseURL + "/new", doctor, Doctor.class);
 

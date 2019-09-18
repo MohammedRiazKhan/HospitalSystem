@@ -11,8 +11,8 @@ public class QualificationFactoryTest {
     @Test
     public void getQualification() {
 
-
-        Qualification qualification = QualificationFactory.getQualification("IT", "CPUT", "3");
+        Qualification qualification = QualificationFactory.getQualification("IT", "CPUT", 3);
+        System.out.println(qualification);
         Assert.assertNotNull(qualification);
 
     }

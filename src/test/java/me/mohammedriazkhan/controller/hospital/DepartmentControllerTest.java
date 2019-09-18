@@ -1,6 +1,8 @@
 package me.mohammedriazkhan.controller.hospital;
 
 import me.mohammedriazkhan.domain.hospital.Department;
+import me.mohammedriazkhan.domain.hospital.Room;
+import me.mohammedriazkhan.domain.hospital.Ward;
 import me.mohammedriazkhan.factory.hospital.DepartmentFactory;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -12,6 +14,9 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
@@ -27,7 +32,10 @@ public class DepartmentControllerTest {
     @Test
     public void a_create() {
 
-        Department department = DepartmentFactory.getDepartment( "a", null, null);
+        List<Ward> ward = new ArrayList<>();
+        List<Room> rooms = new ArrayList<>();
+
+        Department department = DepartmentFactory.getDepartment(ward, rooms);
         department.setDepartmentId("a");
 
         ResponseEntity<Department> postResponse = restTemplate.postForEntity(baseURL + "/new", department, Department.class);

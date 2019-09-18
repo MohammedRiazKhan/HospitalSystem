@@ -10,9 +10,7 @@ public class Equipment {
     private int quantity;
 
 
-    public Equipment(){
-
-    }
+    public Equipment(){}
 
     public Equipment(EquipmentBuilder builder){
 
@@ -85,6 +83,15 @@ public class Equipment {
             return new Equipment(this);
         }
 
+        public EquipmentBuilder copy(Equipment equipment){
+
+            this.equipmentId(equipment.getEquipmentId());
+            this.name(equipment.getName());
+            this.desc(equipment.getDesc());
+            this.quantity(equipment.getQuantity());
+            return this;
+        }
+
         @Override
         public String toString() {
             return "EquipmentBuilder{" +
@@ -99,14 +106,11 @@ public class Equipment {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             EquipmentBuilder that = (EquipmentBuilder) o;
-
-            if (equipmentId != that.equipmentId) return false;
-            if (quantity != that.quantity) return false;
-            if (name != null ? !name.equals(that.name) : that.name != null) return false;
-            return desc != null ? desc.equals(that.desc) : that.desc == null;
-
+            return quantity == that.quantity &&
+                    Objects.equals(equipmentId, that.equipmentId) &&
+                    Objects.equals(name, that.name) &&
+                    Objects.equals(desc, that.desc);
         }
 
         @Override

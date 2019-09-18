@@ -1,6 +1,10 @@
 package me.mohammedriazkhan.repository.visit;
 
+import me.mohammedriazkhan.domain.employee.Doctor;
+import me.mohammedriazkhan.domain.patient.Patient;
 import me.mohammedriazkhan.domain.visit.Visit;
+import me.mohammedriazkhan.factory.employee.DoctorFactory;
+import me.mohammedriazkhan.factory.patient.InPatientFactory;
 import me.mohammedriazkhan.factory.visit.VisitFactory;
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,6 +14,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Date;
 
 import static junit.framework.TestCase.*;
 
@@ -23,7 +29,11 @@ public class VisitRepositoryTest {
     @Test
     public void create() {
 
-        Visit visit = VisitFactory.getVisit( "Today", null, null, null, null, null);
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
 
         visitRepository.create(visit);
 
@@ -34,7 +44,11 @@ public class VisitRepositoryTest {
     @Test
     public void read() {
 
-        Visit visit = VisitFactory.getVisit("Today", null, null, null, null, null);
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
 
         visitRepository.create(visit);
 
@@ -49,13 +63,17 @@ public class VisitRepositoryTest {
     @Test
     public void update() {
 
-        Visit visit = VisitFactory.getVisit( "Today", null, null, null, null, null);
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
 
         visitRepository.create(visit);
 
         assertNotNull(visitRepository.getAll());
 
-        Visit visitUpdate = VisitFactory.getVisit("sdf", null, null, null, null, null);
+        Visit visitUpdate =  VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
         visitUpdate.setVisitId(visit.getVisitId());
         visitRepository.update(visitUpdate);
 
@@ -68,7 +86,11 @@ public class VisitRepositoryTest {
     @Test
     public void delete() {
 
-        Visit visit = VisitFactory.getVisit("Today", null, null, null, null, null);
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
 
         visitRepository.create(visit);
 

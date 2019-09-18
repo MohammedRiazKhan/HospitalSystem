@@ -25,7 +25,7 @@ public class PharmacistRepositoryTest {
     public void create() {
 
         int[] meds = {1,1,1,1};
-        Pharmacist pharmacist = PharmacistFactory.getPharmacist("ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
+        Pharmacist pharmacist = PharmacistFactory.getPharmacist( "Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "No Expiration");
 
         pharmacistRepository.create(pharmacist);
 
@@ -37,7 +37,7 @@ public class PharmacistRepositoryTest {
     public void read() {
 
         int[] meds = {1,1,1,1};
-        Pharmacist pharmacist = PharmacistFactory.getPharmacist( "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
+        Pharmacist pharmacist = PharmacistFactory.getPharmacist( "Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "No Expiration");
 
         pharmacistRepository.create(pharmacist);
 
@@ -55,13 +55,13 @@ public class PharmacistRepositoryTest {
     public void update() {
 
         int[] meds = {1,1,1,1};
-        Pharmacist pharmacist = PharmacistFactory.getPharmacist("ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
+        Pharmacist pharmacist = PharmacistFactory.getPharmacist( "Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "No Expiration");
 
         pharmacistRepository.create(pharmacist);
 
         assertNotNull(pharmacistRepository.getAll());
 
-        Pharmacist update = PharmacistFactory.getPharmacist( "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
+        Pharmacist update = PharmacistFactory.getPharmacist( "Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "No Expiration");;
         update.setEmployeeId(pharmacist.getEmployeeId());
         pharmacistRepository.update(update);
 
@@ -75,7 +75,7 @@ public class PharmacistRepositoryTest {
     public void delete() {
 
         int[] meds = {1,1,1,1};
-        Pharmacist pharmacist = PharmacistFactory.getPharmacist( "ads", "Asf", "Asdf", "Asdf", "Asdf", meds);
+        Pharmacist pharmacist = PharmacistFactory.getPharmacist( "Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "No Expiration");
 
         pharmacistRepository.create(pharmacist);
 

@@ -7,7 +7,7 @@ public abstract class Employee {
     private String lastName;
     private String identityNumber;
     private String jobTitle;
-    private String dateOfEmployment;
+    private String employmentDate;
 
     public Employee(){
 
@@ -20,7 +20,7 @@ public abstract class Employee {
         this.lastName = builder.lastName;
         this.identityNumber = builder.identityNumber;
         this.jobTitle = builder.jobTitle;
-        this.dateOfEmployment = builder.dateOfEmployment;
+        this.employmentDate = builder.employmentDate;
 
     }
 
@@ -64,12 +64,12 @@ public abstract class Employee {
         this.jobTitle = jobTitle;
     }
 
-    public String getDateOfEmployment() {
-        return dateOfEmployment;
+    public String getEmploymentDate() {
+        return employmentDate;
     }
 
-    public void setDateOfEmployment(String dateOfEmployment) {
-        this.dateOfEmployment = dateOfEmployment;
+    public void setEmploymentDate(String employmentDate) {
+        this.employmentDate = employmentDate;
     }
 
     public static abstract class Builder{
@@ -79,7 +79,7 @@ public abstract class Employee {
         private String lastName;
         private String identityNumber;
         private String jobTitle;
-        private String dateOfEmployment;
+        private String employmentDate;
 
         public Builder employeeId(String employeeId){
             this.employeeId = employeeId;
@@ -106,8 +106,8 @@ public abstract class Employee {
             return this;
         }
 
-        public Builder dateOfEmployment(String dateOfEmployment){
-            this.dateOfEmployment = dateOfEmployment;
+        public Builder employmentDate(String employmentDate){
+            this.employmentDate = employmentDate;
             return this;
         }
 
@@ -121,7 +121,7 @@ public abstract class Employee {
                     ", lastName='" + lastName + '\'' +
                     ", identityNumber='" + identityNumber + '\'' +
                     ", jobTitle='" + jobTitle + '\'' +
-                    ", dateOfEmployment='" + dateOfEmployment + '\'' +
+                    ", employmentDate='" + employmentDate + '\'' +
                     '}';
         }
     }

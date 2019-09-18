@@ -5,10 +5,10 @@ import me.mohammedriazkhan.helper.IDGenerator;
 
 public class WardFactory {
 
-    public static Ward getWard(String wardCode) {
+    public static Ward getWard(String wardSize) {
         return new Ward.WardBuilder()
                 .wardId(IDGenerator.generateId())
-                .wardCode(wardCode)
+                .wardSize(wardSize)
                 .build();
     }
 

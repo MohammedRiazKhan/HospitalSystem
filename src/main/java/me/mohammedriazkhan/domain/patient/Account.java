@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public abstract class Account {
 
-    private String accountNo;
+    private String accountId;
     private double balance;
     private String paymentTerms;
 
@@ -12,18 +12,18 @@ public abstract class Account {
 
     protected Account(AccountBuilder builder){
 
-        this.accountNo = builder.accountNo;
+        this.accountId = builder.accountId;
         this.balance = builder.balance;
         this.paymentTerms = builder.paymentTerms;
 
     }
 
-    public String getAccountNo() {
-        return accountNo;
+    public String getAccountId() {
+        return accountId;
     }
 
-    public void setAccountNo(String accountNo) {
-        this.accountNo = accountNo;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     public double getBalance() {
@@ -43,12 +43,12 @@ public abstract class Account {
     }
 
     public abstract static class AccountBuilder {
-        private String accountNo;
+        private String accountId;
         private double balance;
         private String paymentTerms;
 
-        public AccountBuilder accountNo(String accountNo){
-            this.accountNo = accountNo;
+        public AccountBuilder accountId(String accountId){
+            this.accountId = accountId;
             return this;
         }
 
@@ -69,7 +69,7 @@ public abstract class Account {
         @Override
         public String toString() {
             return "AccountBuilder{" +
-                    "accountNo=" + accountNo +
+                    "accountId=" + accountId +
                     ", balance=" + balance +
                     ", paymentTerms='" + paymentTerms + '\'' +
                     '}';
@@ -81,13 +81,13 @@ public abstract class Account {
             if (o == null || getClass() != o.getClass()) return false;
             AccountBuilder that = (AccountBuilder) o;
             return Double.compare(that.balance, balance) == 0 &&
-                    Objects.equals(accountNo, that.accountNo) &&
+                    Objects.equals(accountId, that.accountId) &&
                     Objects.equals(paymentTerms, that.paymentTerms);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(accountNo, balance, paymentTerms);
+            return Objects.hash(accountId, balance, paymentTerms);
         }
     }
 

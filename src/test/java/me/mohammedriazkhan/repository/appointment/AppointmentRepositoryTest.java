@@ -1,4 +1,4 @@
-package me.mohammedriazkhan.repository;
+package me.mohammedriazkhan.repository.appointment;
 
 import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.factory.appointment.AppointmentFactory;

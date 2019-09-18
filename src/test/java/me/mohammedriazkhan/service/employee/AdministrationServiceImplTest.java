@@ -24,7 +24,7 @@ public class AdministrationServiceImplTest {
     @Test
     public void create() {
 
-        Administration admin = AdministrationFactory.getAdministration( "Jane");
+        Administration admin = AdministrationFactory.getAdministration( "Riaz", "Khan", "1234567", "8 July 2019", "receptionist", "Super Access");
         administrationService.create(admin);
 
         assertNotNull(administrationService.getAll());
@@ -35,7 +35,7 @@ public class AdministrationServiceImplTest {
     public void read() {
 
         //Create a admin staff and add to set
-        Administration admin = AdministrationFactory.getAdministration( "Janbe");
+        Administration admin = AdministrationFactory.getAdministration( "Riaz", "Khan", "1234567", "8 July 2019", "receptionist", "Super Access");
         administrationService.create(admin);
 
         //retrieve the adminStaff
@@ -49,11 +49,11 @@ public class AdministrationServiceImplTest {
     public void update() {
 
         //Create a admin staff and add to set
-        Administration admin = AdministrationFactory.getAdministration( "kane");
+        Administration admin = AdministrationFactory.getAdministration( "Riaz", "Khan", "1234567", "8 July 2019", "receptionist", "Super Access");
         administrationService.create(admin);
 
         //updated version
-        Administration adminUpdate = AdministrationFactory.getAdministration( "Khan");
+        Administration adminUpdate = AdministrationFactory.getAdministration( "Riaz", "Khan", "1234567", "8 July 2019", "receptionist", "Super Access");
         adminUpdate.setEmployeeId(admin.getEmployeeId());
         administrationService.update(adminUpdate);
 
@@ -68,7 +68,7 @@ public class AdministrationServiceImplTest {
     public void delete() {
 
         //Create a admin staff and add to set
-        Administration admin = AdministrationFactory.getAdministration( "Pane");
+        Administration admin = AdministrationFactory.getAdministration( "Riaz", "Khan", "1234567", "8 July 2019", "receptionist", "Super Access");
         administrationService.create(admin);
 
         //checks that its not empty

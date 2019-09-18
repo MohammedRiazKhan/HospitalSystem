@@ -42,6 +42,19 @@ public class Administration extends Employee{
            return new Administration(this);
        }
 
+       public AdminBuilder copy(Administration administration){
+
+           this.employeeId(administration.getEmployeeId());
+           this.firstName(administration.getFirstName());
+           this.lastName(administration.getLastName());
+           this.identityNumber(administration.getIdentityNumber());
+           this.employmentDate(administration.getEmploymentDate());
+           this.jobTitle(administration.getJobTitle());
+           this.accessLevel(administration.getAccessLevel());
+           return this;
+
+       }
+
        @Override
        public String toString() {
            return "AdminBuilder{" +

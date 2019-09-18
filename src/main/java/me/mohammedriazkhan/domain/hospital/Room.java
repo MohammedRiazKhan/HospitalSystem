@@ -8,9 +8,7 @@ public class Room {
     private String roomId;
     private List<Equipment> equipment;
 
-    public Room(){
-
-    }
+    public Room(){}
 
     private Room(RoomBuilder builder){
         this.roomId = builder.roomId;
@@ -23,6 +21,14 @@ public class Room {
 
     public void setRoomId(String roomId) {
         this.roomId = roomId;
+    }
+
+    public List<Equipment> getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(List<Equipment> equipment) {
+        this.equipment = equipment;
     }
 
     public static class RoomBuilder{
@@ -45,6 +51,13 @@ public class Room {
             return new Room(this);
         }
 
+        public RoomBuilder copy(Room room){
+
+            this.roomId(room.getRoomId());
+            this.equipment(room.getEquipment());
+            return this;
+        }
+
         @Override
         public String toString() {
             return "RoomBuilder{" +
@@ -56,12 +69,9 @@ public class Room {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             RoomBuilder that = (RoomBuilder) o;
-
-            if (roomId != that.roomId) return false;
-            return equipment != null ? equipment.equals(that.equipment) : that.equipment == null;
-
+            return Objects.equals(roomId, that.roomId) &&
+                    Objects.equals(equipment, that.equipment);
         }
 
         @Override

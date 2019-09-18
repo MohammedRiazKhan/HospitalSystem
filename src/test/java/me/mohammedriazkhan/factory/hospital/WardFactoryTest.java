@@ -10,8 +10,8 @@ public class WardFactoryTest {
     public void getWard() {
 
         Ward ward = WardFactory.getWard( "A");
-
-        Assert.assertNotNull("A", ward.getWardCode());
+        System.out.println(ward);
+        Assert.assertNotNull("A", ward.getWardSize());
 
     }
 }

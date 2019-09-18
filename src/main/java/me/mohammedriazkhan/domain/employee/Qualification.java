@@ -7,13 +7,9 @@ public class Qualification {
     private String qualificationId;
     private String qualificationName;
     private String instituteName;
-    private String duration;
+    private int duration;
 
-    public Qualification(){
-
-    }
-
-
+    public Qualification(){}
 
     public Qualification(QualificationBuilder builder){
 
@@ -48,11 +44,11 @@ public class Qualification {
         this.instituteName = instituteName;
     }
 
-    public String getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
@@ -61,7 +57,7 @@ public class Qualification {
         private String qualificationId;
         private String qualificationName;
         private String instituteName;
-        private String duration;
+        private int duration;
 
         public QualificationBuilder(){
 
@@ -81,9 +77,18 @@ public class Qualification {
             return this;
         }
 
-        public QualificationBuilder duration(String duration){
+        public QualificationBuilder duration(int duration){
             this.duration = duration;
             return this;
+        }
+
+        public QualificationBuilder copy(Qualification qualification){
+            this.qualificationId(qualification.getQualificationId());
+            this.qualificationName(qualification.getQualificationName());
+            this.instituteName(qualification.getInstituteName());
+            this.duration(qualification.duration);
+            return this;
+
         }
 
 

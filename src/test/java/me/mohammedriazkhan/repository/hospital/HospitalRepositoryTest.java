@@ -1,5 +1,6 @@
 package me.mohammedriazkhan.repository.hospital;
 
+import me.mohammedriazkhan.domain.hospital.Department;
 import me.mohammedriazkhan.domain.hospital.Hospital;
 import me.mohammedriazkhan.factory.hospital.HospitalFactory;
 import org.junit.Assert;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static junit.framework.TestCase.*;
@@ -26,9 +29,12 @@ public class HospitalRepositoryTest {
     @Test
     public void create() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, "da", "Greys Anatomy");
+        List<Department> departmentList = new ArrayList<>();
 
-        hospitalRepository.create(hospital);
+        //Hospital
+        Hospital hosp = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+
+        hospitalRepository.create(hosp);
 
         assertNotNull(hospitalRepository.getAll());
 
@@ -37,7 +43,10 @@ public class HospitalRepositoryTest {
     @Test
     public void read() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, "ASDf", "Greys Anatomy");
+        List<Department> departmentList = new ArrayList<>();
+
+        //Hospital
+        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
 
         hospitalRepository.create(hospital);
 
@@ -53,13 +62,16 @@ public class HospitalRepositoryTest {
     @Test
     public void update() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, "ASDf", "Greys Anatomy");
+        List<Department> departmentList = new ArrayList<>();
+
+        //Hospital
+        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
 
         hospitalRepository.create(hospital);
 
         assertNotNull(hospitalRepository.getAll());
 
-        Hospital hospitalUpdate = HospitalFactory.getHospital(null, "ASdf", "Greys fantomy");
+        Hospital hospitalUpdate = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
         hospitalUpdate.setHospitalId(hospital.getHospitalId());
 
         hospitalRepository.update(hospitalUpdate);
@@ -73,7 +85,11 @@ public class HospitalRepositoryTest {
     @Test
     public void delete() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, UUID.randomUUID().toString(), "Greys Anatomy");
+        List<Department> departmentList = new ArrayList<>();
+
+        //Hospital
+        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+
 
         hospitalRepository.create(hospital);
 

@@ -5,7 +5,7 @@ import me.mohammedriazkhan.helper.IDGenerator;
 
 public class QualificationFactory {
 
-    public static Qualification getQualification(String qualificationName, String instituteName, String duration) {
+    public static Qualification getQualification(String qualificationName, String instituteName, int duration) {
         return new Qualification.QualificationBuilder()
                 .qualificationId(IDGenerator.generateId())
                 .qualificationName(qualificationName)

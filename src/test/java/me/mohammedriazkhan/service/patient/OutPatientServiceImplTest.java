@@ -4,6 +4,7 @@ import me.mohammedriazkhan.domain.employee.Doctor;
 import me.mohammedriazkhan.domain.patient.Patient;
 import me.mohammedriazkhan.factory.employee.DoctorFactory;
 import me.mohammedriazkhan.factory.patient.InPatientFactory;
+import me.mohammedriazkhan.service.patient.impl.OutPatientServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,21 +20,19 @@ import static junit.framework.TestCase.*;
 @SpringBootTest
 public class OutPatientServiceImplTest {
 
-
     @Autowired
-    private InPatientServiceImpl patientService;
+    private OutPatientServiceImpl patientService;
 
 
     @Test
     public void create() {
 
-        //doctor instance to pass into patient creation
-        Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
-        //patient
-        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, "dfas");
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
 
         //create a patient
-        patientService.create(patient);
+        patientService.create(aPatient);
 
         //checks if the repos set is not null
         assertNotNull(patientService.getAll());
@@ -43,9 +42,10 @@ public class OutPatientServiceImplTest {
     @Test
     public void read() {
 
-        //creating a patient
-        Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
-        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, "Afsd");
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient patient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
         patientService.create(patient);
 
         //getting a patient from the set
@@ -59,13 +59,16 @@ public class OutPatientServiceImplTest {
     @Test
     public void update() {
 
-        //creating a patient
-        Doctor doc = DoctorFactory.getDoctor( "Dr", "Doctor", "Renal");
-        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, "Afsd");
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient patient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
         patientService.create(patient);
 
-        //creating a new patient to update
-        Patient patientNew = InPatientFactory.getInPatient("Mohammed", "Khan", "0762828630", "1111111111", 23, "Afsd");
+        Doctor doctodr = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient patientNew = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
         patientNew.setPatientId(patient.getPatientId());
 
         //updating the value
@@ -84,9 +87,10 @@ public class OutPatientServiceImplTest {
     @Test
     public void delete() {
 
-        //creating a patient
-        Doctor doc = DoctorFactory.getDoctor("Dr", "Doctor", "Renal");
-        Patient patient = InPatientFactory.getInPatient("Riaz", "Khan", "0762828630", "1111111111", 23, "Afsd");
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient patient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
         patientService.create(patient);
 
         //checks if set has a value

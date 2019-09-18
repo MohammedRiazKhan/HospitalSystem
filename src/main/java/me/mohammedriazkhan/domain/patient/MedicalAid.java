@@ -5,16 +5,34 @@ import java.util.Objects;
 public class MedicalAid extends Account{
 
     private String medicalAidNo;
+    private String cover;
+    private String provider;
 
-    public MedicalAid(){
-
-    }
+    public MedicalAid(){}
 
     private MedicalAid(MedicalAidBuilder builder){
 
         super(builder);
         this.medicalAidNo = builder.medicalAidNo;
+        this.cover = builder.cover;
+        this.provider = builder.provider;
 
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
     }
 
     public String getMedicalAidNo() {
@@ -28,22 +46,39 @@ public class MedicalAid extends Account{
     public static class MedicalAidBuilder extends Account.AccountBuilder{
 
         private String medicalAidNo;
+        private String cover;
+        private String provider;
 
         public MedicalAidBuilder(){
             super();
         }
 
-        private MedicalAidBuilder medicalAidNo(String medicalAidNo){
+        public MedicalAidBuilder medicalAidNo(String medicalAidNo){
             this.medicalAidNo = medicalAidNo;
             return this;
         }
 
+        public MedicalAidBuilder cover(String cover){
+            this.cover = cover;
+            return this;
+        }
+
+        public MedicalAidBuilder provider(String provider){
+            this.provider = provider;
+            return this;
+        }
+
+        public MedicalAidBuilder copy( MedicalAid  medicalAid){
+
+            this.medicalAidNo(medicalAid.getAccountId());
+            this.cover(medicalAid.getCover());
+            this.provider(medicalAid.getProvider());
+            return this;
+        }
 
         @Override
-        public String toString() {
-            return "MedicalAidBuilder{" +
-                    "medicalAidNo=" + medicalAidNo +
-                    "} " + super.toString();
+        public Account build() {
+            return new MedicalAid(this);
         }
 
         @Override
@@ -52,17 +87,23 @@ public class MedicalAid extends Account{
             if (o == null || getClass() != o.getClass()) return false;
             if (!super.equals(o)) return false;
             MedicalAidBuilder that = (MedicalAidBuilder) o;
-            return Objects.equals(medicalAidNo, that.medicalAidNo);
+            return Objects.equals(medicalAidNo, that.medicalAidNo) &&
+                    Objects.equals(cover, that.cover) &&
+                    Objects.equals(provider, that.provider);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(super.hashCode(), medicalAidNo);
+            return Objects.hash(super.hashCode(), medicalAidNo, cover, provider);
         }
 
         @Override
-        public Account build() {
-            return new MedicalAid(this);
+        public String toString() {
+            return "MedicalAidBuilder{" +
+                    "medicalAidNo='" + medicalAidNo + '\'' +
+                    ", cover='" + cover + '\'' +
+                    ", provider='" + provider + '\'' +
+                    "} " + super.toString();
         }
     }
 

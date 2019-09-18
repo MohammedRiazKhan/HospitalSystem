@@ -10,10 +10,7 @@ public class Report {
     private String dateRange;
     private String patientId;
 
-
-    public Report(){
-
-    }
+    public Report(){}
 
     private Report(ReportBuilder builder){
         this.reportId = builder.reportId;
@@ -101,6 +98,17 @@ public class Report {
             return new Report(this);
 
         }
+
+        public ReportBuilder copy(Report report){
+
+            this.reportId(report.getReportId());
+            this.patient(report.getPatientId());
+            this.title(report.getTitle());
+            this.description(report.getDescription());
+            this.dateRange(report.getDateRange());
+            return this;
+        }
+
 
         @Override
         public boolean equals(Object o) {

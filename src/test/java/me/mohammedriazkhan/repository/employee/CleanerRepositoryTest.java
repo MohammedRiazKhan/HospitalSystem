@@ -26,7 +26,7 @@ public class CleanerRepositoryTest {
     public void create() {
 
         //create a cleaner
-        Cleaner cleaner = CleanerFactory.getCleaner();
+        Cleaner cleaner = CleanerFactory.getCleaner("Tabeka", "Mwlaphembu", "000000", "N/A", "Cleaner", "Hair Massage");
 
         cleanerRepository.create(cleaner);
 
@@ -38,7 +38,7 @@ public class CleanerRepositoryTest {
     public void read() {
 
         //create a cleaner
-        Cleaner cleaner = CleanerFactory.getCleaner();
+        Cleaner cleaner = CleanerFactory.getCleaner("Tabeka", "Mwlaphembu", "000000", "N/A", "Cleaner", "Hair Massage");
         cleanerRepository.create(cleaner);
 
         System.out.println(cleaner.getEmployeeId());
@@ -54,11 +54,11 @@ public class CleanerRepositoryTest {
     public void update() {
 
         //create a cleaner
-        Cleaner cleaner = CleanerFactory.getCleaner();
+        Cleaner cleaner = CleanerFactory.getCleaner("Tabeka", "Mwlaphembu", "000000", "N/A", "Cleaner", "Hair Massage");
         cleanerRepository.create(cleaner);
 
         //create a cleaner2
-        Cleaner cleaner2 = CleanerFactory.getCleaner();
+        Cleaner cleaner2 = CleanerFactory.getCleaner("Tabeka", "Mwlaphembu", "000000", "N/A", "Cleaner", "Hair Massage");
         cleaner2.setEmployeeId(cleaner.getEmployeeId());
 
         cleanerRepository.update(cleaner2);
@@ -76,7 +76,7 @@ public class CleanerRepositoryTest {
     @Test
     public void delete() {
         //create a cleaner
-        Cleaner cleaner = CleanerFactory.getCleaner();
+        Cleaner cleaner = CleanerFactory.getCleaner("Tabeka", "Mwlaphembu", "000000", "N/A", "Cleaner", "Hair Massage");
         cleanerRepository.create(cleaner);
 
         assertNotNull(cleanerRepository.getAll());

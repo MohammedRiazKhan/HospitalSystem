@@ -8,15 +8,16 @@ import me.mohammedriazkhan.helper.IDGenerator;
 
 public class OutPatientFactory {
 
-    public static OutPatient getOutPatient(String firstName, String lastName, String telephone, String identityNumber, int age, String doctor, Appointment appointment) {
+    public static OutPatient getOutPatient(String firstName, String lastName, String telephone, String identityNumber, int age, String accountId, String appointmentId) {
         return (OutPatient) new OutPatient.OutPatientBuilder()
-                .patientId(IDGenerator.generateId())
+                .appointmentId(appointmentId)
                 .firstName(firstName)
                 .lastName(lastName)
-                .age(age)
-                .doctor(doctor)
-                .identityNumber(identityNumber)
                 .telephone(telephone)
+                .identityNumber(identityNumber)
+                .age(age)
+                .accountId(accountId)
+                .patientId(IDGenerator.generateId())
                 .build();
     }
 

@@ -17,6 +17,7 @@ import me.mohammedriazkhan.service.visit.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.Set;
 @Service
 public class VisitServiceImpl implements VisitService {
@@ -83,7 +84,7 @@ public class VisitServiceImpl implements VisitService {
 
         if(patient.getPatientId() != null && doctor.getEmployeeId() != null && appointment.getAppointmentId() != null){
 
-            Visit visit = VisitFactory.getVisit("asd", patientId, doctorId, null, null, null);
+            Visit visit = VisitFactory.getVisit(new Date().toString(), patient.getPatientId(), doctor.getEmployeeId());
 
             return create(visit);
         }

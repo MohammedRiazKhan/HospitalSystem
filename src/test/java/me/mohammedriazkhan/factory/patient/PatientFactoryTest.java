@@ -1,6 +1,7 @@
 package me.mohammedriazkhan.factory.patient;
 
 import me.mohammedriazkhan.domain.employee.Doctor;
+import me.mohammedriazkhan.domain.patient.InPatient;
 import me.mohammedriazkhan.domain.patient.Meal;
 import me.mohammedriazkhan.domain.patient.Patient;
 import me.mohammedriazkhan.factory.employee.DoctorFactory;
@@ -16,27 +17,13 @@ public class PatientFactoryTest {
     public void getInPatient() {
 
 
-        Patient aPatient = null;
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
 
-        List<Patient> p = new ArrayList<>();
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
 
-        Doctor doc = DoctorFactory.getDoctor("Dr", "Mohammed", "Renal");
+        System.out.println(aPatient);
 
-        List<Meal> daysStayed = new ArrayList<>();
-        List<String> meals = new ArrayList<>();
-
-
-        aPatient = InPatientFactory.getInPatient(
-                "Mohammed",
-                "Khan",
-                "1234568",
-                "0000213546546",
-                23,
-                doc.getEmployeeId()
-        );
-
-
-        Assert.assertEquals(aPatient.getDoctorId(), doc.getEmployeeId());
+        Assert.assertNotNull(aPatient);
 
     }
 }

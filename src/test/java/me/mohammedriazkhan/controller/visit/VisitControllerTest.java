@@ -1,6 +1,10 @@
 package me.mohammedriazkhan.controller.visit;
 
+import me.mohammedriazkhan.domain.employee.Doctor;
+import me.mohammedriazkhan.domain.patient.Patient;
 import me.mohammedriazkhan.domain.visit.Visit;
+import me.mohammedriazkhan.factory.employee.DoctorFactory;
+import me.mohammedriazkhan.factory.patient.InPatientFactory;
 import me.mohammedriazkhan.factory.visit.VisitFactory;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -12,6 +16,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
+
+import java.util.Date;
 
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
@@ -27,7 +33,11 @@ public class VisitControllerTest {
     @Test
     public void a_create() {
 
-        Visit visit = VisitFactory.getVisit("fasd", null, null, null, null, null);
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
         visit.setVisitId("abc");
         ResponseEntity<Visit> postResponse = restTemplate.postForEntity(baseURL + "/new", visit, Visit.class);
 

@@ -1,7 +1,5 @@
 package me.mohammedriazkhan.domain.patient;
 
-import me.mohammedriazkhan.domain.employee.Doctor;
-
 import java.util.Objects;
 
 public abstract class Patient {
@@ -11,8 +9,9 @@ public abstract class Patient {
     private String lastName;
     private String telephone;
     private String identityNumber;
+    private String address;
     private int age;
-    private String doctorId;
+    private String accountId;
 
     public Patient(){}
 
@@ -24,8 +23,21 @@ public abstract class Patient {
         this.telephone = builder.telephone;
         this.identityNumber = builder.identityNumber;
         this.age = builder.age;
-        this.doctorId = builder.doctorId;
+        this.accountId = builder.accountId;
+        this.address = builder.address;
 
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     public String getPatientId() {
@@ -76,12 +88,12 @@ public abstract class Patient {
         this.age = age;
     }
 
-    public String getDoctorId() {
-        return doctorId;
+    public String getAccountId() {
+        return accountId;
     }
 
     public void setDoctor(String doctorId) {
-        this.doctorId = doctorId;
+        this.accountId = doctorId;
     }
 
     public static abstract class Builder{
@@ -91,8 +103,9 @@ public abstract class Patient {
         private String lastName;
         private String telephone;
         private String identityNumber;
+        private String address;
         private int age;
-        private String doctorId;
+        private String accountId;
 
         public Builder patientId(String patientId){
 
@@ -125,19 +138,40 @@ public abstract class Patient {
             return this;
         }
 
+        public Builder address(String address){
+
+            this.address = address;
+            return this;
+        }
+
         public Builder age(int age){
 
             this.age = age;
             return this;
         }
 
-        public Builder doctor(String doctorId){
+        public Builder accountId(String accountId){
 
-            this.doctorId = doctorId;
+            this.accountId = accountId;
             return this;
         }
 
         public abstract Patient build();
+
+
+        @Override
+        public String toString() {
+            return "Builder{" +
+                    "patientId='" + patientId + '\'' +
+                    ", firstName='" + firstName + '\'' +
+                    ", lastName='" + lastName + '\'' +
+                    ", telephone='" + telephone + '\'' +
+                    ", identityNumber='" + identityNumber + '\'' +
+                    ", address='" + address + '\'' +
+                    ", age=" + age +
+                    ", accountId='" + accountId + '\'' +
+                    '}';
+        }
 
         @Override
         public boolean equals(Object o) {
@@ -150,25 +184,13 @@ public abstract class Patient {
                     Objects.equals(lastName, builder.lastName) &&
                     Objects.equals(telephone, builder.telephone) &&
                     Objects.equals(identityNumber, builder.identityNumber) &&
-                    Objects.equals(doctorId, builder.doctorId);
+                    Objects.equals(address, builder.address) &&
+                    Objects.equals(accountId, builder.accountId);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(patientId, firstName, lastName, telephone, identityNumber, age, doctorId);
-        }
-
-        @Override
-        public String toString() {
-            return "Builder{" +
-                    "patientId='" + patientId + '\'' +
-                    ", firstName='" + firstName + '\'' +
-                    ", lastName='" + lastName + '\'' +
-                    ", telephone='" + telephone + '\'' +
-                    ", identityNumber='" + identityNumber + '\'' +
-                    ", age=" + age +
-                    ", doctorId='" + doctorId + '\'' +
-                    '}';
+            return Objects.hash(patientId, firstName, lastName, telephone, identityNumber, address, age, accountId);
         }
     }
 

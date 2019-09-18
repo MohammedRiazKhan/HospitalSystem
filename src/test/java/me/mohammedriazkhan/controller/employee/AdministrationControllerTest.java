@@ -13,7 +13,6 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AdministrationControllerTest {
 
-
     @Test
     public void testing(){
 

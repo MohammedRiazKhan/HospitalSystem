@@ -10,11 +10,7 @@ public class Meal {
     private String supper;
     private Patient patient;
 
-
-    public Meal(){
-
-    }
-
+    public Meal(){}
 
     private Meal(MealBuilder builder){
 
@@ -67,6 +63,7 @@ public class Meal {
     }
 
     public static class MealBuilder{
+
         private String mealId;
         private String breakfast;
         private String lunch;
@@ -103,6 +100,32 @@ public class Meal {
             return new Meal(this);
         }
 
+        public MealBuilder copy(Meal meal){
+
+            this.mealId(meal.getMealId());
+            this.breakfast(meal.getBreakfast());
+            this.lunch(meal.getLunch());
+            this.supper(meal.getSupper());
+            return this;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            MealBuilder that = (MealBuilder) o;
+            return Objects.equals(mealId, that.mealId) &&
+                    Objects.equals(breakfast, that.breakfast) &&
+                    Objects.equals(lunch, that.lunch) &&
+                    Objects.equals(supper, that.supper) &&
+                    Objects.equals(patient, that.patient);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(mealId, breakfast, lunch, supper, patient);
+        }
+
         @Override
         public String toString() {
             return "MealBuilder{" +
@@ -114,25 +137,6 @@ public class Meal {
                     '}';
         }
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-
-            MealBuilder that = (MealBuilder) o;
-
-            if (mealId != that.mealId) return false;
-            if (breakfast != null ? !breakfast.equals(that.breakfast) : that.breakfast != null) return false;
-            if (lunch != null ? !lunch.equals(that.lunch) : that.lunch != null) return false;
-            if (supper != null ? !supper.equals(that.supper) : that.supper != null) return false;
-            return patient != null ? patient.equals(that.patient) : that.patient == null;
-
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(mealId, breakfast, lunch, supper, patient);
-        }
     }
 
 }

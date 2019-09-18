@@ -24,7 +24,7 @@ public class AdministrationRepositoryTest {
     @Test
     public void create() {
 
-        Administration admin = AdministrationFactory.getAdministration( "A");
+        Administration admin = AdministrationFactory.getAdministration( "Riaz", "Khan", "1234567", "8 July 2019", "receptionist", "Super Access");
         administrationRepository.create(admin);
 
         assertNotNull(administrationRepository.getAll());
@@ -35,7 +35,7 @@ public class AdministrationRepositoryTest {
     public void read() {
 
         //Create a admin staff and add to set
-        Administration admin = AdministrationFactory.getAdministration("A");
+        Administration admin = AdministrationFactory.getAdministration( "Riaz", "Khan", "1234567", "8 July 2019", "receptionist", "Super Access");
         administrationRepository.create(admin);
 
         //retrieve the adminStaff
@@ -49,11 +49,11 @@ public class AdministrationRepositoryTest {
     public void update() {
 
         //Create a admin staff and add to set
-        Administration admin = AdministrationFactory.getAdministration("A");
+        Administration admin = AdministrationFactory.getAdministration( "Riaz", "Khan", "1234567", "8 July 2019", "receptionist", "Super Access");
         administrationRepository.create(admin);
 
         //updated version
-        Administration adminUpdate = AdministrationFactory.getAdministration("A");
+        Administration adminUpdate = AdministrationFactory.getAdministration("Riaz", "Khan", "1234567", "8 July 2019", "receptionist", "Suoer");
         adminUpdate.setEmployeeId(admin.getEmployeeId());
         administrationRepository.update(adminUpdate);
 
@@ -68,7 +68,7 @@ public class AdministrationRepositoryTest {
     public void delete() {
 
         //Create a admin staff and add to set
-        Administration admin = AdministrationFactory.getAdministration("A");
+        Administration admin = AdministrationFactory.getAdministration( "Riaz", "Khan", "1234567", "8 July 2019", "receptionist", "Super Access");
         administrationRepository.create(admin);
 
         //checks that its not empty

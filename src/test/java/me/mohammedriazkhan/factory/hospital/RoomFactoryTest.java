@@ -16,6 +16,7 @@ public class RoomFactoryTest {
         List<Equipment> equipment = new ArrayList<>();
 
         Room room = RoomFactory.getRoom(equipment);
+        System.out.println(room);
 
         Assert.assertNotNull(room.getRoomId());
 

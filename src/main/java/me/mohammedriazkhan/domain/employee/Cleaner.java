@@ -1,45 +1,44 @@
 package me.mohammedriazkhan.domain.employee;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Cleaner extends Employee{
 
-    private int[] rooms;
+    private String duties;
 
-    public Cleaner(){
-
-    }
+    public Cleaner(){}
 
     public Cleaner(CleanerBuilder builder){
         super(builder);
-        this.rooms = builder.rooms;
+        this.duties = builder.duties;
     }
 
-    public int[] getRooms() {
-        return rooms;
+    public String getDuties() {
+        return duties;
     }
 
-    public void setRooms(int[] rooms) {
-        this.rooms = rooms;
+    public void setDuties(String duties) {
+        this.duties = duties;
     }
 
     public static class CleanerBuilder extends Employee.Builder{
 
-        private int[] rooms;
+        private String duties;
 
         public CleanerBuilder(){
             super();
         }
 
-        public CleanerBuilder rooms(int[] rooms){
-            this.rooms = rooms;
+        public CleanerBuilder duties(String duties) {
+            this.duties = duties;
             return this;
         }
 
         @Override
         public String toString() {
             return "CleanerBuilder{" +
-                    "rooms=" + Arrays.toString(rooms) +
+                    "duties='" + duties + '\'' +
                     "} " + super.toString();
         }
 
@@ -47,16 +46,26 @@ public class Cleaner extends Employee{
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             CleanerBuilder that = (CleanerBuilder) o;
-
-            return Arrays.equals(rooms, that.rooms);
-
+            return Objects.equals(duties, that.duties);
         }
 
         @Override
         public int hashCode() {
-            return Arrays.hashCode(rooms);
+            return Objects.hash(duties);
+        }
+
+        public CleanerBuilder copy(Cleaner cleaner){
+
+            this.employeeId(cleaner.getEmployeeId());
+            this.firstName(cleaner.getFirstName());
+            this.lastName(cleaner.getLastName());
+            this.identityNumber(cleaner.getIdentityNumber());
+            this.employmentDate(cleaner.getEmploymentDate());
+            this.jobTitle(cleaner.getJobTitle());
+            this.duties(cleaner.getDuties());
+            return this;
+
         }
 
         @Override

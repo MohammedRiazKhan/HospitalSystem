@@ -20,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
+
 import static junit.framework.TestCase.*;
 
 @RunWith(SpringRunner.class)
@@ -39,7 +41,11 @@ public class VisitServiceImplTest {
     @Test
     public void create() {
 
-        Visit visit = VisitFactory.getVisit("Today", null, null, null, null, null);
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
 
         visitService.create(visit);
 
@@ -50,8 +56,11 @@ public class VisitServiceImplTest {
     @Test
     public void read() {
 
-        Visit visit = VisitFactory.getVisit( "Today", null, null, null, null, null);
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
 
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
         visitService.create(visit);
 
         assertNotNull(visitService.getAll());
@@ -65,13 +74,17 @@ public class VisitServiceImplTest {
     @Test
     public void update() {
 
-        Visit visit = VisitFactory.getVisit("Today", null, null, null, null, null);
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
 
         visitService.create(visit);
 
         assertNotNull(visitService.getAll());
 
-        Visit visitUpdate = VisitFactory.getVisit("sdf", null, null, null, null, null);
+        Visit visitUpdate = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
         visitUpdate.setVisitId(visit.getVisitId());
         visitService.update(visitUpdate);
 
@@ -84,7 +97,11 @@ public class VisitServiceImplTest {
     @Test
     public void delete() {
 
-        Visit visit = VisitFactory.getVisit("Today", null, null, null, null, null);
+        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+
+        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
 
         visitService.create(visit);
 

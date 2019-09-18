@@ -23,7 +23,7 @@ public class PorterRepositoryTest {
     @Test
     public void create() {
 
-        Porter porter = PorterFactory.getPorter( "Dale", "Claassen", "66666");
+        Porter porter = PorterFactory.getPorter("Mohammed Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "SuperKey");
         porterRepository.create(porter);
 
         assertNotNull(porterRepository.getAll());
@@ -33,7 +33,7 @@ public class PorterRepositoryTest {
     @Test
     public void read() {
 
-        Porter porter = PorterFactory.getPorter("Dale", "Claassen", "66666");
+        Porter porter = PorterFactory.getPorter("Mohammed Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "SuperKey");
         porterRepository.create(porter);
 
         assertNotNull(porterRepository.getAll());
@@ -48,12 +48,12 @@ public class PorterRepositoryTest {
     @Test
     public void update() {
 
-        Porter porter = PorterFactory.getPorter( "Dale", "Claassen", "66666");
+        Porter porter = PorterFactory.getPorter("Mohammed Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "SuperKey");
         porterRepository.create(porter);
 
         assertNotNull(porterRepository.getAll());
 
-        Porter porter1 = PorterFactory.getPorter("Dale", "Claassen", "6666eqwe6");
+        Porter porter1 = PorterFactory.getPorter("Mohammed Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "SuperKey");
         porter1.setEmployeeId(porter.getEmployeeId());
         porterRepository.update(porter1);
 
@@ -66,7 +66,7 @@ public class PorterRepositoryTest {
     @Test
     public void delete() {
 
-        Porter porter = PorterFactory.getPorter("Dale", "Claassen", "66666");
+        Porter porter = PorterFactory.getPorter("Mohammed Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "SuperKey");
         porterRepository.create(porter);
 
         assertNotNull(porterRepository.getAll());

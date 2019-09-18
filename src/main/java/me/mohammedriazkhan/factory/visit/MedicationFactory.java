@@ -5,12 +5,12 @@ import me.mohammedriazkhan.helper.IDGenerator;
 
 public class MedicationFactory {
 
-    public static Medication getMedication(String medicineName, String description, int dose) {
+    public static Medication getMedication(String medicineName, String dose, int quantity) {
         return new Medication.MedicationBuilder()
                 .medicationId(IDGenerator.generateId())
                 .medicineName(medicineName)
-                .description(description)
                 .dose(dose)
+                .quantity(quantity)
                 .build();
     }
 

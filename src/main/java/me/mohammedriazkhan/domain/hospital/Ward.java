@@ -5,16 +5,14 @@ import java.util.Objects;
 public class Ward {
 
     private String wardId;
-    private String wardCode;
+    private String wardSize;
 
-    public Ward(){
-
-    }
+    public Ward(){}
 
     public Ward(WardBuilder builder){
 
         this.wardId = builder.wardId;
-        this.wardCode = builder.wardCode;
+        this.wardSize = builder.wardSize;
 
     }
 
@@ -26,26 +24,32 @@ public class Ward {
         this.wardId = wardId;
     }
 
-    public String getWardCode() {
-        return wardCode;
+    public String getWardSize() {
+        return wardSize;
     }
 
-    public void setWardCode(String wardCode) {
-        this.wardCode = wardCode;
+    public void setWardSize(String wardSize) {
+        this.wardSize = wardSize;
     }
 
     public static class WardBuilder{
 
         private String wardId;
-        private String wardCode;
+        private String wardSize;
 
         public WardBuilder wardId(String wardId){
             this.wardId = wardId;
             return this;
         }
 
-        public WardBuilder wardCode(String wardCode){
-            this.wardCode = wardCode;
+        public WardBuilder wardSize(String wardSize){
+            this.wardSize = wardSize;
+            return this;
+        }
+
+        public WardBuilder copy(Ward ward){
+            this.wardId(ward.getWardId());
+            this.wardSize(ward.getWardSize());
             return this;
         }
 
@@ -58,7 +62,7 @@ public class Ward {
         public String toString() {
             return "WardBuilder{" +
                     "wardId=" + wardId +
-                    ", wardCode='" + wardCode + '\'' +
+                    ", wardSize='" + wardSize + '\'' +
                     '}';
         }
 
@@ -66,17 +70,14 @@ public class Ward {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             WardBuilder that = (WardBuilder) o;
-
-            if (wardId != that.wardId) return false;
-            return wardCode != null ? wardCode.equals(that.wardCode) : that.wardCode == null;
-
+            return Objects.equals(wardId, that.wardId) &&
+                    Objects.equals(wardSize, that.wardSize);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(wardId, wardCode);
+            return Objects.hash(wardId, wardSize);
         }
     }
 

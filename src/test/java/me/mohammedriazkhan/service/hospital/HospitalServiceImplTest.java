@@ -1,5 +1,6 @@
 package me.mohammedriazkhan.service.hospital;
 
+import me.mohammedriazkhan.domain.hospital.Department;
 import me.mohammedriazkhan.domain.hospital.Hospital;
 import me.mohammedriazkhan.factory.hospital.HospitalFactory;
 import org.junit.Assert;
@@ -12,6 +13,9 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static junit.framework.TestCase.*;
 
@@ -26,9 +30,12 @@ public class HospitalServiceImplTest {
     @Test
     public void a_create() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, "h", "Greys Anatomy");
+        List<Department> departmentList = new ArrayList<>();
 
-        hospitalService.create(hospital);
+        //Hospital
+        Hospital hosp = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+
+        hospitalService.create(hosp);
 
         assertNotNull(hospitalService.getAll());
 
@@ -37,16 +44,19 @@ public class HospitalServiceImplTest {
     @Test
     public void b_read() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, "h", "Greys Anatomy");
-        hospital.setHospitalId("a");
+        List<Department> departmentList = new ArrayList<>();
 
-        hospitalService.create(hospital);
+        //Hospital
+        Hospital hosp = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+        hosp.setHospitalId("a");
+
+        hospitalService.create(hosp);
 
         assertNotNull(hospitalService.getAll());
 
         Hospital fromSet = hospitalService.read("a");
 
-        assertEquals(hospital, fromSet);
+        assertEquals(hosp, fromSet);
 
 
 
@@ -56,13 +66,14 @@ public class HospitalServiceImplTest {
     @Test
     public void c_update() {
 
-        Hospital hospital = HospitalFactory.getHospital(null, "h", "Greys Anatomy");
+        List<Department> departmentList = new ArrayList<>();
+        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
 
         hospitalService.create(hospital);
 
         assertNotNull(hospitalService.getAll());
 
-        Hospital hospitalUpdate = HospitalFactory.getHospital(null, "h", "Greys fantomy");
+        Hospital hospitalUpdate = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
         hospitalUpdate.setHospitalId(hospital.getHospitalId());
 
         hospitalService.update(hospitalUpdate);
@@ -76,8 +87,9 @@ public class HospitalServiceImplTest {
 
     @Test
     public void d_delete() {
+        List<Department> departmentList = new ArrayList<>();
 
-        Hospital hospital = HospitalFactory.getHospital(null, "h", "Greys Anatomy");
+        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
 
         hospitalService.create(hospital);
 

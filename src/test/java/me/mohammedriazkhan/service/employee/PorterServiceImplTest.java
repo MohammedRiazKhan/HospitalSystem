@@ -23,7 +23,7 @@ public class PorterServiceImplTest {
     @Test
     public void create() {
 
-        Porter porter = PorterFactory.getPorter( "Dale", "Claassen", "66666");
+        Porter porter = PorterFactory.getPorter("Mohammed Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "SuperKey");
         porterService.create(porter);
 
         assertNotNull(porterService.getAll());
@@ -33,7 +33,7 @@ public class PorterServiceImplTest {
     @Test
     public void read() {
 
-        Porter porter = PorterFactory.getPorter("Dale", "Claassen", "66666");
+        Porter porter = PorterFactory.getPorter("Mohammed Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "SuperKey");
         porterService.create(porter);
 
        assertNotNull(porterService.getAll());
@@ -48,12 +48,12 @@ public class PorterServiceImplTest {
     @Test
     public void update() {
 
-        Porter porter = PorterFactory.getPorter( "Dale", "Claassen", "66666");
+        Porter porter = PorterFactory.getPorter("Mohammed Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "SuperKey");
         porterService.create(porter);
 
         assertNotNull(porterService.getAll());
 
-        Porter porter1 = PorterFactory.getPorter( "Dale", "Claassen", "6666eqwe6");
+        Porter porter1 = PorterFactory.getPorter("Mohammed Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "SuperKey");
         porter1.setEmployeeId(porter.getEmployeeId());
         porterService.update(porter1);
 
@@ -66,7 +66,7 @@ public class PorterServiceImplTest {
     @Test
     public void delete() {
 
-        Porter porter = PorterFactory.getPorter("Dale", "Claassen", "66666");
+        Porter porter = PorterFactory.getPorter("Mohammed Riaz", "Khan", "1234564", "1 May 2501", "Renal Doctor", "SuperKey");
         porterService.create(porter);
 
         assertNotNull(porterService.getAll());

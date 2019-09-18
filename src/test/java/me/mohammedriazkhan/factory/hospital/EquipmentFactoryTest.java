@@ -10,7 +10,9 @@ public class EquipmentFactoryTest {
     @Test
     public void getEquipment() {
 
-        Equipment equip = EquipmentFactory.getEquipment(null, null, 1);
+        Equipment equip = EquipmentFactory.getEquipment("Hammer", "Used to hammer things in", 1);
+        System.out.println(equip);
+        assertNotNull(equip);
 
     }
 }

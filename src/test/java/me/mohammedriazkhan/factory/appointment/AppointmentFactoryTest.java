@@ -18,18 +18,10 @@ public class AppointmentFactoryTest {
     public void getAppointment() {
 
 
-        //ArrayList list = new ArrayList();
+        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, "Afsd", "1234568", 2, "123");
 
-        Doctor doc = DoctorFactory.getDoctor("Moh", "Khan", "Renal");
-
-
-        //List<Meal> m = new ArrayList<>();
-        //List<String> d = new ArrayList<>();
-
-        InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, "Afsd");
-
-        Appointment appointment = AppointmentFactory.getAppointment
-                ("17-04-2018", "Patient1");
+        Appointment appointment = AppointmentFactory.getAppointment("17-04-2018", patient.getPatientId());
+        System.out.println(appointment);
 
         Assert.assertNotNull(appointment);
 

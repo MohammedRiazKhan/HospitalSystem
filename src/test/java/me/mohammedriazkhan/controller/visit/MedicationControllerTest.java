@@ -50,7 +50,7 @@ public class MedicationControllerTest {
 
 //        int id = 1;
 //        Medication medication = restTemplate.getForObject(baseURL + "/find/" + "abcc", Medication.class);
-//        medication.setDose(5);
+//        medication.setQuantity(5);
 //
 //        restTemplate.put(baseURL + "/update/" + "abcc", medication);
 //

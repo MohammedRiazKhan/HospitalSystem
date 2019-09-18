@@ -62,6 +62,13 @@ public class MedicalTool {
             return this;
         }
 
+        public MedicalToolBuilder copy(MedicalTool medicalTool){
+            this.toolId(medicalTool.getToolId());
+            this.toolName(medicalTool.getToolName());
+            this.toolCost(medicalTool.getToolCost());
+            return this;
+        }
+
 
         public MedicalTool build(){
             return new MedicalTool(this);

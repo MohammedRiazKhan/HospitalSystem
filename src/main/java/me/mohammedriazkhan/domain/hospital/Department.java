@@ -6,18 +6,14 @@ import java.util.Objects;
 public class Department {
 
     private String departmentId;
-    private String hospitalId;
     private List<Ward> wards;
     private List<Room> rooms;
 
-    public Department(){
-
-    }
+    public Department(){}
 
 
     public Department(DepartmentBuilder builder){
         this.departmentId = builder.departmentId;
-        this.hospitalId = builder.hospitalId;
         this.wards = builder.wards;
         this.rooms = builder.rooms;
 
@@ -29,14 +25,6 @@ public class Department {
 
     public void setDepartmentId(String departmentId) {
         this.departmentId = departmentId;
-    }
-
-    public String getHospitalId() {
-        return hospitalId;
-    }
-
-    public void setHospitalId(String hospitalId) {
-        this.hospitalId = hospitalId;
     }
 
     public List<Ward> getWards() {
@@ -58,7 +46,6 @@ public class Department {
     public static class DepartmentBuilder{
 
         private String departmentId;
-        private String hospitalId;
         private List<Ward> wards;
         private List<Room> rooms;
 
@@ -68,11 +55,6 @@ public class Department {
 
         public DepartmentBuilder departmentId(String departmentId){
             this.departmentId = departmentId;
-            return this;
-        }
-
-        public DepartmentBuilder hospitalId(String hospitalId){
-            this.hospitalId = hospitalId;
             return this;
         }
 
@@ -86,6 +68,13 @@ public class Department {
             return this;
         }
 
+        public DepartmentBuilder copy(Department department){
+            this.departmentId(department.getDepartmentId());
+            this.wards(department.getWards());
+            this.rooms(department.getRooms());
+            return this;
+        }
+
         public Department build(){
 
             return new Department(this);
@@ -95,8 +84,7 @@ public class Department {
         @Override
         public String toString() {
             return "DepartmentBuilder{" +
-                    "departmentId=" + departmentId +
-                    ", hospitalId=" + hospitalId +
+                    "departmentId='" + departmentId + '\'' +
                     ", wards=" + wards +
                     ", rooms=" + rooms +
                     '}';
@@ -106,19 +94,15 @@ public class Department {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             DepartmentBuilder that = (DepartmentBuilder) o;
-
-            if (departmentId != that.departmentId) return false;
-            if (hospitalId != that.hospitalId) return false;
-            if (wards != null ? !wards.equals(that.wards) : that.wards != null) return false;
-            return rooms != null ? rooms.equals(that.rooms) : that.rooms == null;
-
+            return Objects.equals(departmentId, that.departmentId) &&
+                    Objects.equals(wards, that.wards) &&
+                    Objects.equals(rooms, that.rooms);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(departmentId, hospitalId, wards, rooms);
+            return Objects.hash(departmentId, wards, rooms);
         }
     }
 

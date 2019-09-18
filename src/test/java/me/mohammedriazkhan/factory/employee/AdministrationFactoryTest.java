@@ -7,10 +7,10 @@ import org.junit.Test;
 public class AdministrationFactoryTest {
 
     @Test
-    public void getAdministration1() {
+    public void getAdministration() {
 
-        Administration admin = AdministrationFactory.getAdministration( "A");
-
+        Administration admin = AdministrationFactory.getAdministration( "Riaz", "Khan", "1234567", "8 July 2019", "receptionist", "Super Access");
+        System.out.println(admin);
         Assert.assertNotNull(admin);
 
     }

@@ -1,6 +1,5 @@
 package me.mohammedriazkhan.factory.patient;
 
-import me.mohammedriazkhan.domain.patient.Patient;
 import me.mohammedriazkhan.domain.patient.Report;
 import me.mohammedriazkhan.helper.IDGenerator;
 
