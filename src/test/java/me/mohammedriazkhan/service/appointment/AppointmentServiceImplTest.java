@@ -25,7 +25,7 @@ public class AppointmentServiceImplTest {
 
         Appointment appointment = AppointmentFactory.getAppointment( "asdf", null);
         appointmentService.create(appointment);
-
+//
         assertNotNull(appointmentService.getAll());
 
     }
