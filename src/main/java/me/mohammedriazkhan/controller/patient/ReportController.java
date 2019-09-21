@@ -32,7 +32,6 @@ public class ReportController {
     @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id){
         reportService.delete(id);
-
     }
 
     @GetMapping("/getall")

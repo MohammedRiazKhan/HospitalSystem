@@ -1,9 +1,13 @@
 package me.mohammedriazkhan.domain.patient;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Report {
 
+    @Id
     private String reportId;
     private String title;
     private String description;

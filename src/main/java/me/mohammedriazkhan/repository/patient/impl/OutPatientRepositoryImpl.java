@@ -15,7 +15,7 @@ public class OutPatientRepositoryImpl implements OutPatientRepository {
     private static OutPatientRepositoryImpl repository = null;
     private Set<Patient> patients;
 
-    private OutPatientRepositoryImpl(){
+    public OutPatientRepositoryImpl(){
         patients = new HashSet<>();
     }
 

@@ -17,7 +17,6 @@ import static junit.framework.TestCase.*;
 @SpringBootTest
 public class ReportRepositoryTest {
 
-
     @Autowired
     private ReportRepositoryImpl reportitory;
 

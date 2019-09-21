@@ -52,7 +52,7 @@ public class ReportControllerTest {
 
         Report report = restTemplate.getForObject(baseURL + "/find/Afsd", Report.class);
 
-        assertNull(report);
+        assertNotNull(report);
 
     }
 
@@ -80,7 +80,7 @@ public class ReportControllerTest {
 
         int id = 1;
         Report report = restTemplate.getForObject(baseURL + "/find/" + "Afsd", Report.class);
-        assertNull(report);
+        assertNotNull(report);
 
         restTemplate.delete(baseURL + "/delete/" + "Afsd");
 

@@ -16,7 +16,7 @@ public class InPatientRepositoryImpl implements InPatientRepository {
     private static InPatientRepositoryImpl repository = null;
     private Set<Patient> patients;
 
-    private InPatientRepositoryImpl(){
+    public InPatientRepositoryImpl(){
         patients = new HashSet<>();
     }
 

@@ -2,15 +2,16 @@ package me.mohammedriazkhan.repository.patient.impl;
 
 import me.mohammedriazkhan.domain.patient.Report;
 import me.mohammedriazkhan.repository.patient.ReportRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
+
 import java.util.Set;
 
-@Repository("ReportInMemory")
-public class ReportRepositoryImpl implements ReportRepository {
+@Repository("InMemory")
+public class ReportRepositoryImpl implements ReportRepository{
 
     private static ReportRepositoryImpl reportRepository = null;
     private Set<Report> reports;
