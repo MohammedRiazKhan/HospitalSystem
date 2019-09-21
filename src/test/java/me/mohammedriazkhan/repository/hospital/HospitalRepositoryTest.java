@@ -71,14 +71,13 @@ public class HospitalRepositoryTest {
 
         assertNotNull(hospitalRepository.getAll());
 
-        Hospital hospitalUpdate = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
-        hospitalUpdate.setHospitalId(hospital.getHospitalId());
+        Hospital hospitalUpdate = new Hospital.HospitalBuilder().copy(hospital).hospitalName("Grooteschuur").build();
 
         hospitalRepository.update(hospitalUpdate);
 
         Hospital updated = hospitalRepository.read(hospitalUpdate.getHospitalId());
 
-        assertEquals(hospitalUpdate, updated);
+        assertNotEquals(hospital, updated);
 
     }
 

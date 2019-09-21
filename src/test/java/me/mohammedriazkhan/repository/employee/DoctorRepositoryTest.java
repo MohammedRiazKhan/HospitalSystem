@@ -50,11 +50,11 @@ public class DoctorRepositoryTest {
         Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
         doctorRepository.create(doctor);
 
-        Doctor updatedDoctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+        Doctor updatedDoctor = DoctorFactory.getDoctor( "Mohammed", "Not Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
 
-        doctorRepository.update(updatedDoctor);
+        Doctor update = doctorRepository.update(updatedDoctor);
 
-        Assert.assertNotEquals(doctor.getFirstName(), updatedDoctor.getFirstName());
+        Assert.assertNotEquals(doctor, update);
 
 
     }

@@ -87,6 +87,7 @@ public class HospitalServiceImplTest {
 
     @Test
     public void d_delete() {
+
         List<Department> departmentList = new ArrayList<>();
 
         Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
@@ -99,7 +100,7 @@ public class HospitalServiceImplTest {
 
         Hospital notThere = hospitalService.read(hospital.getHospitalId());
 
-        assertNotNull(notThere);
+        assertNull(notThere);
 
 
 
