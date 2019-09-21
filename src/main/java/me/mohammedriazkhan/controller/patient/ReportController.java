@@ -14,7 +14,7 @@ public class ReportController {
     @Autowired
     private ReportServiceImpl reportService;
 
-    @PostMapping
+    @PostMapping("/new")
     public Report create(@RequestBody Report t){
         return reportService.create(t);
     }

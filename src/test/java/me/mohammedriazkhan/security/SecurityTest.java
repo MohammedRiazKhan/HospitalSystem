@@ -1,7 +1,7 @@
 package me.mohammedriazkhan.security;
 
-import me.mohammedriazkhan.domain.employee.Doctor;
-import me.mohammedriazkhan.factory.employee.DoctorFactory;
+import me.mohammedriazkhan.domain.patient.Report;
+import me.mohammedriazkhan.factory.patient.ReportFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,16 +22,16 @@ public class SecurityTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private String baseURL="http://localhost:8080/doctor";
+    private String baseURL="http://localhost:8080/report";
 
     @Autowired
 
     @Before
     public void addDummyData(){
 
-        Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
+        Report report = ReportFactory.getReport("Todays Report", "There was a slight bruise on my left pinky toe", "21 Sep 2019", "1");
 
-        ResponseEntity<Doctor> postResponse = restTemplate.postForEntity(baseURL + "/new", doctor, Doctor.class);
+        restTemplate.postForEntity(baseURL + "/new", report, Report.class);
 
     }
 
