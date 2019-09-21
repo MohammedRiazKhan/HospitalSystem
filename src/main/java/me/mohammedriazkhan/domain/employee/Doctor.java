@@ -37,7 +37,7 @@ public class Doctor extends Employee{
             return this;
         }
 
-        public DoctorBuilder copy(Doctor doctor){
+        public Builder copy(Doctor doctor){
 
             this.employeeId(doctor.getEmployeeId());
             this.firstName(doctor.getFirstName());
