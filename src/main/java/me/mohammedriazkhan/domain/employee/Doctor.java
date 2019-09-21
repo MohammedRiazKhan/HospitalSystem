@@ -1,9 +1,7 @@
 package me.mohammedriazkhan.domain.employee;
 
-import javax.persistence.Entity;
 import java.util.Objects;
 
-@Entity
 public class Doctor extends Employee{
 
     private String specialisation;
@@ -39,7 +37,7 @@ public class Doctor extends Employee{
             return this;
         }
 
-        public DoctorBuilder copy(Doctor doctor){
+        public Builder copy(Doctor doctor){
 
             this.employeeId(doctor.getEmployeeId());
             this.firstName(doctor.getFirstName());

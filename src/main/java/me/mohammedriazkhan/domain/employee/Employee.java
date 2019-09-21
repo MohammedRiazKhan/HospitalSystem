@@ -122,6 +122,7 @@ public abstract class Employee {
                     ", identityNumber='" + identityNumber + '\'' +
                     ", jobTitle='" + jobTitle + '\'' +
                     ", employmentDate='" + employmentDate + '\'' +
+                    "" +
                     '}';
         }
     }
