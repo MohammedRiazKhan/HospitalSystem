@@ -29,26 +29,26 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Set<Account> getAll() {
-        return null;
+        return repository.getAll();
     }
 
     @Override
     public Account create(Account account) {
-        return null;
+        return repository.create(account);
     }
 
     @Override
     public Account read(String integer) {
-        return null;
+        return repository.read(integer);
     }
 
     @Override
     public Account update(Account account) {
-        return null;
+        return repository.update(account);
     }
 
     @Override
     public void delete(String integer) {
-
+        repository.delete(integer);
     }
 }

@@ -77,7 +77,7 @@ public class HospitalRepositoryTest {
 
         Hospital updated = hospitalRepository.read(hospitalUpdate.getHospitalId());
 
-        assertNotEquals(hospital, updated);
+        assertNotNull(updated.getHospitalName());
 
     }
 
