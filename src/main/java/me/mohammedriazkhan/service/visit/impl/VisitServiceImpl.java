@@ -2,40 +2,47 @@ package me.mohammedriazkhan.service.visit.impl;
 
 import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.domain.employee.Doctor;
+import me.mohammedriazkhan.domain.patient.InPatient;
 import me.mohammedriazkhan.domain.patient.Patient;
 import me.mohammedriazkhan.domain.visit.Visit;
 import me.mohammedriazkhan.factory.visit.VisitFactory;
 import me.mohammedriazkhan.repository.appointment.AppointmentRepository;
+import me.mohammedriazkhan.repository.appointment.hibernate.AppointmentRepositoryHibernate;
 import me.mohammedriazkhan.repository.appointment.impl.AppointmentRepositoryImpl;
 import me.mohammedriazkhan.repository.employee.DoctorRepository;
+import me.mohammedriazkhan.repository.employee.hibernate.DoctorRepositoryHibernate;
 import me.mohammedriazkhan.repository.employee.impl.DoctorRepositoryImpl;
 import me.mohammedriazkhan.repository.patient.PatientRepository;
+import me.mohammedriazkhan.repository.patient.hibernate.PatientRepositoryHibernate;
 import me.mohammedriazkhan.repository.patient.impl.PatientRepositoryImpl;
+import me.mohammedriazkhan.repository.visit.hibernate.VisitRepositoryHibernate;
 import me.mohammedriazkhan.repository.visit.impl.VisitRepositoryImpl;
 import me.mohammedriazkhan.repository.visit.VisitRepository;
+import me.mohammedriazkhan.service.patient.PatientService;
+import me.mohammedriazkhan.service.patient.impl.InPatientServiceImpl;
 import me.mohammedriazkhan.service.visit.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Service
 public class VisitServiceImpl implements VisitService {
 
     private VisitServiceImpl service = null;
-    private VisitRepository repository;
-    //@Autowired
-    private AppointmentRepository appointmentRepository;
-    //@Autowired
-    private DoctorRepository doctorRepository;
-    //@Autowired
-    private PatientRepository patientRepository;
+    @Autowired
+    private VisitRepositoryHibernate repository;
+    @Autowired
+    private AppointmentRepositoryHibernate appointmentRepository;
+    @Autowired
+    private DoctorRepositoryHibernate doctorRepository;
+    @Autowired
+    private PatientRepositoryHibernate patientRepository;
 
     public VisitServiceImpl() {
-        repository = VisitRepositoryImpl.getRepository();
-        appointmentRepository = AppointmentRepositoryImpl.getAppointmentRepository();
-        doctorRepository = DoctorRepositoryImpl.getDoctorRepository();
-        patientRepository = PatientRepositoryImpl.getRepository();
+
     }
 
     public VisitServiceImpl getService(){
@@ -48,35 +55,37 @@ public class VisitServiceImpl implements VisitService {
 
     @Override
     public Set<Visit> getAll() {
-        return repository.getAll();
+        List<Visit> list = (List<Visit>) repository.findAll();
+
+        return new HashSet<>(list);
     }
 
     @Override
     public Visit create(Visit visit) {
-        return repository.create(visit);
+        return repository.save(visit);
     }
 
     @Override
     public Visit read(String integer) {
-        return repository.read(integer);
+        return repository.findById(integer).orElse(null);
     }
 
     @Override
     public Visit update(Visit visit) {
-        return repository.update(visit);
+        return repository.save(visit);
     }
 
     @Override
     public void delete(String integer) {
 
-        repository.delete(integer);
+        repository.deleteById(integer);
     }
 
     public Visit createVisit(String patientId, String doctorId, String appointmentId){
 
-        Patient patient = patientRepository.read(patientId);
-        Doctor doctor = doctorRepository.read(doctorId);
-        Appointment appointment = appointmentRepository.read(appointmentId);
+        Patient patient = patientRepository.findById(patientId).orElse(null);
+        Doctor doctor = doctorRepository.findById(doctorId).orElse(null);
+        Appointment appointment = appointmentRepository.findById(appointmentId).orElse(null);
 
         System.out.println(patient);
         System.out.println(doctor);

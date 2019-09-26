@@ -1,7 +1,11 @@
 package me.mohammedriazkhan.domain.employee;
 
+import javax.persistence.*;
+
+@MappedSuperclass
 public abstract class Employee {
 
+    @Id
     private String employeeId;
     private String firstName;
     private String lastName;

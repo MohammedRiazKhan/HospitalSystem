@@ -1,13 +1,17 @@
 package me.mohammedriazkhan.domain.hospital;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Hospital {
-
-    private List<Department> departments;
+    @Id
     private String hospitalId;
     private String hospitalName;
+    private List<Department> departments;
 
     public Hospital(){}
 

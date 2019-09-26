@@ -1,7 +1,10 @@
 package me.mohammedriazkhan.domain.patient;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.Objects;
 
+@Entity
 public class OutPatient extends Patient{
 
     private String appointmentId;

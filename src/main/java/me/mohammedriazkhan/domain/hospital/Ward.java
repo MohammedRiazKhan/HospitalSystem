@@ -1,9 +1,13 @@
 package me.mohammedriazkhan.domain.hospital;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Ward {
 
+    @Id
     private String wardId;
     private String wardSize;
 

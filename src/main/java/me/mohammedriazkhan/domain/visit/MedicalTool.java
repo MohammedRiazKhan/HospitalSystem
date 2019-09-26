@@ -1,9 +1,13 @@
 package me.mohammedriazkhan.domain.visit;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class MedicalTool {
 
+    @Id
     private String toolId;
     private String toolName;
     private String toolCost;

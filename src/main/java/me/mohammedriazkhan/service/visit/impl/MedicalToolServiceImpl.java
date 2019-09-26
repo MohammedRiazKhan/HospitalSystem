@@ -2,22 +2,24 @@ package me.mohammedriazkhan.service.visit.impl;
 
 import me.mohammedriazkhan.domain.visit.MedicalTool;
 import me.mohammedriazkhan.repository.visit.MedicalToolRepository;
+import me.mohammedriazkhan.repository.visit.hibernate.MedicalToolRepositoryHibernate;
 import me.mohammedriazkhan.repository.visit.impl.MedicalToolRepositoryImpl;
 import me.mohammedriazkhan.service.visit.MedicalToolService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Service
 public class MedicalToolServiceImpl implements MedicalToolService {
 
     private MedicalToolServiceImpl service = null;
-    private MedicalToolRepository repository;
-    private Set<MedicalTool> medicalTools;
+    @Autowired
+    private MedicalToolRepositoryHibernate repository;
 
     public MedicalToolServiceImpl() {
-        repository = MedicalToolRepositoryImpl.getRepository();
-        medicalTools = new HashSet<>();
+
     }
 
     public MedicalToolServiceImpl getService(){
@@ -30,40 +32,34 @@ public class MedicalToolServiceImpl implements MedicalToolService {
 
     @Override
     public Set<MedicalTool> getAll() {
-        return medicalTools;
+        List<MedicalTool> list = (List<MedicalTool>) repository.findAll();
+
+        return new HashSet<>(list);
     }
 
     @Override
     public MedicalTool create(MedicalTool medicalTool) {
-        medicalTools.add(medicalTool);
-        return medicalTool;
+      return repository.save(medicalTool);
     }
 
     @Override
     public MedicalTool read(String integer) {
 
 
-        return medicalTools.stream().filter(medicalTool -> medicalTool.getToolId().equals(integer)).findAny().orElse(null);
+        return repository.findById(integer).orElse(null);
 
     }
 
     @Override
     public MedicalTool update(MedicalTool medicalTool) {
 
-        MedicalTool inDB = read(medicalTool.getToolId());
-        if(inDB != null){
-            medicalTools.remove(inDB);
-            medicalTools.add(medicalTool);
-            return medicalTool;
-        }
-        return null;
+      return repository.save(medicalTool);
 
     }
 
     @Override
     public void delete(String integer) {
-        MedicalTool inDB = read(integer);
-        medicalTools.remove(inDB);
+      repository.deleteById(integer);
 
 
     }

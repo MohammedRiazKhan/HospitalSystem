@@ -1,10 +1,14 @@
 package me.mohammedriazkhan.domain.visit;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Visit {
 
+    @Id
     private String visitId;
     private String visitDate;
     private String patientId;

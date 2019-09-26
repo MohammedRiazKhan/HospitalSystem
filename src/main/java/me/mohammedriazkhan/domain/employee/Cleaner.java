@@ -1,8 +1,10 @@
 package me.mohammedriazkhan.domain.employee;
 
+import javax.persistence.Entity;
 import java.util.Arrays;
 import java.util.Objects;
 
+@Entity
 public class Cleaner extends Employee{
 
     private String duties;

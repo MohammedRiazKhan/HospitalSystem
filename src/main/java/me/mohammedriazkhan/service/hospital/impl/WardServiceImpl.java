@@ -1,20 +1,24 @@
 package me.mohammedriazkhan.service.hospital.impl;
 
 import me.mohammedriazkhan.domain.hospital.Ward;
+import me.mohammedriazkhan.repository.hospital.hibernate.WardRepositoryHibernate;
 import me.mohammedriazkhan.repository.hospital.impl.WardRepositoryImpl;
 import me.mohammedriazkhan.repository.hospital.WardRepository;
 import me.mohammedriazkhan.service.hospital.WardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Service
 public class WardServiceImpl implements WardService {
 
     private WardServiceImpl service = null;
-    private WardRepository repository;
+    @Autowired
+    private WardRepositoryHibernate repository;
 
     public WardServiceImpl() {
-        repository = WardRepositoryImpl.getWards();
     }
 
     public WardServiceImpl getService(){
@@ -27,27 +31,29 @@ public class WardServiceImpl implements WardService {
 
     @Override
     public Set<Ward> getAll() {
-        return repository.getAll();
+        List<Ward> list = (List<Ward>) repository.findAll();
+
+        return new HashSet<>(list);
     }
 
     @Override
     public Ward create(Ward ward) {
-        return repository.create(ward);
+        return repository.save(ward);
     }
 
     @Override
     public Ward read(String integer) {
-        return repository.read(integer);
+        return repository.findById(integer).orElse(null);
     }
 
     @Override
     public Ward update(Ward ward) {
-        return repository.update(ward);
+        return repository.save(ward);
     }
 
     @Override
     public void delete(String integer) {
 
-        repository.delete(integer);
+        repository.deleteById(integer);
     }
 }

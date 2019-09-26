@@ -1,20 +1,24 @@
 package me.mohammedriazkhan.service.employee.impl;
 
 import me.mohammedriazkhan.domain.employee.Porter;
+import me.mohammedriazkhan.repository.employee.hibernate.PorterRepositoryHibernate;
 import me.mohammedriazkhan.repository.employee.impl.PorterRepositoryImpl;
 import me.mohammedriazkhan.repository.employee.PorterRepository;
 import me.mohammedriazkhan.service.employee.PorterService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Service
 public class PorterServiceImpl implements PorterService {
 
     private PorterServiceImpl service = null;
-    private PorterRepository repository;
+    @Autowired
+    private PorterRepositoryHibernate repository;
 
     public PorterServiceImpl() {
-        repository = PorterRepositoryImpl.getRepository();
     }
 
     public PorterServiceImpl getService(){
@@ -27,28 +31,30 @@ public class PorterServiceImpl implements PorterService {
 
     @Override
     public Set<Porter> getAll() {
-        return repository.getAll();
+        List<Porter> list = (List<Porter>) repository.findAll();
+
+        return new HashSet<>(list);
     }
 
     @Override
     public Porter create(Porter porter) {
-        return repository.create(porter);
+        return repository.save(porter);
     }
 
     @Override
     public Porter read(String integer) {
-        return repository.read(integer);
+        return repository.findById(integer).orElse(null);
     }
 
     @Override
     public Porter update(Porter porter) {
-        return repository.update(porter);
+        return repository.save(porter);
     }
 
     @Override
     public void delete(String integer) {
 
-        repository.delete(integer);
+        repository.deleteById(integer);
 
     }
 }

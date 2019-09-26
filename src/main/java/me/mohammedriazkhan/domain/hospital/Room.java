@@ -1,18 +1,24 @@
 package me.mohammedriazkhan.domain.hospital;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Room {
 
+    @Id
     private String roomId;
-    private List<Equipment> equipment;
+    private String equipmentId;
 
     public Room(){}
 
     private Room(RoomBuilder builder){
         this.roomId = builder.roomId;
-        this.equipment = builder.equipment;
+        this.equipmentId = builder.equipmentId;
     }
 
     public String getRoomId() {
@@ -23,26 +29,26 @@ public class Room {
         this.roomId = roomId;
     }
 
-    public List<Equipment> getEquipment() {
-        return equipment;
+    public String getEquipment() {
+        return equipmentId;
     }
 
-    public void setEquipment(List<Equipment> equipment) {
-        this.equipment = equipment;
+    public void setEquipment(String equipmentId) {
+        this.equipmentId = equipmentId;
     }
 
     public static class RoomBuilder{
 
         private String roomId;
-        private List<Equipment> equipment;
+        private String equipmentId;
 
         public RoomBuilder roomId(String roomId){
             this.roomId = roomId;
             return this;
         }
 
-        public RoomBuilder equipment(List<Equipment> equipment){
-            this.equipment = equipment;
+        public RoomBuilder equipment(String equipmentId){
+            this.equipmentId = equipmentId;
             return this;
         }
 
@@ -71,12 +77,12 @@ public class Room {
             if (o == null || getClass() != o.getClass()) return false;
             RoomBuilder that = (RoomBuilder) o;
             return Objects.equals(roomId, that.roomId) &&
-                    Objects.equals(equipment, that.equipment);
+                    Objects.equals(equipmentId, that.equipmentId);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(roomId, equipment);
+            return Objects.hash(roomId, equipmentId);
         }
     }
 

@@ -1,9 +1,14 @@
 package me.mohammedriazkhan.domain.appoinment;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Objects;
 
+@Entity
 public class Appointment {
 
+    @Id
     private String appointmentId;
     private String bookingDate;
     private String patientId;

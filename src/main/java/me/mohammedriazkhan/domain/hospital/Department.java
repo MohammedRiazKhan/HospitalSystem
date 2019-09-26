@@ -1,10 +1,13 @@
 package me.mohammedriazkhan.domain.hospital;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Department {
 
+    @Id
     private String departmentId;
     private List<Ward> wards;
     private List<Room> rooms;

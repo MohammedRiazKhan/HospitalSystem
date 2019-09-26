@@ -1,7 +1,9 @@
 package me.mohammedriazkhan.domain.patient;
 
+import javax.persistence.Entity;
 import java.util.Objects;
 
+@Entity
 public class MedicalAid extends Account{
 
     private String medicalAidNo;

@@ -1,4 +1,4 @@
-package me.mohammedriazkhan.repository.patient;
+package me.mohammedriazkhan.repository.patient.hibernate;
 
 import me.mohammedriazkhan.domain.patient.Report;
 import org.springframework.data.repository.CrudRepository;
@@ -8,5 +8,7 @@ import java.util.Set;
 
 @Repository("InDB")
 public interface ReportRepositoryHibernate extends CrudRepository<Report, String> {
+
+
 
 }

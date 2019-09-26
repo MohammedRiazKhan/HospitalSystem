@@ -1,9 +1,13 @@
 package me.mohammedriazkhan.domain.patient;
 
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.util.Objects;
 
+@MappedSuperclass
 public abstract class Patient {
 
+    @Id
     private String patientId;
     private String firstName;
     private String lastName;

@@ -1,14 +1,17 @@
 package me.mohammedriazkhan.domain.hospital;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Equipment {
 
+    @Id
     private String equipmentId;
     private String name;
     private String desc;
     private int quantity;
-
 
     public Equipment(){}
 

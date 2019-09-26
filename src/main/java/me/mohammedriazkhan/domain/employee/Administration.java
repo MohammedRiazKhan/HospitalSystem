@@ -1,7 +1,9 @@
 package me.mohammedriazkhan.domain.employee;
 
+import javax.persistence.Entity;
 import java.util.Objects;
 
+@Entity
 public class Administration extends Employee{
 
     private String accessLevel;

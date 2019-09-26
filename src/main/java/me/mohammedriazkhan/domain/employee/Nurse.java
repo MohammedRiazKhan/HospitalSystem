@@ -1,7 +1,9 @@
 package me.mohammedriazkhan.domain.employee;
 
+import javax.persistence.Entity;
 import java.util.Objects;
 
+@Entity
 public class Nurse extends Employee{
 
     private String type;

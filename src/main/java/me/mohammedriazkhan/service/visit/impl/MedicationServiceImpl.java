@@ -1,20 +1,25 @@
 package me.mohammedriazkhan.service.visit.impl;
 
 import me.mohammedriazkhan.domain.visit.Medication;
+import me.mohammedriazkhan.repository.visit.hibernate.MedicationRepositoryHibernate;
 import me.mohammedriazkhan.repository.visit.impl.MedicationRepositoryImpl;
 import me.mohammedriazkhan.repository.visit.MedicationRepository;
 import me.mohammedriazkhan.service.visit.MedicationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Service
 public class MedicationServiceImpl implements MedicationService {
 
     private MedicationServiceImpl service = null;
-    private MedicationRepository repository;
+    @Autowired
+    private MedicationRepositoryHibernate repository;
 
     public MedicationServiceImpl() {
-        repository = MedicationRepositoryImpl.getRepository();
+
     }
 
     public MedicationServiceImpl getService(){
@@ -27,27 +32,29 @@ public class MedicationServiceImpl implements MedicationService {
 
     @Override
     public Set<Medication> getAll() {
-        return repository.getAll();
+        List<Medication> list = (List<Medication>) repository.findAll();
+
+        return new HashSet<>(list);
     }
 
     @Override
     public Medication create(Medication medication) {
-        return repository.create(medication);
+        return repository.save(medication);
     }
 
     @Override
     public Medication read(String integer) {
-        return repository.read(integer);
+        return repository.findById(integer).orElse(null);
     }
 
     @Override
     public Medication update(Medication medication) {
-        return repository.update(medication);
+        return repository.save(medication);
     }
 
     @Override
     public void delete(String integer) {
 
-        repository.delete(integer);
+        repository.deleteById(integer);
     }
 }

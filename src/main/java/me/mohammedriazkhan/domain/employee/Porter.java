@@ -1,8 +1,10 @@
 package me.mohammedriazkhan.domain.employee;
 
+import javax.persistence.Entity;
 import javax.sound.sampled.Port;
 import java.util.Objects;
 
+@Entity
 public class Porter extends Employee{
 
     private String accessKeys;

@@ -1,9 +1,13 @@
 package me.mohammedriazkhan.domain.employee;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Qualification {
 
+    @Id
     private String qualificationId;
     private String qualificationName;
     private String instituteName;

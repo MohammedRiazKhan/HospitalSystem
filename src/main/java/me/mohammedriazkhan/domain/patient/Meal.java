@@ -1,9 +1,14 @@
 package me.mohammedriazkhan.domain.patient;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.util.Objects;
 
+@Entity
 public class Meal {
 
+    @Id
     private String mealId;
     private String breakfast;
     private String lunch;

@@ -1,8 +1,7 @@
 package me.mohammedriazkhan.service.patient.impl;
 
 import me.mohammedriazkhan.domain.patient.Report;
-import me.mohammedriazkhan.repository.patient.ReportRepository;
-import me.mohammedriazkhan.repository.patient.ReportRepositoryHibernate;
+import me.mohammedriazkhan.repository.patient.hibernate.ReportRepositoryHibernate;
 import me.mohammedriazkhan.service.patient.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -1,20 +1,25 @@
 package me.mohammedriazkhan.service.patient.impl;
 
 import me.mohammedriazkhan.domain.patient.Patient;
+import me.mohammedriazkhan.repository.patient.hibernate.OutPatientRepositoryHibernate;
 import me.mohammedriazkhan.repository.patient.impl.OutPatientRepositoryImpl;
 import me.mohammedriazkhan.repository.patient.OutPatientRepository;
 import me.mohammedriazkhan.service.patient.OutPatientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Service
 public class OutPatientServiceImpl implements OutPatientService {
 
     private OutPatientServiceImpl service = null;
-    private OutPatientRepository repository;
+    @Autowired
+    private OutPatientRepositoryHibernate repository;
 
     public OutPatientServiceImpl() {
-        repository = OutPatientRepositoryImpl.getRepository();
+
     }
 
     public OutPatientServiceImpl getService(){
@@ -27,27 +32,29 @@ public class OutPatientServiceImpl implements OutPatientService {
 
     @Override
     public Set<Patient> getAll() {
-        return repository.getAll();
+        List<Patient> list = (List<Patient>) repository.findAll();
+
+        return new HashSet<>(list);
     }
 
     @Override
     public Patient create(Patient patient) {
-        return repository.create(patient);
+        return repository.save(patient);
     }
 
     @Override
     public Patient read(String integer) {
-        return repository.read(integer);
+        return repository.findById(integer).orElse(null);
     }
 
     @Override
     public Patient update(Patient patient) {
-        return repository.update(patient);
+        return repository.save(patient);
     }
 
     @Override
     public void delete(String integer) {
 
-        repository.delete(integer);
+        repository.deleteById(integer);
     }
 }
