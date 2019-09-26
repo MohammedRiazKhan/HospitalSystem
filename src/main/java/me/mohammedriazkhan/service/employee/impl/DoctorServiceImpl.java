@@ -1,3 +1,4 @@
+/*
 package me.mohammedriazkhan.service.employee.impl;
 
 import me.mohammedriazkhan.domain.employee.Doctor;
@@ -54,3 +55,4 @@ public class DoctorServiceImpl implements DoctorService {
 
 
 }
+*/
