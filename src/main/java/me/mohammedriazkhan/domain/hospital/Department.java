@@ -9,8 +9,8 @@ public class Department {
 
     @Id
     private String departmentId;
-    private List<Ward> wards;
-    private List<Room> rooms;
+    private String wards;
+    private String rooms;
 
     public Department(){}
 
@@ -30,27 +30,27 @@ public class Department {
         this.departmentId = departmentId;
     }
 
-    public List<Ward> getWards() {
+    public String getWards() {
         return wards;
     }
 
-    public void setWards(List<Ward> wards) {
+    public void setWards(String wards) {
         this.wards = wards;
     }
 
-    public List<Room> getRooms() {
+    public String getRooms() {
         return rooms;
     }
 
-    public void setRooms(List<Room> rooms) {
+    public void setRooms(String rooms) {
         this.rooms = rooms;
     }
 
     public static class DepartmentBuilder{
 
         private String departmentId;
-        private List<Ward> wards;
-        private List<Room> rooms;
+        private String wards;
+        private String rooms;
 
         public DepartmentBuilder(){
 
@@ -61,12 +61,12 @@ public class Department {
             return this;
         }
 
-        public DepartmentBuilder wards(List<Ward> wards){
+        public DepartmentBuilder wards(String wards){
             this.wards = wards;
             return this;
         }
 
-        public DepartmentBuilder rooms(List<Room> rooms){
+        public DepartmentBuilder rooms(String rooms){
             this.rooms = rooms;
             return this;
         }

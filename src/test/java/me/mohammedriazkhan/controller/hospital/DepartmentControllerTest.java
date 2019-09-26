@@ -35,7 +35,7 @@ public class DepartmentControllerTest {
         List<Ward> ward = new ArrayList<>();
         List<Room> rooms = new ArrayList<>();
 
-        Department department = DepartmentFactory.getDepartment(ward, rooms);
+        Department department = DepartmentFactory.getDepartment("Ward1", "Room1");
         department.setDepartmentId("a");
 
         ResponseEntity<Department> postResponse = restTemplate.postForEntity(baseURL + "/new", department, Department.class);

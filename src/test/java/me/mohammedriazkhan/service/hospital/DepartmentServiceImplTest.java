@@ -32,7 +32,7 @@ public class DepartmentServiceImplTest {
         List<Ward> ward = new ArrayList<>();
         List<Room> rooms = new ArrayList<>();
 
-        Department department = DepartmentFactory.getDepartment(ward, rooms);
+        Department department = DepartmentFactory.getDepartment("Ward1", "Room1");
         departmentService.create(department);
 
         assertNotNull(departmentService.getAll());
@@ -45,7 +45,7 @@ public class DepartmentServiceImplTest {
         List<Ward> ward = new ArrayList<>();
         List<Room> rooms = new ArrayList<>();
 
-        Department department = DepartmentFactory.getDepartment(ward, rooms);
+        Department department = DepartmentFactory.getDepartment("Ward1", "Room1");
         departmentService.create(department);
 
         assertNotNull(departmentService.getAll());
@@ -63,12 +63,12 @@ public class DepartmentServiceImplTest {
         List<Ward> ward = new ArrayList<>();
         List<Room> rooms = new ArrayList<>();
 
-        Department department = DepartmentFactory.getDepartment(ward, rooms);
+        Department department = DepartmentFactory.getDepartment("Ward1", "Room1");
         departmentService.create(department);
 
         assertNotNull(departmentService.getAll());
 
-        Department departmentUpdate =  DepartmentFactory.getDepartment(ward, rooms);
+        Department departmentUpdate =  DepartmentFactory.getDepartment("Ward1", "Room1");
         departmentUpdate.setDepartmentId(department.getDepartmentId());
         departmentService.update(departmentUpdate);
 
@@ -84,7 +84,7 @@ public class DepartmentServiceImplTest {
         List<Ward> ward = new ArrayList<>();
         List<Room> rooms = new ArrayList<>();
 
-        Department department = DepartmentFactory.getDepartment(ward, rooms);
+        Department department = DepartmentFactory.getDepartment("Ward1", "Room1");
         departmentService.create(department);
 
         assertNotNull(departmentService.getAll());

@@ -13,10 +13,8 @@ public class HospitalFactoryTest {
     @Test
     public void getHospital() {
 
-        List<Department> departmentList = new ArrayList<>();
-
         //Hospital
-        Hospital hosp = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+        Hospital hosp = HospitalFactory.getHospital("Greys Anamtomy", "List");
         System.out.println(hosp);
 
         Assert.assertNotNull(hosp);

@@ -13,7 +13,7 @@ public class Meal {
     private String breakfast;
     private String lunch;
     private String supper;
-    private Patient patient;
+    private String patient;
 
     public Meal(){}
 
@@ -59,11 +59,11 @@ public class Meal {
         this.supper = supper;
     }
 
-    public Patient getPatient() {
+    public String getPatient() {
         return patient;
     }
 
-    public void setPatient(Patient patient) {
+    public void setPatient(String patient) {
         this.patient = patient;
     }
 
@@ -73,7 +73,7 @@ public class Meal {
         private String breakfast;
         private String lunch;
         private String supper;
-        private Patient patient;
+        private String patient;
 
         public MealBuilder mealId(String mealId){
             this.mealId = mealId;
@@ -95,7 +95,7 @@ public class Meal {
             return this;
         }
 
-        public MealBuilder patient(Patient patient){
+        public MealBuilder patient(String patient){
             this.patient = patient;
             return this;
         }

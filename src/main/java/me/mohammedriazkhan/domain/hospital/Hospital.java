@@ -11,7 +11,7 @@ public class Hospital {
     @Id
     private String hospitalId;
     private String hospitalName;
-    private List<Department> departments;
+    private String departments;
 
     public Hospital(){}
 
@@ -23,11 +23,11 @@ public class Hospital {
 
     }
 
-    public List<Department> getDepartments() {
+    public String getDepartments() {
         return departments;
     }
 
-    public void setDepartments(List<Department> departments) {
+    public void setDepartments(String departments) {
         this.departments = departments;
     }
 
@@ -49,7 +49,7 @@ public class Hospital {
 
     public static class HospitalBuilder{
 
-        private List<Department> departments;
+        private String departments;
         private String hospitalId;
         private String hospitalName;
 
@@ -60,7 +60,7 @@ public class Hospital {
             return this;
         }
 
-        public HospitalBuilder departments(List<Department> departments){
+        public HospitalBuilder departments(String departments){
             this.departments = departments;
             return this;
         }

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class HospitalFactory {
 
-    public static Hospital getHospital (String hospitalName, List<Department> departments) {
+    public static Hospital getHospital (String hospitalName, String departments) {
         return new Hospital.HospitalBuilder()
                 .hospitalId(IDGenerator.generateId())
                 .departments(departments)

@@ -32,7 +32,7 @@ public class HospitalRepositoryTest {
         List<Department> departmentList = new ArrayList<>();
 
         //Hospital
-        Hospital hosp = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+        Hospital hosp = HospitalFactory.getHospital("Greys Anamtomy", "Deparment 1");
 
         hospitalRepository.create(hosp);
 
@@ -46,7 +46,7 @@ public class HospitalRepositoryTest {
         List<Department> departmentList = new ArrayList<>();
 
         //Hospital
-        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", "Deparment 1");
 
         hospitalRepository.create(hospital);
 
@@ -65,7 +65,7 @@ public class HospitalRepositoryTest {
         List<Department> departmentList = new ArrayList<>();
 
         //Hospital
-        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", "Deparment 1");
 
         hospitalRepository.create(hospital);
 
@@ -87,7 +87,7 @@ public class HospitalRepositoryTest {
         List<Department> departmentList = new ArrayList<>();
 
         //Hospital
-        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", "Deparment 1");
 
 
         hospitalRepository.create(hospital);

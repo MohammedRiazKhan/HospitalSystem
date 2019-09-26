@@ -28,10 +28,7 @@ public class DepartmentRepositoryTest {
     @Test
     public void create() {
 
-        List<Ward> ward = new ArrayList<>();
-        List<Room> rooms = new ArrayList<>();
-
-        Department department = DepartmentFactory.getDepartment(ward, rooms);
+        Department department = DepartmentFactory.getDepartment("Ward", "Room");
         departmentRepository.create(department);
 
         assertNotNull(departmentRepository.getAll());
@@ -41,10 +38,8 @@ public class DepartmentRepositoryTest {
     @Test
     public void read() {
 
-        List<Ward> ward = new ArrayList<>();
-        List<Room> rooms = new ArrayList<>();
 
-        Department department = DepartmentFactory.getDepartment(ward, rooms);
+        Department department = DepartmentFactory.getDepartment("Ward", "Room");
         departmentRepository.create(department);
 
         assertNotNull(departmentRepository.getAll());
@@ -62,7 +57,7 @@ public class DepartmentRepositoryTest {
         List<Ward> ward = new ArrayList<>();
         List<Room> rooms = new ArrayList<>();
 
-        Department department = DepartmentFactory.getDepartment(ward, rooms);
+        Department department = DepartmentFactory.getDepartment("Ward", "Room");
         departmentRepository.create(department);
 
         assertNotNull(departmentRepository.getAll());
@@ -70,7 +65,7 @@ public class DepartmentRepositoryTest {
         List<Ward> ward2 = new ArrayList<>();
         List<Room> rooms2 = new ArrayList<>();
 
-        Department departmentUpdate = DepartmentFactory.getDepartment(ward2, rooms2);
+        Department departmentUpdate = DepartmentFactory.getDepartment("Ward", "Room");
         departmentUpdate.setDepartmentId(department.getDepartmentId());
         departmentRepository.update(departmentUpdate);
 
@@ -86,7 +81,7 @@ public class DepartmentRepositoryTest {
         List<Ward> ward = new ArrayList<>();
         List<Room> rooms = new ArrayList<>();
 
-        Department department = DepartmentFactory.getDepartment(ward, rooms);
+        Department department = DepartmentFactory.getDepartment("Ward", "Room");
         departmentRepository.create(department);
 
         assertNotNull(departmentRepository.getAll());

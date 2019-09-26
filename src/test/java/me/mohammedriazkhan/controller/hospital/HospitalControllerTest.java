@@ -34,7 +34,7 @@ public class HospitalControllerTest {
         List<Department> departmentList = new ArrayList<>();
 
         //Hospital
-        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", "Department 1");
 
         ResponseEntity<Hospital> postResponse = restTemplate.postForEntity(baseURL + "/new", hospital, Hospital.class);
 

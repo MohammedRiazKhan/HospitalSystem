@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DepartmentFactory {
 
-    public static Department getDepartment(List<Ward> wards, List<Room> rooms) {
+    public static Department getDepartment(String wards, String rooms) {
         return new Department.DepartmentBuilder()
                 .departmentId(IDGenerator.generateId())
                 .wards(wards)

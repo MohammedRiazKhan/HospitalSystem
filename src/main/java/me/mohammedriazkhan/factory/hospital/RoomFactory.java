@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RoomFactory {
 
-    public static Room getRoom(List<Equipment> equipment) {
+    public static Room getRoom(String equipment) {
         return new Room.RoomBuilder()
                 .roomId(IDGenerator.generateId())
                 .equipment(equipment)

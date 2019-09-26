@@ -14,10 +14,7 @@ public class DepartmentFactoryTest {
     @Test
     public void getDepartment() {
 
-        List<Ward> ward = new ArrayList<>();
-        List<Room> rooms = new ArrayList<>();
-
-        Department department = DepartmentFactory.getDepartment(ward, rooms);
+        Department department = DepartmentFactory.getDepartment("a", "fa");
         System.out.println(department);
 
         Assert.assertNotNull(department.getDepartmentId());

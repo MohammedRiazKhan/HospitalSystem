@@ -33,7 +33,7 @@ public class HospitalServiceImplTest {
         List<Department> departmentList = new ArrayList<>();
 
         //Hospital
-        Hospital hosp = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+        Hospital hosp = HospitalFactory.getHospital("Greys Anamtomy", "Department 1");
 
         hospitalService.create(hosp);
 
@@ -47,7 +47,7 @@ public class HospitalServiceImplTest {
         List<Department> departmentList = new ArrayList<>();
 
         //Hospital
-        Hospital hosp = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+        Hospital hosp = HospitalFactory.getHospital("Greys Anamtomy", "Department 1");
         hosp.setHospitalId("a");
 
         hospitalService.create(hosp);
@@ -67,13 +67,13 @@ public class HospitalServiceImplTest {
     public void c_update() {
 
         List<Department> departmentList = new ArrayList<>();
-        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", "Department 1");
 
         hospitalService.create(hospital);
 
         assertNotNull(hospitalService.getAll());
 
-        Hospital hospitalUpdate = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+        Hospital hospitalUpdate = HospitalFactory.getHospital("Greys Anamtomy", "Department 1");
         hospitalUpdate.setHospitalId(hospital.getHospitalId());
 
         hospitalService.update(hospitalUpdate);
@@ -90,7 +90,7 @@ public class HospitalServiceImplTest {
 
         List<Department> departmentList = new ArrayList<>();
 
-        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", departmentList);
+        Hospital hospital = HospitalFactory.getHospital("Greys Anamtomy", "Department 1");
 
         hospitalService.create(hospital);
 
