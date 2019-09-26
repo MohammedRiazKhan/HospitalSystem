@@ -108,7 +108,7 @@ public class ReportControllerTest {
     @Test
     public void whenCorrectCredentialsWillBe200() throws Exception {
 
-        ResponseEntity<String> response = restTemplate.withBasicAuth("admin", "admin").getForEntity(baseURL + "/getall", String.class);
+        ResponseEntity<String> response = restTemplate.withBasicAuth("doctor", "doctor").getForEntity(baseURL + "/getall", String.class);
 
         System.out.println(response.getStatusCode());
         System.out.println(response.getBody());
@@ -120,7 +120,7 @@ public class ReportControllerTest {
     @Test
     public void whenIncorrectCredentialsWillBe401() throws Exception {
 
-        ResponseEntity<String> response = restTemplate.withBasicAuth("admin", "admins").getForEntity(baseURL + "/getall", String.class);
+        ResponseEntity<String> response = restTemplate.withBasicAuth("doctor", "doctors").getForEntity(baseURL + "/getall", String.class);
 
         System.out.println(response.getStatusCode());
         System.out.println(response.getBody());

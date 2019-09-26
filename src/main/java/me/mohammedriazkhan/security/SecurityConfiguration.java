@@ -12,16 +12,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    private static final String DOCTOR_ROLE = "DOCTOR";
     private static final String USER_ROLE = "USER";
-    private static final String ADMIN_ROLE = "ADMIN";
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 
         auth.inMemoryAuthentication()
-                .withUser("admin")
-                .password(encoder().encode("admin"))
-                .roles(ADMIN_ROLE)
+                .withUser("doctor")
+                .password(encoder().encode("doctor"))
+                .roles(DOCTOR_ROLE)
                 .and()
                 .withUser("user")
                 .password(encoder().encode("user"))
@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/report/getall")
-                .hasRole(ADMIN_ROLE)
+                .hasRole(DOCTOR_ROLE)
                 .and()
                 .csrf().disable();
 
