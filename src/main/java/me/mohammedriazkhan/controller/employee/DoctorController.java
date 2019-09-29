@@ -10,6 +10,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/doctor")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DoctorController {
 
     @Autowired
@@ -24,9 +25,7 @@ public class DoctorController {
     @GetMapping(path = "/find/{id}")
     public Doctor findById(@PathVariable String id){
 
-        Doctor doctor = doctorService.read(id);
-
-        return doctor;
+        return doctorService.read(id);
     }
 
     @PutMapping("/update")

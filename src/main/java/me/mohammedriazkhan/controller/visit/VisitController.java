@@ -9,12 +9,13 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/visit")
+@CrossOrigin(origins = "http://localhost:4200")
 public class VisitController {
 
     @Autowired
     private VisitServiceImpl visitService;
 
-    @PostMapping
+    @PostMapping("/new")
     public Visit create(@RequestBody Visit t){
         return visitService.create(t);
     }
@@ -36,7 +37,7 @@ public class VisitController {
 
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/getall")
     public Set<Visit> getAll(){
         return visitService.getAll();
     }
