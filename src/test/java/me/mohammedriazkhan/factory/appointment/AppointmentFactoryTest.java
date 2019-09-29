@@ -20,7 +20,7 @@ public class AppointmentFactoryTest {
 
         InPatient patient = InPatientFactory.getInPatient("riaz", "khan", "1", "12345" ,23, "Afsd", "1234568", 2, "123");
 
-        Appointment appointment = AppointmentFactory.getAppointment("17-04-2018", patient.getPatientId());
+        Appointment appointment = AppointmentFactory.getAppointment("17-04-2018", patient.getPatientId().toString());
         System.out.println(appointment);
 
         Assert.assertNotNull(appointment);

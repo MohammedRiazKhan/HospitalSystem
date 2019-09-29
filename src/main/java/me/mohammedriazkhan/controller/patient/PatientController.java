@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @RestController
 
@@ -19,7 +20,8 @@ public class PatientController {
 
     @PostMapping("/new")
     public InPatient create(@RequestBody InPatient t) {
-        return (InPatient) inPatientService.create(t);
+
+        return inPatientService.create(t);
     }
 
     @GetMapping(path = "/find/{id}")

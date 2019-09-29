@@ -49,7 +49,7 @@ public class PatientRepositoryTest {
         patientRepository.create(aPatient);
 
         //getting a patient from the set
-        Patient patientFromSet = patientRepository.read(aPatient.getPatientId());
+        Patient patientFromSet = patientRepository.read(aPatient.getPatientId().toString());
 
         assertEquals(aPatient, patientFromSet);
 
@@ -74,7 +74,7 @@ public class PatientRepositoryTest {
         patientRepository.update(patientNew);
 
         //patient once updated (pulled from set)
-        Patient updatedPatientFromSet = patientRepository.read(aPatient.getPatientId());
+        Patient updatedPatientFromSet = patientRepository.read(aPatient.getPatientId().toString());
 
         assertEquals(patientNew, updatedPatientFromSet);
 
@@ -97,10 +97,10 @@ public class PatientRepositoryTest {
         assertNotNull(patientRepository.getAll());
 
         //deleting the patient
-        patientRepository.delete(aPatient.getPatientId());
+        patientRepository.delete(aPatient.getPatientId().toString());
 
         //checking if object is in set
-        Patient patientInSet = patientRepository.read(aPatient.getPatientId());
+        Patient patientInSet = patientRepository.read(aPatient.getPatientId().toString());
 
         //if null it will pass
         assertNull(patientInSet);

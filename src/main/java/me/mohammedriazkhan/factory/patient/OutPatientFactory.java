@@ -4,6 +4,9 @@ import me.mohammedriazkhan.domain.appoinment.Appointment;
 import me.mohammedriazkhan.domain.employee.Doctor;
 import me.mohammedriazkhan.domain.patient.OutPatient;
 import me.mohammedriazkhan.helper.IDGenerator;
+import org.hibernate.mapping.IdGenerator;
+
+import java.util.UUID;
 
 
 public class OutPatientFactory {

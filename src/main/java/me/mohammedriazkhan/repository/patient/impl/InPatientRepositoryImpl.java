@@ -37,7 +37,7 @@ public class InPatientRepositoryImpl implements InPatientRepository {
     @Override
     public Patient update(Patient patient) {
 
-        Patient inDB = read(patient.getPatientId());
+        Patient inDB = read(patient.getPatientId().toString());
 
         if(inDB != null){
             patients.remove(inDB);

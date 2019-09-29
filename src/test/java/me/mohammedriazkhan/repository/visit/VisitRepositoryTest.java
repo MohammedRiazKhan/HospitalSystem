@@ -33,7 +33,7 @@ public class VisitRepositoryTest {
 
         Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
 
-        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId().toString(), doctor.getEmployeeId());
 
         visitRepository.create(visit);
 
@@ -48,7 +48,7 @@ public class VisitRepositoryTest {
 
         Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
 
-        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId().toString(), doctor.getEmployeeId());
 
         visitRepository.create(visit);
 
@@ -67,13 +67,13 @@ public class VisitRepositoryTest {
 
         Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
 
-        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId().toString(), doctor.getEmployeeId());
 
         visitRepository.create(visit);
 
         assertNotNull(visitRepository.getAll());
 
-        Visit visitUpdate =  VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
+        Visit visitUpdate =  VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId().toString(), doctor.getEmployeeId());
         visitUpdate.setVisitId(visit.getVisitId());
         visitRepository.update(visitUpdate);
 
@@ -90,7 +90,7 @@ public class VisitRepositoryTest {
 
         Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
 
-        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId().toString(), doctor.getEmployeeId());
 
         visitRepository.create(visit);
 

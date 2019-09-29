@@ -4,6 +4,8 @@ import me.mohammedriazkhan.domain.employee.Doctor;
 import me.mohammedriazkhan.domain.patient.InPatient;
 import me.mohammedriazkhan.helper.IDGenerator;
 
+import java.util.UUID;
+
 
 public class InPatientFactory {
 

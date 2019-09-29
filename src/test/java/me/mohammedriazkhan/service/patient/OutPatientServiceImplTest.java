@@ -49,7 +49,7 @@ public class OutPatientServiceImplTest {
         patientService.create(patient);
 
         //getting a patient from the set
-        Patient patientFromSet = patientService.read(patient.getPatientId());
+        Patient patientFromSet = patientService.read(patient.getPatientId().toString());
 
         assertEquals(patient, patientFromSet);
 
@@ -75,7 +75,7 @@ public class OutPatientServiceImplTest {
         patientService.update(patientNew);
 
         //patient once updated (pulled from set)
-        Patient updatedPatientFromSet = patientService.read(patient.getPatientId());
+        Patient updatedPatientFromSet = patientService.read(patient.getPatientId().toString());
 
         assertEquals(patientNew, updatedPatientFromSet);
 
@@ -97,10 +97,10 @@ public class OutPatientServiceImplTest {
         assertNotNull(patientService.getAll());
 
         //deleting the patient
-        patientService.delete(patient.getPatientId());
+        patientService.delete(patient.getPatientId().toString());
 
         //checking if object is in set
-        Patient patientInSet = patientService.read(patient.getPatientId());
+        Patient patientInSet = patientService.read(patient.getPatientId().toString());
 
         //if null it will pass
         assertNull(patientInSet);

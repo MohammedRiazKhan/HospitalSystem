@@ -37,7 +37,7 @@ public class VisitControllerTest {
 
         Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
 
-        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId(), doctor.getEmployeeId());
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId().toString(), doctor.getEmployeeId());
         visit.setVisitId("abc");
         ResponseEntity<Visit> postResponse = restTemplate.postForEntity(baseURL + "/new", visit, Visit.class);
 

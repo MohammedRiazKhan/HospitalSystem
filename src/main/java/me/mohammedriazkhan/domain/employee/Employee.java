@@ -1,5 +1,7 @@
 package me.mohammedriazkhan.domain.employee;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @MappedSuperclass

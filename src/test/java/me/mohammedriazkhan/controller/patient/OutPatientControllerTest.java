@@ -15,6 +15,8 @@ import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
 
+import java.util.UUID;
+
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -31,7 +33,7 @@ public class OutPatientControllerTest {
     public void a_create() {
 
         OutPatient inPatient = OutPatientFactory.getOutPatient("MOhammed", "Khan", null, null, 23, null, null);
-        inPatient.setPatientId("avc");
+        inPatient.setPatientId("fasd");
         ResponseEntity<OutPatient> postResponse = restTemplate.postForEntity(baseURL + "/new", inPatient, OutPatient.class);
 
         assertNotNull(postResponse);
