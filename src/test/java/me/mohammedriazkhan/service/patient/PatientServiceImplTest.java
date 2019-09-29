@@ -1,6 +1,7 @@
 package me.mohammedriazkhan.service.patient;
 
 import me.mohammedriazkhan.domain.employee.Doctor;
+import me.mohammedriazkhan.domain.patient.InPatient;
 import me.mohammedriazkhan.domain.patient.Patient;
 import me.mohammedriazkhan.factory.employee.DoctorFactory;
 import me.mohammedriazkhan.factory.patient.InPatientFactory;
@@ -29,7 +30,7 @@ public class PatientServiceImplTest {
 
         Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
 
-        Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+        InPatient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
 
         //create a patient
         patientService.create(aPatient);
@@ -44,7 +45,7 @@ public class PatientServiceImplTest {
 
         Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
 
-        Patient patient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+        InPatient patient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
 
         patientService.create(patient);
 
@@ -61,13 +62,13 @@ public class PatientServiceImplTest {
 
         Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
 
-        Patient patient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+        InPatient patient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
 
         patientService.create(patient);
 
         Doctor doctodr = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
 
-        Patient patientNew = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+        InPatient patientNew = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
 
         patientNew.setPatientId(patient.getPatientId());
 
@@ -75,7 +76,7 @@ public class PatientServiceImplTest {
         patientService.update(patientNew);
 
         //patient once updated (pulled from set)
-        Patient updatedPatientFromSet = patientService.read(patient.getPatientId());
+        InPatient updatedPatientFromSet = patientService.read(patient.getPatientId());
 
         assertEquals(patientNew, updatedPatientFromSet);
 
@@ -89,7 +90,7 @@ public class PatientServiceImplTest {
 
         Doctor doctor = DoctorFactory.getDoctor( "Mohammed", "Khan", "1234564", "1 May 2501", "Renal Doctor", "Super Man");
 
-        Patient patient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
+        InPatient patient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
 
         patientService.create(patient);
 
@@ -100,7 +101,7 @@ public class PatientServiceImplTest {
         patientService.delete(patient.getPatientId());
 
         //checking if object is in set
-        Patient patientInSet = patientService.read(patient.getPatientId());
+        InPatient patientInSet = patientService.read(patient.getPatientId());
 
         //if null it will pass
         assertNull(patientInSet);

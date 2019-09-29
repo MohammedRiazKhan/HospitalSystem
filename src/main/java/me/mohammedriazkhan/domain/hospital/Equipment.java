@@ -1,5 +1,6 @@
 package me.mohammedriazkhan.domain.hospital;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Objects;
@@ -10,6 +11,7 @@ public class Equipment {
     @Id
     private String equipmentId;
     private String name;
+    @Column(name = "description")
     private String desc;
     private int quantity;
 

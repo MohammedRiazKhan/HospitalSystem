@@ -14,6 +14,10 @@ public class Visit {
     private String patientId;
     private String doctorId;
 
+    public Visit(){
+
+    }
+
     public Visit(String visitId, String visitDate, String patientId, String doctorId) {
         this.visitId = visitId;
         this.visitDate = visitDate;

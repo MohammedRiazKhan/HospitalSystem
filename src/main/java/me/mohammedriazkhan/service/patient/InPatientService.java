@@ -1,12 +1,12 @@
 package me.mohammedriazkhan.service.patient;
 
-import me.mohammedriazkhan.domain.patient.Patient;
+import me.mohammedriazkhan.domain.patient.InPatient;
 import me.mohammedriazkhan.service.Service;
 
 import java.util.Set;
 
-public interface InPatientService extends Service<Patient, String> {
+public interface InPatientService extends Service<InPatient, String> {
 
-    Set<Patient> getAll();
+    Set<InPatient> getAll();
 
 }

@@ -1,9 +1,7 @@
 package me.mohammedriazkhan.service.patient.impl;
 
-import me.mohammedriazkhan.domain.patient.Patient;
-import me.mohammedriazkhan.repository.patient.InPatientRepository;
+import me.mohammedriazkhan.domain.patient.InPatient;
 import me.mohammedriazkhan.repository.patient.hibernate.InPatientRepositoryHibernate;
-import me.mohammedriazkhan.repository.patient.impl.InPatientRepositoryImpl;
 import me.mohammedriazkhan.service.patient.InPatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,24 +29,24 @@ public class InPatientServiceImpl implements InPatientService {
     }
 
     @Override
-    public Set<Patient> getAll() {
-        List<Patient> list = (List<Patient>) repository.findAll();
+    public Set<InPatient> getAll() {
+        List<InPatient> list = (List<InPatient>) repository.findAll();
 
         return new HashSet<>(list);
     }
 
     @Override
-    public Patient create(Patient patient) {
+    public InPatient create(InPatient patient) {
         return repository.save(patient);
     }
 
     @Override
-    public Patient read(String integer) {
+    public InPatient read(String integer) {
         return repository.findById(integer).orElse(null);
     }
 
     @Override
-    public Patient update(Patient patient) {
+    public InPatient update(InPatient patient) {
         return repository.save(patient);
     }
 

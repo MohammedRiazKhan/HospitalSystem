@@ -8,36 +8,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/inpatient")
+@RequestMapping("/patient")
+@CrossOrigin(origins = "http://localhost:4200")
 public class InPatientController {
 
     @Autowired
     private InPatientServiceImpl inPatientService;
 
-    @PostMapping
-    public InPatient create(@RequestBody InPatient t){
-        return t;
+    @PostMapping("/new")
+    public InPatient create(@RequestBody InPatient t) {
+        return (InPatient) inPatientService.create(t);
     }
 
     @GetMapping(path = "/find/{id}")
     public InPatient findById(@PathVariable String id){
-        return null;
+        return (InPatient) inPatientService.read(id);
     }
 
     @PutMapping("/update")
     public InPatient update(@RequestBody InPatient t){
-        return null;
+        return inPatientService.update(t);
     }
 
     @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id){
 
+        inPatientService.delete(id);
 
     }
-
-    @GetMapping("/getAll")
+    @GetMapping("/getall")
     public Set<InPatient> getAll(){
-        return null;
+        return inPatientService.getAll();
     }
-
 }

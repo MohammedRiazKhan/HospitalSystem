@@ -6,28 +6,29 @@ import me.mohammedriazkhan.service.patient.impl.InPatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/patient")
-@CrossOrigin(origins = "http://localhost:4200")
+
 public class PatientController {
 
     @Autowired
     private InPatientServiceImpl inPatientService;
 
     @PostMapping("/new")
-    public Patient create(@RequestBody Patient t){
-        return inPatientService.create(t);
+    public InPatient create(@RequestBody InPatient t) {
+        return (InPatient) inPatientService.create(t);
     }
 
     @GetMapping(path = "/find/{id}")
-    public Patient findById(@PathVariable String id){
-        return inPatientService.read(id);
+    public InPatient findById(@PathVariable String id){
+        return (InPatient) inPatientService.read(id);
     }
 
     @PutMapping("/update")
-    public Patient update(@RequestBody Patient t){
+    public InPatient update(@RequestBody InPatient t){
         return inPatientService.update(t);
     }
 
@@ -38,7 +39,7 @@ public class PatientController {
 
     }
     @GetMapping("/getall")
-    public Set<Patient> getAll(){
+    public Set<InPatient> getAll(){
         return inPatientService.getAll();
     }
 
