@@ -12,8 +12,8 @@ import java.util.List;
 
 public class VisitFactory {
 
-    public static Visit getVisit(String visitDate, String patientId, String doctorId) {
-        return  new Visit(IDGenerator.generateId(), visitDate, patientId, doctorId);
+    public static Visit getVisit(String visitDate, String patientId, String doctorId, String duration, String patientNote) {
+        return  new Visit(IDGenerator.generateId(), visitDate, patientId, doctorId, duration, patientNote);
     }
 
 

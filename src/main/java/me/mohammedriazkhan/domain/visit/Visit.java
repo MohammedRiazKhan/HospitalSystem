@@ -14,16 +14,36 @@ public class Visit {
     private String visitDate;
     private String patientId;
     private String doctorId;
+    private String duration;
+    private String patientNote;
 
     public Visit(){
 
     }
 
-    public Visit(String visitId, String visitDate, String patientId, String doctorId) {
+    public Visit(String visitId, String visitDate, String patientId, String doctorId, String duration, String patientNote) {
         this.visitId = visitId;
         this.visitDate = visitDate;
         this.patientId = patientId;
         this.doctorId = doctorId;
+        this.duration = duration;
+        this.patientNote = patientNote;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public String getPatientNote() {
+        return patientNote;
+    }
+
+    public void setPatientNote(String patientNote) {
+        this.patientNote = patientNote;
     }
 
     public String getVisitId() {
@@ -58,8 +78,6 @@ public class Visit {
         this.doctorId = doctorId;
     }
 
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,12 +86,14 @@ public class Visit {
         return Objects.equals(visitId, visit.visitId) &&
                 Objects.equals(visitDate, visit.visitDate) &&
                 Objects.equals(patientId, visit.patientId) &&
-                Objects.equals(doctorId, visit.doctorId);
+                Objects.equals(doctorId, visit.doctorId) &&
+                Objects.equals(duration, visit.duration) &&
+                Objects.equals(patientNote, visit.patientNote);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(visitId, visitDate, patientId, doctorId);
+        return Objects.hash(visitId, visitDate, patientId, doctorId, duration, patientNote);
     }
 
     @Override
@@ -83,7 +103,8 @@ public class Visit {
                 ", visitDate='" + visitDate + '\'' +
                 ", patientId='" + patientId + '\'' +
                 ", doctorId='" + doctorId + '\'' +
-                 +
+                ", duration='" + duration + '\'' +
+                ", patientNote='" + patientNote + '\'' +
                 '}';
     }
 }

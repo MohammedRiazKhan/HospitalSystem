@@ -93,7 +93,7 @@ public class VisitServiceImpl implements VisitService {
 
         if(patient.getPatientId() != null && doctor.getEmployeeId() != null && appointment.getAppointmentId() != null){
 
-            Visit visit = VisitFactory.getVisit(new Date().toString(), patient.getPatientId().toString(), doctor.getEmployeeId());
+            Visit visit = VisitFactory.getVisit(new Date().toString(), patient.getPatientId().toString(), doctor.getEmployeeId(), "1 hr", "Tired");
 
             return create(visit);
         }

@@ -25,7 +25,7 @@ public class PrescriptionFactoryTest {
 
         Patient aPatient = InPatientFactory.getInPatient("Mohammed", "Khan", "123135", "3213213213", 23, "1231", "1", 123, "111111");
 
-        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId().toString(), doctor.getEmployeeId());
+        Visit visit = VisitFactory.getVisit(new Date().toString(), aPatient.getPatientId().toString(), doctor.getEmployeeId(), "fasd", "fasd");
 
         Medication medication = MedicationFactory.getMedication("Panado", "Pain Killer", 2);
 
