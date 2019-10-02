@@ -35,8 +35,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/report/getall")
-                .hasRole(DOCTOR_ROLE)
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/report/getall").hasRole(DOCTOR_ROLE)
+                .antMatchers(HttpMethod.POST, "/visit/new").hasRole(DOCTOR_ROLE)
+                .antMatchers(HttpMethod.POST, "/patient/new").hasRole(DOCTOR_ROLE)
+                .antMatchers(HttpMethod.POST, "/doctor/new").hasRole(DOCTOR_ROLE)
+                .antMatchers(HttpMethod.GET, "/visit/getall").hasRole(DOCTOR_ROLE)
+                .antMatchers(HttpMethod.GET, "/patient/getall").hasRole(DOCTOR_ROLE)
+                .antMatchers(HttpMethod.GET, "/doctor/getall").hasRole(DOCTOR_ROLE)
                 .and()
                 .csrf().disable();
 
