@@ -8,6 +8,8 @@ import javax.persistence.*;
 public abstract class Employee {
 
     @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String employeeId;
     private String firstName;
     private String lastName;

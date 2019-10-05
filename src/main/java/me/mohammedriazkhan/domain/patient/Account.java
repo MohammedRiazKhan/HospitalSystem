@@ -1,5 +1,8 @@
 package me.mohammedriazkhan.domain.patient;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.util.Objects;
@@ -8,6 +11,8 @@ import java.util.Objects;
 public abstract class Account {
 
     @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String accountId;
     private double balance;
     private String paymentTerms;

@@ -1,9 +1,8 @@
 package me.mohammedriazkhan.domain.hospital;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,6 +10,8 @@ import java.util.Objects;
 public class Room {
 
     @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String roomId;
     private String equipmentId;
 

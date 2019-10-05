@@ -14,18 +14,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String DOCTOR_ROLE = "DOCTOR";
     private static final String USER_ROLE = "USER";
+    private static final String ADMIN_ROLE = "ADMIN";
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 
         auth.inMemoryAuthentication()
-                .withUser("doctor")
-                .password(encoder().encode("doctor"))
-                .roles(DOCTOR_ROLE)
-                .and()
-                .withUser("user")
-                .password(encoder().encode("user"))
-                .roles(USER_ROLE);
+                .withUser("admin")
+                .password(encoder().encode("admin"))
+                .roles(ADMIN_ROLE);
 
     }
 
@@ -36,13 +33,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/report/getall").hasRole(DOCTOR_ROLE)
-                .antMatchers(HttpMethod.POST, "/visit/new").hasRole(DOCTOR_ROLE)
-                .antMatchers(HttpMethod.POST, "/patient/new").hasRole(DOCTOR_ROLE)
-                .antMatchers(HttpMethod.POST, "/doctor/new").hasRole(DOCTOR_ROLE)
-                .antMatchers(HttpMethod.GET, "/visit/getall").hasRole(DOCTOR_ROLE)
-                .antMatchers(HttpMethod.GET, "/patient/getall").hasRole(DOCTOR_ROLE)
-                .antMatchers(HttpMethod.GET, "/doctor/getall").hasRole(DOCTOR_ROLE)
+                .antMatchers(HttpMethod.GET, "/report/getall").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.POST, "/visit/new").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.POST, "/patient/new").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.POST, "/doctor/new").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.GET, "/visit/getall").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.GET, "/patient/getall").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.GET, "/doctor/getall").hasRole(ADMIN_ROLE)
                 .and()
                 .csrf().disable();
 

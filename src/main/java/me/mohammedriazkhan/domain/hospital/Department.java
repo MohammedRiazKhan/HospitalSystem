@@ -1,5 +1,7 @@
 package me.mohammedriazkhan.domain.hospital;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -8,6 +10,8 @@ import java.util.Objects;
 public class Department {
 
     @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String departmentId;
     private String wards;
     private String rooms;

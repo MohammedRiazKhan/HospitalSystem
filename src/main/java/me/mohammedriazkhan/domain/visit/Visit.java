@@ -10,6 +10,8 @@ import java.util.Objects;
 public class Visit {
 
     @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String visitId;
     private String visitDate;
     private String patientId;

@@ -10,6 +10,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/appointment")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AppointmentController {
 
     @Autowired
@@ -41,7 +42,7 @@ public class AppointmentController {
         appointmentService.delete(id);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/getall")
     public Set<Appointment> getAll(){
         return appointmentService.getAll();
     }
